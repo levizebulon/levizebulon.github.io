@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/28/hello-world/" class="article-date">
+  <time datetime="2020-03-28T11:08:07.391Z" itemprop="datePublished">2020-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/hello-world/">纪念失去的博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这已经是第三次迁移博客了，第一次使用的Wordpress，第二次用的Typecho，这次换了Hexo</p>
+<p>由于考完研<del>太开心了</del>，一晚上没睡觉。<br>第二天准备迁移博客，将原先Typecho数据库的文章导出转成Markdown</p>
+<p>VPS一直用的腾讯云学生机，有个镜像功能，每次进行重要操作之前都会将系统备份，在迁移数据之前特地备份了系统制成镜像，然后重新装了一个系统部署了Hexo框架——就是现在这个。</p>
+<p>腾讯云发公告称镜像可能会收费，于是在准备选了三个排在最下面备份的镜像删除，然后突然发现刚刚备份的镜像没了，再仔细一看，原来最早的镜像在最上面，刚刚删的镜像就是最新的镜像，欲哭无泪。。。</p>
+<p><strong>Tips:</strong> 重要操作时切忌疲劳驾驶。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/28/hello-world/" data-id="ck8bih5rh0000upa7d1bw2fmj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MapReduce" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/28/MapReduce/" class="article-date">
+  <time datetime="2020-03-28T09:37:00.000Z" itemprop="datePublished">2020-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/MapReduce/">MapReduce</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MapReduce-大型集群的简化数据处理"><a href="#MapReduce-大型集群的简化数据处理" class="headerlink" title="MapReduce: 大型集群的简化数据处理"></a>MapReduce: 大型集群的简化数据处理</h1><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><h1 id="Mapreduce-大规模集群上的简化处理"><a href="#Mapreduce-大规模集群上的简化处理" class="headerlink" title="Mapreduce: 大规模集群上的简化处理"></a>Mapreduce: 大规模集群上的简化处理</h1><h2 id="摘要-1"><a href="#摘要-1" class="headerlink" title="摘要"></a>摘要</h2><p>MapReduce 是一个处理和生成大规模数据集的编程模型和相关实现。用户指定处理键/值对以生成一组中间键/值对的map函数，以及指定归纳与同一中间键关联的所有中间值的reduce函数。 如本文所示，许多现实世界中的任务在此模型中均可表达。</p>
+<p>以这种函数风格编写的程序会自动并行化，并在大型商品计算机集群上执行。 运行时系统负责划分输入数据，安排程序在一组机器上的执行，处理机器故障以及管理所需的机器间通信的细节。 这使得没有并行和分布式系统经验的程序员可以轻松地利用大型分布式系统的资源。我们的MapReduce实现在大型商用机器上运行，并且具有高度可扩展性：典型的MapReduce计算过程可处理数兆兆字节的数据 在数千台机器上。 程序员发现该系统易于使用：每天执行数百个MapReduce程序，每天在Google集群上执行多达一千个MapReduce作业。</p>
+<h2 id="1-概要"><a href="#1-概要" class="headerlink" title="1 概要"></a>1 概要</h2><p>在过去的五年中，Google的作者和其他许多人已经实施了数百种特殊用途的计算，可以处理大量原始数据（例如抓取的文档，Web请求日志等），以计算各种衍生数据，例如反向索引， Web文档的图形结构的各种表示形式，每个主机抓取的页面数的摘要，给定日期中最频繁查询的集合等。大多数此类计算在概念上很简单。但是，输入数据通常很大，必须在数百或数千台计算机上分布计算，才能在合理的时间内完成计算。有关如何对计算进行同等化，分配数据以及处理失败的问题，旨在使原始的简单计算难以用大量复杂的代码来掩盖，以解决这些问题。针对这种复杂性，我们设计了一种新的抽象方法我们来表达我们试图执行的简单计算，但是在库中隐藏了并行化，容错，数据分发和负载平衡的混乱细节。 Lisp 和许多其他功能语言中的mapandreduce原语启发了我们的抽象。我们意识到，我们的大多数计算都涉及对输入中的每个逻辑“记录”应用加乘运算，以便计算出一组中间键/值对，然后对所有共享同一键的值应用演绎运算，以便将派生结果组合在一起。适当的数据。我们使用具有用户指定的映射和归约运算的功能模型，使我们能够轻松地对大型计算进行并行处理，并使用重新执行作为容错的主要机制。这项工作的主要贡献是一个简单而强大的界面，该界面可实现自动大规模计算的并行化和分布，以及该接口的实现，可以在大型商用PC集群上实现高性能。第二部分介绍了基本的编程模型，并给出了几个示例。第3节描述了针对我们基于集群的计算环境量身定制的MapReduce接口的实现。第4节描述了一些有用的编程模型改进。第五部分对我们执行各种任务的性能进行了评估。第6部分探讨了Google内部MapReduce的用法，包括我们使用它作为重写生产索引系统基础的经验。第7节讨论相关和未来的工作</p>
+<h2 id="2-编程模型"><a href="#2-编程模型" class="headerlink" title="2 编程模型"></a>2 编程模型</h2><p>该计算采用一组输入键/值对，并产生一组输出键/值对。 MapReduce库的用户将计算表示为两个功能：Map和Reduce。由用户编写的Map接受一个输入对，并产生一组中间键/值对。 MapReduce库将与同一中间键 $I$ 关联的所有中间值分组在一起，然后将它们传递给Reduce函数。Reduce函数也由用户编写，可以接受中间键I和该键的一组值。 将这些值合并在一起以形成可能较小的一组值。 通常，每个Reduce调用仅产生零个或一个输出值。 中间值通过迭代器提供给用户的reduce函数。 这使我们能够处理太大而无法容纳在内存中的值列表。</p>
+<h3 id="2-1-样例"><a href="#2-1-样例" class="headerlink" title="2.1 样例"></a>2.1 样例</h3><p>考虑对大量文档中每个单词的出现次数进行计数的问题。 用户将编写类似于下面的伪代码的代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">map(String key, String value):</span><br><span class="line">    // key: document name</span><br><span class="line">    // value: document contents</span><br><span class="line">    <span class="keyword">for</span> each word w <span class="keyword">in</span> value:</span><br><span class="line">        EmitIntermediate(w, <span class="string">"1"</span>);</span><br><span class="line">reduce(String key, Iterator values):</span><br><span class="line">    // key: a word</span><br><span class="line">    // values: a list of counts</span><br><span class="line">    int result = 0;</span><br><span class="line">    <span class="keyword">for</span> each v <span class="keyword">in</span> values:</span><br><span class="line">        result += ParseInt(v);</span><br><span class="line">    Emit(AsString(result));</span><br></pre></td></tr></table></figure>
+
+<p>$map$函数会发出每个单词以及相关的出现次数（在此简单示例中为“1”）。$reduce$函数会将特定单词发出的所有计数加在一起。</p>
+<p>另外，用户编写代码以使用输入和输出文件的名称以及可选的调整参数来填充$mapreduce$规范对象。 然后，用户调用MapReduce函数，并将其传递给指定对象。 用户代码与$MapReduce$库（在C++中实现）链接在一起。 附录A包含此示例的完整程序文本。</p>
+<h3 id="2-2-类型"><a href="#2-2-类型" class="headerlink" title="2.2 类型"></a>2.2 类型</h3><p>即使先前的伪代码是根据字符串输入和输出编写的，但从概念上讲，用户提供的map和reduce函数具有关联的类型：</p>
+<p>map    (k1,v1)       → list(k2,v2)</p>
+<p>reduce (k2,list(v2)) → list(v2)</p>
+<p>即，输入键和值是从与输出键和值不同的域中提取的。 此外，中间键和值与输出键和值来自同一域。我们的C++实现将字符串与用户定义的函数传递来回，并将其留给用户代码以在字符串和适当的类型之间进行转换。</p>
+<h3 id="2-3-更多的例子"><a href="#2-3-更多的例子" class="headerlink" title="2.3 更多的例子"></a>2.3 更多的例子</h3><p>这是一些有趣的程序的简单示例，可以轻松地表达为MapReduce计算</p>
+<p><strong>分布式Grep</strong>：如果匹配提供的模式，则map函数将发出一条线。 reduce函数是一个身份函数，它仅将提供的中间数据复制到输出中。</p>
+<p><strong>URL访问频率计数</strong>：地图功能处理网页请求日志并输出&lt;URL，1&gt;。 reduce函数将同一URL的所有值加在一起，并发出一个&lt;URL，total count&gt;对。</p>
+<p><strong>反向Web链接图</strong>：map函数为指向在名为source的页面中找到的targetURL的每个链接输出&lt;target，source&gt;对。 reduce函数将与给定目标URL相关联的所有源URL的列表连接起来，并发出一对：&lt;target，list（source）&gt;</p>
+<p><strong>每个主机的术语向量</strong>：术语向量将一个文档或一组文档中出现的最重要的单词汇总为&lt;单词，频率&gt;对的列表。 map函数为每个输入文档（主机名称是从文档的URL中提取的）发出一个&lt;hostname，term vector&gt;对。 re-duce函数传递给给定主机的所有每个文档术语向量。它将这些术语向量相加，丢弃不常用的术语，然后发出最终的&lt;主机名，术语向量&gt;对</p>
+<p><strong>倒序索引</strong>：map函数解析每个文档，并发出一系列&lt;单词，文档ID&gt;对。 reduce函数接受给定单词的所有对，对相应的文档ID进行排序，并发出一个&lt;word，list（document ID)&gt;对。 所有输出对的集合形成一个简单的反向索引。 很容易扩充此计算以跟踪单词位置。</p>
+<p><strong>分布式排序</strong>：map函数从每个记录中提取键，并发出一个&lt;key，record&gt;对。 衰减功能将所有对保持不变。该计算取决于第4.1节中描述的分区工具和第4.2节中描述的排序属性。</p>
+<h2 id="3-实现"><a href="#3-实现" class="headerlink" title="3 实现"></a>3 实现</h2><p>MapReduce接口的许多不同实现都是可能的。 正确的选择取决于环境。 例如，一种实现可能适用于小型共享内存计算机，另一种实现适用于大型NUMA多处理器，而另一种实现适用于网络计算机的更大集合。</p>
+<p>本部分介绍了针对Google广泛使用的计算环境的实现：</p>
+<p>与交换以太网连接在一起的大型商用PC集群[4]。 在我们的环境中：</p>
+<ul>
+<li><p>（1）机器通常是运行Linux的双处理器x86处理器，每台机器具有2-4 GB的内存。</p>
+</li>
+<li><p>（2）使用商品网络硬件–在机器级别通常为100兆比特/秒或1吉比特/秒，但平均平均对分带宽要小得多。</p>
+</li>
+<li><p>（3）群集由数百或数千个机器组成，因此机器故障很常见。</p>
+</li>
+<li><p>（4）由便宜的IDE磁盘提供存储，这些磁盘直接附加到单个计算机。 内部开发的分布式文件系统[8]用于管理存储在这些磁盘上的数据。 文件系统使用复制在不可靠的硬件之上提供可用性和可靠性。</p>
+</li>
+<li><p>（5）用户将作业提交到计划系统。 每个作业由一组任务组成，并由调度程序映射到集群中的一组可用计算机。</p>
+</li>
+</ul>
+<h3 id="3-1-执行概述"><a href="#3-1-执行概述" class="headerlink" title="3.1 执行概述"></a>3.1 执行概述</h3><p>通过将输入数据自动划分为一组M个拆分，Map调用可分布在多台计算机上。 输入拆分可以由不同的机器并行处理。通过使用分区函数（例如，hash（key）modR）将中间键空间划分为R个片段来减少调用的分布。 分区数（R）和分区功能由用户指定。</p>
+<p>图1显示了我们实现中MapReduce操作的总体流程。 当用户程序调用MapReduce函数时，将发生以下一系列操作（图1中的编号标签与以下列表中的编号相对应）</p>
+<ol>
+<li><p>用户程序中的MapReduce库首先将输入文件分割成通常为每片16兆字节至64兆字节（MB）的块（可由用户通过可选参数进行控制）。然后，它会在许多机器上启动该程序的许多副本。</p>
+</li>
+<li><p>该程序的副本之一是特殊副本-主副本。其余的是由主委派工作的工人。有Mmap任务和减少任务。主人选择空闲的工人，并为每个工人分配一个地图任务或一个简化任务。</p>
+</li>
+<li><p>分配了地图任务的工作人员将读取相应输入拆分的内容。它从输入数据中解析键/值对，并将每个对传递给用户定义的Map函数。 Map函数产生的中间键/值对被缓存在内存中。</p>
+</li>
+<li><p>定期将缓冲对写入本地磁盘，并通过分区功能划分为R区域。这些缓冲对在本地磁盘上的位置被传递回主服务器，主服务器负责将这些位置转发给减少工作人员。</p>
+</li>
+<li><p>当主服务器通知reduce worker这些位置时，它将使用远程过程调用从map worker的本地磁盘读取缓冲的数据。当reduce worker读取了所有中间数据时，它将按中间键对其进行排序，以便将同一键的所有出现都归为一类。之所以需要排序，是因为通常有许多不同的键映射到相同的reduce任务。如果中间数据量太大而无法容纳内存，则使用外部排序。</p>
+</li>
+<li><p>reduceworker迭代排序的中间数据，并为遇到的每个唯一的中间键，将键和相应的中间值集传递给用户的reducefunction。 Reduce函数的输出将附加到此reduce分区的最终输出文件中</p>
+</li>
+<li><p>完成所有map任务和归约任务后，主服务器将唤醒用户程序。这时，用户程序中的MapReduce调用将返回到用户代码。</p>
+</li>
+</ol>
+<p>成功完成后，可在R个输出文件中执行mapreduce执行的输出（每个reduce任务一个，其文件名由用户指定）。通常，用户不需要将这些R个输出文件合并为一个文件–他们通常会传递这些文件作为另一个MapReduce调用的输入，或从另一个能够处理划分为多个文件的输入的分布式应用程序中使用它们。</p>
+<h3 id="3-2-主数据结构"><a href="#3-2-主数据结构" class="headerlink" title="3.2 主数据结构"></a>3.2 主数据结构</h3><p>主机保留几个数据结构。 对于每个map任务和reduce任务，它都存储状态（空闲，进行中或已完成）和工作机的标识（对于非空闲任务）。主节点是中间文件位置的传输渠道 从地图任务传播区域以减少任务。 因此，对于每个完成的地图任务，母版存储由地图任务生成的R个中间文件区域的位置和大小。 地图任务完成后，将接收到此位置和大小信息的更新。 信息将逐步推送给正在进行减少任务的工作人员。</p>
+<h3 id="3-3-容错"><a href="#3-3-容错" class="headerlink" title="3.3 容错"></a>3.3 容错</h3><p>由于MapReduce库旨在帮助使用数百或数千台计算机处理大量数据，因此该库必须能够容忍机器故障。</p>
+<p><strong>worker失败</strong> </p>
+<p>主人定期对每个工人执行ping操作。 如果在一定时间内没有收到来自worker的响应，则主服务器将workr标记为失败。 由工作人员完成的所有maptask都将重置为其初始空闲状态，因此有资格在其他工作人员上进行调度。 同样，在失败的工作程序上进行的任何映射任务或约简任务也将重置为空闲，并有资格进行重新计划。</p>
+<p>完成的映射任务在发生故障时会重新执行，因为它们的输出存储在故障机器的本地磁盘上，因此可以访问。 已完成的化简任务的输出存储在全局文件系统中，因此无需重新执行。</p>
+<p>如果先由workerA执行映射任务，然后再由workerB执行（因为失败），则所有执行reduce任务的工作程序都会收到重新执行的通知。 任何尚未从workerA读取数据的reduce任务都会从workerB读取数据。</p>
+<p>MapReduce可以抵抗大规模的工作故障。例如，在一个MapReduce操作期间，正在运行的群集上的网络维护导致一次由80台计算机组成的群组在数分钟内无法访问。 MapReduce主节点只是简单地重新执行了无法访问的工作机所完成的工作，并继续向前发展，最终完成了MapReduce操作。</p>
+<p><strong>Master Failure</strong></p>
+<p>使主服务器很容易写入上述主数据结构的定期检查点。 如果主任务死亡，则可以从最后一个检查点状态开始新的副本。 但是，由于只有单个主服务器，因此它的失败可能性不大。 因此，如果主服务器失败，我们的当前实现将中止MapReduce计算。 客户可以检查这种情况，并根据需要重试MapReduce操作。</p>
+<p><strong>存在故障的语义学</strong></p>
+<p>当用户提供的map和reduce运算符是其输入值的确定性函数时，我们的分布式实现将产生与整个程序的无故障顺序执行所产生的输出相同的输出。</p>
+<p>我们依靠map的原子提交，并减少任务输出来实现此属性。 每个正在进行的任务将其输出写入私有临时文件。 reduce任务产生一个这样的文件，而map任务产生R个这样的文件（每个reduce任务一个）。 map任务完成后，工作人员会向主服务器发送一条消息，并在消息中包含临时文件的名称。 如果主服务器收到有关已完成的map任务的完成消息，它将忽略该消息。 否则，它将R文件的名称记录在主数据结构中。</p>
+<p>当reduce任务完成时，reduce worker会自动将其临时输出文件重命名为最终输出文件。 如果在多台计算机上执行相同的reduce任务，则将对同一最终输出文件执行多个重命名调用。 我们依靠基础文件系统提供的原子重命名操作来确保最终文件系统状态仅包含执行一次reduce任务所产生的数据。</p>
+<p>我们的map和reduce运算符绝大多数是确定性的，在这种情况下我们的语义等同于顺序执行的事实使程序员很容易就其程序行为进行推理。 当map和/或reduce运算符不确定时，我们提供较弱但仍然合理的语义。 在存在不确定性运算符的情况下，特定归约任务R1的输出等效于顺序执行该不确定性程序所产生的R1输出。 然而，用于不同归约任务R2的输出可以对应于由不确定性程序的不同顺序执行所产生的用于R2的输出。</p>
+<p>考虑映射任务M并简化任务R1和R2。令e（Ri）是已落实的Ri的执行（恰好是这样的一个执行）。 之所以出现较弱的语义，是因为e（R1）可能已经读取了一次执行M所产生的输出，而e（R2）可能已经读取了执行不同的M所产生的输出。</p>
+<h3 id="3-4-Locality"><a href="#3-4-Locality" class="headerlink" title="3.4 Locality"></a>3.4 Locality</h3><p>在我们的计算环境中，网络带宽是相对稀缺的资源。 我们利用输入数据（由GFS [8]管理）存储在组成集群的计算机的本地磁盘上的事实，从而节省了网络带宽。 GFS将每个文件分成64 MB的块，并在不同的计算机上存储每个块的几个副本（通常为3个副本）。 MapReduce主服务器将输入文件的位置信息考虑在内，并尝试在包含相应输入数据副本的计算机上计划地图任务。 如果失败，它将尝试将地图任务安排在该任务输入数据的副本附近（例如，在与包含数据的计算机位于同一网络交换机的工作机上）。 当在集群中的大部分工作人员上运行大型MapReduce操作时，大多数输入数据都在本地读取，并且不占用网络带宽。</p>
+<h3 id="3-5-Task-Granularity"><a href="#3-5-Task-Granularity" class="headerlink" title="3.5 Task Granularity"></a>3.5 Task Granularity</h3><p>如上所述，我们将映射阶段细分为M个片段，将还原阶段细分为R个片段。理想情况下，M和R应该比工作机器的数量大得多。让每个工作程序执行许多不同的任务可以改善动态负载平衡，并且还可以在工作程序失败时加快恢复速度：它完成的许多映射任务可以分布在所有其他工作程序计算机上。</p>
+<p>如上所述，由于主机必须制定O（M + R）调度决策并将O（M * R）状态保持在内存中，因此在我们的实现中可以有多大的M和R有实际的界限。 （但是，内存使用量的恒定因素很小：每个映射任务/减少任务对的状态的O（M * R）部分包含大约一个字节的数据。）</p>
+<p>此外，R通常受用户约束，因为每个缩减任务的输出最终都存储在单独的输出文件中。实际上，我们倾向于选择M，以便每个单独的任务大约是16 MB到64 MB的输入数据（这样，上述的局部性优化才是最有效的），并且我们将R设为我们工作计算机数量的一小部分期望使用。我们经常使用2,000个工作机执行M = 200,000和R = 5,000的MapReduce计算。</p>
+<h3 id="3-6-Backup-Tasks"><a href="#3-6-Backup-Tasks" class="headerlink" title="3.6 Backup Tasks"></a>3.6 Backup Tasks</h3><p>延长MapReduce操作总时间的常见原因之一是“散乱者”：一台机器花费异常长的时间来完成最后几个地图之一或减少计算中的任务。散乱者会出现在整个主机上 原因。 例如，磁盘损坏的计算机可能会经常遇到可纠正的错误，从而将其读取性能从30 MB / s降低到1 MB / s。 集群调度系统可能已经在计算机上调度了其他任务，由于竞争CPU，内存，本地磁盘或网络带宽，导致其执行MapReduce代码的速度变慢。 我们最近遇到的一个问题是机器初始化代码中的一个错误，该错误导致了处理器缓存被禁用：受影响机器上的计算速度降低了100倍。</p>
+<p>我们有一个通用的机制来缓解流浪汉的问题。 当MapReduce操作接近完成时，主服务器会调度其余正在进行的任务的备份执行。 每当主执行或备份执行完成时，该任务就会标记为已完成。 我们已经对该机制进行了调整，以使其通常将操作使用的计算资源增加不超过百分之几。我们发现，这显着减少了完成大型MapReduce操作的时间。 例如，禁用备份任务机制时，第5.3节中描述的排序程序需要44％的时间才能完成。</p>
+<h2 id="4-Refinements"><a href="#4-Refinements" class="headerlink" title="4  Refinements"></a>4  Refinements</h2><p>尽管简单地编写Map和Reduce函数提供的基本功能足以满足大多数需求，但我们发现一些扩展很有用。 这些将在本节中介绍。</p>
+<h3 id="4-1-Partitioning-Function"><a href="#4-1-Partitioning-Function" class="headerlink" title="4.1  Partitioning Function"></a>4.1  Partitioning Function</h3><p>MapReduce的用户指定他们想要的（R）缩减任务/输出文件的数量。 使用中间键上的分区功能，可以跨这些任务对数据进行分区。 提供了一个默认的分区功能，该功能使用哈希（例如“ hash（key）mod R”）。这往往会导致分区平衡得很好。 但是，在某些情况下，通过键的其他功能对数据进行分区很有用。 例如，有时输出键是URL，我们希望单个主机的所有条目都以同一输出文件结尾。 为了支持这种情况，MapReduce库的用户可以提供特殊的分区功能。 例如，使用“ hash（Hostname（url key））mod R”作为分区功能会使来自同一主机的所有URL最终出现在同一输出文件中。</p>
+<h3 id="4-2-Ordering-Guarantees"><a href="#4-2-Ordering-Guarantees" class="headerlink" title="4.2  Ordering Guarantees"></a>4.2  Ordering Guarantees</h3><p>我们保证在给定的分区内，中间键/值对以递增的键顺序进行处理。 此排序保证使按分区轻松生成排序的输出文件，这在输出文件格式需要通过键支持有效的随机访问查找，或者输出的用户发现对数据进行排序很方便时很有用。</p>
+<h3 id="4-3-Combiner-Function"><a href="#4-3-Combiner-Function" class="headerlink" title="4.3  Combiner Function"></a>4.3  Combiner Function</h3><p>在某些情况下，每个映射任务产生的中间键会大量重复，并且用户指定的Reduce函数是可交换的和关联的。一个很好的例子是2.1节中的单词计数例子。由于单词频率倾向于遵循Zipf分布，因此每个地图任务都会产生成千上万个&lt;the，1&gt;形式的记录。所有这些计数将通过网络发送到单个减少任务，然后通过减少功能相加产生一个数字。我们允许用户指定一个可选的Combiner函数，该函数在通过网络发送该数据之前会进行部分合并。</p>
+<p>在执行映射任务的每台计算机上执行合并器功能。通常，使用相同的代码来实现组合器和reduce函数。 Reduce函数和Combiner函数之间的唯一区别是MapReduce库如何处理函数的输出。 reduce函数的输出将写入最终输出文件。合并器函数的输出将写入一个中间文件，该文件将发送到reduce任务。部分合并可显着加快MapReduce操作的某些类。附录A包含一个使用组合器的示例。</p>
+<h3 id="4-4-Input-and-Output-Types"><a href="#4-4-Input-and-Output-Types" class="headerlink" title="4.4  Input and Output Types"></a>4.4  Input and Output Types</h3><p>MapReduce库提供了以几种不同格式读取输入数据的支持。例如，“文本”模式输入将每一行视为键/值对：键是文件中的偏移量，值是该行的内容。另一种受支持的常见格式存储按键排序的键/值对的顺序。每个输入类型的实现都知道如何将自己拆分为有意义的范围，以作为单独的地图任务进行处理（例如，文本模式的范围拆分可确保仅在行边界处进行范围拆分）。用户可以通过提供sim-plereader接口的实现来增加对新输入类型的支持，尽管大多数用户仅使用少量预定义输入类型之一。</p>
+<p>读者不一定需要提供从文件读取的数据。例如，定义一个读取器很容易，它可以从数据库或映射到内存中的数据结构中读取记录。</p>
+<p>以类似的方式，我们支持一组输出类型，用于生成不同格式的数据，并且用户代码很容易添加对新输出类型的支持。</p>
+<h3 id="4-5-Side-effects"><a href="#4-5-Side-effects" class="headerlink" title="4.5    Side-effects"></a>4.5    Side-effects</h3><p>在某些情况下，MapReduce的用户发现可以方便地从地图中生成辅助文件作为附加输出和/或reduce运算符。 我们依靠应用程序编写者来使此类副作用成为原子和幂等的。 通常，应用程序将写入临时文件，并在文件完全生成后以原子方式重命名该文件。</p>
+<p>我们不支持单个任务生成的多个输出文件的原子两阶段提交，因此，生成具有跨文件一致性要求的多个输出文件的任务应该是确定性的。 实际上，这种限制从来都不是问题。</p>
+<h3 id="4-6-Skipping-Bad-Records"><a href="#4-6-Skipping-Bad-Records" class="headerlink" title="4.6    Skipping Bad Records"></a>4.6    Skipping Bad Records</h3><p>有时用户代码中的错误会导致Map or Reduce函数确定性地崩溃某些记录。 此类错误会阻止MapReduce操作完成。 通常的做法是修复错误，但有时这是不可行的。 该错误可能是在第三方库中，该库的源代码不可用。 同样，有时可以忽略一些记录，例如在对大型数据集进行统计分析时。 我们提供了一种可选的执行模式，其中MapReduce库检测哪些记录导致确定性崩溃，并按顺序跳过这些记录以取得进展。</p>
+<p>每个工作进程都安装一个信号处理程序，以捕获分段违规和总线错误。 在调用用户Map或Reduce操作之前，MapReduce库将参数的序列号存储在全局变量中。 如果用户代码生成信号，则信号处理程序将包含序列号的“最后一次喘息” UDP数据包发送到MapReduce主数据库。 当主服务器在特定记录上看到多个故障时，表明该记录在下一次重新执行相应的Map或Reduce任务时应跳过该记录。</p>
+<h3 id="4-7-Local-Execution"><a href="#4-7-Local-Execution" class="headerlink" title="4.7    Local Execution"></a>4.7    Local Execution</h3><p>Map或Reduce函数中的调试问题可能很棘手，因为实际的计算是在分布式系统中进行的，通常是在几千台机器上，而工作分配决定是由主服务器动态地做出的。 为了帮助进行调试，概要分析和小规模测试，我们开发了MapReduce库的替代实现，该库可在本地计算机上顺序执行MapReduce操作的所有工作。 提供给用户的控件使计算可以限于特定的地图任务。 用户使用特殊标志调用其程序，然后可以轻松使用他们认为有用的任何调试或测试工具（例如gdb）。</p>
+<h3 id="4-8-Status-Information"><a href="#4-8-Status-Information" class="headerlink" title="4.8    Status Information"></a>4.8    Status Information</h3><p>主服务器运行一个内部HTTP服务器，并导出一组状态页面供人类使用。状态页显示了计算进度，例如显示了许多任务已完成，正在进行多少，输入字节，中间数据字节，输出字节，处理速率等。这些页面还包含指向标准错误和错误的链接。 每个任务生成的标准输出文件。 用户可以使用这些数据来预测计算将花费多长时间，以及是否应将更多资源添加到计算中。这些页面还可以用于确定何时计算速度比预期的慢得多。</p>
+<h2 id="4-9-Counters"><a href="#4-9-Counters" class="headerlink" title="4.9    Counters"></a>4.9    Counters</h2><p>MapReduce库提供了一种计数器功能，可以对各种事件的发生进行计数。 例如，用户代码可能要计算已处理的单词总数或索引的德语文档的数量等。要使用此功能，用户代码会创建一个命名计数器对象，然后在Map和/或Reduce函数中适当增加计数器。 例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Counter* uppercase;</span><br><span class="line">uppercase = GetCounter(<span class="string">"uppercase"</span>);</span><br><span class="line">map(String name, String contents):</span><br><span class="line">    <span class="keyword">for</span> each word w <span class="keyword">in</span> contents:</span><br><span class="line">        <span class="keyword">if</span> (IsCapitalized(w)):</span><br><span class="line">            uppercase-&gt;Increment();</span><br><span class="line">            EmitIntermediate(w, <span class="string">"1"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>来自各个工作计算机的计数器值会定期传播到主服务器（在ping响应上pi带）。主服务器从成功的映射和归约任务中聚合计数器值，并在MapReduce操作完成时将其返回给用户代码。当前计数器值也显示在主状态页面上，以便人们可以观看实时计算的进度。汇总计数器值时，主服务器消除了重复执行同一映射或减少任务以避免重复计数的影响。 （重复执行可能是由于我们使用备份任务以及由于失败而重新执行任务引起的。）</p>
+<p>MapReduce库会自动维护一些计数器值，例如处理的输入键/值对的数量和产生的输出键/值对的数量。</p>
+<p>用户发现计数器功能对于完整性检查MapReduce操作的行为很有用。例如，在某些MapReduce操作中，用户代码可能想要确保生成的输出对的数量完全等于已处理的输入对的数量，或者要确保已处理的德语文档的比例在文档总数的某个可容忍的比例之内处理。</p>
+<h2 id="5-Performance"><a href="#5-Performance" class="headerlink" title="5  Performance"></a>5  Performance</h2><p>在本节中，我们将在大型计算机集群上运行的两个计算中测量MapReduce的性能。 一种计算可搜索大约1 TB的数据，以查找特定的模式。 其他计算将对大约1 TB的数据进行排序。</p>
+<p>这两个程序代表了由MapReduce用户编写的真实程序的很大子集-一类程序将数据从一种表示形式改组为另一种表示形式，另一类程序从大型数据集中提取少量有趣的数据。</p>
+<h3 id="5-1-Cluster-Configuration"><a href="#5-1-Cluster-Configuration" class="headerlink" title="5.1  Cluster Configuration"></a>5.1  Cluster Configuration</h3><p>所有程序都在由大约1800台计算机组成的集群上执行。 每台机器都有两个启用超线程的2GHz Intel Xeon处理器，4GB内存，两个160GB IDE磁盘和一个千兆以太网链接。 这些机器被安排在两级树形交换网络中，根部可提供大约100-200 Gbps的总带宽。 所有机器都在同一托管设施中，因此任何一对机器之间的往返时间都不到一毫秒。</p>
+<p>在4GB的内存中，群集上运行的其他任务保留了大约1-1.5GB的内存。 这些程序在周末的一个下午执行，当时CPU，磁盘和网络大部分处于空闲状态。</p>
+<h3 id="5-2-Grep"><a href="#5-2-Grep" class="headerlink" title="5.2  Grep"></a>5.2  Grep</h3><p>grep程序扫描了 $10^{10}$ 100字节的记录，搜索了一个相对罕见的三字符模式（该模式出现在92337条记录中）。 输入分为大约64MB（M = 15000），整个输出放在一个文件中（R = 1）。</p>
+<p>图2显示了计算超时的进度。 Y轴显示扫描输入数据的速率。 随着将更多计算机分配给此MapReduce计算，该速率逐渐提高，并在分配1764个工作人员时达到30 GB / s的峰值。随着地图任务完成，速率开始下降并在计算约80秒时达到零。 从开始到结束，整个计算大约需要150秒。 这包括大约一分钟的启动开销。 开销是由于程序传播到所有工作机，以及与GFS进行交互以打开1000个输入文件的集合以及获取进行位置优化所需的信息所导致的。</p>
+<h3 id="5-3-Sort"><a href="#5-3-Sort" class="headerlink" title="5.3 Sort"></a>5.3 Sort</h3><p>排序程序对1010个100字节的记录（大约1 TB的数据）进行排序。 该程序以TeraSort基准[10]为模型。</p>
+<p>排序程序由少于50行的用户代码组成。 三行Map函数从文本行中提取10字节的排序键，并将该键和原始文本行作为中间键/值对发出。 我们使用内置的Identity函数作为Reduce运算符。 此函数传递不变的中间键/值对作为输出键/值对。 将最终排序的输出写入一组2向复制的GFS文件（即，将2 TB作为程序的输出写入）。</p>
+<p>和以前一样，输入数据被分成64MB（M = 15000）。我们将排序后的输出划分为4000个文件（R = 4000）。分区功能使用密钥的初始字节将其分为R个片段之一。</p>
+<p>我们针对该基准的分区功能建立在密钥分配的知识之上。在一般的排序程序中，我们将添加一个预传递MapReduce操作，该操作将收集键的样本并使用采样的键的分布来计算最终排序过程的分割点。</p>
+<p>图3（a）显示了排序程序正常执行的进度。左上图显示了读取输入的速率。由于所有地图任务都在200秒之前完成，因此速率达到约13 GB / s的峰值并很快消失。请注意，输入速率小于grep。这是因为排序映射任务花费大约一半的时间和I / O带宽将中间输出写入其本地磁盘。 grep的相应中间输出的大小可以忽略不计。</p>
+<p>左中图显示了通过网络将数据从map任务发送到reduce任务的速率。 第一个地图任务完成后，即开始此混洗。 图中的第一个驼峰是针对大约1700个还原任务的第一批（整个MapReduce被分配了大约1700台计算机，每台计算机一次最多执行一个还原任务）。 大约需要300秒的时间，这些第一批化简任务中的一些就完成了，我们开始为剩下的化简任务改组数据。 所有改组都在计算中进行了约600秒。</p>
+<p>左下图显示了由reduce任务将排序后的数据写入最终输出文件的速率。由于机器正忙于对中间数据进行排序，因此在第一个改组周期的结束与写入周期的开始之间存在延迟。写入以约2-4 GB / s的速率持续一段时间。所有写入将在计算中完成约850秒。包括启动开销，整个计算过程需要891秒。这与TeraSort基准测试[10]的当前报告的1057秒的最佳结果相似。</p>
+<p>需要注意的几件事：由于我们的位置优化，输入速率高于混洗速率和输出速率–大多数数据是从本地磁盘读取的，并且绕过了带宽相对受限的网络。混洗率高于输出率，因为输出阶段会写入已排序数据的两个副本（出于可靠性和可用性的原因，我们对输出进行了两个副本）。我们编写两个副本是因为这是基础文件系统提供的可靠性和可用性机制。如果底层文件系统使用擦除编码[14]而不是复制，则将减少写入数据的网络带宽要求。</p>
+<h3 id="5-4-Effect-of-Backup-Tasks"><a href="#5-4-Effect-of-Backup-Tasks" class="headerlink" title="5.4 Effect of Backup Tasks"></a>5.4 Effect of Backup Tasks</h3><p>在图3（b）中，我们显示了禁用备份任务的排序程序的执行。 执行流程类似于图3（a）所示，除了尾巴很长，几乎没有写操作发生。 960秒后，除5个reduce任务外的所有任务都已完成。 但是，这最后的几位游民直到300秒后才完成。 整个计算需要1283秒，经过时间增加了44％。</p>
+<h3 id="5-5-Machine-Failures"><a href="#5-5-Machine-Failures" class="headerlink" title="5.5 Machine Failures"></a>5.5 Machine Failures</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/28/MapReduce/" data-id="ck8bij5aw00051la7faqahafp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Distribute-System/" rel="tag">Distribute System</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/paper/" rel="tag">paper</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Linux常用命令全拼" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%A8%E6%8B%BC/" class="article-date">
+  <time datetime="2020-03-28T09:33:07.000Z" itemprop="datePublished">2020-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%A8%E6%8B%BC/">Linux常用命令全拼</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>pwd: print work directory 打印当前目录 显示出当前工作目录的绝对路径</li>
+<li>ps: process status(进程状态，类似于windows的任务管理器)</li>
+<li>常用参数：－auxf</li>
+<li>ps -auxf 显示进程状态</li>
+<li>df: disk free 其功能是显示磁盘可用空间数目信息及空间结点信息。换句话说，就是报告在任何安装的设备或目录中，还剩多少自由的空间。</li>
+<li>du: Disk usage</li>
+<li>rpm：即RedHat Package Management，是RedHat的发明之一</li>
+<li>rmdir：Remove Directory（删除目录）</li>
+<li>rm：Remove（删除目录或文件）</li>
+<li>cat: concatenate 连锁</li>
+<li>cat file1file2&gt;&gt;file3 把文件1和文件2的内容联合起来放到file3中</li>
+<li>insmod: install module,载入模块</li>
+<li>ln -s : link -soft 创建一个软链接，相当于创建一个快捷方式</li>
+<li>mkdir：Make Directory(创建目录)</li>
+<li>touch: touch</li>
+<li>man: Manual</li>
+<li>su：Swith user(切换用户)</li>
+<li>cd：Change directory</li>
+<li>ls：List files</li>
+<li>ps：Process Status</li>
+<li>mkdir：Make directory</li>
+<li>rmdir：Remove directory</li>
+<li>mkfs: Make file system</li>
+<li>fsck：File system check</li>
+<li>uname: Unix name</li>
+<li>lsmod: List modules</li>
+<li>mv: Move file</li>
+<li>rm: Remove file</li>
+<li>cp: Copy file</li>
+<li>ln: Link files</li>
+<li>fg: Foreground</li>
+<li>bg: Background</li>
+<li>chown: Change owner</li>
+<li>chgrp: Change group</li>
+<li>chmod: Change mode</li>
+<li>umount: Unmount</li>
+<li>dd: 本来应根据其功能描述”Convert an copy”命名为”cc”，但”cc”已经被用以代表”CComplier”，所以命名为”dd”</li>
+<li>tar：Tape archive （磁带档案）</li>
+<li>ldd：List dynamic dependencies</li>
+<li>insmod：Install module</li>
+<li>rmmod：Remove module</li>
+<li>lsmod：List module</li>
+<li>文件结尾的”rc”（如.bashrc、.xinitrc等）：Resource configuration</li>
+<li>Knnxxx /Snnxxx（位于rcx.d目录下）：K（Kill）；S(Service)；nn（执行顺序号）；xxx（服务标识）</li>
+<li>.a（扩展名a）：Archive，static library</li>
+<li>.so（扩展名so）：Shared object，dynamically linked library</li>
+<li>.o（扩展名o）：Object file，complied result of C/C++ source file</li>
+<li>RPM：Red hat package manager</li>
+<li>dpkg：Debian package manager</li>
+<li>apt：Advanced package tool（Debian或基于Debian的发行版中提供）</li>
+</ul>
+<h3 id="其他-Linux-命令缩写"><a href="#其他-Linux-命令缩写" class="headerlink" title="其他 Linux 命令缩写"></a>其他 Linux 命令缩写</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br></pre></td><td class="code"><pre><span class="line">bin = Binaries (二进制文件)</span><br><span class="line"></span><br><span class="line">/dev = Devices (设备)</span><br><span class="line"></span><br><span class="line">/etc = Etcetera (等等)</span><br><span class="line"></span><br><span class="line">/lib = LIBrary</span><br><span class="line"></span><br><span class="line">/proc = Processes</span><br><span class="line"></span><br><span class="line">/sbin = Superuser Binaries (超级用户的二进制文件)</span><br><span class="line"></span><br><span class="line">/tmp = Temporary (临时)</span><br><span class="line"></span><br><span class="line">/usr = Unix Shared Resources</span><br><span class="line"></span><br><span class="line">/var = Variable (变量)</span><br><span class="line"></span><br><span class="line">FIFO = First In, First Out</span><br><span class="line"></span><br><span class="line">GRUB = GRand Unified Bootloader</span><br><span class="line"></span><br><span class="line">IFS= Internal Field Seperators</span><br><span class="line"></span><br><span class="line">LILO = LInux LOader</span><br><span class="line"></span><br><span class="line">MySQL = My 是最初作者女儿的名字，</span><br><span class="line"></span><br><span class="line">SQL = Structured QueryLanguage</span><br><span class="line"></span><br><span class="line">PHP = Personal Home Page Tools = PHP HypertextPreprocessor</span><br><span class="line"></span><br><span class="line">PS = Prompt String</span><br><span class="line"></span><br><span class="line">Perl = “Pratical Extraction and Report Language”(实际的抽取和报告语言) =”Pathologically Eclectic Rubbish Lister”</span><br><span class="line"></span><br><span class="line">Python 得名于电视剧Monty Python’s Flying Circus</span><br><span class="line"></span><br><span class="line">Tcl = Tool Command Language</span><br><span class="line"></span><br><span class="line">Tk = ToolKit</span><br><span class="line"></span><br><span class="line">VT = Video Terminal</span><br><span class="line"></span><br><span class="line">YaST = Yet Another Setup Tool</span><br><span class="line"></span><br><span class="line">apache = “a patchy” server</span><br><span class="line"></span><br><span class="line">apt = Advanced Packaging Tool</span><br><span class="line"></span><br><span class="line">ar = archiver</span><br><span class="line"></span><br><span class="line">as = assembler</span><br><span class="line"></span><br><span class="line">awk = “Aho Weiberger and Kernighan”三个作者的姓的第一个字母</span><br><span class="line"></span><br><span class="line">bash = Bourne Again SHell</span><br><span class="line"></span><br><span class="line">bc = Basic (Better) Calculator</span><br><span class="line"></span><br><span class="line"><span class="built_in">bg</span> = BackGround</span><br><span class="line"></span><br><span class="line">biff = 作者HeidiStettner在U.C.Berkely养的一条狗,喜欢对邮递员汪汪叫。</span><br><span class="line"></span><br><span class="line">cal = Calendar (日历)</span><br><span class="line"></span><br><span class="line">cat = Catenate (链接)</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> = Change Directory</span><br><span class="line"></span><br><span class="line">chgrp = Change Group</span><br><span class="line"></span><br><span class="line">chmod = Change Mode</span><br><span class="line"></span><br><span class="line">chown = Change Owner</span><br><span class="line"></span><br><span class="line">chsh = Change Shell</span><br><span class="line"></span><br><span class="line">cmp = compare</span><br><span class="line"></span><br><span class="line">cobra = Common Object Request BrokerArchitecture</span><br><span class="line"></span><br><span class="line">comm = common</span><br><span class="line"></span><br><span class="line">cp = Copy</span><br><span class="line"></span><br><span class="line">cpio = CoPy In and Out</span><br><span class="line"></span><br><span class="line">cpp = C Pre Processor</span><br><span class="line"></span><br><span class="line">cron = Chronos 希腊文时间</span><br><span class="line"></span><br><span class="line">cups = Common Unix Printing System</span><br><span class="line"></span><br><span class="line">cvs = Current Version System</span><br><span class="line"></span><br><span class="line">daemon = Disk And Execution MONitor</span><br><span class="line"></span><br><span class="line">dc = Desk Calculator</span><br><span class="line"></span><br><span class="line">dd = Disk Dump (磁盘转储)</span><br><span class="line"></span><br><span class="line">df = Disk Free</span><br><span class="line"></span><br><span class="line">diff = Difference</span><br><span class="line"></span><br><span class="line">dmesg = diagnostic message</span><br><span class="line"></span><br><span class="line">du = Disk Usage</span><br><span class="line"></span><br><span class="line">ed = editor</span><br><span class="line"></span><br><span class="line">egrep = Extended GREP</span><br><span class="line"></span><br><span class="line">elf = Extensible Linking Format</span><br><span class="line"></span><br><span class="line">elm = ELectronic Mail</span><br><span class="line"></span><br><span class="line">emacs = Editor MACroS</span><br><span class="line"></span><br><span class="line"><span class="built_in">eval</span> = EVALuate</span><br><span class="line"></span><br><span class="line">ex = EXtended</span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> = EXECute (执行)</span><br><span class="line"></span><br><span class="line">fd = file descriptors</span><br><span class="line"></span><br><span class="line"><span class="built_in">fg</span> = ForeGround</span><br><span class="line"></span><br><span class="line">fgrep = Fixed GREP</span><br><span class="line"></span><br><span class="line">fmt = format</span><br><span class="line"></span><br><span class="line">fsck = File System ChecK</span><br><span class="line"></span><br><span class="line">fstab = FileSystem TABle</span><br><span class="line"></span><br><span class="line">fvwm = F*** Virtual Window Manager</span><br><span class="line"></span><br><span class="line">gawk = GNU AWK</span><br><span class="line"></span><br><span class="line">gpg = GNU Privacy Guard</span><br><span class="line"></span><br><span class="line">groff = GNU troff</span><br><span class="line"></span><br><span class="line">hal = Hardware Abstraction Layer</span><br><span class="line"></span><br><span class="line">joe = Joe’s Own Editor</span><br><span class="line"></span><br><span class="line">ksh = Korn SHell</span><br><span class="line"></span><br><span class="line">lame = Lame Ain’t an MP3 Encoder</span><br><span class="line"></span><br><span class="line">lex = LEXical analyser</span><br><span class="line"></span><br><span class="line">lisp = LISt Processing = Lots of IrritatingSuperfluous Parentheses</span><br><span class="line"></span><br><span class="line">ln = Link</span><br><span class="line"></span><br><span class="line">lpr = Line PRint</span><br><span class="line"></span><br><span class="line">ls = list</span><br><span class="line"></span><br><span class="line">lsof = LiSt Open Files</span><br><span class="line"></span><br><span class="line">m4 = Macro processor Version 4</span><br><span class="line"></span><br><span class="line">man = MANual pages</span><br><span class="line"></span><br><span class="line">mawk = Mike Brennan’s AWK</span><br><span class="line"></span><br><span class="line">mc = Midnight Commander</span><br><span class="line"></span><br><span class="line">mkfs = MaKe FileSystem</span><br><span class="line"></span><br><span class="line">mknod = Make Node</span><br><span class="line"></span><br><span class="line">motd = Message of The Day</span><br><span class="line"></span><br><span class="line">mozilla = MOsaic GodZILLa</span><br><span class="line"></span><br><span class="line">mtab = Mount TABle</span><br><span class="line"></span><br><span class="line">mv = Move</span><br><span class="line"></span><br><span class="line">nano = Nano’s ANOther editor</span><br><span class="line"></span><br><span class="line">nawk = New AWK</span><br><span class="line"></span><br><span class="line">nl = Number of Lines</span><br><span class="line"></span><br><span class="line">nm = names</span><br><span class="line"></span><br><span class="line">nohup = No HangUP</span><br><span class="line"></span><br><span class="line">nroff = New ROFF</span><br><span class="line"></span><br><span class="line">od = Octal Dump</span><br><span class="line"></span><br><span class="line">passwd = Passwd</span><br><span class="line"></span><br><span class="line">pg = pager</span><br><span class="line"></span><br><span class="line">pico = PIne’s message COmposition editor</span><br><span class="line"></span><br><span class="line">pine = “Program <span class="keyword">for</span> Internet News &amp;Email” = “Pine is not Elm”</span><br><span class="line"></span><br><span class="line">ping = 拟声 又 = Packet Internet Grouper</span><br><span class="line"></span><br><span class="line">pirntcap = PRINTer CAPability</span><br><span class="line"></span><br><span class="line"><span class="built_in">popd</span> = POP Directory</span><br><span class="line"></span><br><span class="line">pr = pre</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> = Print Formatted</span><br><span class="line"></span><br><span class="line">ps = Processes Status</span><br><span class="line"></span><br><span class="line">pty = pseudo tty</span><br><span class="line"></span><br><span class="line"><span class="built_in">pushd</span> = PUSH Directory</span><br><span class="line"></span><br><span class="line"><span class="built_in">pwd</span> = Print Working Directory</span><br><span class="line"></span><br><span class="line">rc = runcom = run <span class="built_in">command</span>, rc还是plan9的shell</span><br><span class="line"></span><br><span class="line">rev = REVerse</span><br><span class="line"></span><br><span class="line">rm = ReMove</span><br><span class="line"></span><br><span class="line">rn = Read News</span><br><span class="line"></span><br><span class="line">roff = RunOFF</span><br><span class="line"></span><br><span class="line">rpm = RPM Package Manager = RedHat PackageManager</span><br><span class="line"></span><br><span class="line">rsh, rlogin, rvim中的</span><br><span class="line"></span><br><span class="line">r = Remote</span><br><span class="line"></span><br><span class="line">rxvt = ouR XVT</span><br><span class="line"></span><br><span class="line">seamoneky = 我</span><br><span class="line"></span><br><span class="line">sed = Stream Editor</span><br><span class="line"></span><br><span class="line">seq = SEQuence</span><br><span class="line"></span><br><span class="line">shar = Shell ARchive</span><br><span class="line"></span><br><span class="line">slrn = S-Lang rn</span><br><span class="line"></span><br><span class="line">ssh = Secure Shell</span><br><span class="line"></span><br><span class="line">ssl = Secure Sockets Layer</span><br><span class="line"></span><br><span class="line">stty = Set TTY</span><br><span class="line"></span><br><span class="line">su = Substitute User</span><br><span class="line"></span><br><span class="line">svn = SubVersion</span><br><span class="line"></span><br><span class="line">tar = Tape ARchive</span><br><span class="line"></span><br><span class="line">tcsh = TENEX C shell</span><br><span class="line"></span><br><span class="line">tee = T (T形水管接口)</span><br><span class="line"></span><br><span class="line">telnet = TEminaL over Network</span><br><span class="line"></span><br><span class="line">termcap = terminal capability</span><br><span class="line"></span><br><span class="line">terminfo = terminal information</span><br><span class="line"></span><br><span class="line">tex = τέχνη的缩写，希腊文art</span><br><span class="line"></span><br><span class="line">tr = traslate</span><br><span class="line"></span><br><span class="line">troff = Typesetter new ROFF</span><br><span class="line"></span><br><span class="line">tsort = Topological SORT</span><br><span class="line"></span><br><span class="line">tty = TeleTypewriter</span><br><span class="line"></span><br><span class="line">twm = Tom’s Window Manager</span><br><span class="line"></span><br><span class="line">tz = TimeZone</span><br><span class="line"></span><br><span class="line">udev = Userspace DEV</span><br><span class="line"></span><br><span class="line"><span class="built_in">ulimit</span> = User’s LIMIT</span><br><span class="line"></span><br><span class="line"><span class="built_in">umask</span> = User’s MASK</span><br><span class="line"></span><br><span class="line">uniq = UNIQue</span><br><span class="line"></span><br><span class="line">i = VIsual = Very Inconvenient</span><br><span class="line"></span><br><span class="line">vim = Vi IMproved</span><br><span class="line"></span><br><span class="line">wall = write all</span><br><span class="line"></span><br><span class="line">wc = Word Count</span><br><span class="line"></span><br><span class="line">wine = WINE Is Not an Emulator</span><br><span class="line"></span><br><span class="line">xargs = eXtended ARGuments</span><br><span class="line"></span><br><span class="line">xdm = X Display Manager</span><br><span class="line"></span><br><span class="line">xlfd = X Logical Font Description</span><br><span class="line"></span><br><span class="line">xmms = X Multimedia System</span><br><span class="line"></span><br><span class="line">xrdb = X Resources DataBase</span><br><span class="line"></span><br><span class="line">xwd = X Window Dump</span><br><span class="line"></span><br><span class="line">yacc = yet another compiler compiler</span><br><span class="line"></span><br><span class="line">Fish = the Friendly Interactive SHell</span><br><span class="line"></span><br><span class="line">su = Switch User</span><br><span class="line"></span><br><span class="line">MIME = Multipurpose Internet Mail Extensions</span><br><span class="line"></span><br><span class="line">ECMA = European Computer ManufacturersAssociation</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%A8%E6%8B%BC/" data-id="ck8bij5av00041la7ca1g25dr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-VPS搭建个人Hexo博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/28/VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time datetime="2020-03-28T09:25:22.000Z" itemprop="datePublished">2020-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2/">VPS搭建个人Hexo博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p><a href="https://segmentfault.com/a/1190000016106584" target="_blank" rel="noopener">VPS搭建个人Hexo博客</a></p>
+<p><a href="https://www.jianshu.com/p/5cf20649f328" target="_blank" rel="noopener">通过Git Hook 部署 Hexo 至VPS空间</a></p>
+<p><a href="https://blog.yizhilee.com/post/deploy-hexo-to-vps/" target="_blank" rel="noopener">通过 Git Hooks 自动部署 Hexo 到 VPS</a></p>
+<h3 id="安装Nodejs"><a href="#安装Nodejs" class="headerlink" title="安装Nodejs"></a>安装Nodejs</h3><p><a href="https://github.com/nodesource/distributions/blob/master/README.md" target="_blank" rel="noopener">NodeSource Node.js Binary Distributions</a></p>
+<p><a href="https://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">Node.js 安装配置</a></p>
+<p><a href="https://wiki.archlinux.org/index.php/Node.js_" target="_blank" rel="noopener">Node.js Arch Wiki</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/28/VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2/" data-id="ck8bij5az00091la7514veyb5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web/" rel="tag">Web</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ubuntu安装windows字体" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/21/ubuntu%E5%AE%89%E8%A3%85windows%E5%AD%97%E4%BD%93/" class="article-date">
+  <time datetime="2019-04-21T15:16:24.000Z" itemprop="datePublished">2019-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/21/ubuntu%E5%AE%89%E8%A3%85windows%E5%AD%97%E4%BD%93/">ubuntu安装windows字体</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>将所有的 Windows 字体复制到 ‘’’/usr/share/fonts’’’ 目录下并使用一下命令安装字体:<br>bash<del>~</del><br>mkdir /usr/share/fonts/WindowsFonts<br>cp /Windowsdrive/Windows/Fonts/* /usr/share/fonts/WindowsFonts<br>chmod 755 /usr/share/fonts/WindowsFonts/*</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">最后，使用命令行重新生成 fontconfig 缓存：</span><br><span class="line">bash</span><br></pre></td></tr></table></figure>
+<p>fc-cache</p>
+<pre><code></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/21/ubuntu%E5%AE%89%E8%A3%85windows%E5%AD%97%E4%BD%93/" data-id="ck8bij5ba000m1la73ebrgwv7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Others/" rel="tag">Others</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Docker安装tensorflow-gpu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/20/Docker%E5%AE%89%E8%A3%85tensorflow-gpu/" class="article-date">
+  <time datetime="2019-03-20T08:36:12.000Z" itemprop="datePublished">2019-03-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/20/Docker%E5%AE%89%E8%A3%85tensorflow-gpu/">Docker安装tensorflow-gpu</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h3><p><a href="https://docs.docker.com/install/" target="_blank" rel="noopener">Get docker-ce</a></p>
+<p><a href="https://mirror.tuna.tsinghua.edu.cn/help/docker-ce/" target="_blank" rel="noopener">Tuna Docker-ce</a></p>
+<p>如果你过去安装过 docker，先删掉:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove docker docker-engine docker.io</span><br></pre></td></tr></table></figure>
+<p>首先安装依赖:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install apt-transport-https ca-certificates curl gnupg2 software-properties-common</span><br></pre></td></tr></table></figure>
+<p>根据你的发行版，下面的内容有所不同。这里用的是Ubuntu<br>信任 Docker 的 GPG 公钥:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span><br></pre></td></tr></table></figure>
+<p>对于 amd64 架构的计算机，添加软件仓库:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository \</span><br><span class="line">   <span class="string">"deb [arch=amd64] https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/ubuntu \</span></span><br><span class="line"><span class="string">   <span class="variable">$(lsb_release -cs)</span> \</span></span><br><span class="line"><span class="string">   stable"</span></span><br></pre></td></tr></table></figure>
+<p>最后安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装nvidia-docker"><a href="#安装nvidia-docker" class="headerlink" title="安装nvidia-docker"></a>安装nvidia-docker</h3><h4 id="GPU-支持"><a href="#GPU-支持" class="headerlink" title="GPU 支持"></a>GPU 支持</h4><p>Docker 是在 GPU 上运行 TensorFlow 的最简单方法，因为主机只需安装<a href="https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#how-do-i-install-the-nvidia-driver" target="_blank" rel="noopener">NVIDIA®</a> 驱动程序（无需安装 NVIDIA® CUDA® 工具包）。</p>
+<p>安装 <a href="https://github.com/NVIDIA/nvidia-docker" target="_blank" rel="noopener">nvidia-docker</a> 可启动支持 NVIDIA® GPU 的 Docker 容器。nvidia-docker 仅适用于 Linux，详情请参阅对应的<a href="https://github.com/NVIDIA/nvidia-docker/wiki/Frequently-Asked-Questions#platform-support" target="_blank" rel="noopener">平台支持常见问题解答</a>了解详情。</p>
+<p>检查 GPU 是否可用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lspci | grep -i nvidia</span><br></pre></td></tr></table></figure>
+<p>验证 nvidia-docker 安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi</span><br></pre></td></tr></table></figure>
+<p>注意：nvidia-docker v1 使用 <code>nvidia-docker</code> 别名，而 v2 使用 <code>docker --runtime=nvidia</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers</span></span><br><span class="line">docker volume ls -q -f driver=nvidia-docker | xargs -r -I&#123;&#125; -n1 docker ps -q -a -f volume=&#123;&#125; | xargs -r docker rm -f</span><br><span class="line">sudo apt-get purge -y nvidia-docker</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add the package repositories</span></span><br><span class="line">curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \</span><br><span class="line">  sudo apt-key add -</span><br><span class="line">distribution=$(. /etc/os-release;<span class="built_in">echo</span> <span class="variable">$ID</span><span class="variable">$VERSION_ID</span>)</span><br><span class="line">curl -s -L https://nvidia.github.io/nvidia-docker/<span class="variable">$distribution</span>/nvidia-docker.list | \</span><br><span class="line">  sudo tee /etc/apt/sources.list.d/nvidia-docker.list</span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install nvidia-docker2 and reload the Docker daemon configuration</span></span><br><span class="line">sudo apt-get install -y nvidia-docker2</span><br><span class="line">sudo pkill -SIGHUP dockerd</span><br><span class="line"></span><br><span class="line"><span class="comment"># Test nvidia-smi with the latest official CUDA image</span></span><br><span class="line">docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装测试Tensorflow"><a href="#安装测试Tensorflow" class="headerlink" title="安装测试Tensorflow"></a>安装测试Tensorflow</h3><h4 id="使用支持-GPU-的映像的示例"><a href="#使用支持-GPU-的映像的示例" class="headerlink" title="使用支持 GPU 的映像的示例"></a>使用支持 GPU 的映像的示例</h4><p>下载并运行支持 GPU 的 TensorFlow 映像（可能需要几分钟的时间）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --runtime=nvidia -it --rm tensorflow/tensorflow:latest-gpu \</span><br><span class="line">   python -c <span class="string">"import tensorflow as tf; tf.enable_eager_execution(); print(tf.reduce_sum(tf.random_normal([1000, 1000])))"</span></span><br></pre></td></tr></table></figure>
+<p>设置支持 GPU 的映像可能需要一段时间。如果重复运行基于 GPU 的脚本，您可以使用 <code>docker exec</code>使用最新的 TensorFlow GPU 映像在容器中启动 <code>bash</code> shell 会话： 重用容器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --runtime=nvidia -it tensorflow/tensorflow:latest-gpu bash</span><br></pre></td></tr></table></figure>
+<h4 id="Get-Started-with-TensorFlow"><a href="#Get-Started-with-TensorFlow" class="headerlink" title="Get Started with TensorFlow"></a><a href="https://www.tensorflow.org/tutorials" target="_blank" rel="noopener">Get Started with TensorFlow</a></h4><p>TensorFlow is an open-source machine learning library for research and production. TensorFlow offers APIs for beginners and experts to develop for desktop, mobile, web, and cloud. See the sections below to get started.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/20/Docker%E5%AE%89%E8%A3%85tensorflow-gpu/" data-id="ck8bij5aq00011la79yej7e22" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-使用HAProxy加速Shadowsocks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/" class="article-date">
+  <time datetime="2019-03-01T01:52:51.000Z" itemprop="datePublished">2019-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/">使用HAProxy加速Shadowsocks</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>HAProxy<br>The Reliable, High Performance TCP/HTTP Load Balancer<br>HAProxy 是一个高效的负载均衡软件，可以实现 TCP/HTTP 的代理。这里使用它将我们发给它的请求转发给 ss 服务器。</p>
+<p>ss 支持中继，那么只要有一个服务器，连接自己电脑和 ss 服务器都很快的话就能实现加速</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端 &lt; - &gt; 中继服务器 &lt; - &gt; Shadowsocks 服务器</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、-安装"><a href="#二、-安装" class="headerlink" title="二、 安装"></a>二、 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 以 CentOS 7 为例</span><br><span class="line">yum install haproxy</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h2><p>编辑 /etc/haproxy/haproxy.cfg，保存以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">global</span><br><span class="line">        <span class="built_in">ulimit</span>-n  51200</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">        <span class="built_in">log</span> global</span><br><span class="line">        mode    tcp</span><br><span class="line">        option  dontlognull</span><br><span class="line">        contimeout 1000</span><br><span class="line">        clitimeout 150000</span><br><span class="line">        srvtimeout 150000</span><br><span class="line"></span><br><span class="line">frontend ss-in</span><br><span class="line">        <span class="built_in">bind</span> *:8388</span><br><span class="line">        default_backend ss-out</span><br><span class="line"></span><br><span class="line">backend ss-out</span><br><span class="line">        server server1 222.222.222.222:2222 maxconn 20480</span><br></pre></td></tr></table></figure>
+<p>其中，*:8388 中的 8388 是中继服务器接受请求的端口，222.222.222.222:2222 是 ss 服务器的 IP 地址加端口号。<br>然后执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service haproxy restart</span><br></pre></td></tr></table></figure>
+<p>HAProxy 就会在后台进行启动。可以使用 ps -ef 查看进程，lsof -i 查看端口占用情况来验证 HAProxy 是否已经运行。若无法连接中继服务器，使用 iptables -L 查看防火墙规则是否有问题。</p>
+<p>客户端的配置，只要将原来配置的 ip 地址和端口更换成中继服务器的 ip 地址和端口号就可以了。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/shadowsocks/shadowsocks/wiki/Setup-a-Shadowsocks-relay" target="_blank" rel="noopener">Setup a Shadowsocks relay</a></p>
+<p><a href="https://kaywu.xyz/2016/06/19/Shadowsocks-HAProxy/" target="_blank" rel="noopener">使用 HAProxy 加速 Shadowsocks</a></p>
+<p><a href="http://www.haproxy.org/" target="_blank" rel="noopener">HAProxy</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/" data-id="ck8bij5bc000p1la7hr83e8cm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/software/" rel="tag">software</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shadowsocks–libev服务端的部署" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/01/shadowsocks%E2%80%93libev%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E9%83%A8%E7%BD%B2/" class="article-date">
+  <time datetime="2019-03-01T01:23:47.000Z" itemprop="datePublished">2019-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/01/shadowsocks%E2%80%93libev%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E9%83%A8%E7%BD%B2/">Ubuntu shadowsocks–libev服务端的部署</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>Shadowsocks-libev是一款轻量级安全SOCKS5代理，适用于嵌入式设备和低端机箱。<br><a href="https://github.com/shadowsocks/shadowsocks-libev/blob/master/README.md" target="_blank" rel="noopener">shadowsocks-libev README.md</a></p>
+<h2 id="二、特征"><a href="#二、特征" class="headerlink" title="二、特征"></a>二、特征</h2><p>Shadowsocks-libev是用纯C编写的，取决于libev。它旨在成为shadowsocks协议的轻量级实现，以便尽可能降低资源使用率。</p>
+<h2 id="三、安装"><a href="#三、安装" class="headerlink" title="三、安装"></a>三、安装</h2><p>For Ubuntu 14.04 and 16.04 users, please install from PPA:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common -y</span><br><span class="line">sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev -y</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt install shadowsocks-libev</span><br></pre></td></tr></table></figure>
+
+<p>Configure and start the service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Edit the configuration file</span></span><br><span class="line">sudo vim /etc/shadowsocks-libev/config.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># Edit the default configuration for debian</span></span><br><span class="line">sudo vim /etc/default/shadowsocks-libev</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the service</span></span><br><span class="line">sudo /etc/init.d/shadowsocks-libev start    <span class="comment"># for sysvinit, or</span></span><br><span class="line">sudo systemctl start shadowsocks-libev      <span class="comment"># for systemd</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四、配置与启动"><a href="#四、配置与启动" class="headerlink" title="四、配置与启动"></a>四、配置与启动</h2><p>1、配置文件为：/etc/shadowsocks-libev/config.json，格式说明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"server"</span>:<span class="string">"example.com or X.X.X.X"</span>,</span><br><span class="line">	<span class="string">"mode"</span>:<span class="string">"tcp_and_udp"</span>,</span><br><span class="line">	<span class="string">"server_port"</span>:443,</span><br><span class="line">	<span class="string">"password"</span>:<span class="string">"password"</span>,</span><br><span class="line">	<span class="string">"method"</span>:<span class="string">"aes-128-gcm"</span>,</span><br><span class="line">	<span class="string">"fast_open"</span>:<span class="literal">true</span>,</span><br><span class="line">	<span class="string">"timeout"</span>:60</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server：主机域名或者IP地址，尽量填IP</span><br><span class="line"></span><br><span class="line">server_port：服务器监听端口</span><br><span class="line"></span><br><span class="line">password：密码</span><br><span class="line"></span><br><span class="line">method：加密方式 所有支持的加密方式请参照官方文档。这里本人推荐只使用支持AEAD的加密方式，包括以下五种： aes-128-gcm/aes-192-gcm/aes-256-gcm/chacha20-ietf-poly1305/xchacha20-ietf-poly1305</span><br><span class="line"></span><br><span class="line">timeout：连接超时时间，单位秒。要适中。</span><br></pre></td></tr></table></figure>
+<p>注意引号。</p>
+<h2 id="五、服务器优化"><a href="#五、服务器优化" class="headerlink" title="五、服务器优化"></a>五、服务器优化</h2><ol>
+<li>开启TCP Fast Open：<br>需求： 系统内核版本≥3.7，shadowsocks-libev≥3.0.4。<br>修改 /etc/sysctl.conf ，加入如下一行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_fastopen = 3</span><br></pre></td></tr></table></figure>
+执行如下命令使之生效：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+配置文件 /etc/shadowsocks.json 增加一行：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      <span class="string">"server"</span>: <span class="string">"X.X.X.X"</span>,</span><br><span class="line">      <span class="string">"server_port"</span>: <span class="string">"443"</span>,</span><br><span class="line">      <span class="string">"password"</span>: <span class="string">"password"</span>,</span><br><span class="line">      <span class="string">"method"</span>: <span class="string">"aes-128-gcm"</span>,</span><br><span class="line">      <span class="string">"fast_open"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>其他优化<br><a href="https://github.com/FunctionClub/YankeeBBR" target="_blank" rel="noopener">魔改BBR</a></li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>shadowsocks-libev <a href="https://github.com/shadowsocks/shadowsocks-libev/blob/master/README.md" target="_blank" rel="noopener">shadowsocks-libev</a><br>shadowsocks – libev 服务端的部署 <a href="https://cokebar.info/archives/767" target="_blank" rel="noopener">shadowsocks – libev 服务端的部署
+</a><br>YankeeBBR <a href="https://github.com/FunctionClub/YankeeBBR" target="_blank" rel="noopener">YankeeBBR</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/01/shadowsocks%E2%80%93libev%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E9%83%A8%E7%BD%B2/" data-id="ck8bij5b8000h1la7e7pkaw3b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/software/" rel="tag">software</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-download-coursera-and-youtube" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/11/download-coursera-and-youtube/" class="article-date">
+  <time datetime="2019-01-11T05:30:38.000Z" itemprop="datePublished">2019-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/11/download-coursera-and-youtube/">download_coursera_and_youtube</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Coursera-dl"><a href="#Coursera-dl" class="headerlink" title="Coursera-dl"></a><a href="https://github.com/coursera-dl/coursera-dl" target="_blank" rel="noopener">Coursera-dl</a></h1><h1 id="Youtube-dl"><a href="#Youtube-dl" class="headerlink" title="Youtube-dl"></a><a href="https://github.com/rg3/youtube-dl" target="_blank" rel="noopener">Youtube-dl</a></h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="1-在linux系统下使用curl"><a href="#1-在linux系统下使用curl" class="headerlink" title="1. 在linux系统下使用curl"></a>1. 在linux系统下使用curl</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br></pre></td></tr></table></figure>
+<h3 id="或者使用wget"><a href="#或者使用wget" class="headerlink" title="或者使用wget"></a>或者使用wget</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/11/download-coursera-and-youtube/" data-id="ck8bij5b3000e1la75v2z76um" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Anaconda" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/09/Anaconda/" class="article-date">
+  <time datetime="2019-01-09T01:55:46.000Z" itemprop="datePublished">2019-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/09/Anaconda/">Anaconda</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h1><p><a href="https://www.anaconda.com/download/#linux" target="_blank" rel="noopener">Anaconda下载</a></p>
+<h3 id="conda-安装"><a href="#conda-安装" class="headerlink" title="conda 安装"></a>conda 安装</h3><h3 id="conda源"><a href="#conda源" class="headerlink" title="conda源"></a>conda源</h3><p><a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">清华源</a></p>
+<h3 id="如果conda安装错误"><a href="#如果conda安装错误" class="headerlink" title="如果conda安装错误"></a>如果conda安装错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install /path/package_name.tar.bz2</span><br></pre></td></tr></table></figure>
+<p>例如安装pytorch时出现错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Downloading and Extracting Packages</span><br><span class="line">pytorch-1.0.0        | 437.5 MB  | <span class="comment">###################1                  |  52% </span></span><br><span class="line"></span><br><span class="line">CondaHTTPError: HTTP 000 CONNECTION FAILED <span class="keyword">for</span> url &lt;https://conda.anaconda.org/pytorch/linux-64/pytorch-1.0.0-py3.6_cuda8.0.61_cudnn7.1.2_1.tar.bz2&gt;</span><br><span class="line">Elapsed: -</span><br><span class="line"></span><br><span class="line">An HTTP error occurred when trying to retrieve this URL.</span><br><span class="line">HTTP errors are often intermittent, and a simple retry will get you on your way.</span><br></pre></td></tr></table></figure>
+<p>可以尝试用ariac2下载安装,下载地址已经在错误信息中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -c -x 16 -d ~/Downloads https://conda.anaconda.org/pytorch/linux-64/pytorch-1.0.0-py3.6_cuda8.0.61_cudnn7.1.2_1.tar.bz2</span><br></pre></td></tr></table></figure>
+<p>下载完成后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install ~/anaconda3/pkgs/pytorch-1.0.0-py3.6_cuda8.0.61_cudnn7.1.2_1.tar.bz2</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/09/Anaconda/" data-id="ck8bij5am00001la75rl81bkc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algarithm/" rel="tag">Algarithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Distribute-System/" rel="tag">Distribute System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Others/" rel="tag">Others</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/" rel="tag">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%85%E8%AF%BB/" rel="tag">阅读</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algarithm/" style="font-size: 10px;">Algarithm</a> <a href="/tags/Distribute-System/" style="font-size: 10px;">Distribute System</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Others/" style="font-size: 10px;">Others</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/paper/" style="font-size: 10px;">paper</a> <a href="/tags/software/" style="font-size: 20px;">software</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 20px;">工具</a> <a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 10px;">杂项</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/28/hello-world/">纪念失去的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/MapReduce/">MapReduce</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%A8%E6%8B%BC/">Linux常用命令全拼</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2/">VPS搭建个人Hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/21/ubuntu%E5%AE%89%E8%A3%85windows%E5%AD%97%E4%BD%93/">ubuntu安装windows字体</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ubuntu下安装TexLive | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="下载安装包如果身在国内，推荐改用国内的镜像，比如清华大学的tuna。以下都以这个镜像为例 在 https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;CTAN&#x2F;systems&#x2F;texlive&#x2F;tlnet&#x2F; 下载 install-tl-unx.tar.gz，解压并进入文件夹 install-tl-2018*。这里的 * 是一个日期。 首先安装 perl-tl 和 perl-doc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu下安装TexLive">
+<meta property="og:url" content="http://yoursite.com/2019/01/03/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85TexLive/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="下载安装包如果身在国内，推荐改用国内的镜像，比如清华大学的tuna。以下都以这个镜像为例 在 https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;CTAN&#x2F;systems&#x2F;texlive&#x2F;tlnet&#x2F; 下载 install-tl-unx.tar.gz，解压并进入文件夹 install-tl-2018*。这里的 * 是一个日期。 首先安装 perl-tl 和 perl-doc">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-01-03T08:56:38.000Z">
+<meta property="article:modified_time" content="2020-03-28T11:09:28.441Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ubuntu下安装TexLive" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/03/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85TexLive/" class="article-date">
+  <time datetime="2019-01-03T08:56:38.000Z" itemprop="datePublished">2019-01-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ubuntu下安装TexLive
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h4><p>如果身在国内，推荐改用国内的镜像，比如清华大学的<a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener">tuna</a>。以下都以这个镜像为例</p>
+<p>在 <a href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/</a> 下载 install-tl-unx.tar.gz，解压并进入文件夹 install-tl-2018*。这里的 * 是一个日期。</p>
+<p>首先安装 perl-tl 和 perl-doc</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install perl-tk perl-doc</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h5 id="通过下载安装包安装"><a href="#通过下载安装包安装" class="headerlink" title="通过下载安装包安装"></a>通过下载安装包安装</h5><p>终端中的操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz</span><br><span class="line">tar -xzf install-tl-unx.tar.gz</span><br><span class="line"><span class="built_in">cd</span> install-tl-2018*</span><br><span class="line">sudo ./install-tl 	<span class="comment"># 终端安装</span></span><br><span class="line">sudo ./install-tl -gui <span class="comment"># 通过图形界面安装</span></span><br></pre></td></tr></table></figure>
+
+<p>如果安装过程中发生错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./install-tl --profile installation.profile</span><br></pre></td></tr></table></figure>
+<p>可以按照之前的配置重装</p>
+<h5 id="通过镜像按装"><a href="#通过镜像按装" class="headerlink" title="通过镜像按装"></a>通过镜像按装</h5><p>这样可以得到较新的发行版版本，同时有丰富的包支持及更新。<br>ISO安装文件可以从下面几个开源镜像站点的CTAN同步镜像下载：</p>
+<ul>
+<li>中科大开源镜像站 <a href="http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/" target="_blank" rel="noopener">(http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/)</a></li>
+<li>清华大学开源镜像站 <a href="http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/" target="_blank" rel="noopener">(http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)</a></li>
+<li>厦门大学开源镜像站 <a href="http://mirrors.xmu.edu.cn/CTAN/systems/texlive/Images/" target="_blank" rel="noopener">(http://mirrors.xmu.edu.cn/CTAN/systems/texlive/Images/)</a><h6 id="挂载镜像并安装"><a href="#挂载镜像并安装" class="headerlink" title="挂载镜像并安装"></a>挂载镜像并安装</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /path_to_iso/texlive20*.iso /mnt</span><br><span class="line"><span class="built_in">cd</span> /mnt</span><br><span class="line">sudo ./install-tl</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h4><p>此时 TeX Live 虽已安装，但其路径对于 Linux 来说仍是不可识别的。所以需要更改环境变量。<br>打开 ~/.bashrc，在最后添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/texlive/2018/bin/x86_64-linux:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> MANPATH=/usr/<span class="built_in">local</span>/texlive/2018/texmf-dist/doc/man:<span class="variable">$MANPATH</span></span><br><span class="line"><span class="built_in">export</span> INFOPATH=/usr/<span class="built_in">local</span>/texlive/2018/texmf-dist/doc/info:<span class="variable">$INFOPATH</span></span><br></pre></td></tr></table></figure>
+<p>还需保证开启 sudo 模式后路径仍然可用。命令行中执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo</span><br></pre></td></tr></table></figure>
+<p>找到如下一段代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Defaults        env_reset</span><br><span class="line">Defaults        mail_badpass</span><br><span class="line">Defaults        secure_path=<span class="string">"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"</span></span><br></pre></td></tr></table></figure>
+<p>将第三行改为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Defaults        secure_path=<span class="string">"/usr/local/texlive/2018/bin/x86_64-linux:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"</span></span><br></pre></td></tr></table></figure>
+<p>也就是加入 TeX Live 的执行路径。如果在安装时作了修改，这里的路径也都要与安装时的保持一致。</p>
+<h4 id="字体设置"><a href="#字体设置" class="headerlink" title="字体设置"></a>字体设置</h4><p>要在整个系统中使用 TeX 字体，还需要将 TeX 自带的配置文件复制到系统目录下。命令行中执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /usr/<span class="built_in">local</span>/texlive/2018/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf</span><br></pre></td></tr></table></figure>
+<p>之后再执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">fc</span>-cache -fv</span><br></pre></td></tr></table></figure>
+<p>刷新字体数据库。</p>
+<h4 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h4><p>到此整个 TeX Live 2018 就已经安装完毕。可以做下面的一些检查：</p>
+<h5 id="基本命令："><a href="#基本命令：" class="headerlink" title="基本命令："></a>基本命令：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tlmgr --version</span><br><span class="line">pdftex --version</span><br><span class="line">xetex --version</span><br><span class="line">luatex --version</span><br></pre></td></tr></table></figure>
+
+<h4 id="包管理器"><a href="#包管理器" class="headerlink" title="包管理器"></a>包管理器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tlmgr update --list</span><br></pre></td></tr></table></figure>
+<p>这一步是检查更新，如果有就顺手更了吧：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tlmgr update --self --all</span><br></pre></td></tr></table></figure>
+<p>–self 用来更新 tlmgr 自身，如果上一步没有提示可以不加这个选项。</p>
+<h5 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h5><p>可以编译一个简短的测试文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">% hello.tex</span><br><span class="line">\documentclass[UTF8]&#123;ctexart&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">欢迎来到 \TeX&#123;&#125; 世界！</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>用 xelatex 或 lualatex 编译：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xelatex hello</span><br><span class="line">lualatex hello</span><br></pre></td></tr></table></figure>
+<p>编译得到的 PDF 文件如果显示正常，则说明 TeX Live 基本工作正常。</p>
+<h4 id="使用Sublime-Text-3编写LaTeX"><a href="#使用Sublime-Text-3编写LaTeX" class="headerlink" title="使用Sublime Text 3编写LaTeX"></a>使用Sublime Text 3编写LaTeX</h4><p><a href="https://latextools.readthedocs.io/en/latest/" target="_blank" rel="noopener">LaTeXTools: A LaTeX Plugin for Sublime Text 2 and 3</a></p>
+<p><a href="https://blog.csdn.net/qazxswed807/article/details/51234834" target="_blank" rel="noopener">基于TeXlive,使用Sublime Text 3编写LaTeX</a></p>
+<h5 id="打开Perference-gt-Package-Settings-gt-LaTexTools-gt-Settings-User"><a href="#打开Perference-gt-Package-Settings-gt-LaTexTools-gt-Settings-User" class="headerlink" title="打开Perference-&gt;Package Settings-&gt;LaTexTools-&gt;Settings-User"></a>打开Perference-&gt;Package Settings-&gt;LaTexTools-&gt;Settings-User</h5><p>在打开文件的227行”linux”中配置你的TexLive路径</p>
+<ul>
+<li><p>“texpath” : “$PATH:/usr/local/texlive/2018/bin/x86_64-linux”</p>
+</li>
+<li><p>“python”: “/home/youname/anaconda3/bin”（Python的安装路径，如果你没有安装anaconda或者设置路径过你的路径可能不是这个你需要sudo find / -name python*）找到你的Python路径，设置487中 “viewer”: “evince”（不设置空着应该也可以，系统默认用自己的evince）。</p>
+</li>
+</ul>
+<h5 id="安装dbus（为了编译后自动打开pdf）"><a href="#安装dbus（为了编译后自动打开pdf）" class="headerlink" title="安装dbus（为了编译后自动打开pdf）"></a>安装dbus（为了编译后自动打开pdf）</h5><p>用conda<a href="https://anaconda.org/scottwales/dbus-python" target="_blank" rel="noopener">下载</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c scottwales dbus-python</span><br></pre></td></tr></table></figure>
+
+<h4 id="Latex文档"><a href="#Latex文档" class="headerlink" title="Latex文档"></a>Latex文档</h4><p><a href="http://mirrors.ustc.edu.cn/CTAN/info/lshort/chinese/" target="_blank" rel="noopener">一份(不太)简短的LATEX 2介绍</a></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>stone-zeng.<a href="https://stone-zeng.github.io/fduthesis/2018-05-13-install-texlive-ubuntu/#1" target="_blank" rel="noopener">在 Ubuntu 中安装 TeX Live 2018</a></p>
+<p>瞑夜-q.<a href="https://blog.csdn.net/qazxswed807/article/details/51234834" target="_blank" rel="noopener">基于TeXlive,使用Sublime Text 3编写LaTeX</a></p>
+<p>bleedingfight.<a href="https://blog.csdn.net/bleedingfight/article/details/72810606" target="_blank" rel="noopener">Ubuntu下用sublime text3和latextool插件写latex文档</a></p>
+<p>ptbsare.<a href="http://ptbsare.org/2014/05/12/ubuntu%E4%B8%8B%E9%83%A8%E7%BD%B2latex%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/" target="_blank" rel="noopener">Ubuntu下部署Latex编译环境</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/03/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85TexLive/" data-id="ck8bij5b9000j1la78zcm809y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/04/virtulenv/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          virtualenv
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/02/Ubuntu%E7%BE%8E%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Ubuntu美化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algarithm/" rel="tag">Algarithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Distribute-System/" rel="tag">Distribute System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Others/" rel="tag">Others</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/" rel="tag">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%85%E8%AF%BB/" rel="tag">阅读</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algarithm/" style="font-size: 10px;">Algarithm</a> <a href="/tags/Distribute-System/" style="font-size: 10px;">Distribute System</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Others/" style="font-size: 10px;">Others</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/paper/" style="font-size: 10px;">paper</a> <a href="/tags/software/" style="font-size: 20px;">software</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 20px;">工具</a> <a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 10px;">杂项</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/28/hello-world/">纪念失去的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/MapReduce/">MapReduce</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%A8%E6%8B%BC/">Linux常用命令全拼</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2/">VPS搭建个人Hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/21/ubuntu%E5%AE%89%E8%A3%85windows%E5%AD%97%E4%BD%93/">ubuntu安装windows字体</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

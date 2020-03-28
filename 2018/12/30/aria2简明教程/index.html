@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>aria2简明教程 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="aria2 aria2是一个轻量级的多协议和多源命令行下载实用程序。它支持HTTP &#x2F; HTTPS，FTP，SFTP，BitTorrent和Metalink。 aria2可以通过内置的JSON-RPC和XML-RPC接口进行操作。Aria2作为一款Linux下的下载神器，很多极客都在使用，可以下载http资源、种-子文件、磁力链接等，功能强大，而且整合Chrome插件可以摆脱百度云盘的速度限制。A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="aria2简明教程">
+<meta property="og:url" content="http://yoursite.com/2018/12/30/aria2%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="aria2 aria2是一个轻量级的多协议和多源命令行下载实用程序。它支持HTTP &#x2F; HTTPS，FTP，SFTP，BitTorrent和Metalink。 aria2可以通过内置的JSON-RPC和XML-RPC接口进行操作。Aria2作为一款Linux下的下载神器，很多极客都在使用，可以下载http资源、种-子文件、磁力链接等，功能强大，而且整合Chrome插件可以摆脱百度云盘的速度限制。A">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-12-30T02:44:49.000Z">
+<meta property="article:modified_time" content="2020-03-28T11:09:28.441Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-aria2简明教程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/30/aria2%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" class="article-date">
+  <time datetime="2018-12-30T02:44:49.000Z" itemprop="datePublished">2018-12-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      aria2简明教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="aria2"><a href="#aria2" class="headerlink" title="aria2"></a><a href="https://aria2.github.io" target="_blank" rel="noopener">aria2</a></h1><blockquote>
+<p>aria2是一个轻量级的多协议和多源命令行下载实用程序。它支持HTTP / HTTPS，FTP，SFTP，BitTorrent和Metalink。 aria2可以通过内置的JSON-RPC和XML-RPC接口进行操作。<br>Aria2作为一款Linux下的下载神器，很多极客都在使用，可以下载http资源、种-子文件、磁力链接等，功能强大，而且整合Chrome插件可以摆脱百度云盘的速度限制。Aria2具有特点：</p>
+</blockquote>
+<ul>
+<li>高速，自动多线程下载；断点续传；</li>
+<li>轻量占用内存非常少，通常情况平均4~9MB内存占用(官方介绍)；</li>
+<li>多平台。支持 Win/Linux/OSX/Android 等操作系统下的部署；</li>
+<li>模块化。分段下载引擎，文件整合速度快；</li>
+<li>支持RPC界面远程；</li>
+<li>全面支持BitTorrent协议；</li>
+</ul>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="https://github.com/aria2/aria2/releases/tag/release-1.34.0" target="_blank" rel="noopener">github 下载链接</a></p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="Download-from-WEB"><a href="#Download-from-WEB" class="headerlink" title="Download from WEB:"></a>Download from WEB:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aria2c http://example.org/mylinux.iso</span><br></pre></td></tr></table></figure>
+
+<h3 id="Download-from-2-sources"><a href="#Download-from-2-sources" class="headerlink" title="Download from 2 sources:"></a>Download from 2 sources:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aria2c http://a/f.iso ftp://b/f.iso</span><br></pre></td></tr></table></figure>
+
+<h3 id="Download-using-2-connections-per-host"><a href="#Download-using-2-connections-per-host" class="headerlink" title="Download using 2 connections per host:"></a>Download using 2 connections per host:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aria2c -x2 http://a/f.iso</span><br></pre></td></tr></table></figure>
+
+<h3 id="BitTorrent"><a href="#BitTorrent" class="headerlink" title="BitTorrent:"></a>BitTorrent:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aria2c http:&#x2F;&#x2F;example.org&#x2F;mylinux.torrent</span><br></pre></td></tr></table></figure>
+
+<h3 id="BitTorrent-Magnet-URI"><a href="#BitTorrent-Magnet-URI" class="headerlink" title="BitTorrent Magnet URI:"></a>BitTorrent Magnet URI:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aria2c <span class="string">'magnet:?xt=urn:btih:248D0A1CD08284299DE78D5C1ED359BB46717D8C'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Metalink"><a href="#Metalink" class="headerlink" title="Metalink:"></a>Metalink:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aria2c http://example.org/mylinux.metalink</span><br></pre></td></tr></table></figure>
+
+<h3 id="Download-URIs-found-in-text-file"><a href="#Download-URIs-found-in-text-file" class="headerlink" title="Download URIs found in text file:"></a>Download URIs found in text file:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ aria2c -i uris.txt</span><br></pre></td></tr></table></figure>
+<h2 id="参数使用"><a href="#参数使用" class="headerlink" title="参数使用"></a>参数使用</h2><p>具体参数可以使用aria2c –help来查看</p>
+<p>常用参数:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -d /home/Download -c -x 16</span><br></pre></td></tr></table></figure>
+
+<h2 id="Aria2-配置说明"><a href="#Aria2-配置说明" class="headerlink" title="Aria2 配置说明"></a>Aria2 配置说明</h2><p><a href="http://aria2c.com/usage.html" target="_blank" rel="noopener">Aria2 &amp; YAAW 使用说明</a><br><a href="https://aria2.github.io/manual/en/html/aria2c.html" target="_blank" rel="noopener">aria2c(1)</a></p>
+<h2 id="贴一下我的aria2-conf配置文件"><a href="#贴一下我的aria2-conf配置文件" class="headerlink" title="贴一下我的aria2.conf配置文件"></a>贴一下我的aria2.conf配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">## `#`开头为注释内容, 选项都有相应的注释说明, 根据需要修改 ##</span></span><br><span class="line"><span class="comment">## 被注释的选项填写的是默认值, 建议在需要修改时再取消注释  ##</span></span><br><span class="line"><span class="comment">## 如果出现`Initializing EpollEventPoll failed.`之类的</span></span><br><span class="line"><span class="comment">## 错误提示, 可以取消event-poll选项的注释                  ##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 文件保存相关 ##</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 文件的保存路径(可使用绝对路径或相对路径), 默认: 当前启动位置</span></span><br><span class="line">dir=Aria2Data</span><br><span class="line"><span class="comment"># 启用磁盘缓存, 0为禁用缓存, 需1.16以上版本, 默认:16M</span></span><br><span class="line">disk-cache=32M</span><br><span class="line"><span class="comment"># 文件预分配方式, 能有效降低磁盘碎片, 默认:prealloc</span></span><br><span class="line"><span class="comment"># 预分配所需时间: none &lt; falloc ? trunc &lt; prealloc</span></span><br><span class="line"><span class="comment"># falloc和trunc则需要文件系统和内核支持, NTFS建议使用falloc, EXT3/4建议trunc</span></span><br><span class="line">file-allocation=falloc</span><br><span class="line"><span class="comment"># 断点续传</span></span><br><span class="line"><span class="built_in">continue</span>=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 下载连接相关 ##</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 最大同时下载任务数, 运行时可修改, 默认:5</span></span><br><span class="line">max-concurrent-downloads=5</span><br><span class="line"><span class="comment"># 同一服务器连接数, 添加时可指定, 默认:1</span></span><br><span class="line">max-connection-per-server=5</span><br><span class="line"><span class="comment"># 最小文件分片大小, 添加时可指定, 取值范围1M -1024M, 默认:20M</span></span><br><span class="line"><span class="comment"># 假定size=10M, 文件为20MiB 则使用两个来源下载; 文件为15MiB 则&gt;使用一个来源下载</span></span><br><span class="line">min-split-size=10M</span><br><span class="line"><span class="comment"># 单个任务最大线程数, 添加时可指定, 默认:5</span></span><br><span class="line">split=5</span><br><span class="line"><span class="comment"># 整体下载速度限制, 运行时可修改, 默认:0</span></span><br><span class="line"><span class="comment">#max-overall-download-limit=0</span></span><br><span class="line"><span class="comment"># 单个任务下载速度限制, 默认:0</span></span><br><span class="line"><span class="comment">#max-download-limit=0</span></span><br><span class="line"><span class="comment"># 整体上传速度限制, 运行时可修改, 默认:0</span></span><br><span class="line"><span class="comment">#max-overall-upload-limit=0</span></span><br><span class="line"><span class="comment"># 单个任务上传速度限制, 默认:0</span></span><br><span class="line"><span class="comment">#max-upload-limit=0</span></span><br><span class="line"><span class="comment"># 禁用IPv6, 默认:false</span></span><br><span class="line"><span class="built_in">disable</span>-ipv6=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 进度保存相关 ##</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从会话文件中读取下载任务</span></span><br><span class="line">input-file=aria2.session</span><br><span class="line"><span class="comment"># 在Aria2退出时保存`错误/未完成`的下载任务到会话文件</span></span><br><span class="line">save-session=aria2.session</span><br><span class="line"><span class="comment"># 定时保存会话, 0为退出时才保存, 需1.16.1以上版本, 默认:0</span></span><br><span class="line">save-session-interval=60</span><br><span class="line"></span><br><span class="line"><span class="comment">## RPC相关设置 ##</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用RPC, 默认:false</span></span><br><span class="line"><span class="built_in">enable</span>-rpc=<span class="literal">true</span></span><br><span class="line"><span class="comment"># 允许所有来源, 默认:false</span></span><br><span class="line">rpc-allow-origin-all=<span class="literal">true</span></span><br><span class="line"><span class="comment"># 允许非外部访问, 默认:false</span></span><br><span class="line">rpc-listen-all=<span class="literal">true</span></span><br><span class="line"><span class="comment"># 事件轮询方式, 取值:[epoll, kqueue, port, poll, select], 不同&gt;系统默认值不同</span></span><br><span class="line"><span class="comment">#event-poll=select</span></span><br><span class="line"><span class="comment"># RPC监听端口, 端口被占用时可以修改, 默认:6800</span></span><br><span class="line"><span class="comment">#rpc-listen-port=6800</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## BT/PT下载相关 ##</span></span><br><span class="line"><span class="comment"># 当下载的是一个种子(以.torrent结尾)时, 自动开始BT任务, 默认:true</span></span><br><span class="line"><span class="comment">#follow-torrent=true</span></span><br><span class="line"><span class="comment"># BT监听端口, 当端口被屏蔽时使用, 默认:6881-6999</span></span><br><span class="line">listen-port=51413</span><br><span class="line"><span class="comment"># 单个种子最大连接数, 默认:55</span></span><br><span class="line"><span class="comment">#bt-max-peers=55</span></span><br><span class="line"><span class="comment"># 打开DHT功能, PT需要禁用, 默认:true</span></span><br><span class="line"><span class="built_in">enable</span>-dht=<span class="literal">false</span></span><br><span class="line"><span class="comment"># 打开IPv6 DHT功能, PT需要禁用</span></span><br><span class="line"><span class="comment">#enable-dht6=false</span></span><br><span class="line"><span class="comment"># DHT网络监听端口, 默认:6881-6999</span></span><br><span class="line"><span class="comment">#dht-listen-port=6881-6999</span></span><br><span class="line"><span class="comment"># 本地节点查找, PT需要禁用, 默认:false</span></span><br><span class="line"><span class="comment">#bt-enable-lpd=false</span></span><br><span class="line"><span class="comment"># 种子交换, PT需要禁用, 默认:true</span></span><br><span class="line"><span class="built_in">enable</span>-peer-exchange=<span class="literal">false</span></span><br><span class="line"><span class="comment"># 每个种子限速, 对少种的PT很有用, 默认:50K</span></span><br><span class="line"><span class="comment">#bt-request-peer-speed-limit=50K</span></span><br><span class="line"><span class="comment"># 客户端伪装, PT需要</span></span><br><span class="line">peer-id-prefix=-TR2770-</span><br><span class="line">user-agent=Transmission/2.77</span><br><span class="line"><span class="comment"># 当种子的分享率达到这个数时, 自动停止做种, 0为一直做种, 默认:1.0</span></span><br><span class="line">seed-ratio=0</span><br><span class="line"><span class="comment"># 强制保存会话, 话即使任务已经完成, 默认:false</span></span><br><span class="line"><span class="comment"># 较新的版本开启后会在任务完成后依然保留.aria2文件</span></span><br><span class="line"><span class="comment">#force-save=false</span></span><br><span class="line"><span class="comment"># BT校验相关, 默认:true</span></span><br><span class="line"><span class="comment">#bt-hash-check-seed=true</span></span><br><span class="line"><span class="comment"># 继续之前的BT任务时, 无需再次校验, 默认:false</span></span><br><span class="line">bt-seed-unverified=<span class="literal">true</span></span><br><span class="line"><span class="comment"># 保存磁力链接元数据为种子文件(.torrent文件), 默认:false</span></span><br><span class="line">bt-save-metadata=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/30/aria2%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" data-id="ck8bij5b1000a1la7hz03e7ez" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/30/%E8%AE%BA%E6%96%87%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Zotero/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          论文管理工具Zotero
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/12/29/K2pdfopt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">K2pdfopt简明教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algarithm/" rel="tag">Algarithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Distribute-System/" rel="tag">Distribute System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Others/" rel="tag">Others</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/paper/" rel="tag">paper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/software/" rel="tag">software</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E9%A1%B9/" rel="tag">杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87/" rel="tag">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%98%85%E8%AF%BB/" rel="tag">阅读</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Algarithm/" style="font-size: 10px;">Algarithm</a> <a href="/tags/Distribute-System/" style="font-size: 10px;">Distribute System</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 10px;">Machine Learning</a> <a href="/tags/Others/" style="font-size: 10px;">Others</a> <a href="/tags/Web/" style="font-size: 10px;">Web</a> <a href="/tags/paper/" style="font-size: 10px;">paper</a> <a href="/tags/software/" style="font-size: 20px;">software</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 20px;">工具</a> <a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 10px;">杂项</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E9%97%AE%E9%A2%98/" style="font-size: 10px;">问题</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/28/hello-world/">纪念失去的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/MapReduce/">MapReduce</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%A8%E6%8B%BC/">Linux常用命令全拼</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2/">VPS搭建个人Hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/21/ubuntu%E5%AE%89%E8%A3%85windows%E5%AD%97%E4%BD%93/">ubuntu安装windows字体</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
