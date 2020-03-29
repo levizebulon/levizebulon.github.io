@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>使用HAProxy加速Shadowsocks | Linuzb&#39;s blog</title>
+  <title>Linux图像视频编辑 | Linuzb&#39;s blog</title>
   <meta name="keywords" content=" software ">
-  <meta name="description" content="使用HAProxy加速Shadowsocks | Linuzb&#39;s blog">
+  <meta name="description" content="Linux图像视频编辑 | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Linux 上最好的视频编辑器Linux 下最棒的 11 个图片查看器Linux系统入门教程：五大图像处理软件">
 <meta property="og:type" content="article">
@@ -374,9 +374,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-使用HAProxy加速Shadowsocks" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Linux图像视频编辑" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">使用HAProxy加速Shadowsocks</h1>
+        <h1 class="article-title">Linux图像视频编辑</h1>
     
     <div class="article-meta">
         
@@ -392,7 +392,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-03-28 19:09:28'>2019-03-01 09:52</time>
+        创建时间:<time class="date" title='更新时间: 2020-03-29 11:38:21'>2020-03-29 11:21</time>
         
     </div>
     <div class="article-meta">
@@ -414,7 +414,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、介绍"><span class="toc-text">一、介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、-安装"><span class="toc-text">二、 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、配置"><span class="toc-text">三、配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-上最好的视频编辑器"><span class="toc-text">Linux 上最好的视频编辑器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-下最棒的-11-个图片查看器"><span class="toc-text">Linux 下最棒的 11 个图片查看器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux系统入门教程：五大图像处理软件"><span class="toc-text">Linux系统入门教程：五大图像处理软件</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -430,22 +430,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>HAProxy<br>The Reliable, High Performance TCP/HTTP Load Balancer<br>HAProxy 是一个高效的负载均衡软件，可以实现 TCP/HTTP 的代理。这里使用它将我们发给它的请求转发给 ss 服务器。</p>
-<p>ss 支持中继，那么只要有一个服务器，连接自己电脑和 ss 服务器都很快的话就能实现加速</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端 &lt; - &gt; 中继服务器 &lt; - &gt; Shadowsocks 服务器</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、-安装"><a href="#二、-安装" class="headerlink" title="二、 安装"></a>二、 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 以 CentOS 7 为例</span><br><span class="line">yum install haproxy</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h2><p>编辑 /etc/haproxy/haproxy.cfg，保存以下内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">global</span><br><span class="line">        <span class="built_in">ulimit</span>-n  51200</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">        <span class="built_in">log</span> global</span><br><span class="line">        mode    tcp</span><br><span class="line">        option  dontlognull</span><br><span class="line">        contimeout 1000</span><br><span class="line">        clitimeout 150000</span><br><span class="line">        srvtimeout 150000</span><br><span class="line"></span><br><span class="line">frontend ss-in</span><br><span class="line">        <span class="built_in">bind</span> *:8388</span><br><span class="line">        default_backend ss-out</span><br><span class="line"></span><br><span class="line">backend ss-out</span><br><span class="line">        server server1 222.222.222.222:2222 maxconn 20480</span><br></pre></td></tr></table></figure>
-<p>其中，*:8388 中的 8388 是中继服务器接受请求的端口，222.222.222.222:2222 是 ss 服务器的 IP 地址加端口号。<br>然后执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service haproxy restart</span><br></pre></td></tr></table></figure>
-<p>HAProxy 就会在后台进行启动。可以使用 ps -ef 查看进程，lsof -i 查看端口占用情况来验证 HAProxy 是否已经运行。若无法连接中继服务器，使用 iptables -L 查看防火墙规则是否有问题。</p>
-<p>客户端的配置，只要将原来配置的 ip 地址和端口更换成中继服务器的 ip 地址和端口号就可以了。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/shadowsocks/shadowsocks/wiki/Setup-a-Shadowsocks-relay" target="_blank" rel="noopener">Setup a Shadowsocks relay</a></p>
-<p><a href="https://kaywu.xyz/2016/06/19/Shadowsocks-HAProxy/" target="_blank" rel="noopener">使用 HAProxy 加速 Shadowsocks</a></p>
-<p><a href="http://www.haproxy.org/" target="_blank" rel="noopener">HAProxy</a></p>
-
+        <h2 id="Linux-上最好的视频编辑器"><a href="#Linux-上最好的视频编辑器" class="headerlink" title="Linux 上最好的视频编辑器"></a><a href="https://linux.cn/article-10185-1.html" target="_blank" rel="noopener">Linux 上最好的视频编辑器</a></h2><h2 id="Linux-下最棒的-11-个图片查看器"><a href="#Linux-下最棒的-11-个图片查看器" class="headerlink" title="Linux 下最棒的 11 个图片查看器"></a><a href="https://zhuanlan.zhihu.com/p/53902052" target="_blank" rel="noopener">Linux 下最棒的 11 个图片查看器</a></h2><h2 id="Linux系统入门教程：五大图像处理软件"><a href="#Linux系统入门教程：五大图像处理软件" class="headerlink" title="Linux系统入门教程：五大图像处理软件"></a><a href="https://blog.csdn.net/u012472945/article/details/79595822" target="_blank" rel="noopener">Linux系统入门教程：五大图像处理软件</a></h2>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
@@ -458,12 +443,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>使用HAProxy加速Shadowsocks</p>
+    <p><span class="copy-title">文章标题:</span>Linux图像视频编辑</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-03-01, 09:52:51</p>
-    <p><span class="copy-title">最后更新:</span>2020-03-28, 19:09:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/" title="使用HAProxy加速Shadowsocks">https://levizebulon.github.io/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/</a>
+    <p><span class="copy-title">发布时间:</span>2020-03-29, 11:21:37</p>
+    <p><span class="copy-title">最后更新:</span>2020-03-29, 11:38:21</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/03/29/Linux%E5%9B%BE%E5%83%8F%E8%A7%86%E9%A2%91%E7%BC%96%E8%BE%91/" title="Linux图像视频编辑">https://levizebulon.github.io/2020/03/29/Linux%E5%9B%BE%E5%83%8F%E8%A7%86%E9%A2%91%E7%BC%96%E8%BE%91/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
