@@ -1,0 +1,6 @@
+[submodule "themes/hexo-theme-3-hexo"]
+	path = themes/hexo-theme-3-hexo
+	url = https://github.com/levizebulon/hexo-theme-3-hexo.git
+[submodule "themes/3-hexo"]
+	path = themes/3-hexo
+	url = https://github.com/levizebulon/hexo-theme-3-hexo.git
