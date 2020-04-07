@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>解决ubuntu1604下wps不能使用搜狗输入法问题 | Linuzb&#39;s blog</title>
-  <meta name="keywords" content=" 问题 ">
-  <meta name="description" content="解决ubuntu1604下wps不能使用搜狗输入法问题 | Linuzb&#39;s blog">
+  <title>分布式系统6.824论文阅读 | Linuzb&#39;s blog</title>
+  <meta name="keywords" content=" paper , distribute system ">
+  <meta name="description" content="分布式系统6.824论文阅读 | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ZooKeeper: Wait-free coordination for Internet-scale systemsZooKeeper (2010) 学习参考文章:  可能是全网把 ZooKeeper 概念讲的最清楚的一篇文章 ZooKeeper初识整理(老酒装新瓶) 能否用通俗的讲法解释一下什么是Zookeeper?">
 <meta property="og:type" content="article">
@@ -403,9 +403,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-解决ubuntu1604下wps不能使用搜狗输入法问题" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-分布式系统6-824论文阅读" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">解决ubuntu1604下wps不能使用搜狗输入法问题</h1>
+        <h1 class="article-title">分布式系统6.824论文阅读</h1>
     
     <div class="article-meta">
         
@@ -414,14 +414,16 @@
         
         <span class="tag">
             
-            <a class="color3">问题</a>
+            <a class="color1">paper</a>
+            
+            <a class="color3">distribute system</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-03-28 19:09:28'>2019-01-01 16:42</time>
+        创建时间:<time class="date" title='更新时间: 2020-04-07 21:10:19'>2020-04-07 21:03</time>
         
     </div>
     <div class="article-meta">
@@ -443,7 +445,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置-虽然之前一直正常使用-不过亲测以后再遇到这种问题按照如下方法修改即可"><span class="toc-text">有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置(虽然之前一直正常使用),不过亲测以后再遇到这种问题按照如下方法修改即可</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Word部分"><span class="toc-text">Word部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ppt部分"><span class="toc-text">ppt部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Excel部分"><span class="toc-text">Excel部分</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZooKeeper-Wait-free-coordination-for-Internet-scale-systems"><span class="toc-text">ZooKeeper: Wait-free coordination for Internet-scale systems</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -459,17 +461,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置-虽然之前一直正常使用-不过亲测以后再遇到这种问题按照如下方法修改即可"><a href="#有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置-虽然之前一直正常使用-不过亲测以后再遇到这种问题按照如下方法修改即可" class="headerlink" title="有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置(虽然之前一直正常使用),不过亲测以后再遇到这种问题按照如下方法修改即可"></a>有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置(虽然之前一直正常使用),不过亲测以后再遇到这种问题按照如下方法修改即可</h2><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="Word部分"><a href="#Word部分" class="headerlink" title="Word部分"></a>Word部分</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/bin/wps</span><br></pre></td></tr></table></figure>
-<p>在第一行 #!/bin/bash 下添加:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#wps word environment</span></span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=<span class="string">"fcitx"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="ppt部分"><a href="#ppt部分" class="headerlink" title="ppt部分"></a>ppt部分</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/bin/wpp</span><br></pre></td></tr></table></figure>
-<p>在第一行 #!/bin/bash 下添加:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#wps ppt environment</span></span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=<span class="string">"fcitx"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Excel部分"><a href="#Excel部分" class="headerlink" title="Excel部分"></a>Excel部分</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/bin/et</span><br></pre></td></tr></table></figure>
-<p>在第一行 #!/bin/bash 下添加:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#excel word environment</span></span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=<span class="string">"fcitx"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="ZooKeeper-Wait-free-coordination-for-Internet-scale-systems"><a href="#ZooKeeper-Wait-free-coordination-for-Internet-scale-systems" class="headerlink" title="ZooKeeper: Wait-free coordination for Internet-scale systems"></a>ZooKeeper: Wait-free coordination for Internet-scale systems</h2><p><a href="https://pdos.csail.mit.edu/6.824/papers/zookeeper.pdf" target="_blank" rel="noopener">ZooKeeper (2010)</a></p>
+<p>学习参考文章:</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/44731983" target="_blank" rel="noopener">可能是全网把 ZooKeeper 概念讲的最清楚的一篇文章</a></li>
+<li><a href="https://lxkaka.wang/2017/12/21/zookeeper/" target="_blank" rel="noopener">ZooKeeper初识整理(老酒装新瓶)</a></li>
+<li><a href="https://www.zhihu.com/question/65852003/answer/656091418" target="_blank" rel="noopener">能否用通俗的讲法解释一下什么是Zookeeper?</a></li>
+</ul>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
@@ -483,12 +481,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>解决ubuntu1604下wps不能使用搜狗输入法问题</p>
+    <p><span class="copy-title">文章标题:</span>分布式系统6.824论文阅读</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-01-01, 16:42:28</p>
-    <p><span class="copy-title">最后更新:</span>2020-03-28, 19:09:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/01/01/%E8%A7%A3%E5%86%B3ubuntu1604%E4%B8%8Bwps%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E9%97%AE%E9%A2%98/" title="解决ubuntu1604下wps不能使用搜狗输入法问题">https://levizebulon.github.io/2019/01/01/%E8%A7%A3%E5%86%B3ubuntu1604%E4%B8%8Bwps%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E9%97%AE%E9%A2%98/</a>
+    <p><span class="copy-title">发布时间:</span>2020-04-07, 21:03:52</p>
+    <p><span class="copy-title">最后更新:</span>2020-04-07, 21:10:19</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" title="分布式系统6.824论文阅读">https://levizebulon.github.io/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
