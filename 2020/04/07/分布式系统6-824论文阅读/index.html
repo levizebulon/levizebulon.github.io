@@ -6,15 +6,15 @@
   <meta name="keywords" content=" paper , distribute system ">
   <meta name="description" content="分布式系统6.824论文阅读 | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="ZooKeeper: Wait-free coordination for Internet-scale systemsZooKeeper (2010) 学习参考文章:  可能是全网把 ZooKeeper 概念讲的最清楚的一篇文章 ZooKeeper初识整理(老酒装新瓶) 能否用通俗的讲法解释一下什么是Zookeeper?">
+<meta name="description" content="Using Paxos to build a scalable, consistent, and highly available datastoreSpinnaker (2011) 学习参考文章：  Spinnaker — 使用 Paxos 构建分布式数据库 Spinnaker —— 使用 Paxos 构建分布式 KV 数据库  ZooKeeper: Wait-free coordination">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式系统6.824论文阅读">
 <meta property="og:url" content="https://levizebulon.github.io/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.html">
 <meta property="og:site_name" content="Linuzb&#39;s blog">
-<meta property="og:description" content="ZooKeeper: Wait-free coordination for Internet-scale systemsZooKeeper (2010) 学习参考文章:  可能是全网把 ZooKeeper 概念讲的最清楚的一篇文章 ZooKeeper初识整理(老酒装新瓶) 能否用通俗的讲法解释一下什么是Zookeeper?">
+<meta property="og:description" content="Using Paxos to build a scalable, consistent, and highly available datastoreSpinnaker (2011) 学习参考文章：  Spinnaker — 使用 Paxos 构建分布式数据库 Spinnaker —— 使用 Paxos 构建分布式 KV 数据库  ZooKeeper: Wait-free coordination">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-07T13:03:52.000Z">
-<meta property="article:modified_time" content="2020-04-07T13:10:19.302Z">
+<meta property="article:modified_time" content="2020-04-07T14:14:56.521Z">
 <meta property="article:author" content="Linuzb">
 <meta property="article:tag" content="paper">
 <meta property="article:tag" content="distribute system">
@@ -423,7 +423,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-04-07 21:10:19'>2020-04-07 21:03</time>
+        创建时间:<time class="date" title='更新时间: 2020-04-07 22:14:56'>2020-04-07 21:03</time>
         
     </div>
     <div class="article-meta">
@@ -445,7 +445,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ZooKeeper-Wait-free-coordination-for-Internet-scale-systems"><span class="toc-text">ZooKeeper: Wait-free coordination for Internet-scale systems</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Paxos-to-build-a-scalable-consistent-and-highly-available-datastore"><span class="toc-text">Using Paxos to build a scalable, consistent, and highly available datastore</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZooKeeper-Wait-free-coordination-for-Internet-scale-systems"><span class="toc-text">ZooKeeper: Wait-free coordination for Internet-scale systems</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -461,12 +461,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="ZooKeeper-Wait-free-coordination-for-Internet-scale-systems"><a href="#ZooKeeper-Wait-free-coordination-for-Internet-scale-systems" class="headerlink" title="ZooKeeper: Wait-free coordination for Internet-scale systems"></a>ZooKeeper: Wait-free coordination for Internet-scale systems</h2><p><a href="https://pdos.csail.mit.edu/6.824/papers/zookeeper.pdf" target="_blank" rel="noopener">ZooKeeper (2010)</a></p>
+        <h2 id="Using-Paxos-to-build-a-scalable-consistent-and-highly-available-datastore"><a href="#Using-Paxos-to-build-a-scalable-consistent-and-highly-available-datastore" class="headerlink" title="Using Paxos to build a scalable, consistent, and highly available datastore"></a>Using Paxos to build a scalable, consistent, and highly available datastore</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/spinnaker.pdf" target="_blank" rel="noopener">Spinnaker (2011)</a></p>
+<p>学习参考文章：</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/40825849" target="_blank" rel="noopener">Spinnaker — 使用 Paxos 构建分布式数据库</a></li>
+<li><a href="https://mr-dai.github.io/spinnaker/" target="_blank" rel="noopener">Spinnaker —— 使用 Paxos 构建分布式 KV 数据库</a></li>
+</ul>
+<h2 id="ZooKeeper-Wait-free-coordination-for-Internet-scale-systems"><a href="#ZooKeeper-Wait-free-coordination-for-Internet-scale-systems" class="headerlink" title="ZooKeeper: Wait-free coordination for Internet-scale systems"></a>ZooKeeper: Wait-free coordination for Internet-scale systems</h2><p><a href="https://pdos.csail.mit.edu/6.824/papers/zookeeper.pdf" target="_blank" rel="noopener">ZooKeeper (2010)</a></p>
 <p>学习参考文章:</p>
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/44731983" target="_blank" rel="noopener">可能是全网把 ZooKeeper 概念讲的最清楚的一篇文章</a></li>
 <li><a href="https://lxkaka.wang/2017/12/21/zookeeper/" target="_blank" rel="noopener">ZooKeeper初识整理(老酒装新瓶)</a></li>
 <li><a href="https://www.zhihu.com/question/65852003/answer/656091418" target="_blank" rel="noopener">能否用通俗的讲法解释一下什么是Zookeeper?</a></li>
+<li><a href="https://mr-dai.github.io/zookeeper/" target="_blank" rel="noopener">ZooKeeper —— 分布式系统协调服务</a></li>
 </ul>
 
       
@@ -485,7 +492,7 @@
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
     <p><span class="copy-title">发布时间:</span>2020-04-07, 21:03:52</p>
-    <p><span class="copy-title">最后更新:</span>2020-04-07, 21:10:19</p>
+    <p><span class="copy-title">最后更新:</span>2020-04-07, 22:14:56</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" title="分布式系统6.824论文阅读">https://levizebulon.github.io/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
