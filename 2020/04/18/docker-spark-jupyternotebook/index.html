@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>查看CUDA和cudnn版本 | Linuzb&#39;s blog</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="查看CUDA和cudnn版本 | Linuzb&#39;s blog">
+  <title>docker+spark+jupyternotebook | Linuzb&#39;s blog</title>
+  <meta name="keywords" content=" software ">
+  <meta name="description" content="docker+spark+jupyternotebook | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Course overview + the shell动机作为计算机科学家，我们知道计算机擅长于执行重复性任务。 但是，我们常常忘记了这与我们希望程序执行的计算同样适用于我们对计算机的使用。 我们拥有触手可及的各种工具，使我们能够在处理任何与计算机相关的问题时提高工作效率并解决更复杂的问题。 然而，我们中的许多人仅使用其中的一小部分。 我们只知道死记硬背了足够多的神奇咒语，而当我们陷入困境时，只能">
 <meta property="og:type" content="article">
@@ -419,19 +419,25 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-查看CUDA和cudnn版本" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-docker-spark-jupyternotebook" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">查看CUDA和cudnn版本</h1>
+        <h1 class="article-title">docker+spark+jupyternotebook</h1>
     
     <div class="article-meta">
         
         
         
+        
+        <span class="tag">
+            
+            <a class="color4">software</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-03-28 19:09:28'>2019-01-08 14:01</time>
+        创建时间:<time class="date" title='更新时间: 2020-04-18 11:16:29'>2020-04-18 10:30</time>
         
     </div>
     <div class="article-meta">
@@ -453,7 +459,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-查看CUDA版本"><span class="toc-text">1. 查看CUDA版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-查看cudnn版本"><span class="toc-text">2. 查看cudnn版本</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Docker"><span class="toc-text">安装Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Docker-Engine-on-Ubuntu"><span class="toc-text">Install Docker Engine on Ubuntu</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -469,12 +475,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1-查看CUDA版本"><a href="#1-查看CUDA版本" class="headerlink" title="1. 查看CUDA版本"></a>1. 查看CUDA版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/<span class="built_in">local</span>/cuda/version.txt</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-查看cudnn版本"><a href="#2-查看cudnn版本" class="headerlink" title="2. 查看cudnn版本"></a>2. 查看cudnn版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/<span class="built_in">local</span>/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>
-<p>根据输出判断：eg：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define CUDNN_MAJOR      5</span></span><br><span class="line"><span class="comment">#define CUDNN_MINOR      1</span></span><br><span class="line"><span class="comment">#define CUDNN_PATCHLEVEL 10</span></span><br><span class="line">--</span><br><span class="line"><span class="comment">#define CUDNN_VERSION    (CUDNN_MAJOR * 1000 + CUDNN_MINOR * 100 + CUDNN_PATCHLEVEL)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include "driver_types.h"</span></span><br></pre></td></tr></table></figure>
-<p>CuDNN版本为 5.1.10</p>
+        <h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><p><a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener">Install Docker Engine</a></p>
+<h3 id="Install-Docker-Engine-on-Ubuntu"><a href="#Install-Docker-Engine-on-Ubuntu" class="headerlink" title="Install Docker Engine on Ubuntu"></a><a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank" rel="noopener">Install Docker Engine on Ubuntu</a></h3><p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/" target="_blank" rel="noopener">清华Docker Community Edition 镜像使用帮助</a><br><a href="http://mirrors.ustc.edu.cn/help/docker-ce.html" target="_blank" rel="noopener">中科大Docker CE 源使用帮助</a><br><a href="http://mirrors.ustc.edu.cn/help/dockerhub.html" target="_blank" rel="noopener">中科大Docker Hub 源使用帮助</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
@@ -488,12 +490,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>查看CUDA和cudnn版本</p>
+    <p><span class="copy-title">文章标题:</span>docker+spark+jupyternotebook</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-01-08, 14:01:17</p>
-    <p><span class="copy-title">最后更新:</span>2020-03-28, 19:09:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/01/08/%E6%9F%A5%E7%9C%8BCUDA%E5%92%8Ccudnn%E7%89%88%E6%9C%AC/" title="查看CUDA和cudnn版本">https://levizebulon.github.io/2019/01/08/%E6%9F%A5%E7%9C%8BCUDA%E5%92%8Ccudnn%E7%89%88%E6%9C%AC/</a>
+    <p><span class="copy-title">发布时间:</span>2020-04-18, 10:30:55</p>
+    <p><span class="copy-title">最后更新:</span>2020-04-18, 11:16:29</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/18/docker-spark-jupyternotebook/" title="docker+spark+jupyternotebook">https://levizebulon.github.io/2020/04/18/docker-spark-jupyternotebook/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
