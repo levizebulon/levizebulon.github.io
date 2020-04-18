@@ -13,3 +13,6 @@ tags:
 [中科大Docker CE 源使用帮助](http://mirrors.ustc.edu.cn/help/docker-ce.html)
 [中科大Docker Hub 源使用帮助](http://mirrors.ustc.edu.cn/help/dockerhub.html)
 
+## 安装[jupyter/all-spark-notebook](https://hub.docker.com/r/jupyter/all-spark-notebook/)
+
+
