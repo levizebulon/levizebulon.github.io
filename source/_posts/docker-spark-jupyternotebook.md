@@ -15,4 +15,5 @@ tags:
 
 ## 安装[jupyter/all-spark-notebook](https://hub.docker.com/r/jupyter/all-spark-notebook/)
 
+使用方法：Jupyter Notebook Python, Scala, R, Spark, Mesos Stack[README](https://github.com/Paperspace/jupyter-docker-stacks/tree/master/all-spark-notebook)
 
