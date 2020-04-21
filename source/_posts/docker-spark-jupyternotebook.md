@@ -12,6 +12,7 @@ tags:
 [清华Docker Community Edition 镜像使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/)
 [中科大Docker CE 源使用帮助](http://mirrors.ustc.edu.cn/help/docker-ce.html)
 [中科大Docker Hub 源使用帮助](http://mirrors.ustc.edu.cn/help/dockerhub.html)
+[docker镜像加速器](https://yeasy.gitbooks.io/docker_practice/content/install/mirror.html)
 
 ## 安装[jupyter/all-spark-notebook](https://hub.docker.com/r/jupyter/all-spark-notebook/)
 
