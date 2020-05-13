@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>virtualenv | Linuzb&#39;s blog</title>
-  <meta name="keywords" content=" software ">
-  <meta name="description" content="virtualenv | Linuzb&#39;s blog">
+  <title>Ubuntu开启bbr | Linuzb&#39;s blog</title>
+  <meta name="keywords" content=" os ">
+  <meta name="description" content="Ubuntu开启bbr | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="安装1.1 服务端脚本安装1wget https:&#x2F;&#x2F;install.direct&#x2F;go.sh &amp;&amp; bash go.sh 1.2 安装Nginx1apt install nginx 注册域名https:&#x2F;&#x2F;sg.godaddy.com&#x2F; CDNhttps:&#x2F;&#x2F;www.cloudflare.com&#x2F; 3.1 cloudflare托管域名3.2 在cloudflare下载TLS证书W">
 <meta property="og:type" content="article">
@@ -454,9 +454,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-virtulenv" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Ubuntu开启bbr" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">virtualenv</h1>
+        <h1 class="article-title">Ubuntu开启bbr</h1>
     
     <div class="article-meta">
         
@@ -465,14 +465,14 @@
         
         <span class="tag">
             
-            <a class="color4">software</a>
+            <a class="color3">os</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-03-28 19:09:28'>2019-01-04 13:21</time>
+        创建时间:<time class="date" title='更新时间: 2020-05-13 09:07:37'>2020-05-13 08:21</time>
         
     </div>
     <div class="article-meta">
@@ -494,7 +494,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建目录"><span class="toc-text">1. 创建目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建一个独立的Python运行环境，命名为env"><span class="toc-text">2. 创建一个独立的Python运行环境，命名为env:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除环境"><span class="toc-text">删除环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-修改系统变量"><span class="toc-text">1. 修改系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#保存生效，配置内核"><span class="toc-text">保存生效，配置内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3、-查看内核是否已开启BBR"><span class="toc-text">3、  查看内核是否已开启BBR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4、-验证BBR是否已经启动"><span class="toc-text">4、 验证BBR是否已经启动</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -510,31 +510,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://virtualenv.pypa.io/en/latest/" target="_blank" rel="noopener">Virtualenv</a>是一个独立的python环境的工具。<br>如果我们在开发中需要用到不同版本的Python，那么就可以使用它来创建不同的python虚拟环境</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先，我们通过pip安装virtualenv</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv	<span class="comment"># 针对pip</span></span><br><span class="line">pip3 install virtualenv	<span class="comment"># 针对pip3</span></span><br></pre></td></tr></table></figure>
+        <p>当前场景为Ubuntu 2020.04LTS ,内核5.4，只需要开启配置即可</p>
+<h2 id="1-修改系统变量"><a href="#1-修改系统变量" class="headerlink" title="1. 修改系统变量"></a>1. 修改系统变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo "net.core.default_qdisc=fq" &gt;&gt; /etc/sysctl.conf</span></span><br><span class="line"><span class="comment"># echo "net.ipv4.tcp_congestion_control=bbr" &gt;&gt; /etc/sysctl.conf</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="1-创建目录"><a href="#1-创建目录" class="headerlink" title="1. 创建目录"></a>1. 创建目录</h3><p>例如，我想重新装一个python2.7的环境</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir myproject</span><br><span class="line"><span class="built_in">cd</span> myproject</span><br></pre></td></tr></table></figure>
+<h2 id="保存生效，配置内核"><a href="#保存生效，配置内核" class="headerlink" title="保存生效，配置内核"></a>保存生效，配置内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sysctl   -p</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="2-创建一个独立的Python运行环境，命名为env"><a href="#2-创建一个独立的Python运行环境，命名为env" class="headerlink" title="2. 创建一个独立的Python运行环境，命名为env:"></a>2. 创建一个独立的Python运行环境，命名为env:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">virtualenv --no-site-packages venv	<span class="comment"># 不带任何第三方包</span></span><br><span class="line">virtualenv venv --python=python2.7	<span class="comment"># 使用python 2.7 创建env环境</span></span><br><span class="line">virtualenv venv --python=python3.6	<span class="comment"># 使用python 3.6 创建环境</span></span><br></pre></td></tr></table></figure>
+<p>显示如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net.core.default_qdisc = fq</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br></pre></td></tr></table></figure>
 
-<p>新建的Python环境被放到当前目录下的venv目录。有了venv这个Python环境，可以用source进入该环境：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
-<p>这时候命令提示符会变化，有个(venv)前缀，表示当前环境是一个名为venv的Python环境。</p>
-<p>下面正常安装各种第三方包，并运行python命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install package_name</span><br></pre></td></tr></table></figure>
-<p>在venv环境下，用pip安装的包都被安装到venv这个环境下，系统Python环境不受任何影响。也就是说，venv环境是专门针对myproject这个应用创建的。</p>
-<p>退出当前的venv环境，使用deactivate命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-<p>此时就回到了正常的环境，现在pip或python均是在系统Python环境下执行。</p>
-<p>完全可以针对每个应用创建独立的Python运行环境，这样就可以对每个应用的Python环境进行隔离。</p>
-<p>virtualenv是如何创建“独立”的Python运行环境的呢？原理很简单，就是把系统Python复制一份到virtualenv的环境，用命令source venv/bin/activate进入一个virtualenv环境时，virtualenv会修改相关环境变量，让命令python和pip均指向当前的virtualenv环境。</p>
-<h2 id="删除环境"><a href="#删除环境" class="headerlink" title="删除环境"></a>删除环境</h2><p>删除虚拟环境只需通过停用虚拟环境并删除环境文件夹及其所有内容即可完成：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(ENV)$ deactivate</span><br><span class="line">$ rm -r /path/to/ENV</span><br></pre></td></tr></table></figure>
+<h2 id="3、-查看内核是否已开启BBR"><a href="#3、-查看内核是否已开启BBR" class="headerlink" title="3、  查看内核是否已开启BBR"></a>3、  查看内核是否已开启BBR</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sysctl net.ipv4.tcp_available_congestion_control</span></span><br></pre></td></tr></table></figure>
+<p>结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_available_congestion_control = reno cubic bbr</span><br></pre></td></tr></table></figure>
 
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>廖雪峰的官方网站.<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000" target="_blank" rel="noopener">廖雪峰的官方网站</a></p>
-<p>virtualenv<a href="https://virtualenv.pypa.io/en/latest/" target="_blank" rel="noopener">virtualenv</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sysctl net.ipv4.tcp_congestion_control</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、-验证BBR是否已经启动"><a href="#4、-验证BBR是否已经启动" class="headerlink" title="4、 验证BBR是否已经启动"></a>4、 验证BBR是否已经启动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># lsmod | grep bbr</span><br></pre></td></tr></table></figure>
+
+<p>结果如下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp_bbr                20480  1</span><br></pre></td></tr></table></figure>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
@@ -548,12 +543,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>virtualenv</p>
+    <p><span class="copy-title">文章标题:</span>Ubuntu开启bbr</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-01-04, 13:21:39</p>
-    <p><span class="copy-title">最后更新:</span>2020-03-28, 19:09:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/01/04/virtulenv/" title="virtualenv">https://levizebulon.github.io/2019/01/04/virtulenv/</a>
+    <p><span class="copy-title">发布时间:</span>2020-05-13, 08:21:42</p>
+    <p><span class="copy-title">最后更新:</span>2020-05-13, 09:07:37</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/05/13/Ubuntu%E5%BC%80%E5%90%AFbbr/" title="Ubuntu开启bbr">https://levizebulon.github.io/2020/05/13/Ubuntu%E5%BC%80%E5%90%AFbbr/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
