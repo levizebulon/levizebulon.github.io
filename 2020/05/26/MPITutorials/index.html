@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>download_coursera_and_youtube | Linuzb&#39;s blog</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="download_coursera_and_youtube | Linuzb&#39;s blog">
+  <title>MPITutorials | Linuzb&#39;s blog</title>
+  <meta name="keywords" content=" HPC ">
+  <meta name="description" content="MPITutorials | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="安装1.1 服务端脚本安装1wget https:&#x2F;&#x2F;install.direct&#x2F;go.sh &amp;&amp; bash go.sh 1.2 安装Nginx1apt install nginx 注册域名https:&#x2F;&#x2F;sg.godaddy.com&#x2F; CDNhttps:&#x2F;&#x2F;www.cloudflare.com&#x2F; 3.1 cloudflare托管域名3.2 在cloudflare下载TLS证书W">
 <meta property="og:type" content="article">
@@ -474,19 +474,25 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-download-coursera-and-youtube" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-MPITutorials" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">download_coursera_and_youtube</h1>
+        <h1 class="article-title">MPITutorials</h1>
     
     <div class="article-meta">
         
         
         
+        
+        <span class="tag">
+            
+            <a class="color4">HPC</a>
+            
+        </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-03-28 19:09:28'>2019-01-11 13:30</time>
+        创建时间:<time class="date" title='更新时间: 2020-05-26 21:52:32'>2020-05-26 17:42</time>
         
     </div>
     <div class="article-meta">
@@ -508,7 +514,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Coursera-dl"><span class="toc-text">Coursera-dl</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Youtube-dl"><span class="toc-text">Youtube-dl</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在linux系统下使用curl"><span class="toc-text">1. 在linux系统下使用curl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#或者使用wget"><span class="toc-text">或者使用wget</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是MPI"><span class="toc-text">什么是MPI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一种接口规范"><span class="toc-text">一种接口规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程模型"><span class="toc-text">编程模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档"><span class="toc-text">文档</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLNL-MPI-Implementations-and-Compilers"><span class="toc-text">LLNL MPI Implementations and Compilers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始学习"><span class="toc-text">开始学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一般"><span class="toc-text">一般</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -524,9 +530,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Coursera-dl"><a href="#Coursera-dl" class="headerlink" title="Coursera-dl"></a><a href="https://github.com/coursera-dl/coursera-dl" target="_blank" rel="noopener">Coursera-dl</a></h1><h1 id="Youtube-dl"><a href="#Youtube-dl" class="headerlink" title="Youtube-dl"></a><a href="https://github.com/rg3/youtube-dl" target="_blank" rel="noopener">Youtube-dl</a></h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="1-在linux系统下使用curl"><a href="#1-在linux系统下使用curl" class="headerlink" title="1. 在linux系统下使用curl"></a>1. 在linux系统下使用curl</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br></pre></td></tr></table></figure>
-<h3 id="或者使用wget"><a href="#或者使用wget" class="headerlink" title="或者使用wget"></a>或者使用wget</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br></pre></td></tr></table></figure>
-
+        <p>ref:<a href="https://computing.llnl.gov/tutorials/mpi/" target="_blank" rel="noopener">Message Passing Interface (MPI)</a></p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的优势与可移植性，效率和灵活性的设计目标紧密匹配。 MPI不是IEEE或ISO标准，但实际上已成为在HPC平台上编写消息传递程序的“行业标准”。</p>
+<p>本教程的目的是教那些不熟悉MPI的人如何根据MPI标准开发和运行并行程序。提出的主要主题集中于对新MPI程序员最有用的主题。本教程首先介绍MPI入门，背景和基本信息。接下来是对MPI例程的详细介绍，这些例程对新MPI程序员最有用，包括MPI环境管理，点对点通信和集体通信例程。提供了C和Fortran中的大量示例以及实验室练习。</p>
+<p>教程材料还包括更高级的主题，例如“派生数据类型”，“组和Communicator管理例程”以及“虚拟拓扑”。但是，这些实际上并没有在讲座中介绍，而是为那些有兴趣的人提供“进一步的阅读”。</p>
+<h2 id="什么是MPI"><a href="#什么是MPI" class="headerlink" title="什么是MPI"></a>什么是MPI</h2><h3 id="一种接口规范"><a href="#一种接口规范" class="headerlink" title="一种接口规范"></a>一种接口规范</h3><ul>
+<li>M P I = Message Passing Interface</li>
+<li>MPI是针对消息传递库的开发人员和用户的规范。 就其本身而言，它不是一个库-而是有关该库应该是什么的规范。</li>
+<li>简而言之，消息传递接口的目的是为编写消息传递程序提供广泛使用的标准。 该接口尝试是：<ul>
+<li>Practical </li>
+<li>Portable </li>
+<li>Efficient </li>
+<li>Flexible </li>
+</ul>
+</li>
+<li>MPI标准已进行了许多修订，最新版本为MPI-3.x。</li>
+<li>已经为C和Fortran90语言绑定定义了接口规范：</li>
+<li>实际的MPI库实现在支持的MPI标准的版本和功能方面有所不同。 开发人员/用户将需要意识到这一点。</li>
+</ul>
+<h3 id="编程模型"><a href="#编程模型" class="headerlink" title="编程模型"></a>编程模型</h3><ul>
+<li>MPI最初是为分布式内存体系结构设计的，该体系结构在当时（1980年代-1990年代初期）变得越来越流行。</li>
+<li>随着架构趋势的变化，共享内存SMP通过网络进行组合，从而创建了混合分布式内存/共享内存系统。</li>
+<li>MPI实现者调整了其库，以无缝处理两种类型的基础内存体系结构。 他们还采用/开发了处理不同互连和协议的方式。</li>
+<li>如今，MPI几乎可以在任何硬件平台上运行：<ul>
+<li>Distributed Memory </li>
+<li>Shared Memory </li>
+<li>Hybrid</li>
+</ul>
+</li>
+<li>但是，无论机器的基础物理体系结构如何，编程模型显然仍然是分布式内存模型。</li>
+<li>所有并行性都是明确的：程序员负责正确识别并行性并使用MPI构造实现并行算法。</li>
+</ul>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul>
+<li>有关MPI标准所有版本的文档，请访问：<a href="http：//www.mpi-forum.org/docs/">http：//www.mpi-forum.org/docs/</a>。</li>
+</ul>
+<h2 id="LLNL-MPI-Implementations-and-Compilers"><a href="#LLNL-MPI-Implementations-and-Compilers" class="headerlink" title="LLNL MPI Implementations and Compilers"></a>LLNL MPI Implementations and Compilers</h2><h2 id="开始学习"><a href="#开始学习" class="headerlink" title="开始学习"></a>开始学习</h2><h3 id="一般"><a href="#一般" class="headerlink" title="一般"></a>一般</h3>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
@@ -539,12 +577,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>download_coursera_and_youtube</p>
+    <p><span class="copy-title">文章标题:</span>MPITutorials</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-01-11, 13:30:38</p>
-    <p><span class="copy-title">最后更新:</span>2020-03-28, 19:09:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/01/11/download-coursera-and-youtube/" title="download_coursera_and_youtube">https://levizebulon.github.io/2019/01/11/download-coursera-and-youtube/</a>
+    <p><span class="copy-title">发布时间:</span>2020-05-26, 17:42:38</p>
+    <p><span class="copy-title">最后更新:</span>2020-05-26, 21:52:32</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/05/26/MPITutorials/" title="MPITutorials">https://levizebulon.github.io/2020/05/26/MPITutorials/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
