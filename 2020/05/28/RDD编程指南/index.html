@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>autosub语音识别字幕生成工具 | Linuzb&#39;s blog</title>
-  <meta name="keywords" content=" 工具 ">
-  <meta name="description" content="autosub语音识别字幕生成工具 | Linuzb&#39;s blog">
+  <title>RDD编程指南 | Linuzb&#39;s blog</title>
+  <meta name="keywords" content=" distribute system , programming ">
+  <meta name="description" content="RDD编程指南 | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="概述在较高的级别上，每个Spark应用程序由一个驱动程序组成，该驱动程序运行用户的主要功能，并在集群上执行各种并行操作。Spark提供的主要抽象是一个弹性分布式数据集(RDD)，它是一个跨集群节点分区的元素集合，可以并行操作。RDDs的创建是从Hadoop文件系统(或任何其他Hadoop支持的文件系统)中的一个文件开始的，或者是从驱动程序中已有的Scala集合开始的，然后对其进行转换。用户也可以要">
 <meta property="og:type" content="article">
@@ -495,9 +495,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-autosub语音识别字幕生成工具" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-RDD编程指南" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">autosub语音识别字幕生成工具</h1>
+        <h1 class="article-title">RDD编程指南</h1>
     
     <div class="article-meta">
         
@@ -506,14 +506,16 @@
         
         <span class="tag">
             
-            <a class="color3">工具</a>
+            <a class="color3">distribute system</a>
+            
+            <a class="color2">programming</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-03-28 19:09:28'>2018-12-30 20:41</time>
+        创建时间:<time class="date" title='更新时间: 2020-05-28 12:34:23'>2020-05-28 11:15</time>
         
     </div>
     <div class="article-meta">
@@ -535,7 +537,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#autosub"><span class="toc-text">autosub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#首先安装FFmpeg"><span class="toc-text">首先安装FFmpeg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pip-安装autosub"><span class="toc-text">pip 安装autosub</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意：该程序只能在python2-7环境下使用，python3使用会报错"><span class="toc-text">注意：该程序只能在python2.7环境下使用，python3使用会报错</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看帮助"><span class="toc-text">查看帮助</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#srt-translator"><span class="toc-text">srt-translator</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Linking-with-Spark"><span class="toc-text">Linking with Spark</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Initializing-Spark"><span class="toc-text">Initializing Spark</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -551,25 +553,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="autosub"><a href="#autosub" class="headerlink" title="autosub"></a><a href="https://github.com/agermanidis/autosub" target="_blank" rel="noopener">autosub</a></h3><blockquote>
-<p>Autosub是一种用于自动语音识别和字幕生成的实用程序。它将视频或音频文件作为输入，执行语音活动检测以查找语音区域，向Google Web Speech API发出并行请求以生成这些区域的转录，将它们翻译为不同的语言，最后保存结果字幕到磁盘。</p>
-</blockquote>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="首先安装FFmpeg"><a href="#首先安装FFmpeg" class="headerlink" title="首先安装FFmpeg"></a>首先安装FFmpeg</h4><p><a href="https://www.ffmpeg.org/download.html" target="_blank" rel="noopener">download</a></p>
-<h4 id="pip-安装autosub"><a href="#pip-安装autosub" class="headerlink" title="pip 安装autosub"></a>pip 安装autosub</h4><p><a href="https://pypi.org/project/autosub/" target="_blank" rel="noopener">autosub</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install autosub</span><br></pre></td></tr></table></figure>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在较高的级别上，每个Spark应用程序由一个驱动程序组成，该驱动程序运行用户的主要功能，并在集群上执行各种并行操作。Spark提供的主要抽象是一个弹性分布式数据集(RDD)，它是一个跨集群节点分区的元素集合，可以并行操作。RDDs的创建是从Hadoop文件系统(或任何其他Hadoop支持的文件系统)中的一个文件开始的，或者是从驱动程序中已有的Scala集合开始的，然后对其进行转换。用户也可以要求Spark将RDD持久化到内存中。</p>
+<p>Spark中的第二个抽象是可以在并行操作中使用的共享变量。默认情况下，当Spark作为不同节点上的一组任务并行运行一个函数时，它会将函数中使用的每个变量的副本发送给每个任务。有时候，一个变量需要在任务之间共享，或者在任务和驱动程序之间共享。Spark支持两种类型的共享变量:广播变量(broadcast variable)和累加器(accumulator)，广播变量可用于在所有节点的内存中缓存一个值，累加器是只添加到其中的变量，比如计数器和和。</p>
+<p>本指南用Spark支持的每种语言展示了这些特性。It is easiest to follow along with if you launch Spark’s interactive shell – either <code>bin/spark-shell</code> for the Scala shell or <code>bin/pyspark</code> for the Python one.</p>
+<h1 id="Linking-with-Spark"><a href="#Linking-with-Spark" class="headerlink" title="Linking with Spark"></a>Linking with Spark</h1><p>Python<br>Spark 2.4.5适用于python2.7 +或python3.4 +。它可以使用标准的CPython解释器，因此可以使用像NumPy这样的C库。它也适用于PyPy 2.3+。<br>可以使用运行时包含Spark的<code>bin/spark-submit</code>脚本运行Python中的Spark应用程序，也可以将其包含在setup.py中，如下所示：</p>
+<pre><code class="language-python" data-lang="python"><span></span>    <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">'pyspark=={site.SPARK_VERSION}'</span>
+    <span class="p">]</span></code></pre>
+<p>要在Python中运行Spark应用程序而无需pip安装PySpark，请使用位于Spark目录中的<code>bin/spark-submit</code>脚本。 该脚本将加载Spark的Java/Scala库，并允许您将应用程序提交到集群。 您还可以使用<code>bin/pyspark</code>启动交互式Python Shell。</p>
+<p>如果您希望访问HDFS数据，则需要使用PySpark构建来链接到您的HDFS版本。在Spark主页上还可以找到用于普通HDFS版本的<a href="https://spark.apache.org/downloads.html" target="_blank" rel="noopener">预构建包</a>。</p>
+<p>最后，您需要将一些Spark类导入程序。添加以下行</p>
+<pre><code class="language-python" data-lang="python"><span></span><span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="n">SparkContext</span><span class="p">,</span> <span class="n">SparkConf</span></code></pre>
 
-<h3 id="注意：该程序只能在python2-7环境下使用，python3使用会报错"><a href="#注意：该程序只能在python2-7环境下使用，python3使用会报错" class="headerlink" title="注意：该程序只能在python2.7环境下使用，python3使用会报错"></a>注意：该程序只能在python2.7环境下使用，python3使用会报错</h3><p>可以在virtualenv环境下配置python2.7<br>参考<a href="http://linuzb.cn/2019/01/04/virtulenv/" target="_blank" rel="noopener">virtualenv</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir autosub_env</span><br><span class="line"><span class="built_in">cd</span> autosub_env/</span><br><span class="line">virtualenv venv --python=python2.7</span><br><span class="line"><span class="built_in">source</span> venv/bin/activate</span><br><span class="line">pip install autosub</span><br></pre></td></tr></table></figure>
+<p>PySpark在驱动程序和工作程序中都需要相同的Python minor版本。它在PATH中使用默认的python版本，例如，您可以指定<code>PYSPARK_PYTHON</code>要使用的python版本</p>
+<pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nv">PYSPARK_PYTHON</span><span class="o">=</span>python3.4 bin/pyspark
+$ <span class="nv">PYSPARK_PYTHON</span><span class="o">=</span>/opt/pypy-2.5/bin/pypy bin/spark-submit examples/src/main/python/pi.py</code></pre>
 
-<h3 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">autosub -h</span><br><span class="line">autosub --list-languages	# 所有可用的源&#x2F;目标语言</span><br></pre></td></tr></table></figure>
+<h1 id="Initializing-Spark"><a href="#Initializing-Spark" class="headerlink" title="Initializing Spark"></a>Initializing Spark</h1><h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>Spark程序必须做的第一件事是创建一个<a href="https://spark.apache.org/docs/latest/api/python/pyspark.html#pyspark.SparkContext" target="_blank" rel="noopener">SparkContext</a>对象，它告诉Spark如何访问集群。要创建SparkContext，首先需要构建一个<a href="https://spark.apache.org/docs/latest/api/python/pyspark.html#pyspark.SparkContext" target="_blank" rel="noopener">SparkConf</a>对象，该对象包含关于应用程序的信息。</p>
+<pre><code class="language-python" data-lang="python"><span></span><span class="n">conf</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span><span class="o">.</span><span class="n">setAppName</span><span class="p">(</span><span class="n">appName</span><span class="p">)</span><span class="o">.</span><span class="n">setMaster</span><span class="p">(</span><span class="n">master</span><span class="p">)</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span></code></pre>
 
-<h3 id="srt-translator"><a href="#srt-translator" class="headerlink" title="srt-translator"></a>srt-translator</h3><blockquote>
-<p>字幕翻译软件</p>
-</blockquote>
-<blockquote>
-<p>Translating subtitles in format SubRip from one natural language to other. It is based on Google Translate without API and therefore without payment. Translator have automatic and manual spell checkers.</p>
-</blockquote>
-<p><a href="https://sourceforge.net/projects/srt-tran/" target="_blank" rel="noopener">下载</a></p>
+<p><code>appName</code>参数是应用程序在集群UI上显示的名称。<code>master</code>是一个<a href="https://spark.apache.org/docs/latest/submitting-applications.html#master-urls" target="_blank" rel="noopener">Spark、Mesos或YARN集群的URL</a>，或者在本地模式下运行的特殊本地字符串。实际上，在集群上运行时，您不希望在程序中硬编码master，而是<a href="https://spark.apache.org/docs/latest/submitting-applications.html" target="_blank" rel="noopener">使用spark-submit启动应用程序</a>并在那里接收它。但是，对于本地测试和单元测试，可以通过<code>local</code>来运行Spark in-process。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
@@ -583,12 +587,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>autosub语音识别字幕生成工具</p>
+    <p><span class="copy-title">文章标题:</span>RDD编程指南</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
-    <p><span class="copy-title">发布时间:</span>2018-12-30, 20:41:40</p>
-    <p><span class="copy-title">最后更新:</span>2020-03-28, 19:09:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2018/12/30/autosub%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E5%AD%97%E5%B9%95%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/" title="autosub语音识别字幕生成工具">https://levizebulon.github.io/2018/12/30/autosub%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E5%AD%97%E5%B9%95%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/</a>
+    <p><span class="copy-title">发布时间:</span>2020-05-28, 11:15:51</p>
+    <p><span class="copy-title">最后更新:</span>2020-05-28, 12:34:23</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/05/28/RDD%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/" title="RDD编程指南">https://levizebulon.github.io/2020/05/28/RDD%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
