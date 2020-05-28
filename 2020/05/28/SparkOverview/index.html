@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>分布式系统6.824论文阅读 | Linuzb&#39;s blog</title>
-  <meta name="keywords" content=" paper , distribute system ">
-  <meta name="description" content="分布式系统6.824论文阅读 | Linuzb&#39;s blog">
+  <title>SparkOverview | Linuzb&#39;s blog</title>
+  <meta name="keywords" content=" software , distribute system ">
+  <meta name="description" content="SparkOverview | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Spark OverviewApache的Spark是一种快速和通用集群计算系统。它提供了在Java中，Scala中，Python的和R高层API，和优化引擎，支持一般的执行的图。它还支持一组丰富的更高级别的工具，包括SPARK SQL为SQL和结构化数据的处理，MLlib机器学习，GraphX用于图形处理和Spark Streaming。 SecuritySpark中的安全性在默认情况下是关闭的">
 <meta property="og:type" content="article">
@@ -483,9 +483,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-分布式系统6-824论文阅读" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-SparkOverview" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">分布式系统6.824论文阅读</h1>
+        <h1 class="article-title">SparkOverview</h1>
     
     <div class="article-meta">
         
@@ -494,7 +494,7 @@
         
         <span class="tag">
             
-            <a class="color1">paper</a>
+            <a class="color4">software</a>
             
             <a class="color3">distribute system</a>
             
@@ -503,7 +503,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-04-14 17:36:54'>2020-04-07 21:03</time>
+        创建时间:<time class="date" title='更新时间: 2020-05-28 11:05:44'>2020-05-28 10:12</time>
         
     </div>
     <div class="article-meta">
@@ -525,7 +525,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MapReduce-simplified-data-processing-on-large-clusters"><span class="toc-text">MapReduce: simplified data processing on large clusters</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章"><span class="toc-text">学习参考文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Google-file-system-Proceedings-of-the-nineteenth-ACM-symposium-on-Operating-systems-principles"><span class="toc-text">The Google file system | Proceedings of the nineteenth ACM symposium on Operating systems principles</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章-1"><span class="toc-text">学习参考文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-design-of-a-practical-system-for-fault-tolerant-virtual-machines"><span class="toc-text">The design of a practical system for fault-tolerant virtual machines</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章-2"><span class="toc-text">学习参考文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#In-Search-of-an-Understandable-Consensus-Algorithm"><span class="toc-text">In Search of an Understandable Consensus Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章："><span class="toc-text">学习参考文章：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Paxos-to-build-a-scalable-consistent-and-highly-available-datastore"><span class="toc-text">Using Paxos to build a scalable, consistent, and highly available datastore</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章：-1"><span class="toc-text">学习参考文章：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ZooKeeper-Wait-free-coordination-for-Internet-scale-systems"><span class="toc-text">ZooKeeper: Wait-free coordination for Internet-scale systems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章-3"><span class="toc-text">学习参考文章:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-compromises-distributed-transactions-with-consistency-availability-and-performance"><span class="toc-text">No compromises: distributed transactions with consistency, availability, and performance</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章：-2"><span class="toc-text">学习参考文章：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction-for-In-Memory-Cluster-Computing"><span class="toc-text">Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章：-3"><span class="toc-text">学习参考文章：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Naiad-a-timely-dataflow-system"><span class="toc-text">Naiad: a timely dataflow system</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章：-4"><span class="toc-text">学习参考文章：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scaling-Distributed-Machine-Learning-with-the-Parameter-Server"><span class="toc-text">Scaling Distributed Machine Learning with the Parameter Server</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章-4"><span class="toc-text">学习参考文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Frangipani-A-Scalable-Distributed-File-System"><span class="toc-text">Frangipani: A Scalable Distributed File System</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习参考文章-5"><span class="toc-text">学习参考文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scaling-Memcache-at-Facebook"><span class="toc-text">Scaling Memcache at Facebook</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章-6"><span class="toc-text">学习参考文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Managing-Update-Conflicts-in-Bayou-a-Weakly-Connected-Replicated-Storage-System"><span class="toc-text">Managing Update Conflicts in Bayou, a Weakly Connected Replicated Storage System</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章-7"><span class="toc-text">学习参考文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chord-A-Scalable-Peer-to-peer-Lookup-Service-for-Internet-Applications"><span class="toc-text">Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章-8"><span class="toc-text">学习参考文章</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dynamo-Amazon’s-Highly-Available-Key-value-Store"><span class="toc-text">Dynamo: Amazon’s Highly Available Key-value Store</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习参考文章-9"><span class="toc-text">学习参考文章</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spark-Overview"><span class="toc-text">Spark Overview</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Security"><span class="toc-text">Security</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Downloading"><span class="toc-text">Downloading</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行示例和Shell"><span class="toc-text">运行示例和Shell</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在集群上启动"><span class="toc-text">在集群上启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Where-to-Go-from-Here"><span class="toc-text">Where to Go from Here</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -541,88 +541,117 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="MapReduce-simplified-data-processing-on-large-clusters"><a href="#MapReduce-simplified-data-processing-on-large-clusters" class="headerlink" title="MapReduce: simplified data processing on large clusters"></a>MapReduce: simplified data processing on large clusters</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/mapreduce.pdf" target="_blank" rel="noopener">MapReduce (2004)</a></p>
-<h3 id="学习参考文章"><a href="#学习参考文章" class="headerlink" title="学习参考文章"></a>学习参考文章</h3><ul>
-<li><a href="https://mr-dai.github.io/mapreduce_summary/" target="_blank" rel="noopener">Google MapReduce 总结</a></li>
-</ul>
-<h2 id="The-Google-file-system-Proceedings-of-the-nineteenth-ACM-symposium-on-Operating-systems-principles"><a href="#The-Google-file-system-Proceedings-of-the-nineteenth-ACM-symposium-on-Operating-systems-principles" class="headerlink" title="The Google file system | Proceedings of the nineteenth ACM symposium on Operating systems principles"></a>The Google file system | Proceedings of the nineteenth ACM symposium on Operating systems principles</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/gfs.pdf" target="_blank" rel="noopener">GFS (2003)</a></p>
-<h3 id="学习参考文章-1"><a href="#学习参考文章-1" class="headerlink" title="学习参考文章"></a>学习参考文章</h3><ul>
-<li><a href="https://mr-dai.github.io/gfs/" target="_blank" rel="noopener">Google File System 总结</a></li>
-</ul>
-<h2 id="The-design-of-a-practical-system-for-fault-tolerant-virtual-machines"><a href="#The-design-of-a-practical-system-for-fault-tolerant-virtual-machines" class="headerlink" title="The design of a practical system for fault-tolerant virtual machines"></a>The design of a practical system for fault-tolerant virtual machines</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/vm-ft.pdf" target="_blank" rel="noopener">Fault-Tolerant Virtual Machines (2010)</a></p>
-<h3 id="学习参考文章-2"><a href="#学习参考文章-2" class="headerlink" title="学习参考文章"></a>学习参考文章</h3><ul>
-<li><a href="https://mr-dai.github.io/primary-backup-replication/" target="_blank" rel="noopener">Primary-Backup Replication 总结</a></li>
-</ul>
-<h2 id="In-Search-of-an-Understandable-Consensus-Algorithm"><a href="#In-Search-of-an-Understandable-Consensus-Algorithm" class="headerlink" title="In Search of an Understandable Consensus Algorithm"></a>In Search of an Understandable Consensus Algorithm</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/raft-extended.pdf" target="_blank" rel="noopener">Read Raft (extended) (2014)</a></p>
-<h3 id="学习参考文章："><a href="#学习参考文章：" class="headerlink" title="学习参考文章："></a>学习参考文章：</h3><ul>
-<li><a href="http://thesecretlivesofdata.com/raft/" target="_blank" rel="noopener">Raft Understandable Distributed Consensus</a></li>
-<li><a href="https://mr-dai.github.io/raft/" target="_blank" rel="noopener">Raft 总结</a></li>
-</ul>
-<h2 id="Using-Paxos-to-build-a-scalable-consistent-and-highly-available-datastore"><a href="#Using-Paxos-to-build-a-scalable-consistent-and-highly-available-datastore" class="headerlink" title="Using Paxos to build a scalable, consistent, and highly available datastore"></a>Using Paxos to build a scalable, consistent, and highly available datastore</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/spinnaker.pdf" target="_blank" rel="noopener">Spinnaker (2011)</a></p>
-<h3 id="学习参考文章：-1"><a href="#学习参考文章：-1" class="headerlink" title="学习参考文章："></a>学习参考文章：</h3><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/40825849" target="_blank" rel="noopener">Spinnaker — 使用 Paxos 构建分布式数据库</a></li>
-<li><a href="https://mr-dai.github.io/spinnaker/" target="_blank" rel="noopener">Spinnaker —— 使用 Paxos 构建分布式 KV 数据库</a></li>
-<li><a href="https://keys961.github.io/2019/03/29/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Spinnaker/" target="_blank" rel="noopener">论文阅读-Spinnaker: 利用Paxos构建可扩展、一致且高可用的数据存储</a></li>
-</ul>
-<h2 id="ZooKeeper-Wait-free-coordination-for-Internet-scale-systems"><a href="#ZooKeeper-Wait-free-coordination-for-Internet-scale-systems" class="headerlink" title="ZooKeeper: Wait-free coordination for Internet-scale systems"></a>ZooKeeper: Wait-free coordination for Internet-scale systems</h2><p><a href="https://pdos.csail.mit.edu/6.824/papers/zookeeper.pdf" target="_blank" rel="noopener">ZooKeeper (2010)</a></p>
-<h3 id="学习参考文章-3"><a href="#学习参考文章-3" class="headerlink" title="学习参考文章:"></a>学习参考文章:</h3><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/44731983" target="_blank" rel="noopener">可能是全网把 ZooKeeper 概念讲的最清楚的一篇文章</a></li>
-<li><a href="https://lxkaka.wang/2017/12/21/zookeeper/" target="_blank" rel="noopener">ZooKeeper初识整理(老酒装新瓶)</a></li>
-<li><a href="https://www.zhihu.com/question/65852003/answer/656091418" target="_blank" rel="noopener">能否用通俗的讲法解释一下什么是Zookeeper?</a></li>
-<li><a href="https://mr-dai.github.io/zookeeper/" target="_blank" rel="noopener">ZooKeeper —— 分布式系统协调服务</a></li>
-</ul>
-<h2 id="No-compromises-distributed-transactions-with-consistency-availability-and-performance"><a href="#No-compromises-distributed-transactions-with-consistency-availability-and-performance" class="headerlink" title="No compromises: distributed transactions with consistency, availability, and performance"></a>No compromises: distributed transactions with consistency, availability, and performance</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/farm-2015.pdf" target="_blank" rel="noopener">FaRM (2015)</a></p>
-<h3 id="学习参考文章：-2"><a href="#学习参考文章：-2" class="headerlink" title="学习参考文章："></a>学习参考文章：</h3><ul>
-<li><a href="http://www.lucienxian.top/2019/10/10/No-compromises-distributed-transactions-with-consistency-availability-and-performance%E2%80%94%E2%80%94MIT6-824/" target="_blank" rel="noopener">No compromises: distributed transactions with consistency, availability, and performance</a></li>
-<li><a href="https://cloud.tencent.com/developer/article/1193892" target="_blank" rel="noopener">不妥协：分布式事务的一致性，可用性和性能</a></li>
-</ul>
-<h2 id="Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction-for-In-Memory-Cluster-Computing"><a href="#Resilient-Distributed-Datasets-A-Fault-Tolerant-Abstraction-for-In-Memory-Cluster-Computing" class="headerlink" title="Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing"></a>Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/zaharia-spark.pdf" target="_blank" rel="noopener">Spark (2012)</a></p>
-<h3 id="学习参考文章：-3"><a href="#学习参考文章：-3" class="headerlink" title="学习参考文章："></a>学习参考文章：</h3><ul>
-<li><a href="https://blog.csdn.net/u012185296/article/details/89076617" target="_blank" rel="noopener">Apache Spark RDD 论文（中文翻译）</a></li>
-<li><a href="https://juejin.im/post/5d170629f265da1ba432024d" target="_blank" rel="noopener">经典分布式论文阅读：RDD</a></li>
-<li><a href="https://limuzhi.com/2018/07/14/spark-paper/" target="_blank" rel="noopener">Spark论文阅读</a></li>
-<li><a href="http://itindex.net/detail/51871-spark-rdd-%E6%A8%A1%E5%9E%8B" target="_blank" rel="noopener">Spark和RDD模型研究</a></li>
-</ul>
-<h2 id="Naiad-a-timely-dataflow-system"><a href="#Naiad-a-timely-dataflow-system" class="headerlink" title="Naiad: a timely dataflow system"></a>Naiad: a timely dataflow system</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/naiad.pdf" target="_blank" rel="noopener">Naiad (2013)</a></p>
-<h3 id="学习参考文章：-4"><a href="#学习参考文章：-4" class="headerlink" title="学习参考文章："></a>学习参考文章：</h3><ul>
-<li><a href="https://keys961.github.io/2019/04/19/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Naiad/" target="_blank" rel="noopener">论文阅读-Naiad：A Timely Dataflow System</a></li>
-<li><a href="https://juejin.im/post/5d212fa2f265da1ba9159f6e" target="_blank" rel="noopener">经典分布式论文阅读：Naiad</a></li>
-<li><a href="https://www.jianshu.com/p/e861a3a56660" target="_blank" rel="noopener">Naiad: A Timely Dataflow System</a></li>
-</ul>
-<h2 id="Scaling-Distributed-Machine-Learning-with-the-Parameter-Server"><a href="#Scaling-Distributed-Machine-Learning-with-the-Parameter-Server" class="headerlink" title="Scaling Distributed Machine Learning with the Parameter Server"></a>Scaling Distributed Machine Learning with the Parameter Server</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/parameter.pdf" target="_blank" rel="noopener">Parameter Server (2014)</a></p>
-<h3 id="学习参考文章-4"><a href="#学习参考文章-4" class="headerlink" title="学习参考文章"></a>学习参考文章</h3><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/89168459" target="_blank" rel="noopener">知乎</a></li>
-<li><a href="http://www.lucienxian.top/2019/12/15/Scaling-Distributed-Machine-Learning-with-the-Parameter-Server%E2%80%94%E2%80%94MIT6-824/" target="_blank" rel="noopener">Scaling Distributed Machine Learning with the Parameter Server</a></li>
-<li><a href="https://github.com/dmlc/parameter_server" target="_blank" rel="noopener">开源实现</a></li>
-</ul>
-<h2 id="Frangipani-A-Scalable-Distributed-File-System"><a href="#Frangipani-A-Scalable-Distributed-File-System" class="headerlink" title="Frangipani: A Scalable Distributed File System"></a>Frangipani: A Scalable Distributed File System</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/thekkath-frangipani.pdf" target="_blank" rel="noopener">Frangipani</a></p>
-<h2 id="学习参考文章-5"><a href="#学习参考文章-5" class="headerlink" title="学习参考文章"></a>学习参考文章</h2><ul>
-<li><a href="https://www.jianshu.com/p/b4cbfca809ae" target="_blank" rel="noopener">简书，Frangipani: A Scalable Distributed File System</a></li>
-<li><a href="http://47.104.183.157/kmn/qxw/form/article?id=18453&cate=93" target="_blank" rel="noopener">Frangipani论文的阅读笔记</a></li>
-</ul>
-<h2 id="Scaling-Memcache-at-Facebook"><a href="#Scaling-Memcache-at-Facebook" class="headerlink" title="Scaling Memcache at Facebook"></a>Scaling Memcache at Facebook</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/memcache-fb.pdf" target="_blank" rel="noopener">Memcached at Facebook (2013)</a></p>
-<h3 id="学习参考文章-6"><a href="#学习参考文章-6" class="headerlink" title="学习参考文章"></a>学习参考文章</h3><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/21362291" target="_blank" rel="noopener">阅读笔记：Scaling Memcache at Facebook</a></li>
-</ul>
-<h2 id="Managing-Update-Conflicts-in-Bayou-a-Weakly-Connected-Replicated-Storage-System"><a href="#Managing-Update-Conflicts-in-Bayou-a-Weakly-Connected-Replicated-Storage-System" class="headerlink" title="Managing Update Conflicts in Bayou, a Weakly Connected Replicated Storage System"></a>Managing Update Conflicts in Bayou, a Weakly Connected Replicated Storage System</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/bayou-conflicts.pdf" target="_blank" rel="noopener">Bayou (1995)</a></p>
-<h3 id="学习参考文章-7"><a href="#学习参考文章-7" class="headerlink" title="学习参考文章"></a>学习参考文章</h3><ul>
-<li><a href="https://juejin.im/post/5d21399cf265da1bac403905" target="_blank" rel="noopener">经典分布式论文阅读：Bayou</a></li>
-<li><a href="https://keys961.github.io/2019/04/30/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bayou/" target="_blank" rel="noopener">论文阅读-Managing Update Conflicts in Bayou, a Weakly Connected Replicated Storage System</a></li>
-</ul>
-<h2 id="Chord-A-Scalable-Peer-to-peer-Lookup-Service-for-Internet-Applications"><a href="#Chord-A-Scalable-Peer-to-peer-Lookup-Service-for-Internet-Applications" class="headerlink" title="Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications"></a>Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/stoica-chord.pdf" target="_blank" rel="noopener">Chord (2001)</a></p>
-<h3 id="学习参考文章-8"><a href="#学习参考文章-8" class="headerlink" title="学习参考文章"></a>学习参考文章</h3><ul>
-<li><a href="https://keys961.github.io/2019/05/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Chord/" target="_blank" rel="noopener">论文阅读-Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications</a></li>
-</ul>
-<h2 id="Dynamo-Amazon’s-Highly-Available-Key-value-Store"><a href="#Dynamo-Amazon’s-Highly-Available-Key-value-Store" class="headerlink" title="Dynamo: Amazon’s Highly Available Key-value Store"></a>Dynamo: Amazon’s Highly Available Key-value Store</h2><p><a href="http://nil.csail.mit.edu/6.824/2018/papers/dynamo.pdf" target="_blank" rel="noopener">Dynamo (2007)</a></p>
-<h3 id="学习参考文章-9"><a href="#学习参考文章-9" class="headerlink" title="学习参考文章"></a>学习参考文章</h3><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/27853552" target="_blank" rel="noopener">知乎Dynamo: Amazon’s Highly Available Key-value Store</a></li>
-</ul>
-<p>参考文章：</p>
+        <h1 id="Spark-Overview"><a href="#Spark-Overview" class="headerlink" title="Spark Overview"></a><a href="https://spark.apache.org/docs/latest/index.html#spark-overview" target="_blank" rel="noopener">Spark Overview</a></h1><p>Apache的Spark是一种快速和通用集群计算系统。它提供了在Java中，Scala中，Python的和R高层API，和优化引擎，支持一般的执行的图。它还支持一组丰富的更高级别的工具，包括SPARK SQL为SQL和结构化数据的处理，MLlib机器学习，GraphX用于图形处理和Spark Streaming。</p>
+<h1 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h1><p>Spark中的安全性在默认情况下是关闭的。这可能意味着您在默认情况下很容易受到攻击。请在下载并运行Spark之前查看Spark安全性。</p>
+<h1 id="Downloading"><a href="#Downloading" class="headerlink" title="Downloading"></a>Downloading</h1><h1 id="运行示例和Shell"><a href="#运行示例和Shell" class="headerlink" title="运行示例和Shell"></a>运行示例和Shell</h1><p>Spark附带了几个示例程序. Scala, Java, Python and R examples are in the examples<code>/src/main directory</code>. To run one of the Java or Scala sample programs, use <code>bin/run-example &lt;class&gt; [params]</code> in the top-level Spark directory. (在幕后，这将调用更通用的spark-submit脚本来启动应用程序). 例如,</p>
+<pre>
+    <code>./bin/run-example SparkPi 10</code>
+</pre>
+<p>您还可以通过修改过的Scala shell交互式地运行Spark。这是学习框架的好方法。</p>
+<pre><code>./bin/spark-shell --master local[2]
+</code></pre>
+
+<p><code>--master</code>选项指定一个分布式集群的master URL，或者<code>local</code>指定一个线程在local运行local URL，或者<code>loacl[N]</code>在本地运行N个线程。您应该首先使用<code>local</code>进行测试。要获得完整的选项列表，请使用<code>--help</code>选项运行Spark shell。</p>
+<p>Spark提供了Python的API，使用<code>bin/pyspark</code>在Python解释器中交互式地运行Spark。</p>
+<pre><code>./bin/pyspark --master local[2]
+</code></pre>
+<p>还用Python提供了示例应用程序。例如</p>
+<pre><code>./bin/spark-submit examples/src/main/python/pi.py 10
+</code></pre>
+
+<p>Spark also provides an experimental <a href="sparkr.html">R API</a> since 1.4 (only DataFrames APIs included).
+To run Spark interactively in a R interpreter, use <code>bin/sparkR</code>:</p>
+
+<pre><code>./bin/sparkR --master local[2]
+</code></pre>
+
+<p>Example applications are also provided in R. For example,</p>
+
+<pre><code>./bin/spark-submit examples/src/main/r/dataframe.R
+</code></pre>
+
+<h1 id="在集群上启动"><a href="#在集群上启动" class="headerlink" title="在集群上启动"></a>在集群上启动</h1><p><a href="https://spark.apache.org/docs/latest/cluster-overview.html" target="_blank" rel="noopener">Spark集群模式</a>概述解释了在集群上运行的关键概念。Spark既可以自己运行，也可以在多个现有集群管理器上运行。它目前提供了几个部署选项</p>
 <ul>
-<li><a href="http://www.lucienxian.top/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" target="_blank" rel="noopener">LucienXian’s Blog</a></li>
-<li><a href="https://mr-dai.github.io/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" target="_blank" rel="noopener">Robert Peng’s Blog 分布式系统</a></li>
+  <li><a href="spark-standalone.html">Standalone Deploy Mode</a>: simplest way to deploy Spark on a private cluster</li>
+  <li><a href="running-on-mesos.html">Apache Mesos</a></li>
+  <li><a href="running-on-yarn.html">Hadoop YARN</a></li>
+  <li><a href="running-on-kubernetes.html">Kubernetes</a></li>
 </ul>
 
+<h1 id="Where-to-Go-from-Here"><a href="#Where-to-Go-from-Here" class="headerlink" title="Where to Go from Here"></a>Where to Go from Here</h1><p><strong>Programming Guides:</strong></p>
+<ul>
+  <li><a href="quick-start.html">Quick Start</a>: a quick introduction to the Spark API; start here!</li>
+  <li><a href="rdd-programming-guide.html">RDD Programming Guide</a>: overview of Spark basics - RDDs (core but old API), accumulators, and broadcast variables</li>
+  <li><a href="sql-programming-guide.html">Spark SQL, Datasets, and DataFrames</a>: processing structured data with relational queries (newer API than RDDs)</li>
+  <li><a href="structured-streaming-programming-guide.html">Structured Streaming</a>: processing structured data streams with relation queries (using Datasets and DataFrames, newer API than DStreams)</li>
+  <li><a href="streaming-programming-guide.html">Spark Streaming</a>: processing data streams using DStreams (old API)</li>
+  <li><a href="ml-guide.html">MLlib</a>: applying machine learning algorithms</li>
+  <li><a href="graphx-programming-guide.html">GraphX</a>: processing graphs</li>
+</ul>
+
+<p><strong>API Docs:</strong></p>
+
+<ul>
+  <li><a href="api/scala/index.html#org.apache.spark.package">Spark Scala API (Scaladoc)</a></li>
+  <li><a href="api/java/index.html">Spark Java API (Javadoc)</a></li>
+  <li><a href="api/python/index.html">Spark Python API (Sphinx)</a></li>
+  <li><a href="api/R/index.html">Spark R API (Roxygen2)</a></li>
+  <li><a href="api/sql/index.html">Spark SQL, Built-in Functions (MkDocs)</a></li>
+</ul>
+
+<p><strong>Deployment Guides:</strong></p>
+
+<ul>
+  <li><a href="cluster-overview.html">Cluster Overview</a>: overview of concepts and components when running on a cluster</li>
+  <li><a href="submitting-applications.html">Submitting Applications</a>: packaging and deploying applications</li>
+  <li>Deployment modes:
+    <ul>
+      <li><a href="https://github.com/amplab/spark-ec2" target="_blank" rel="noopener">Amazon EC2</a>: scripts that let you launch a cluster on EC2 in about 5 minutes</li>
+      <li><a href="spark-standalone.html">Standalone Deploy Mode</a>: launch a standalone cluster quickly without a third-party cluster manager</li>
+      <li><a href="running-on-mesos.html">Mesos</a>: deploy a private cluster using
+  <a href="https://mesos.apache.org" target="_blank" rel="noopener">Apache Mesos</a></li>
+      <li><a href="running-on-yarn.html">YARN</a>: deploy Spark on top of Hadoop NextGen (YARN)</li>
+      <li><a href="running-on-kubernetes.html">Kubernetes</a>: deploy Spark on top of Kubernetes</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Other Documents:</strong></p>
+
+<ul>
+  <li><a href="configuration.html">Configuration</a>: customize Spark via its configuration system</li>
+  <li><a href="monitoring.html">Monitoring</a>: track the behavior of your applications</li>
+  <li><a href="tuning.html">Tuning Guide</a>: best practices to optimize performance and memory use</li>
+  <li><a href="job-scheduling.html">Job Scheduling</a>: scheduling resources across and within Spark applications</li>
+  <li><a href="security.html">Security</a>: Spark security support</li>
+  <li><a href="hardware-provisioning.html">Hardware Provisioning</a>: recommendations for cluster hardware</li>
+  <li>Integration with other storage systems:
+    <ul>
+      <li><a href="cloud-integration.html">Cloud Infrastructures</a></li>
+      <li><a href="storage-openstack-swift.html">OpenStack Swift</a></li>
+    </ul>
+  </li>
+  <li><a href="building-spark.html">Building Spark</a>: build Spark using the Maven system</li>
+  <li><a href="https://spark.apache.org/contributing.html" target="_blank" rel="noopener">Contributing to Spark</a></li>
+  <li><a href="https://spark.apache.org/third-party-projects.html" target="_blank" rel="noopener">Third Party Projects</a>: related third party Spark projects</li>
+</ul>
+
+<p><strong>External Resources:</strong></p>
+
+<ul>
+  <li><a href="https://spark.apache.org" target="_blank" rel="noopener">Spark Homepage</a></li>
+  <li><a href="https://spark.apache.org/community.html" target="_blank" rel="noopener">Spark Community</a> resources, including local meetups</li>
+  <li><a href="http://stackoverflow.com/questions/tagged/apache-spark" target="_blank" rel="noopener">StackOverflow tag <code>apache-spark</code></a></li>
+  <li><a href="https://spark.apache.org/mailing-lists.html" target="_blank" rel="noopener">Mailing Lists</a>: ask questions about Spark here</li>
+  <li><a href="http://ampcamp.berkeley.edu/" target="_blank" rel="noopener">AMP Camps</a>: a series of training camps at UC Berkeley that featured talks and
+exercises about Spark, Spark Streaming, Mesos, and more. <a href="http://ampcamp.berkeley.edu/6/" target="_blank" rel="noopener">Videos</a>,
+<a href="http://ampcamp.berkeley.edu/6/" target="_blank" rel="noopener">slides</a> and <a href="http://ampcamp.berkeley.edu/6/exercises/" target="_blank" rel="noopener">exercises</a> are
+available online for free.</li>
+  <li><a href="https://spark.apache.org/examples.html" target="_blank" rel="noopener">Code Examples</a>: more are also available in the <code>examples</code> subfolder of Spark (<a href="https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples" target="_blank" rel="noopener">Scala</a>,
+ <a href="https://github.com/apache/spark/tree/master/examples/src/main/java/org/apache/spark/examples" target="_blank" rel="noopener">Java</a>,
+ <a href="https://github.com/apache/spark/tree/master/examples/src/main/python" target="_blank" rel="noopener">Python</a>,
+ <a href="https://github.com/apache/spark/tree/master/examples/src/main/r" target="_blank" rel="noopener">R</a>)</li>
+</ul>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
@@ -635,12 +664,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>分布式系统6.824论文阅读</p>
+    <p><span class="copy-title">文章标题:</span>SparkOverview</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
-    <p><span class="copy-title">发布时间:</span>2020-04-07, 21:03:52</p>
-    <p><span class="copy-title">最后更新:</span>2020-04-14, 17:36:54</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" title="分布式系统6.824论文阅读">https://levizebulon.github.io/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</a>
+    <p><span class="copy-title">发布时间:</span>2020-05-28, 10:12:42</p>
+    <p><span class="copy-title">最后更新:</span>2020-05-28, 11:05:44</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/05/28/SparkOverview/" title="SparkOverview">https://levizebulon.github.io/2020/05/28/SparkOverview/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
