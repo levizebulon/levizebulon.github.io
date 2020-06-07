@@ -535,7 +535,7 @@ MPI点对点通信例程通常具有采用以下格式之一的参数列表：
 
 ### [MPI_Ssend ](https://computing.llnl.gov/tutorials/mpi/man/MPI_Ssend.txt)
 
-同步阻止发送：发送消息并进行阻止，直到发送任务中的应用程序缓冲区可供重新使用且目标进程已开始接收消息为止。
+同步阻塞发送：发送消息并进行阻塞，直到发送任务中的应用程序缓冲区可供重新使用且目标进程已开始接收消息为止。
 
 <table width="75%" cellspacing="0" cellpadding="5" border="1">
 <tbody><tr valign="top"><td><nobr><tt><b> 
@@ -545,7 +545,7 @@ MPI点对点通信例程通常具有采用以下格式之一的参数列表：
 
 ### [MPI_Sendrecv](https://computing.llnl.gov/tutorials/mpi/man/MPI_Sendrecv.txt)
 
-Send a message and post a receive before blocking. Will block until the sending application buffer is free for reuse and until the receiving application buffer contains the received message. 
+在阻塞之前发送一个消息并发布一个接收。然后将一直阻塞直到发送应用程序缓冲区可以自由重用和接收应用程序缓冲区包含接收到的消息。
 
 <table width="75%" cellspacing="0" cellpadding="5" border="1">
 <tbody><tr valign="top"><td><nobr><tt><b> 
@@ -611,7 +611,6 @@ MPI_Wait会阻塞，直到指定的非阻塞发送或接收操作完成为止。
 </b></tt></nobr></td></tr><tr></tr></tbody></table>
 
 ## Examples: Blocking Message Passing Routines
- Task 0 pings task 1 and awaits return ping 
 
 <ul>
 <p>
@@ -732,4 +731,130 @@ Fortran - Blocking Message Passing Example
 </td></tr></tbody></table>  <!---outer table--->
 </p></ul>
 
+## 非阻塞消息传递例程
+
+下面描述了更常用的MPI非阻塞消息传递例程。
+
+### [MPI_Isend](https://computing.llnl.gov/tutorials/mpi/man/MPI_Isend.txt)
+
+标识内存中用作发送缓冲区的区域。程序立即继续进行，而不等待从应用程序缓冲区复制消息。返回一个通信请求句柄来处理挂起的消息状态。直到随后调用MPI_Wait或MPI_Test表明非阻塞发送已经完成,程序才可以修改应用程序缓冲区。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Isend (&amp;buf,count,datatype,dest,tag,comm,&amp;request) <br>
+    MPI_ISEND (buf,count,datatype,dest,tag,comm,request,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+### [MPI_Irecv](https://computing.llnl.gov/tutorials/mpi/man/MPI_Irecv.txt)
+
+标识内存中用作接收缓冲区的区域。程序将立即继续，而无需实际等待消息被接收并复制到应用程序缓冲区中。返回一个通信请求句柄来处理挂起的消息状态。程序必须使用调用MPI_Wait或MPI_Test来确定非阻塞接收操作何时完成，请求的消息在应用程序缓冲区中可用。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Irecv (&amp;buf,count,datatype,source,tag,comm,&amp;request) <br>
+    MPI_IRECV (buf,count,datatype,source,tag,comm,request,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+### [MPI_Issend](https://computing.llnl.gov/tutorials/mpi/man/MPI_Issend.txt)
+
+非阻塞同步发送。与MPI_Isend()类似，除了MPI_Wait()或MPI_Test()表示目标进程何时收到消息。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Issend (&amp;buf,count,datatype,dest,tag,comm,&amp;request) <br>
+    MPI_ISSEND (buf,count,datatype,dest,tag,comm,request,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+### [MPI_Test](https://computing.llnl.gov/tutorials/mpi/man/MPI_Test.txt)
+
+### [MPI_Testany](https://computing.llnl.gov/tutorials/mpi/man/MPI_Testany.txt)
+
+### [MPI_Testall](https://computing.llnl.gov/tutorials/mpi/man/MPI_Testall.txt)
+
+### [MPI_Testsome](https://computing.llnl.gov/tutorials/mpi/man/MPI_Testsome.txt)
+
+MPI测试检查指定的非阻塞发送或接收操作的状态。如果操作已经完成，“flag”参数将返回逻辑true(1)，如果没有，则返回逻辑false(0)。对于多个非阻塞操作，程序员可以指定任意、全部或部分补全。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Test     (&amp;request,&amp;flag,&amp;status) <br>
+    MPI_Testany  (count,&amp;array_of_requests,&amp;index,&amp;flag,&amp;status)<br>
+    MPI_Testall  (count,&amp;array_of_requests,&amp;flag,&amp;array_of_statuses)<br>
+    MPI_Testsome (incount,&amp;array_of_requests,&amp;outcount,<br>
+        <font color="#FFFFFF">......</font> 
+                 &amp;array_of_offsets, &amp;array_of_statuses)<br>
+    MPI_TEST     (request,flag,status,ierr)<br>
+    MPI_TESTANY  (count,array_of_requests,index,flag,status,ierr)<br>
+    MPI_TESTALL  (count,array_of_requests,flag,array_of_statuses,ierr)<br>
+    MPI_TESTSOME (incount,array_of_requests,outcount,<br>
+        <font color="#FFFFFF">......</font> 
+                 array_of_offsets, array_of_statuses,ierr)<br>
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+### [MPI_Iprobe](https://computing.llnl.gov/tutorials/mpi/man/MPI_Iprobe.txt)
+
+对消息执行非阻塞测试。“通配符”MPI_ANY_SOURCE和MPI_ANY_TAG可以用于测试来自任何源或带有任何标记的消息。如果消息已经到达，那么整数“flag”参数将返回逻辑true(1)，如果没有到达，则返回逻辑false(0)。对于C例程，实际的源和标记将在状态结构中作为status返回MPI_SOURCE和status.MPI_TAG。对于Fortran例程，它们将以整数数组状态(MPI源)和状态(MPI标记)的形式返回。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Iprobe (source,tag,comm,&amp;flag,&amp;status)<br>
+    MPI_IPROBE (source,tag,comm,flag,status,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+### 示例:非阻塞消息传递例程
+
+环拓扑中的最近邻交换
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+C Language - Non-blocking Message Passing Example</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   #include <font color="#DF4442">"mpi.h"</font>
+   #include &lt;stdio.h&gt;
+
+   main(int argc, char *argv[])  {
+   int numtasks, rank, next, prev, buf[2], tag1=1, tag2=2;
+   <font color="#DF4442">MPI_Request reqs[4]</font>;   <font color="#AAAAAA">// required variable for non-blocking calls</font>
+   <font color="#DF4442">MPI_Status stats[4]</font>;   <font color="#AAAAAA">// required variable for Waitall routine</font>
+
+   <font color="#DF4442">MPI_Init</font>(&amp;argc,&amp;argv);
+   <font color="#DF4442">MPI_Comm_size</font>(MPI_COMM_WORLD, &amp;numtasks);
+   <font color="#DF4442">MPI_Comm_rank</font>(MPI_COMM_WORLD, &amp;rank);
+   
+   <font color="#AAAAAA">// determine left and right neighbors</font>
+   prev = rank-1;
+   next = rank+1;
+   if (rank == 0)  prev = numtasks - 1;
+   if (rank == (numtasks - 1))  next = 0;
+
+   <font color="#AAAAAA">// post non-blocking receives and sends for neighbors</font>
+   <font color="#DF4442">MPI_Irecv</font>(&amp;buf[0], 1, MPI_INT, prev, tag1, MPI_COMM_WORLD, &amp;reqs[0]);
+   <font color="#DF4442">MPI_Irecv</font>(&amp;buf[1], 1, MPI_INT, next, tag2, MPI_COMM_WORLD, &amp;reqs[1]);
+
+   <font color="#DF4442">MPI_Isend</font>(&amp;rank, 1, MPI_INT, prev, tag2, MPI_COMM_WORLD, &amp;reqs[2]);
+   <font color="#DF4442">MPI_Isend</font>(&amp;rank, 1, MPI_INT, next, tag1, MPI_COMM_WORLD, &amp;reqs[3]);
+  
+   <font color="#AAAAAA">   // do some work while sends/receives progress in background</font>
+
+   <font color="#AAAAAA">// wait for all non-blocking operations to complete</font>
+   <font color="#DF4442">MPI_Waitall</font>(4, reqs, stats);
+  
+   <font color="#AAAAAA">   // continue - do more work</font>
+
+   <font color="#DF4442">MPI_Finalize</font>();
+   }
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
 
