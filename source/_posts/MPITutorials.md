@@ -858,3 +858,330 @@ C Language - Non-blocking Message Passing Example</b><p></p></td>
 </tr></tbody></table>
 </td></tr></tbody></table>
 
+## 集体通信例程
+
+#### 集体作业的类型
+- **同步**——进程等待，直到组中的所有成员都达到同步点。
+- **数据传送**——广播(broadcast)，散布(scatter)和收集(gather),all to all. 
+- **集合计算(归约)**——组中的一个成员从其他成员那里收集数据，并对该数据执行操作(最小、最大、加、乘等)。
+
+#### Scope:
+- 集合通信例行程序必须包括通信者范围内的所有进程。
+  - 默认情况下，所有进程都是通信器MPI_COMM_WORLD中的成员。
+  - 程序员可以定义其他通信器。有关详细信息，请参阅[ Group and Communicator Management Routines](https://computing.llnl.gov/tutorials/mpi/#Group_Management_Routines)部分。
+- 如果通信器中甚至有一个任务不参与，就可能发生意外的行为，包括程序失败。
+- 确保通信器中的所有进程都参与到任何集体操作中是程序员的责任。
+
+#### 编程注意事项和限制
+
+- 集体通信例程不接受消息标签参数。
+- 进程子集内的集体操作是通过首先将子集划分为新组，然后将新组附加到新通信器来完成的((discussed in the [Group and Communicator Management Routines](https://computing.llnl.gov/tutorials/mpi/#Group_Management_Routines) section). )
+- 只能与MPI预定义的数据类型一起使用——而不能与MPI[派生的数据类型](https://computing.llnl.gov/tutorials/mpi/#Derived_Data_Types)一起使用。
+- MPI-2扩展了大多数集合操作，允许在通信器之间移动数据(这里没有介绍)。
+- 对于MPI-3，集合操作可以是阻塞的，也可以是非阻塞的。本教程只介绍阻塞操作。
+
+### 集合通信例程
+
+#### [MPI_Barrier](https://computing.llnl.gov/tutorials/mpi/man/MPI_Barrier.txt)
+
+同步操作。在组中创建barrier同步。每个任务在到达MPI_Barrier调用时都会阻塞，直到组中的所有任务都到达相同的MPI_Barrier调用为止。然后所有的任务都可以继续进行。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Barrier (comm)<br>
+    MPI_BARRIER (comm,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Bcast](https://computing.llnl.gov/tutorials/mpi/man/MPI_Bcast.txt)
+
+数据移动操作。从rank为“root”的进程向组中的所有其他进程广播(发送)消息。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Bcast (&amp;buffer,count,datatype,root,comm)   <br>
+    MPI_BCAST (buffer,count,datatype,root,comm,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Scatter](https://computing.llnl.gov/tutorials/mpi/man/MPI_Scatter.txt)
+
+数据移动操作。将来自单个源任务的不同消息分发到组中的每个任务。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Scatter (&amp;sendbuf,sendcnt,sendtype,&amp;recvbuf,   <br>
+        <font color="#FFFFFF">......</font> 
+                recvcnt,recvtype,root,comm)  <br>
+    MPI_SCATTER (sendbuf,sendcnt,sendtype,recvbuf,  <br> 
+        <font color="#FFFFFF">......</font> 
+                recvcnt,recvtype,root,comm,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Gather](https://computing.llnl.gov/tutorials/mpi/man/MPI_Gather.txt)
+
+数据移动操作。将组中每个任务的不同消息收集到单个目标任务。这个例程是MPI_Scatter的反向操作。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Gather (&amp;sendbuf,sendcnt,sendtype,&amp;recvbuf,  <br>
+        <font color="#FFFFFF">......</font> 
+               recvcount,recvtype,root,comm)  <br>
+    MPI_GATHER (sendbuf,sendcnt,sendtype,recvbuf,  <br>
+        <font color="#FFFFFF">......</font> 
+               recvcount,recvtype,root,comm,ierr)  
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Allgather](https://computing.llnl.gov/tutorials/mpi/man/MPI_Allgather.txt)
+
+数据移动操作。数据与组中所有任务的连接。组中的每个任务实际上在组内执行一对所有的广播操作。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Allgather (&amp;sendbuf,sendcount,sendtype,&amp;recvbuf,  <br>
+        <font color="#FFFFFF">......</font> 
+                  recvcount,recvtype,comm) <br>
+    MPI_ALLGATHER (sendbuf,sendcount,sendtype,recvbuf, <br> 
+        <font color="#FFFFFF">......</font> 
+                  recvcount,recvtype,comm,info)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [ MPI_Reduce ](https://computing.llnl.gov/tutorials/mpi/man/MPI_Reduce.txt)
+
+集体计算操作。对组中的所有任务应用reduce操作，并将结果放在一个任务中。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Reduce (&amp;sendbuf,&amp;recvbuf,count,datatype,op,root,comm) <br>
+    MPI_REDUCE (sendbuf,recvbuf,count,datatype,op,root,comm,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+下面显示了预定义的MPI精简操作。用户还可以使用[MPI_Op_create](https://computing.llnl.gov/tutorials/mpi/man/MPI_Op_create.txt)例程定义自己的reduce函数。
+
+<table width="90%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="TOP">
+<th colspan="2">MPI Reduction Operation</th> 
+<th>C Data Types</th>
+<th>Fortran Data Type</th>
+</tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b> MPI_MAX    
+</b></tt></td><td>maximum       
+</td><td>integer, float      
+</td><td>integer, real, complex  
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_MIN    
+</b></tt></td><td>minimum       
+</td><td>integer, float      
+</td><td>integer, real, complex  
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_SUM    
+</b></tt></td><td>sum          
+</td><td>integer, float      
+</td><td>integer, real, complex  
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_PROD    
+</b></tt></td><td>product      
+</td><td>integer, float      
+</td><td>integer, real, complex  
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_LAND    
+</b></tt></td><td>logical AND   
+</td><td>integer           
+</td><td>logical                 
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_BAND    
+</b></tt></td><td>bit-wise AND  
+</td><td>integer, MPI_BYTE   
+</td><td>integer, MPI_BYTE      
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_LOR    
+</b></tt></td><td>logical OR    
+</td><td>integer            
+</td><td>logical                 
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_BOR    
+</b></tt></td><td>bit-wise OR   
+</td><td>integer, MPI_BYTE   
+</td><td>integer, MPI_BYTE       
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_LXOR    
+</b></tt></td><td>logical XOR   
+</td><td>integer           
+</td><td>logical                 
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_BXOR    
+</b></tt></td><td>bit-wise XOR  
+</td><td>integer, MPI_BYTE   
+</td><td>integer, MPI_BYTE      
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_MAXLOC  
+</b></tt></td><td>max value and location
+</td><td>float, double and long double         
+</td><td>real, complex,double precision        
+</td></tr><tr valign="TOP">
+<td bgcolor="#FOF5FE"><tt><b>MPI_MINLOC  
+</b></tt></td><td>min value and location 
+</td><td>float, double and long double         
+</td><td>real, complex, double precision        
+</td></tr></tbody></table>
+
+- MPI_Reduce手册页中的说明:操作总是被假定为关联的。所有预定义的操作都假定是可交换的。用户可以定义被假定为关联而非交换的操作。缩减的“规范”评估顺序由组中流程的级别决定。但是，实现可以利用结合性，或者结合性和交换性来改变计算顺序。这可能会改变非严格关联和可交换操作的约简结果，例如
+
+#### [ MPI_Allreduce ](https://computing.llnl.gov/tutorials/mpi/man/MPI_Allreduce.txt)
+
+集体计算操作+数据移动。应用归约操作并将结果放置到组中的所有任务中。这相当于MPI_Reduce后再进行MPI_Bcast。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Allreduce (&amp;sendbuf,&amp;recvbuf,count,datatype,op,comm) <br>
+    MPI_ALLREDUCE (sendbuf,recvbuf,count,datatype,op,comm,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [ MPI_Reduce_scatter ](https://computing.llnl.gov/tutorials/mpi/man/MPI_Reduce_scatter.txt)
+
+集体计算操作+数据移动。首先对组中所有任务的向量进行element-wise的归约。接下来，结果向量被分割成不相交的片段并分布在各个任务中。这相当于在MPI_Reduce之后执行MPI_Scatter操作。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Reduce_scatter (&amp;sendbuf,&amp;recvbuf,recvcount,datatype, <br>
+        <font color="#FFFFFF">......</font>
+         op,comm) <br>
+    MPI_REDUCE_SCATTER (sendbuf,recvbuf,recvcount,datatype, <br>
+        <font color="#FFFFFF">......</font>
+         op,comm,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [ MPI_Alltoall ](https://computing.llnl.gov/tutorials/mpi/man/MPI_Alltoall.txt)
+
+数据移动操作。组中的每个任务执行scatter操作，按照索引的顺序向组中的所有任务发送不同的消息。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Alltoall (&amp;sendbuf,sendcount,sendtype,&amp;recvbuf, <br>
+        <font color="#FFFFFF">......</font>
+                 recvcnt,recvtype,comm) <br>
+    MPI_ALLTOALL (sendbuf,sendcount,sendtype,recvbuf, <br>
+        <font color="#FFFFFF">......</font>
+                 recvcnt,recvtype,comm,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [ MPI_Scan ](https://computing.llnl.gov/tutorials/mpi/man/MPI_Scan.txt)
+
+对整个任务组的归约操作执行扫描操作。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Scan (&amp;sendbuf,&amp;recvbuf,count,datatype,op,comm) <br>
+    MPI_SCAN (sendbuf,recvbuf,count,datatype,op,comm,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+### 例子:集体通信
+
+对数组的行执行分散操作
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+C Language - Collective Communications Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   #include <font color="#DF4442">"mpi.h"</font>
+   #include &lt;stdio.h&gt;
+   #define SIZE 4
+
+   main(int argc, char *argv[])  {
+   int numtasks, rank, sendcount, recvcount, source;
+   float sendbuf[SIZE][SIZE] = {
+     {1.0, 2.0, 3.0, 4.0},
+     {5.0, 6.0, 7.0, 8.0},
+     {9.0, 10.0, 11.0, 12.0},
+     {13.0, 14.0, 15.0, 16.0}  };
+   float recvbuf[SIZE];
+
+   <font color="#DF4442">MPI_Init</font>(&amp;argc,&amp;argv);
+   <font color="#DF4442">MPI_Comm_rank</font>(MPI_COMM_WORLD, &amp;rank);
+   <font color="#DF4442">MPI_Comm_size</font>(MPI_COMM_WORLD, &amp;numtasks);
+
+   if (numtasks == SIZE) {
+     <font color="#AAAAAA">// define source task and elements to send/receive, then perform collective scatter</font>
+     source = 1;
+     sendcount = SIZE;
+     recvcount = SIZE;
+     <font color="#DF4442">MPI_Scatter</font>(sendbuf,sendcount,MPI_FLOAT,recvbuf,recvcount,
+                 MPI_FLOAT,source,MPI_COMM_WORLD);
+
+     printf("rank= %d  Results: %f %f %f %f\n",rank,recvbuf[0],
+            recvbuf[1],recvbuf[2],recvbuf[3]);
+     }
+   else
+     printf("Must specify %d processors. Terminating.\n",SIZE);
+
+   <font color="#DF4442">MPI_Finalize</font>();
+   }
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+Fortran - Collective Communications Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   program scatter
+   include <font color="#DF4442">'mpif.h'</font>
+
+   integer SIZE
+   parameter(SIZE=4)
+   integer numtasks, rank, sendcount, recvcount, source, ierr
+   real*4 sendbuf(SIZE,SIZE), recvbuf(SIZE)
+
+   <font color="#AAAAAA">! Fortran stores this array in column major order, so the 
+   ! scatter will actually scatter columns, not rows.</font>
+   data sendbuf /1.0, 2.0, 3.0, 4.0, &amp;
+                 5.0, 6.0, 7.0, 8.0, &amp;
+                 9.0, 10.0, 11.0, 12.0, &amp;
+                 13.0, 14.0, 15.0, 16.0 /
+
+   call <font color="#DF4442">MPI_INIT</font>(ierr)
+   call <font color="#DF4442">MPI_COMM_RANK</font>(MPI_COMM_WORLD, rank, ierr)
+   call <font color="#DF4442">MPI_COMM_SIZE</font>(MPI_COMM_WORLD, numtasks, ierr)
+
+   if (numtasks .eq. SIZE) then
+      <font color="#AAAAAA">! define source task and elements to send/receive, then perform collective scatter</font>
+      source = 1
+      sendcount = SIZE
+      recvcount = SIZE
+      call <font color="#DF4442">MPI_SCATTER</font>(sendbuf, sendcount, MPI_REAL, recvbuf, recvcount, MPI_REAL, &amp;
+                       source, MPI_COMM_WORLD, ierr)
+
+      print *, 'rank= ',rank,' Results: ',recvbuf 
+
+   else
+      print *, 'Must specify',SIZE,' processors.  Terminating.' 
+   endif
+
+   call <font color="#DF4442">MPI_FINALIZE</font>(ierr)
+
+   end
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
