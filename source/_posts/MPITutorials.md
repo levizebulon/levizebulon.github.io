@@ -1023,7 +1023,7 @@ C Language - Non-blocking Message Passing Example</b><p></p></td>
 </td><td>real, complex, double precision        
 </td></tr></tbody></table>
 
-- MPI_Reduce手册页中的说明:操作总是被假定为关联的。所有预定义的操作都假定是可交换的。用户可以定义被假定为关联而非交换的操作。缩减的“规范”评估顺序由组中流程的级别决定。但是，实现可以利用结合性，或者结合性和交换性来改变计算顺序。这可能会改变非严格关联和可交换操作的约简结果，例如
+- MPI_Reduce手册页中的说明:操作总是被假定为关联的。所有预定义的操作都假定是可交换的。用户可以定义被假定为关联而非交换的操作。归约的“规范”评估顺序由组中进程的rank决定。但是，实现可以利用结合性，或者结合性和交换性来改变计算顺序。这可能会改变非严格结合性和可交换性操作(如浮点加法)的归约结果。强烈建议实现MPI_REDUCE，以便当函数被应用到相同的参数上时，以相同的顺序出现时，可以获得相同的结果。注意，这可能会阻止优化利用处理器的物理位置。
 
 #### [ MPI_Allreduce ](https://computing.llnl.gov/tutorials/mpi/man/MPI_Allreduce.txt)
 
@@ -1185,3 +1185,759 @@ Fortran - Collective Communications Example
 </pre></td>
 </tr></tbody></table>
 </td></tr></tbody></table>
+
+## 派生数据类型
+
+- 如前所述，MPI预定义了它的基本数据类型
+
+<table width="90%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr><th colspan="2">C Data Types</th>
+<th>Fortran Data Types</th>
+</tr><tr valign="top">
+<td width="33%"><pre>MPI_CHAR
+MPI_WCHAR
+MPI_SHORT
+MPI_INT
+MPI_LONG
+MPI_LONG_LONG_INT 
+MPI_LONG_LONG	 	 
+MPI_SIGNED_CHAR
+MPI_UNSIGNED_CHAR
+MPI_UNSIGNED_SHORT
+MPI_UNSIGNED_LONG
+MPI_UNSIGNED
+MPI_FLOAT
+MPI_DOUBLE
+MPI_LONG_DOUBLE
+</pre></td>
+<td width="33%"><pre>MPI_C_COMPLEX
+MPI_C_FLOAT_COMPLEX
+MPI_C_DOUBLE_COMPLEX
+MPI_C_LONG_DOUBLE_COMPLEX	 	 
+MPI_C_BOOL
+MPI_LOGICAL
+MPI_C_LONG_DOUBLE_COMPLEX 	 
+MPI_INT8_T 
+MPI_INT16_T
+MPI_INT32_T 
+MPI_INT64_T	 	 
+MPI_UINT8_T 
+MPI_UINT16_T 
+MPI_UINT32_T 
+MPI_UINT64_T
+MPI_BYTE
+MPI_PACKED
+</pre></td>
+<td width="33%"><pre>MPI_CHARACTER
+MPI_INTEGER
+MPI_INTEGER1 
+MPI_INTEGER2
+MPI_INTEGER4
+MPI_REAL
+MPI_REAL2 
+MPI_REAL4
+MPI_REAL8
+MPI_DOUBLE_PRECISION
+MPI_COMPLEX
+MPI_DOUBLE_COMPLEX
+MPI_LOGICAL
+MPI_BYTE
+MPI_PACKED
+</pre></td>
+</tr></tbody></table>
+
+- MPI还提供了根据MPI基本数据类型序列定义自己的数据结构的工具。这种用户定义的结构称为派生数据类型。
+- 基本数据类型是连续的。派生数据类型允许您以方便的方式指定非连续数据，并将其视为连续数据。
+- MPI提供了几种构造派生数据类型的方法
+  - 连续的（Contiguous）
+  - 向量（Vector）
+  - Indexed
+  - Struct
+
+### 派生数据类型例程
+
+#### [ MPI_Type_contiguous](https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_contiguous.txt)
+
+最简单的构造函数。通过对现有数据类型进行计数复制，生成新的数据类型。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Type_contiguous (count,oldtype,&amp;newtype) <br>
+    MPI_TYPE_CONTIGUOUS (count,oldtype,newtype,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Type_vector](https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_vector.txt)
+
+#### [MPI_Type_hvector](https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_hvector.txt)
+
+类似于连续，但允许在位移中有规则的间隙(stride)。MPI类型hvector与MPI类型vector相同，不同的是跨步是以字节为单位指定的。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Type_vector (count,blocklength,stride,oldtype,&amp;newtype)<br> 
+    MPI_TYPE_VECTOR (count,blocklength,stride,oldtype,newtype,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Type_indexed](https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_indexed.txt)
+
+#### [ MPI_Type_hindexed ](https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_hindexed.txt)
+
+提供输入数据类型的位移数组作为新数据类型的映射。MPI_Type_hindexed与MPI_Type_indexed是相同的，除了偏移量是用字节指定的。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Type_indexed (count,blocklens[],offsets[],old_type,&amp;newtype)<br>
+    MPI_TYPE_INDEXED (count,blocklens(),offsets(),old_type,newtype,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Type_struct](https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_struct.txt)
+
+新的数据类型是根据组件数据类型的完全定义映射形成的。
+
+**NOTE:** 该函数在MPI-2.0中不提倡使用，在MPI-3.0中被MPI_Type_creat_struct替代
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Type_struct (count,blocklens[],offsets[],old_types,&amp;newtype)<br>
+    MPI_TYPE_STRUCT (count,blocklens(),offsets(),old_types,newtype,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Type_extent](https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_extent.txt)
+
+返回指定数据类型的大小(以字节为单位)。对于需要指定字节偏移量的MPI子例程很有用。
+
+**NOTE:** 该函数在MPI-2.0中不赞成使用，在MPI-3.0中被MPI_Type_get_extent替换
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Type_extent (datatype,&amp;extent)<br>
+    MPI_TYPE_EXTENT (datatype,extent,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Type_commit](https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_commit.txt)
+
+向系统提交新的数据类型。所有用户构造(派生)数据类型都需要。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Type_commit (&amp;datatype)<br>
+    MPI_TYPE_COMMIT (datatype,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+#### [MPI_Type_free](https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_free.txt)
+
+释放指定的数据类型对象。如果在循环中创建了许多数据类型对象，那么使用这个例程对于防止内存耗尽尤其重要。
+
+<table width="75%" cellspacing="0" cellpadding="5" border="1">
+<tbody><tr valign="top"><td><nobr><tt><b> 
+    MPI_Type_free (&amp;datatype)<br>
+    MPI_TYPE_FREE (datatype,ierr)
+</b></tt></nobr></td></tr><tr></tr></tbody></table>
+
+### 示例:连续派生数据类型
+
+创建表示数组中的一行的数据类型，并将另一行分发给所有进程。
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+C Language - Contiguous Derived Data Type Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   #include <font color="#DF4442">"mpi.h"</font>
+   #include &lt;stdio.h&gt;
+   #define SIZE 4
+
+   main(int argc, char *argv[])  {
+   int numtasks, rank, source=0, dest, tag=1, i;
+   float a[SIZE][SIZE] =
+     {1.0, 2.0, 3.0, 4.0,
+      5.0, 6.0, 7.0, 8.0,
+      9.0, 10.0, 11.0, 12.0,
+      13.0, 14.0, 15.0, 16.0};
+   float b[SIZE];
+
+   <font color="#DF4442">MPI_Status stat</font>;
+   <font color="#DF4442">MPI_Datatype rowtype</font>;   <font color="#AAAAAA">// required variable</font>
+
+   <font color="#DF4442">MPI_Init</font>(&amp;argc,&amp;argv);
+   <font color="#DF4442">MPI_Comm_rank</font>(MPI_COMM_WORLD, &amp;rank);
+   <font color="#DF4442">MPI_Comm_size</font>(MPI_COMM_WORLD, &amp;numtasks);
+
+   <font color="#AAAAAA">// create contiguous derived data type</font>
+   <font color="#DF4442">MPI_Type_contiguous</font>(SIZE, MPI_FLOAT, &amp;rowtype);
+   <font color="#DF4442">MPI_Type_commit</font>(&amp;rowtype);
+
+   if (numtasks == SIZE) {
+      <font color="#AAAAAA">// task 0 sends one element of rowtype to all tasks</font>
+      if (rank == 0) {
+         for (i=0; i&lt;numtasks; i++)
+           <font color="#DF4442">MPI_Send</font>(&amp;a[i][0], 1, rowtype, i, tag, MPI_COMM_WORLD);
+         }
+
+      <font color="#AAAAAA">// all tasks receive rowtype data from task 0</font>
+      <font color="#DF4442">MPI_Recv</font>(b, SIZE, MPI_FLOAT, source, tag, MPI_COMM_WORLD, &amp;stat);
+      printf("rank= %d  b= %3.1f %3.1f %3.1f %3.1f\n",
+             rank,b[0],b[1],b[2],b[3]);
+      }
+   else
+      printf("Must specify %d processors. Terminating.\n",SIZE);
+
+   <font color="#AAAAAA">// free datatype when done using it</font>
+   <font color="#DF4442">MPI_Type_free</font>(&amp;rowtype);
+   <font color="#DF4442">MPI_Finalize</font>();
+   }
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+Fortran - Contiguous Derived Data Type Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   program contiguous
+   include <font color="#DF4442">'mpif.h'</font>
+
+   integer SIZE
+   parameter(SIZE=4)
+   integer numtasks, rank, source, dest, tag, i,  ierr
+   real*4 a(0:SIZE-1,0:SIZE-1), b(0:SIZE-1)
+   integer <font color="#DF4442">stat(MPI_STATUS_SIZE)</font>
+   integer <font color="#DF4442">columntype</font>   <font color="#AAAAAA">! required variable</font>
+   tag = 1
+
+   <font color="#AAAAAA">! Fortran stores this array in column major order</font>
+   data a  /1.0, 2.0, 3.0, 4.0, &amp;
+            5.0, 6.0, 7.0, 8.0, &amp;
+            9.0, 10.0, 11.0, 12.0, &amp; 
+            13.0, 14.0, 15.0, 16.0 /
+
+   call <font color="#DF4442">MPI_INIT</font>(ierr)
+   call <font color="#DF4442">MPI_COMM_RANK</font>(MPI_COMM_WORLD, rank, ierr)
+   call <font color="#DF4442">MPI_COMM_SIZE</font>(MPI_COMM_WORLD, numtasks, ierr)
+
+   <font color="#AAAAAA">! create contiguous derived data type</font>
+   call <font color="#DF4442">MPI_TYPE_CONTIGUOUS</font>(SIZE, MPI_REAL, columntype, ierr)
+   call <font color="#DF4442">MPI_TYPE_COMMIT</font>(columntype, ierr)
+  
+   if (numtasks .eq. SIZE) then
+      <font color="#AAAAAA">! task 0 sends one element of columntype to all tasks</font>
+      if (rank .eq. 0) then
+         do i=0, numtasks-1
+         call <font color="#DF4442">MPI_SEND</font>(a(0,i), 1, columntype, i, tag, MPI_COMM_WORLD,ierr)
+         end do
+      endif
+
+      <font color="#AAAAAA">! all tasks receive columntype data from task 0</font>
+      source = 0
+      call <font color="#DF4442">MPI_RECV</font>(b, SIZE, MPI_REAL, source, tag, MPI_COMM_WORLD, stat, ierr)
+      print *, 'rank= ',rank,' b= ',b
+   else
+      print *, 'Must specify',SIZE,' processors.  Terminating.' 
+   endif
+
+   <font color="#AAAAAA">! free datatype when done using it</font>
+   call <font color="#DF4442">MPI_TYPE_FREE</font>(columntype, ierr)
+   call <font color="#DF4442">MPI_FINALIZE</font>(ierr)
+
+   end
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+ Sample program output: 
+
+ <pre>rank= 0  b= 1.0 2.0 3.0 4.0
+rank= 1  b= 5.0 6.0 7.0 8.0
+rank= 2  b= 9.0 10.0 11.0 12.0
+rank= 3  b= 13.0 14.0 15.0 16.0
+</pre>
+
+### 示例:向量派生的数据类型
+
+创建表示数组中的列的数据类型，并将不同的列分发给所有进程。
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+C Language - Vector Derived Data Type Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   #include <font color="#DF4442">"mpi.h"</font>
+   #include &lt;stdio.h&gt;
+   #define SIZE 4
+
+   main(int argc, char *argv[])  {
+   int numtasks, rank, source=0, dest, tag=1, i;
+   float a[SIZE][SIZE] = 
+     {1.0, 2.0, 3.0, 4.0,  
+      5.0, 6.0, 7.0, 8.0, 
+      9.0, 10.0, 11.0, 12.0,
+     13.0, 14.0, 15.0, 16.0};
+   float b[SIZE]; 
+
+   <font color="#DF4442">MPI_Status stat</font>;
+   <font color="#DF4442">MPI_Datatype columntype</font>;   <font color="#AAAAAA">// required variable</font>
+
+
+   <font color="#DF4442">MPI_Init</font>(&amp;argc,&amp;argv);
+   <font color="#DF4442">MPI_Comm_rank</font>(MPI_COMM_WORLD, &amp;rank);
+   <font color="#DF4442">MPI_Comm_size</font>(MPI_COMM_WORLD, &amp;numtasks);
+   
+   <font color="#AAAAAA">// create vector derived data type</font>
+   <font color="#DF4442">MPI_Type_vector</font>(SIZE, 1, SIZE, MPI_FLOAT, &amp;columntype);
+   <font color="#DF4442">MPI_Type_commit</font>(&amp;columntype);
+
+   if (numtasks == SIZE) {
+      <font color="#AAAAAA">// task 0 sends one element of columntype to all tasks</font>
+      if (rank == 0) {
+         for (i=0; i&lt;numtasks; i++) 
+            <font color="#DF4442">MPI_Send</font>(&amp;a[0][i], 1, columntype, i, tag, MPI_COMM_WORLD);
+         }
+ 
+      <font color="#AAAAAA">// all tasks receive columntype data from task 0</font>
+      <font color="#DF4442">MPI_Recv</font>(b, SIZE, MPI_FLOAT, source, tag, MPI_COMM_WORLD, &amp;stat);
+      printf("rank= %d  b= %3.1f %3.1f %3.1f %3.1f\n",
+             rank,b[0],b[1],b[2],b[3]);
+      }
+   else
+      printf("Must specify %d processors. Terminating.\n",SIZE);
+
+   <font color="#AAAAAA">// free datatype when done using it</font>
+   <font color="#DF4442">MPI_Type_free</font>(&amp;columntype);
+   <font color="#DF4442">MPI_Finalize</font>();
+   }
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+Fortran - Vector Derived Data Type Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   program vector
+   include <font color="#DF4442">'mpif.h'</font>
+
+   integer SIZE
+   parameter(SIZE=4)
+   integer numtasks, rank, source, dest, tag, i,  ierr
+   real*4 a(0:SIZE-1,0:SIZE-1), b(0:SIZE-1)
+   integer <font color="#DF4442">stat(MPI_STATUS_SIZE)</font>
+   integer <font color="#DF4442">rowtype</font>   <font color="#AAAAAA">! required variable</font>
+   tag = 1
+
+   <font color="#AAAAAA">! Fortran stores this array in column major order</font>
+   data a  /1.0, 2.0, 3.0, 4.0, &amp;
+            5.0, 6.0, 7.0, 8.0,  &amp;
+            9.0, 10.0, 11.0, 12.0, &amp;
+            13.0, 14.0, 15.0, 16.0 /
+
+   call <font color="#DF4442">MPI_INIT</font>(ierr)
+   call <font color="#DF4442">MPI_COMM_RANK</font>(MPI_COMM_WORLD, rank, ierr)
+   call <font color="#DF4442">MPI_COMM_SIZE</font>(MPI_COMM_WORLD, numtasks, ierr)
+
+   <font color="#AAAAAA">! create vector derived data type</font>
+   call <font color="#DF4442">MPI_TYPE_VECTOR</font>(SIZE, 1, SIZE, MPI_REAL, rowtype, ierr)
+   call <font color="#DF4442">MPI_TYPE_COMMIT</font>(rowtype, ierr)
+  
+   if (numtasks .eq. SIZE) then
+      <font color="#AAAAAA">! task 0 sends one element of rowtype to all tasks</font>
+      if (rank .eq. 0) then
+         do i=0, numtasks-1
+         call <font color="#DF4442">MPI_SEND</font>(a(i,0), 1, rowtype, i, tag, MPI_COMM_WORLD, ierr)
+         end do
+      endif
+
+      <font color="#AAAAAA">! all tasks receive rowtype data from task 0</font>
+      source = 0
+      call <font color="#DF4442">MPI_RECV</font>(b, SIZE, MPI_REAL, source, tag, MPI_COMM_WORLD, stat, ierr)
+      print *, 'rank= ',rank,' b= ',b
+   else
+      print *, 'Must specify',SIZE,' processors.  Terminating.' 
+   endif
+
+   <font color="#AAAAAA">! free datatype when done using it</font>
+   call <font color="#DF4442">MPI_TYPE_FREE</font>(rowtype, ierr)
+   call <font color="#DF4442">MPI_FINALIZE</font>(ierr)
+
+   end
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+ Sample program output: 
+
+ <pre>rank= 0  b= 1.0 5.0 9.0 13.0
+rank= 1  b= 2.0 6.0 10.0 14.0
+rank= 2  b= 3.0 7.0 11.0 15.0
+rank= 3  b= 4.0 8.0 12.0 16.0
+</pre>
+
+### 示例:索引派生数据类型
+
+通过提取数组的可变部分来创建数据类型并分发给所有任务。
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+C Language - Indexed Derived Data Type Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   #include <font color="#DF4442">"mpi.h"</font>
+   #include &lt;stdio.h&gt;
+   #define NELEMENTS 6
+
+   main(int argc, char *argv[])  {
+   int numtasks, rank, source=0, dest, tag=1, i;
+   int blocklengths[2], displacements[2];
+   float a[16] = 
+     {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 
+      9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0};
+   float b[NELEMENTS]; 
+
+   <font color="#DF4442">MPI_Status stat</font>;
+   <font color="#DF4442">MPI_Datatype indextype</font>;   <font color="#AAAAAA">// required variable</font>
+
+   <font color="#DF4442">MPI_Init</font>(&amp;argc,&amp;argv);
+   <font color="#DF4442">MPI_Comm_rank</font>(MPI_COMM_WORLD, &amp;rank);
+   <font color="#DF4442">MPI_Comm_size</font>(MPI_COMM_WORLD, &amp;numtasks);
+
+   blocklengths[0] = 4;
+   blocklengths[1] = 2;
+   displacements[0] = 5;
+   displacements[1] = 12;
+   
+   <font color="#AAAAAA">// create indexed derived data type</font>
+   <font color="#DF4442">MPI_Type_indexed</font>(2, blocklengths, displacements, MPI_FLOAT, &amp;indextype);
+   <font color="#DF4442">MPI_Type_commit</font>(&amp;indextype);
+
+   if (rank == 0) {
+     for (i=0; i&lt;numtasks; i++) 
+      <font color="#AAAAAA">// task 0 sends one element of indextype to all tasks</font>
+        <font color="#DF4442">MPI_Send</font>(a, 1, indextype, i, tag, MPI_COMM_WORLD);
+     }
+
+   <font color="#AAAAAA">// all tasks receive indextype data from task 0</font>
+   <font color="#DF4442">MPI_Recv</font>(b, NELEMENTS, MPI_FLOAT, source, tag, MPI_COMM_WORLD, &amp;stat);
+   printf("rank= %d  b= %3.1f %3.1f %3.1f %3.1f %3.1f %3.1f\n",
+          rank,b[0],b[1],b[2],b[3],b[4],b[5]);
+   
+   <font color="#AAAAAA">// free datatype when done using it</font>
+   <font color="#DF4442">MPI_Type_free</font>(&amp;indextype);
+   <font color="#DF4442">MPI_Finalize</font>();
+   }
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+Fortran - Indexed Derived Data Type Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   program indexed
+   include <font color="#DF4442">'mpif.h'</font>
+
+   integer NELEMENTS
+   parameter(NELEMENTS=6)
+   integer numtasks, rank, source, dest, tag, i,  ierr
+   integer blocklengths(0:1), displacements(0:1)
+   real*4 a(0:15), b(0:NELEMENTS-1)
+   integer <font color="#DF4442">stat(MPI_STATUS_SIZE)</font>
+   integer <font color="#DF4442">indextype</font>   <font color="#AAAAAA">! required variable</font>
+   tag = 1
+
+   data a  /1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, &amp;
+            9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0 /
+
+   call <font color="#DF4442">MPI_INIT</font>(ierr)
+   call <font color="#DF4442">MPI_COMM_RANK</font>(MPI_COMM_WORLD, rank, ierr)
+   call <font color="#DF4442">MPI_COMM_SIZE</font>(MPI_COMM_WORLD, numtasks, ierr)
+
+   blocklengths(0) = 4
+   blocklengths(1) = 2
+   displacements(0) = 5
+   displacements(1) = 12
+
+   <font color="#AAAAAA">! create indexed derived data type</font>
+   call <font color="#DF4442">MPI_TYPE_INDEXED</font>(2, blocklengths, displacements, MPI_REAL, &amp;
+                         indextype, ierr)
+   call <font color="#DF4442">MPI_TYPE_COMMIT</font>(indextype, ierr)
+  
+   if (rank .eq. 0) then
+      <font color="#AAAAAA">! task 0 sends one element of indextype to all tasks</font>
+      do i=0, numtasks-1
+      call <font color="#DF4442">MPI_SEND</font>(a, 1, indextype, i, tag, MPI_COMM_WORLD, ierr)
+      end do
+   endif
+
+   <font color="#AAAAAA">! all tasks receive indextype data from task 0</font>
+   source = 0
+   call <font color="#DF4442">MPI_RECV</font>(b, NELEMENTS, MPI_REAL, source, tag, MPI_COMM_WORLD, &amp;
+                 stat, ierr)
+   print *, 'rank= ',rank,' b= ',b
+
+   <font color="#AAAAAA">! free datatype when done using it</font>
+   call <font color="#DF4442">MPI_TYPE_FREE</font>(indextype, ierr)
+   call <font color="#DF4442">MPI_FINALIZE</font>(ierr)
+
+   end
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+ Sample program output: 
+
+ <pre>rank= 0  b= 6.0 7.0 8.0 9.0 13.0 14.0
+rank= 1  b= 6.0 7.0 8.0 9.0 13.0 14.0
+rank= 2  b= 6.0 7.0 8.0 9.0 13.0 14.0
+rank= 3  b= 6.0 7.0 8.0 9.0 13.0 14.0
+</pre>
+
+### 示例:结构派生的数据类型
+
+创建表示粒子的数据类型，并将这些粒子的数组分发给所有进程。
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+C Language - Struct Derived Data Type Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63<br>64<br>65<br>66</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   #include <font color="#DF4442">"mpi.h"</font>
+   #include &lt;stdio.h&gt;
+   #define NELEM 25
+
+   main(int argc, char *argv[])  {
+   int numtasks, rank, source=0, dest, tag=1, i;
+
+   typedef struct {
+     float x, y, z;
+     float velocity;
+     int  n, type;
+     }          Particle;
+   Particle     p[NELEM], particles[NELEM];
+   <font color="#DF4442">MPI_Datatype particletype, oldtypes[2]</font>;   <font color="#AAAAAA">// required variables</font>
+   int          blockcounts[2];
+
+   <font color="#AAAAAA">// MPI_Aint type used to be consistent with syntax of</font>
+   <font color="#AAAAAA">// MPI_Type_extent routine</font>
+   <font color="#DF4442">MPI_Aint    offsets[2], extent</font>;
+
+   <font color="#DF4442">MPI_Status stat</font>;
+
+   <font color="#DF4442">MPI_Init</font>(&amp;argc,&amp;argv);
+   <font color="#DF4442">MPI_Comm_rank</font>(MPI_COMM_WORLD, &amp;rank);
+   <font color="#DF4442">MPI_Comm_size</font>(MPI_COMM_WORLD, &amp;numtasks);
+ 
+   <font color="#AAAAAA">// setup description of the 4 MPI_FLOAT fields x, y, z, velocity</font>
+   offsets[0] = 0;
+   oldtypes[0] = MPI_FLOAT;
+   blockcounts[0] = 4;
+
+   <font color="#AAAAAA">// setup description of the 2 MPI_INT fields n, type</font>
+   <font color="#AAAAAA">// need to first figure offset by getting size of MPI_FLOAT</font>
+   <font color="#DF4442">MPI_Type_extent</font>(MPI_FLOAT, &amp;extent);
+   offsets[1] = 4 * extent;
+   oldtypes[1] = MPI_INT;
+   blockcounts[1] = 2;
+
+   <font color="#AAAAAA">// define structured type and commit it</font>
+   <font color="#DF4442">MPI_Type_struct</font>(2, blockcounts, offsets, oldtypes, &amp;particletype);
+   <font color="#DF4442">MPI_Type_commit</font>(&amp;particletype);
+
+   <font color="#AAAAAA">// task 0 initializes the particle array and then sends it to each task</font>
+   if (rank == 0) {
+     for (i=0; i&lt;NELEM; i++) {
+        particles[i].x = i * 1.0;
+        particles[i].y = i * -1.0;
+        particles[i].z = i * 1.0; 
+        particles[i].velocity = 0.25;
+        particles[i].n = i;
+        particles[i].type = i % 2; 
+        }
+     for (i=0; i&lt;numtasks; i++) 
+        <font color="#DF4442">MPI_Send</font>(particles, NELEM, particletype, i, tag, MPI_COMM_WORLD);
+     }
+ 
+   <font color="#AAAAAA">// all tasks receive particletype data</font>
+   <font color="#DF4442">MPI_Recv</font>(p, NELEM, particletype, source, tag, MPI_COMM_WORLD, &amp;stat);
+
+   printf("rank= %d   %3.2f %3.2f %3.2f %3.2f %d %d\n", rank,p[3].x,
+        p[3].y,p[3].z,p[3].velocity,p[3].n,p[3].type);
+
+   <font color="#AAAAAA">// free datatype when done using it</font>
+   <font color="#DF4442">MPI_Type_free</font>(&amp;particletype);
+   <font color="#DF4442">MPI_Finalize</font>();
+   }
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+Fortan - Struct Derived Data Type Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58<br>59<br>60<br>61<br>62<br>63</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   program struct
+   include <font color="#DF4442">'mpif.h'</font>
+
+   integer NELEM
+   parameter(NELEM=25)
+   integer numtasks, rank, source, dest, tag, i,  ierr
+   integer <font color="#DF4442">stat(MPI_STATUS_SIZE)</font>
+
+   type Particle
+   sequence
+   real*4 x, y, z, velocity
+   integer n, type
+   end type Particle
+
+   type (Particle) p(NELEM), particles(NELEM)
+   integer <font color="#DF4442">particletype, oldtypes(0:1)</font>   <font color="#AAAAAA">! required variables</font>
+   integer blockcounts(0:1), offsets(0:1), extent
+   tag = 1
+
+   call <font color="#DF4442">MPI_INIT</font>(ierr)
+   call <font color="#DF4442">MPI_COMM_RANK</font>(MPI_COMM_WORLD, rank, ierr)
+   call <font color="#DF4442">MPI_COMM_SIZE</font>(MPI_COMM_WORLD, numtasks, ierr)
+
+   <font color="#AAAAAA">! setup description of the 4 MPI_REAL fields x, y, z, velocity</font>
+   offsets(0) = 0
+   oldtypes(0) = MPI_REAL
+   blockcounts(0) = 4
+
+   <font color="#AAAAAA">! setup description of the 2 MPI_INTEGER fields n, type</font> 
+   <font color="#AAAAAA">! need to first figure offset by getting size of MPI_REAL</font>
+   call <font color="#DF4442">MPI_TYPE_EXTENT</font>(MPI_REAL, extent, ierr)
+   offsets(1) = 4 * extent
+   oldtypes(1) = MPI_INTEGER
+   blockcounts(1) = 2
+
+   <font color="#AAAAAA">! define structured type and commit it</font> 
+   call <font color="#DF4442">MPI_TYPE_STRUCT</font>(2, blockcounts, offsets, oldtypes, &amp;
+                        particletype, ierr)
+   call <font color="#DF4442">MPI_TYPE_COMMIT</font>(particletype, ierr)
+  
+   <font color="#AAAAAA">! task 0 initializes the particle array and then sends it to each task</font>
+   if (rank .eq. 0) then
+      do i=0, NELEM-1
+      particles(i) = Particle ( 1.0*i, -1.0*i, 1.0*i, 0.25, i, mod(i,2) )
+      end do
+
+      do i=0, numtasks-1
+      call <font color="#DF4442">MPI_SEND</font>(particles, NELEM, particletype, i, tag, &amp;
+                    MPI_COMM_WORLD, ierr)
+      end do
+   endif
+
+   <font color="#AAAAAA">! all tasks receive particletype data</font>
+   source = 0
+   call <font color="#DF4442">MPI_RECV</font>(p, NELEM, particletype, source, tag, &amp;
+                 MPI_COMM_WORLD, stat, ierr)
+
+   print *, 'rank= ',rank,' p(3)= ',p(3)
+
+   <font color="#AAAAAA">! free datatype when done using it</font>
+   call <font color="#DF4442">MPI_TYPE_FREE</font>(particletype, ierr)
+   call <font color="#DF4442">MPI_FINALIZE</font>(ierr)
+   end
+
+</pre></td>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+ Sample program output: 
+
+ <pre>rank= 0   3.00 -3.00 3.00 0.25 3 1
+rank= 2   3.00 -3.00 3.00 0.25 3 1
+rank= 1   3.00 -3.00 3.00 0.25 3 1
+rank= 3   3.00 -3.00 3.00 0.25 3 1
+</pre>
+
+## 组和通信子管理例程
+
