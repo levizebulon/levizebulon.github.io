@@ -6,33 +6,19 @@
   <meta name="keywords" content=" HPC ">
   <meta name="description" content="MPITutorials | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
+<meta name="description" content="概述在较高的级别上，每个Spark应用程序由一个驱动程序组成，该驱动程序运行用户的主要功能，并在集群上执行各种并行操作。Spark提供的主要抽象是一个弹性分布式数据集(RDD)，它是一个跨集群节点分区的元素集合，可以并行操作。RDDs的创建是从Hadoop文件系统(或任何其他Hadoop支持的文件系统)中的一个文件开始的，或者是从驱动程序中已有的Scala集合开始的，然后对其进行转换。用户也可以要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MPITutorials">
-<meta property="og:url" content="https://levizebulon.github.io/2020/05/26/MPITutorials/index.html">
+<meta property="og:title" content="RDD编程指南">
+<meta property="og:url" content="https://levizebulon.github.io/2020/05/28/RDD%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="Linuzb&#39;s blog">
-<meta property="og:description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
+<meta property="og:description" content="概述在较高的级别上，每个Spark应用程序由一个驱动程序组成，该驱动程序运行用户的主要功能，并在集群上执行各种并行操作。Spark提供的主要抽象是一个弹性分布式数据集(RDD)，它是一个跨集群节点分区的元素集合，可以并行操作。RDDs的创建是从Hadoop文件系统(或任何其他Hadoop支持的文件系统)中的一个文件开始的，或者是从驱动程序中已有的Scala集合开始的，然后对其进行转换。用户也可以要">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/comm_world.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="article:published_time" content="2020-05-26T09:42:38.000Z">
-<meta property="article:modified_time" content="2020-06-08T03:28:52.435Z">
+<meta property="article:published_time" content="2020-05-28T03:15:51.000Z">
+<meta property="article:modified_time" content="2020-05-28T08:32:35.322Z">
 <meta property="article:author" content="Linuzb">
-<meta property="article:tag" content="HPC">
+<meta property="article:tag" content="distribute system">
+<meta property="article:tag" content="programming">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -527,7 +513,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-06-08 11:28:52'>2020-05-26 17:42</time>
+        创建时间:<time class="date" title='更新时间: 2020-06-08 15:45:33'>2020-05-26 17:42</time>
         
     </div>
     <div class="article-meta">
@@ -549,7 +535,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是MPI"><span class="toc-text">什么是MPI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一种接口规范"><span class="toc-text">一种接口规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程模型"><span class="toc-text">编程模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档"><span class="toc-text">文档</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLNL-MPI-Implementations-and-Compilers"><span class="toc-text">LLNL MPI Implementations and Compilers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始学习"><span class="toc-text">开始学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一般的MPI编程结构"><span class="toc-text">一般的MPI编程结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#头文件"><span class="toc-text">头文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Communicators-and-Groups"><span class="toc-text">Communicators and Groups:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rank"><span class="toc-text">Rank:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Error-Handling"><span class="toc-text">Error Handling:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境管理程序"><span class="toc-text">环境管理程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Init"><span class="toc-text">MPI_Init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Comm-size"><span class="toc-text">MPI_Comm_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Comm-rank"><span class="toc-text">MPI_Comm_rank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Abort"><span class="toc-text">MPI_Abort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Get-processor-name"><span class="toc-text">MPI_Get_processor_name</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Get-version"><span class="toc-text">MPI_Get_version</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Initialized"><span class="toc-text">MPI_Initialized</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Wtime"><span class="toc-text">MPI_Wtime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Wtick"><span class="toc-text">MPI_Wtick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Finalize"><span class="toc-text">MPI_Finalize</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples-Environment-Management-Routines"><span class="toc-text">Examples: Environment Management Routines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MPI-Exercise-1"><span class="toc-text">MPI Exercise 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#点对点通讯程序"><span class="toc-text">点对点通讯程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一般概念"><span class="toc-text">一般概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#First-a-Simple-Example"><span class="toc-text">First, a Simple Example:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#点对点操作的类型"><span class="toc-text">点对点操作的类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Buffering"><span class="toc-text">Buffering:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#阻塞和非阻塞"><span class="toc-text">阻塞和非阻塞:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#顺序和公平"><span class="toc-text">顺序和公平</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI消息传递例程参数"><span class="toc-text">MPI消息传递例程参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Buffer"><span class="toc-text">Buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Count"><span class="toc-text">Data Count</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Type"><span class="toc-text">Data Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Destination"><span class="toc-text">Destination</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Source"><span class="toc-text">Source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tag"><span class="toc-text">Tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Communicator"><span class="toc-text">Communicator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Status"><span class="toc-text">Status</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Request"><span class="toc-text">Request</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blocking-Message-Passing-Routines"><span class="toc-text">Blocking Message Passing Routines</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Send"><span class="toc-text">MPI_Send</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Recv"><span class="toc-text">MPI_Recv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Ssend"><span class="toc-text">MPI_Ssend </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Sendrecv"><span class="toc-text">MPI_Sendrecv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Wait"><span class="toc-text">MPI_Wait</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Waitany"><span class="toc-text">MPI_Waitany</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Waitall"><span class="toc-text">MPI_Waitall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Waitsome"><span class="toc-text">MPI_Waitsome</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Probe"><span class="toc-text">MPI_Probe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Get-count"><span class="toc-text">MPI_Get_count </span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples-Blocking-Message-Passing-Routines"><span class="toc-text">Examples: Blocking Message Passing Routines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非阻塞消息传递例程"><span class="toc-text">非阻塞消息传递例程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Isend"><span class="toc-text">MPI_Isend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Irecv"><span class="toc-text">MPI_Irecv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Issend"><span class="toc-text">MPI_Issend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Test"><span class="toc-text">MPI_Test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Testany"><span class="toc-text">MPI_Testany</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Testall"><span class="toc-text">MPI_Testall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Testsome"><span class="toc-text">MPI_Testsome</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Iprobe"><span class="toc-text">MPI_Iprobe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-非阻塞消息传递例程"><span class="toc-text">示例:非阻塞消息传递例程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集体通信例程"><span class="toc-text">集体通信例程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集体作业的类型"><span class="toc-text">集体作业的类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Scope"><span class="toc-text">Scope:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编程注意事项和限制"><span class="toc-text">编程注意事项和限制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集合通信例程"><span class="toc-text">集合通信例程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Barrier"><span class="toc-text">MPI_Barrier</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Bcast"><span class="toc-text">MPI_Bcast</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Scatter"><span class="toc-text">MPI_Scatter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Gather"><span class="toc-text">MPI_Gather</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Allgather"><span class="toc-text">MPI_Allgather</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Reduce"><span class="toc-text"> MPI_Reduce </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Allreduce"><span class="toc-text"> MPI_Allreduce </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Reduce-scatter"><span class="toc-text"> MPI_Reduce_scatter </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Alltoall"><span class="toc-text"> MPI_Alltoall </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Scan"><span class="toc-text"> MPI_Scan </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-集体通信"><span class="toc-text">例子:集体通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#派生数据类型"><span class="toc-text">派生数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#派生数据类型例程"><span class="toc-text">派生数据类型例程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-contiguous"><span class="toc-text"> MPI_Type_contiguous</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-vector"><span class="toc-text">MPI_Type_vector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-hvector"><span class="toc-text">MPI_Type_hvector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-indexed"><span class="toc-text">MPI_Type_indexed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-hindexed"><span class="toc-text"> MPI_Type_hindexed </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-struct"><span class="toc-text">MPI_Type_struct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-extent"><span class="toc-text">MPI_Type_extent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-commit"><span class="toc-text">MPI_Type_commit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-free"><span class="toc-text">MPI_Type_free</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-连续派生数据类型"><span class="toc-text">示例:连续派生数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-向量派生的数据类型"><span class="toc-text">示例:向量派生的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-索引派生数据类型"><span class="toc-text">示例:索引派生数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-结构派生的数据类型"><span class="toc-text">示例:结构派生的数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组和通信子管理例程"><span class="toc-text">组和通信子管理例程</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是MPI"><span class="toc-text">什么是MPI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一种接口规范"><span class="toc-text">一种接口规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程模型"><span class="toc-text">编程模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文档"><span class="toc-text">文档</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LLNL-MPI-Implementations-and-Compilers"><span class="toc-text">LLNL MPI Implementations and Compilers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始学习"><span class="toc-text">开始学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一般的MPI编程结构"><span class="toc-text">一般的MPI编程结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#头文件"><span class="toc-text">头文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Communicators-and-Groups"><span class="toc-text">Communicators and Groups:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rank"><span class="toc-text">Rank:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Error-Handling"><span class="toc-text">Error Handling:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境管理程序"><span class="toc-text">环境管理程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Init"><span class="toc-text">MPI_Init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Comm-size"><span class="toc-text">MPI_Comm_size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Comm-rank"><span class="toc-text">MPI_Comm_rank</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Abort"><span class="toc-text">MPI_Abort</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Get-processor-name"><span class="toc-text">MPI_Get_processor_name</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Get-version"><span class="toc-text">MPI_Get_version</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Initialized"><span class="toc-text">MPI_Initialized</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Wtime"><span class="toc-text">MPI_Wtime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Wtick"><span class="toc-text">MPI_Wtick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Finalize"><span class="toc-text">MPI_Finalize</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples-Environment-Management-Routines"><span class="toc-text">Examples: Environment Management Routines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MPI-Exercise-1"><span class="toc-text">MPI Exercise 1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#点对点通讯程序"><span class="toc-text">点对点通讯程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一般概念"><span class="toc-text">一般概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#First-a-Simple-Example"><span class="toc-text">First, a Simple Example:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#点对点操作的类型"><span class="toc-text">点对点操作的类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Buffering"><span class="toc-text">Buffering:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#阻塞和非阻塞"><span class="toc-text">阻塞和非阻塞:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#顺序和公平"><span class="toc-text">顺序和公平</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI消息传递例程参数"><span class="toc-text">MPI消息传递例程参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Buffer"><span class="toc-text">Buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Count"><span class="toc-text">Data Count</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-Type"><span class="toc-text">Data Type</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Destination"><span class="toc-text">Destination</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Source"><span class="toc-text">Source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tag"><span class="toc-text">Tag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Communicator"><span class="toc-text">Communicator</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Status"><span class="toc-text">Status</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Request"><span class="toc-text">Request</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blocking-Message-Passing-Routines"><span class="toc-text">Blocking Message Passing Routines</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Send"><span class="toc-text">MPI_Send</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Recv"><span class="toc-text">MPI_Recv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Ssend"><span class="toc-text">MPI_Ssend </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Sendrecv"><span class="toc-text">MPI_Sendrecv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Wait"><span class="toc-text">MPI_Wait</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Waitany"><span class="toc-text">MPI_Waitany</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Waitall"><span class="toc-text">MPI_Waitall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Waitsome"><span class="toc-text">MPI_Waitsome</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Probe"><span class="toc-text">MPI_Probe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Get-count"><span class="toc-text">MPI_Get_count </span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples-Blocking-Message-Passing-Routines"><span class="toc-text">Examples: Blocking Message Passing Routines</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非阻塞消息传递例程"><span class="toc-text">非阻塞消息传递例程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Isend"><span class="toc-text">MPI_Isend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Irecv"><span class="toc-text">MPI_Irecv</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Issend"><span class="toc-text">MPI_Issend</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Test"><span class="toc-text">MPI_Test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Testany"><span class="toc-text">MPI_Testany</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Testall"><span class="toc-text">MPI_Testall</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Testsome"><span class="toc-text">MPI_Testsome</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-Iprobe"><span class="toc-text">MPI_Iprobe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-非阻塞消息传递例程"><span class="toc-text">示例:非阻塞消息传递例程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集体通信例程"><span class="toc-text">集体通信例程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集体作业的类型"><span class="toc-text">集体作业的类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Scope"><span class="toc-text">Scope:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编程注意事项和限制"><span class="toc-text">编程注意事项和限制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集合通信例程"><span class="toc-text">集合通信例程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Barrier"><span class="toc-text">MPI_Barrier</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Bcast"><span class="toc-text">MPI_Bcast</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Scatter"><span class="toc-text">MPI_Scatter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Gather"><span class="toc-text">MPI_Gather</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Allgather"><span class="toc-text">MPI_Allgather</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Reduce"><span class="toc-text"> MPI_Reduce </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Allreduce"><span class="toc-text"> MPI_Allreduce </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Reduce-scatter"><span class="toc-text"> MPI_Reduce_scatter </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Alltoall"><span class="toc-text"> MPI_Alltoall </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Scan"><span class="toc-text"> MPI_Scan </span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子-集体通信"><span class="toc-text">例子:集体通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#派生数据类型"><span class="toc-text">派生数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#派生数据类型例程"><span class="toc-text">派生数据类型例程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-contiguous"><span class="toc-text"> MPI_Type_contiguous</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-vector"><span class="toc-text">MPI_Type_vector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-hvector"><span class="toc-text">MPI_Type_hvector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-indexed"><span class="toc-text">MPI_Type_indexed</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-hindexed"><span class="toc-text"> MPI_Type_hindexed </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-struct"><span class="toc-text">MPI_Type_struct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-extent"><span class="toc-text">MPI_Type_extent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-commit"><span class="toc-text">MPI_Type_commit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MPI-Type-free"><span class="toc-text">MPI_Type_free</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-连续派生数据类型"><span class="toc-text">示例:连续派生数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-向量派生的数据类型"><span class="toc-text">示例:向量派生的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-索引派生数据类型"><span class="toc-text">示例:索引派生数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例-结构派生的数据类型"><span class="toc-text">示例:结构派生的数据类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组和通信子管理例程"><span class="toc-text">组和通信子管理例程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Groups-vs-Communicators"><span class="toc-text">Groups vs. Communicators:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组和通信器对象的主要用途"><span class="toc-text">组和通信器对象的主要用途</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编程注意事项和限制-1"><span class="toc-text">编程注意事项和限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Group-and-Communicator-Management-Routines"><span class="toc-text">Group and Communicator Management Routines</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟拓扑-Virtual-Topologies"><span class="toc-text">虚拟拓扑(Virtual Topologies)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-Are-They"><span class="toc-text">What Are They?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Why-Use-Them"><span class="toc-text">Why Use Them?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟拓扑的例程"><span class="toc-text">虚拟拓扑的例程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简要介绍一下MPI-2和MPI-3"><span class="toc-text">简要介绍一下MPI-2和MPI-3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-2"><span class="toc-text">MPI-2:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MPI-3"><span class="toc-text">MPI-3:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#More-Information-on-MPI-2-and-MPI-3"><span class="toc-text">More Information on MPI-2 and MPI-3:</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1440,7 +1426,7 @@ MPI_PACKED
     MPI_TYPE_CONTIGUOUS (count,oldtype,newtype,ierr)
 </b></tt></nobr></td></tr><tr></tr></tbody></table>
 
-<h4 id="MPI-Type-vector"><a href="#MPI-Type-vector" class="headerlink" title="MPI_Type_vector"></a><a href="https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_vector.txt" target="_blank" rel="noopener">MPI_Type_vector</a></h4><h4 id="MPI-Type-hvector"><a href="#MPI-Type-hvector" class="headerlink" title="MPI_Type_hvector"></a><a href="https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_hvector.txt" target="_blank" rel="noopener">MPI_Type_hvector</a></h4><p>类似于连续，但允许在位移中有规则的间隙(stride)。MPI类型hvector与MPI类型vector相同，不同的是跨步是以字节为单位指定的。</p>
+<h4 id="MPI-Type-vector"><a href="#MPI-Type-vector" class="headerlink" title="MPI_Type_vector"></a><a href="https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_vector.txt" target="_blank" rel="noopener">MPI_Type_vector</a></h4><h4 id="MPI-Type-hvector"><a href="#MPI-Type-hvector" class="headerlink" title="MPI_Type_hvector"></a><a href="https://computing.llnl.gov/tutorials/mpi/man/MPI_Type_hvector.txt" target="_blank" rel="noopener">MPI_Type_hvector</a></h4><p>类似于连续，但允许在位移中有规则的间隙(stride)。MPI_Type_hvector与MPI_Type_vector相同，不同的是跨步是以字节为单位指定的。</p>
 <table width="75%" cellspacing="0" cellpadding="5" border="1">
 <tbody><tr valign="top"><td><nobr><tt><b> 
     MPI_Type_vector (count,blocklength,stride,oldtype,&amp;newtype)<br> 
@@ -1784,7 +1770,273 @@ rank= 1   3.00 -3.00 3.00 0.25 3 1
 rank= 3   3.00 -3.00 3.00 0.25 3 1
 </pre>
 
-<h2 id="组和通信子管理例程"><a href="#组和通信子管理例程" class="headerlink" title="组和通信子管理例程"></a>组和通信子管理例程</h2>
+<h2 id="组和通信子管理例程"><a href="#组和通信子管理例程" class="headerlink" title="组和通信子管理例程"></a>组和通信子管理例程</h2><h3 id="Groups-vs-Communicators"><a href="#Groups-vs-Communicators" class="headerlink" title="Groups vs. Communicators:"></a>Groups vs. Communicators:</h3><ul>
+<li>组是一组有序的进程集合。组中的每个进程都与一个惟一的整数rank相关联。rank值从0到N-1，其中N是组中的进程数。在MPI中，组在系统内存中表示为一个对象。程序员只能通过一个“句柄”来访问它。组总是与通信器对象关联。</li>
+<li>通信器包含一组可以相互通信的进程。所有MPI消息必须指定一个通信器。从最简单的意义上说，通信器是一个额外的“标记”，必须包含在MPI调用中。像组一样，通信器在系统内存中表示为对象，程序员只能通过“句柄”访问它。例如，包含所有任务的通信器的句柄是MPI_COMM_WORLD。</li>
+<li>从程序员的角度来看，一个组和一个通信者是一体的。组例程主要用于指定应该使用哪些进程来构造通信器。</li>
+</ul>
+<h3 id="组和通信器对象的主要用途"><a href="#组和通信器对象的主要用途" class="headerlink" title="组和通信器对象的主要用途"></a>组和通信器对象的主要用途</h3><ol>
+<li>允许您根据功能将任务组织为任务组。</li>
+<li>启用跨相关任务子集的集体通信操作。</li>
+<li>为实现用户定义的虚拟拓扑提供基础</li>
+<li>提供安全通讯</li>
+</ol>
+<h3 id="编程注意事项和限制-1"><a href="#编程注意事项和限制-1" class="headerlink" title="编程注意事项和限制"></a>编程注意事项和限制</h3><ul>
+<li>组/通信子是动态的——它可以在程序执行期间创建和销毁</li>
+<li>过程可以是在一个以上的组/通信子。他们在各组/通信子的rank是唯一的。</li>
+<li>MPI提供了40多个与组、通信器和虚拟拓扑相关的例程。</li>
+<li>Typical usage: <ol>
+<li>使用MPI_COMM_group从MPI_COMM_WORLD中提取全局group的句柄</li>
+<li>使用MPI_group_incl形成新组作为全局组的子集</li>
+<li>使用MPI_Comm_Create为新组创建新的通信器</li>
+<li>使用MPI_Comm_rank确定新通信器中的新rank</li>
+<li>使用任何MPI消息传递例程进行通信</li>
+<li>完成后，使用MPI_Comm_free和MPI_group_free释放新的通信和组(可选)</li>
+</ol>
+</li>
+</ul>
+<h3 id="Group-and-Communicator-Management-Routines"><a href="#Group-and-Communicator-Management-Routines" class="headerlink" title="Group and Communicator Management Routines"></a>Group and Communicator Management Routines</h3><p>为单独的集体通信交换创建两个不同的进程组。还需要创建新的通信器。</p>
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+C Language - Group and Communicator Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   #include <font color="DF4442">"mpi.h"</font>
+   #include &lt;stdio.h&gt;
+   #define NPROCS 8
+
+<p>   main(int argc, char *argv[])  {<br>   int        rank, new_rank, sendbuf, recvbuf, numtasks,<br>              ranks1[4]={0,1,2,3}, ranks2[4]={4,5,6,7};<br>   <font color="DF4442">MPI_Group  orig_group, new_group</font>;   <font color="#AAAAAA">// required variables</font><br>   <font color="DF4442">MPI_Comm   new_comm</font>;   <font color="#AAAAAA">// required variable</font></p>
+<p>   <font color="DF4442">MPI_Init</font>(&amp;argc,&amp;argv);<br>   <font color="DF4442">MPI_Comm_rank</font>(MPI_COMM_WORLD, &amp;rank);<br>   <font color="DF4442">MPI_Comm_size</font>(MPI_COMM_WORLD, &amp;numtasks);</p>
+<p>   if (numtasks != NPROCS) {<br>     printf(“Must specify MP_PROCS= %d. Terminating.\n”,NPROCS);<br>     <font color="DF4442">MPI_Finalize</font>();<br>     exit(0);<br>     }</p>
+<p>   sendbuf = rank;</p>
+<p>   <font color="#AAAAAA">// extract the original group handle</font><br>   <font color="DF4442">MPI_Comm_group</font>(MPI_COMM_WORLD, &amp;orig_group);</p>
+<p>   <font color="#AAAAAA">//  divide tasks into two distinct groups based upon rank</font><br>   if (rank &lt; NPROCS/2) {<br>     <font color="DF4442">MPI_Group_incl</font>(orig_group, NPROCS/2, ranks1, &amp;new_group);<br>     }<br>   else {<br>     <font color="DF4442">MPI_Group_incl</font>(orig_group, NPROCS/2, ranks2, &amp;new_group);<br>     }</p>
+<p>   <font color="#AAAAAA">// create new new communicator and then perform collective communications</font><br>   <font color="DF4442">MPI_Comm_create</font>(MPI_COMM_WORLD, new_group, &amp;new_comm);<br>   <font color="DF4442">MPI_Allreduce</font>(&amp;sendbuf, &amp;recvbuf, 1, MPI_INT, MPI_SUM, new_comm);</p>
+<p>   <font color="#AAAAAA">// get rank in new group</font><br>   <font color="DF4442">MPI_Group_rank</font> (new_group, &amp;new_rank);<br>   printf(“rank= %d newrank= %d recvbuf= %d\n”,rank,new_rank,recvbuf);</p>
+<p>   <font color="DF4442">MPI_Finalize</font>();<br>   }</p>
+<p></pre></td></p>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+Fortran - Group and Communicator Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   program group
+   include <font color="DF4442">'mpif.h'</font>
+
+<p>   integer NPROCS<br>   parameter(NPROCS=8)<br>   integer rank, new_rank, sendbuf, recvbuf, numtasks<br>   integer ranks1(4), ranks2(4), ierr<br>   integer <font color="DF4442">orig_group, new_group, new_comm</font>   <font color="#AAAAAA">! required variables</font><br>   data ranks1 /0, 1, 2, 3/, ranks2 /4, 5, 6, 7/</p>
+<p>   call <font color="DF4442">MPI_INIT</font>(ierr)<br>   call <font color="DF4442">MPI_COMM_RANK</font>(MPI_COMM_WORLD, rank, ierr)<br>   call <font color="DF4442">MPI_COMM_SIZE</font>(MPI_COMM_WORLD, numtasks, ierr)</p>
+<p>   if (numtasks .ne. NPROCS) then<br>     print *, ‘Must specify NPROCS= ‘,NPROCS,’ Terminating.’<br>     call <font color="DF4442">MPI_FINALIZE</font>(ierr)<br>     stop<br>   endif</p>
+<p>   sendbuf = rank</p>
+<p>   <font color="#AAAAAA">! extract the original group handle</font><br>   call <font color="DF4442">MPI_COMM_GROUP</font>(MPI_COMM_WORLD, orig_group, ierr)</p>
+<p>   <font color="#AAAAAA">! divide tasks into two distinct groups based upon rank</font><br>   if (rank .lt. NPROCS/2) then<br>      call <font color="DF4442">MPI_GROUP_INCL</font>(orig_group, NPROCS/2, ranks1, new_group, ierr)<br>   else<br>      call <font color="DF4442">MPI_GROUP_INCL</font>(orig_group, NPROCS/2, ranks2, new_group, ierr)<br>   endif</p>
+<p>   <font color="#AAAAAA">! create new new communicator and then perform collective communications</font><br>   call <font color="DF4442">MPI_COMM_CREATE</font>(MPI_COMM_WORLD, new_group, new_comm, ierr)<br>   call <font color="DF4442">MPI_ALLREDUCE</font>(sendbuf, recvbuf, 1, MPI_INTEGER, MPI_SUM, new_comm, ierr)</p>
+<p>   <font color="#AAAAAA">! get rank in new group</font><br>   call <font color="DF4442">MPI_GROUP_RANK</font>(new_group, new_rank, ierr)<br>   print *, ‘rank= ‘,rank,’ newrank= ‘,new_rank,’ recvbuf= ‘, recvbuf</p>
+<p>   call <font color="DF4442">MPI_FINALIZE</font>(ierr)<br>   end</p>
+<p></pre></td></p>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+<p> Sample program output: </p>
+ <pre>rank= 7 newrank= 3 recvbuf= 22
+rank= 0 newrank= 0 recvbuf= 6
+rank= 1 newrank= 1 recvbuf= 6
+rank= 2 newrank= 2 recvbuf= 6
+rank= 6 newrank= 2 recvbuf= 22
+rank= 3 newrank= 3 recvbuf= 6
+rank= 4 newrank= 0 recvbuf= 22
+rank= 5 newrank= 1 recvbuf= 22
+</pre>
+
+<h2 id="虚拟拓扑-Virtual-Topologies"><a href="#虚拟拓扑-Virtual-Topologies" class="headerlink" title="虚拟拓扑(Virtual Topologies)"></a>虚拟拓扑(Virtual Topologies)</h2><h3 id="What-Are-They"><a href="#What-Are-They" class="headerlink" title="What Are They?"></a>What Are They?</h3><ul>
+<li>In terms of MPI, a virtual topology describes a mapping/ordering of MPI processes into a geometric “shape”. </li>
+<li>MPI支持的两种主要拓扑类型是笛卡尔(网格)和图。</li>
+<li>MPI拓扑是虚拟的——并行机的物理结构和进程拓扑之间可能没有关系。</li>
+<li>虚拟拓扑构建在MPI通信器和组之上。</li>
+<li>必须由应用程序开发人员“编程”。</li>
+</ul>
+<h3 id="Why-Use-Them"><a href="#Why-Use-Them" class="headerlink" title="Why Use Them?"></a>Why Use Them?</h3><ul>
+<li>Convenience <ul>
+<li>虚拟拓扑可能对具有特定通信模式(与MPI拓扑结构匹配的模式)的应用程序有用。</li>
+<li>例如，对于需要对基于网格的数据进行4路最近邻通信的应用程序，笛卡尔拓扑可能很方便。</li>
+</ul>
+</li>
+<li>Communication Efficiency <ul>
+<li>一些硬件架构可能会对相继相隔很远的“节点”之间的通信进行惩罚。</li>
+<li>特定的实现可以根据给定并行机的物理特性来优化进程映射。</li>
+<li>进程到MPI虚拟拓扑的映射依赖于MPI实现，可能完全被忽略。</li>
+</ul>
+</li>
+</ul>
+<h3 id="虚拟拓扑的例程"><a href="#虚拟拓扑的例程" class="headerlink" title="虚拟拓扑的例程"></a>虚拟拓扑的例程</h3><p> Create a 4 x 4 Cartesian topology from 16 processors and have each process exchange its rank with four neighbors. </p>
+ <table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+C Language - Cartesian Virtual Topology Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   #include <font color="#DF4442">"mpi.h"</font>
+   #include &lt;stdio.h&gt;
+   #define SIZE 16
+   #define UP    0
+   #define DOWN  1
+   #define LEFT  2
+   #define RIGHT 3
+
+<p>   main(int argc, char *argv[])  {<br>   int numtasks, rank, source, dest, outbuf, i, tag=1,<br>      inbuf[4]={MPI_PROC_NULL,MPI_PROC_NULL,MPI_PROC_NULL,MPI_PROC_NULL,},<br>      nbrs[4], dims[2]={4,4},<br>      periods[2]={0,0}, reorder=0, coords[2];</p>
+<p>   <font color="#DF4442">MPI_Request reqs[8]</font>;<br>   <font color="#DF4442">MPI_Status stats[8]</font>;<br>   <font color="#DF4442">MPI_Comm cartcomm</font>;   <font color="#AAAAAA">// required variable</font></p>
+<p>   <font color="#DF4442">MPI_Init</font>(&amp;argc,&amp;argv);<br>   <font color="#DF4442">MPI_Comm_size</font>(MPI_COMM_WORLD, &amp;numtasks);</p>
+<p>   if (numtasks == SIZE) {<br>      <font color="#AAAAAA">// create cartesian virtual topology, get rank, coordinates, neighbor ranks</font><br>      <font color="#DF4442">MPI_Cart_create</font>(MPI_COMM_WORLD, 2, dims, periods, reorder, &amp;cartcomm);<br>      <font color="#DF4442">MPI_Comm_rank</font>(cartcomm, &amp;rank);<br>      <font color="#DF4442">MPI_Cart_coords</font>(cartcomm, rank, 2, coords);<br>      <font color="#DF4442">MPI_Cart_shift</font>(cartcomm, 0, 1, &amp;nbrs[UP], &amp;nbrs[DOWN]);<br>      <font color="#DF4442">MPI_Cart_shift</font>(cartcomm, 1, 1, &amp;nbrs[LEFT], &amp;nbrs[RIGHT]);</p>
+<pre><code>printf(&quot;rank= %d coords= %d %d  neighbors(u,d,l,r)= %d %d %d %d\n&quot;,
+       rank,coords[0],coords[1],nbrs[UP],nbrs[DOWN],nbrs[LEFT],
+       nbrs[RIGHT]);
+
+outbuf = rank;
+
+&lt;font color=&quot;#AAAAAA&quot;&gt;// exchange data (rank) with 4 neighbors&lt;/font&gt;
+for (i=0; i&amp;lt;4; i++) {
+   dest = nbrs[i];
+   source = nbrs[i];
+   &lt;font color=&quot;#DF4442&quot;&gt;MPI_Isend&lt;/font&gt;(&amp;amp;outbuf, 1, MPI_INT, dest, tag, 
+             MPI_COMM_WORLD, &amp;amp;reqs[i]);
+   &lt;font color=&quot;#DF4442&quot;&gt;MPI_Irecv&lt;/font&gt;(&amp;amp;inbuf[i], 1, MPI_INT, source, tag, 
+             MPI_COMM_WORLD, &amp;amp;reqs[i+4]);
+   }
+
+&lt;font color=&quot;#DF4442&quot;&gt;MPI_Waitall&lt;/font&gt;(8, reqs, stats);
+
+printf(&quot;rank= %d                  inbuf(u,d,l,r)= %d %d %d %d\n&quot;,
+       rank,inbuf[UP],inbuf[DOWN],inbuf[LEFT],inbuf[RIGHT]);  }</code></pre><p>   else<br>      printf(“Must specify %d processors. Terminating.\n”,SIZE);</p>
+<p>   <font color="#DF4442">MPI_Finalize</font>();<br>   }</p>
+<p></pre></td></p>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+<table width="90%" cellspacing="0" cellpadding="15" border="1"><tbody><tr><td> <!---outer table--->
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td colspan="2" width="30" bgcolor="FOF5FE" align="center"><img src="../images/page01.gif"></td>
+<td bgcolor="FOF5FE"><b><br>&nbsp;&nbsp;&nbsp;&nbsp;
+Fortran - Cartesian Virtual Topology Example
+</b><p></p></td>
+
+</tr><tr valign="top"><td colspan="3"><p></p></td>
+
+</tr><tr valign="top">
+<td width="30"><pre><font color="#AAAAAA"> 1<br> 2<br> 3<br> 4<br> 5<br> 6<br> 7<br> 8<br> 9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br>49<br>50<br>51<br>52<br>53<br>54<br>55<br>56<br>57<br>58</font></pre></td>
+
+<td width="1" bgcolor="#7099cc"></td>
+
+<td><pre>   program cartesian
+   include <font color="#DF4442">'mpif.h'</font>
+
+<p>   integer SIZE, UP, DOWN, LEFT, RIGHT<br>   parameter(SIZE=16)<br>   parameter(UP=1)<br>   parameter(DOWN=2)<br>   parameter(LEFT=3)<br>   parameter(RIGHT=4)<br>   integer numtasks, rank, source, dest, outbuf, i, tag, ierr, &amp;<br>           inbuf(4), nbrs(4), dims(2), coords(2), periods(2), reorder<br>   integer <font color="#DF4442">stats(MPI_STATUS_SIZE, 8), reqs(8)</font><br>   integer <font color="#DF4442">cartcomm</font>   <font color="#AAAAAA">! required variable</font><br>   data inbuf /MPI_PROC_NULL,MPI_PROC_NULL,MPI_PROC_NULL,MPI_PROC_NULL/, &amp;<br>        dims /4,4/, tag /1/, periods /0,0/, reorder /0/ </p>
+<p>   call <font color="#DF4442">MPI_INIT</font>(ierr)<br>   call <font color="#DF4442">MPI_COMM_SIZE</font>(MPI_COMM_WORLD, numtasks, ierr)</p>
+<p>   if (numtasks .eq. SIZE) then<br>      <font color="#AAAAAA">! create cartesian virtual topology, get rank, coordinates, neighbor ranks</font><br>      call <font color="#DF4442">MPI_CART_CREATE</font>(MPI_COMM_WORLD, 2, dims, periods, reorder, &amp;<br>                           cartcomm, ierr)<br>      call <font color="#DF4442">MPI_COMM_RANK</font>(cartcomm, rank, ierr)<br>      call <font color="#DF4442">MPI_CART_COORDS</font>(cartcomm, rank, 2, coords, ierr)<br>      call <font color="#DF4442">MPI_CART_SHIFT</font>(cartcomm, 0, 1, nbrs(UP), nbrs(DOWN), ierr)<br>      call <font color="#DF4442">MPI_CART_SHIFT</font>(cartcomm, 1, 1, nbrs(LEFT), nbrs(RIGHT), ierr)</p>
+<pre><code>write(*,20) rank,coords(1),coords(2),nbrs(UP),nbrs(DOWN), &amp;amp;
+            nbrs(LEFT),nbrs(RIGHT)
+
+&lt;font color=&quot;#AAAAAA&quot;&gt;! exchange data (rank) with 4 neighbors&lt;/font&gt;
+outbuf = rank
+do i=1,4
+   dest = nbrs(i)
+   source = nbrs(i)
+   call &lt;font color=&quot;#DF4442&quot;&gt;MPI_ISEND&lt;/font&gt;(outbuf, 1, MPI_INTEGER, dest, tag, &amp;amp;
+                 MPI_COMM_WORLD, reqs(i), ierr)
+   call &lt;font color=&quot;#DF4442&quot;&gt;MPI_IRECV&lt;/font&gt;(inbuf(i), 1, MPI_INTEGER, source, tag, &amp;amp;
+                 MPI_COMM_WORLD, reqs(i+4), ierr)
+enddo
+
+call &lt;font color=&quot;#DF4442&quot;&gt;MPI_WAITALL&lt;/font&gt;(8, reqs, stats, ierr)
+
+write(*,30) rank,inbuf</code></pre><p>   else<br>     print *, ‘Must specify’,SIZE,’ processors.  Terminating.’<br>   endif</p>
+<p>   call <font color="#DF4442">MPI_FINALIZE</font>(ierr)</p>
+<p>   20 format(‘rank= ‘,I3,’ coords= ‘,I2,I2, &amp;<br>             ‘ neighbors(u,d,l,r)= ‘,I3,I3,I3,I3 )<br>   30 format(‘rank= ‘,I3,’                 ‘, &amp;<br>             ‘ inbuf(u,d,l,r)= ‘,I3,I3,I3,I3 )</p>
+<p>   end</p>
+<p></pre></td></p>
+</tr></tbody></table>
+</td></tr></tbody></table>
+
+<p> Sample program output: (partial) </p>
+ <pre>rank=   0 coords=  0 0 neighbors(u,d,l,r)=  -1  4 -1  1
+rank=   0                  inbuf(u,d,l,r)=  -1  4 -1  1
+rank=   8 coords=  2 0 neighbors(u,d,l,r)=   4 12 -1  9
+rank=   8                  inbuf(u,d,l,r)=   4 12 -1  9
+rank=   1 coords=  0 1 neighbors(u,d,l,r)=  -1  5  0  2
+rank=   1                  inbuf(u,d,l,r)=  -1  5  0  2
+rank=  13 coords=  3 1 neighbors(u,d,l,r)=   9 -1 12 14
+rank=  13                  inbuf(u,d,l,r)=   9 -1 12 14
+...
+...
+rank=   3 coords=  0 3 neighbors(u,d,l,r)=  -1  7  2 -1
+rank=   3                  inbuf(u,d,l,r)=  -1  7  2 -1
+rank=  11 coords=  2 3 neighbors(u,d,l,r)=   7 15 10 -1
+rank=  11                  inbuf(u,d,l,r)=   7 15 10 -1
+rank=  10 coords=  2 2 neighbors(u,d,l,r)=   6 14  9 11
+rank=  10                  inbuf(u,d,l,r)=   6 14  9 11
+rank=   9 coords=  2 1 neighbors(u,d,l,r)=   5 13  8 10
+rank=   9                  inbuf(u,d,l,r)=   5 13  8 10
+</pre>
+
+<h2 id="简要介绍一下MPI-2和MPI-3"><a href="#简要介绍一下MPI-2和MPI-3" class="headerlink" title="简要介绍一下MPI-2和MPI-3"></a>简要介绍一下MPI-2和MPI-3</h2><h3 id="MPI-2"><a href="#MPI-2" class="headerlink" title="MPI-2:"></a>MPI-2:</h3><ul>
+<li>有意地，MPI-1规范没有解决几个“困难的”问题。出于权宜之计，这些问题在1998年被推迟到第二个规范，称为MPI-2。</li>
+<li>MPI-2是对MPI-1的重大修订，增加了新的功能和修正。</li>
+<li>MPI-2新功能的关键领域<ul>
+<li><strong>动态进程</strong>——删除MPI静态进程模型的扩展。提供在作业启动后创建新进程的例程。</li>
+<li><strong>One-Sided Communications</strong> - provides routines for one directional communications. Include shared memory operations (put/get) and remote accumulate operations. </li>
+<li><strong>扩展的集合操作</strong>-允许应用集合操作的内部通信</li>
+<li><strong>外部接口</strong>——定义允许开发人员在MPI之上构建的例程，比如调试器和分析器。</li>
+<li><strong>其他语言绑定</strong>——描述c++绑定并讨论Fortran-90问题。</li>
+<li><strong>Parallel I/O</strong> - describes MPI support for parallel I/O. </li>
+</ul>
+</li>
+</ul>
+<h3 id="MPI-3"><a href="#MPI-3" class="headerlink" title="MPI-3:"></a>MPI-3:</h3><ul>
+<li>MPI-3标准于2012年采用，包含了对MPI-1和MPI-2功能的重要扩展，包括<ul>
+<li><strong>非阻塞的集合操作</strong>——允许集合中的任务在没有阻塞的情况下执行操作，可能提供性能改进。</li>
+<li><strong>新的单边通信操作</strong>-更好地处理不同的内存模型。</li>
+<li><strong>邻域集合</strong>——扩展了分布式图和笛卡尔进程拓扑，增加了通信能力。</li>
+<li><strong>Fortran</strong> 2008 Bindings - expanded from Fortran90 bindings </li>
+<li><strong>MPIT Tool Interface</strong> - allows the MPI implementation to expose certain internal variables, counters, and other states to the user (most likely performance tools). </li>
+<li><strong>Matched Probe</strong> - fixes an old bug in MPI-2 where one could not probe for messages in a multi-threaded environment. </li>
+</ul>
+</li>
+</ul>
+<h3 id="More-Information-on-MPI-2-and-MPI-3"><a href="#More-Information-on-MPI-2-and-MPI-3" class="headerlink" title="More Information on MPI-2 and MPI-3:"></a>More Information on MPI-2 and MPI-3:</h3><ul>
+<li>  MPI Standard documents: <a href="http://www.mpi-forum.org/docs/" target="_blank" rel="noopener">http://www.mpi-forum.org/docs/</a> </li>
+</ul>
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
@@ -1801,7 +2053,7 @@ rank= 3   3.00 -3.00 3.00 0.25 3 1
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
     <p><span class="copy-title">发布时间:</span>2020-05-26, 17:42:38</p>
-    <p><span class="copy-title">最后更新:</span>2020-06-08, 11:28:52</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-08, 15:45:33</p>
     <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/05/26/MPITutorials/" title="MPITutorials">https://levizebulon.github.io/2020/05/26/MPITutorials/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
