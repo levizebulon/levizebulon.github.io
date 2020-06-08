@@ -6,19 +6,33 @@
   <meta name="keywords" content=" paper , distribute system ">
   <meta name="description" content="分布式系统6.824论文阅读 | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="概述在较高的级别上，每个Spark应用程序由一个驱动程序组成，该驱动程序运行用户的主要功能，并在集群上执行各种并行操作。Spark提供的主要抽象是一个弹性分布式数据集(RDD)，它是一个跨集群节点分区的元素集合，可以并行操作。RDDs的创建是从Hadoop文件系统(或任何其他Hadoop支持的文件系统)中的一个文件开始的，或者是从驱动程序中已有的Scala集合开始的，然后对其进行转换。用户也可以要">
+<meta name="description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RDD编程指南">
-<meta property="og:url" content="https://levizebulon.github.io/2020/05/28/RDD%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:title" content="MPITutorials">
+<meta property="og:url" content="https://levizebulon.github.io/2020/05/26/MPITutorials/index.html">
 <meta property="og:site_name" content="Linuzb&#39;s blog">
-<meta property="og:description" content="概述在较高的级别上，每个Spark应用程序由一个驱动程序组成，该驱动程序运行用户的主要功能，并在集群上执行各种并行操作。Spark提供的主要抽象是一个弹性分布式数据集(RDD)，它是一个跨集群节点分区的元素集合，可以并行操作。RDDs的创建是从Hadoop文件系统(或任何其他Hadoop支持的文件系统)中的一个文件开始的，或者是从驱动程序中已有的Scala集合开始的，然后对其进行转换。用户也可以要">
+<meta property="og:description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-28T03:15:51.000Z">
-<meta property="article:modified_time" content="2020-05-28T08:32:35.322Z">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/comm_world.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="article:published_time" content="2020-05-26T09:42:38.000Z">
+<meta property="article:modified_time" content="2020-06-08T03:28:52.435Z">
 <meta property="article:author" content="Linuzb">
-<meta property="article:tag" content="distribute system">
-<meta property="article:tag" content="programming">
+<meta property="article:tag" content="HPC">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
 
 
 <link rel="icon" href="/img/avatar.jpg">
