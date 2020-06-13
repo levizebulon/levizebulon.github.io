@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>meshCNN | Linuzb&#39;s blog</title>
+  <meta name="keywords" content=" Deep Learning , Computer Graphics ">
+  <meta name="description" content="meshCNN | Linuzb&#39;s blog">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MPITutorials">
+<meta property="og:url" content="https://levizebulon.github.io/2020/05/26/MPITutorials/index.html">
+<meta property="og:site_name" content="Linuzb&#39;s blog">
+<meta property="og:description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/comm_world.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
+<meta property="article:published_time" content="2020-05-26T09:42:38.000Z">
+<meta property="article:modified_time" content="2020-06-08T07:45:33.637Z">
+<meta property="article:author" content="Linuzb">
+<meta property="article:tag" content="HPC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>Linuzb</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(34)</small></div></li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="34">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode === 13){return false;}">
+        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Machine Learning</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">工具</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">阅读</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">Linux</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">paper</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Distribute System</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Web</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">software</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">Others</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color5">Algarithm</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">问题</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">论文</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">杂项</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">course</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color1">tools</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">distribute system</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">os</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">HPC</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color2">programming</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color4">Deep Learning</a>
+    </li>
+    
+    <li class="article-tag-list-item">
+        <a class="color3">Computer Graphics</a>
+    </li>
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class=""
+           href="/2020/03/28/hello-world/"
+           data-tag="杂项"
+           data-author="" >
+            <span class="post-title" title="纪念失去的博客">纪念失去的博客</span>
+            <span class="post-date" title="2020-03-28 19:08:07">2020/03/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/01/09/Anaconda/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Anaconda">Anaconda</span>
+            <span class="post-date" title="2019-01-09 09:55:46">2019/01/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/03/20/Docker%E5%AE%89%E8%A3%85tensorflow-gpu/"
+           data-tag="Machine Learning"
+           data-author="" >
+            <span class="post-title" title="Docker安装tensorflow-gpu">Docker安装tensorflow-gpu</span>
+            <span class="post-date" title="2019-03-20 16:36:12">2019/03/20</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/12/29/K2pdfopt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"
+           data-tag="工具,阅读"
+           data-author="" >
+            <span class="post-title" title="K2pdfopt简明教程">K2pdfopt简明教程</span>
+            <span class="post-date" title="2018-12-29 20:20:14">2018/12/29</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/03/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%A8%E6%8B%BC/"
+           data-tag="Linux"
+           data-author="" >
+            <span class="post-title" title="Linux常用命令全拼">Linux常用命令全拼</span>
+            <span class="post-date" title="2020-03-28 17:33:07">2020/03/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/03/28/MapReduce/"
+           data-tag="paper,Distribute System"
+           data-author="" >
+            <span class="post-title" title="MapReduce">MapReduce</span>
+            <span class="post-date" title="2020-03-28 17:37:00">2020/03/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/01/02/Ubuntu%E7%BE%8E%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ubuntu美化">Ubuntu美化</span>
+            <span class="post-date" title="2019-01-02 07:32:54">2019/01/02</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/03/28/VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2/"
+           data-tag="Web"
+           data-author="" >
+            <span class="post-title" title="VPS搭建个人Hexo博客">VPS搭建个人Hexo博客</span>
+            <span class="post-date" title="2020-03-28 17:25:22">2020/03/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/12/30/aria2%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"
+           data-tag="工具"
+           data-author="" >
+            <span class="post-title" title="aria2简明教程">aria2简明教程</span>
+            <span class="post-date" title="2018-12-30 10:44:49">2018/12/30</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/12/30/autosub%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E5%AD%97%E5%B9%95%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/"
+           data-tag="工具"
+           data-author="" >
+            <span class="post-title" title="autosub语音识别字幕生成工具">autosub语音识别字幕生成工具</span>
+            <span class="post-date" title="2018-12-30 20:41:40">2018/12/30</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/01/11/download-coursera-and-youtube/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="download_coursera_and_youtube">download_coursera_and_youtube</span>
+            <span class="post-date" title="2019-01-11 13:30:38">2019/01/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/03/01/shadowsocks%E2%80%93libev%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E9%83%A8%E7%BD%B2/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="Ubuntu shadowsocks–libev服务端的部署">Ubuntu shadowsocks–libev服务端的部署</span>
+            <span class="post-date" title="2019-03-01 09:23:47">2019/03/01</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/01/03/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85TexLive/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ubuntu下安装TexLive">ubuntu下安装TexLive</span>
+            <span class="post-date" title="2019-01-03 16:56:38">2019/01/03</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/04/21/ubuntu%E5%AE%89%E8%A3%85windows%E5%AD%97%E4%BD%93/"
+           data-tag="Others"
+           data-author="" >
+            <span class="post-title" title="ubuntu安装windows字体">ubuntu安装windows字体</span>
+            <span class="post-date" title="2019-04-21 23:16:24">2019/04/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/01/04/virtulenv/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="virtualenv">virtualenv</span>
+            <span class="post-date" title="2019-01-04 13:21:39">2019/01/04</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="使用HAProxy加速Shadowsocks">使用HAProxy加速Shadowsocks</span>
+            <span class="post-date" title="2019-03-01 09:52:51">2019/03/01</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/01/08/%E6%9F%A5%E7%9C%8BCUDA%E5%92%8Ccudnn%E7%89%88%E6%9C%AC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="查看CUDA和cudnn版本">查看CUDA和cudnn版本</span>
+            <span class="post-date" title="2019-01-08 14:01:17">2019/01/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/"
+           data-tag="Algarithm"
+           data-author="" >
+            <span class="post-title" title="考研数据结构算法题">考研数据结构算法题</span>
+            <span class="post-date" title="2018-12-25 16:30:19">2018/12/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/01/01/%E8%A7%A3%E5%86%B3ubuntu1604%E4%B8%8Bwps%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E9%97%AE%E9%A2%98/"
+           data-tag="问题"
+           data-author="" >
+            <span class="post-title" title="解决ubuntu1604下wps不能使用搜狗输入法问题">解决ubuntu1604下wps不能使用搜狗输入法问题</span>
+            <span class="post-date" title="2019-01-01 16:42:28">2019/01/01</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/12/30/%E8%AE%BA%E6%96%87%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Zotero/"
+           data-tag="论文"
+           data-author="" >
+            <span class="post-title" title="论文管理工具Zotero">论文管理工具Zotero</span>
+            <span class="post-date" title="2018-12-30 11:49:36">2018/12/30</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/03/29/Linux%E5%9B%BE%E5%83%8F%E8%A7%86%E9%A2%91%E7%BC%96%E8%BE%91/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="Linux图像视频编辑">Linux图像视频编辑</span>
+            <span class="post-date" title="2020-03-29 11:21:37">2020/03/29</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/04/03/shell/"
+           data-tag="course,tools"
+           data-author="" >
+            <span class="post-title" title="Course overview + the shell">Course overview + the shell</span>
+            <span class="post-date" title="2020-04-03 17:05:16">2020/04/03</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"
+           data-tag="paper,distribute system"
+           data-author="" >
+            <span class="post-title" title="分布式系统6.824论文阅读">分布式系统6.824论文阅读</span>
+            <span class="post-date" title="2020-04-07 21:03:52">2020/04/07</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/04/17/%E8%A7%A3%E5%86%B3archlinux%E4%B8%8Bgnome-terminal%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="解决archlinux下gnome-terminal透明问题">解决archlinux下gnome-terminal透明问题</span>
+            <span class="post-date" title="2020-04-17 09:34:37">2020/04/17</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/04/18/docker-spark-jupyternotebook/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="docker+spark+jupyternotebook">docker+spark+jupyternotebook</span>
+            <span class="post-date" title="2020-04-18 10:30:55">2020/04/18</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/04/18/Tmux%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="Tmux使用教程">Tmux使用教程</span>
+            <span class="post-date" title="2020-04-18 11:19:44">2020/04/18</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/05/06/v2ray-WS-TLS/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="v2ray+WS+TLS">v2ray+WS+TLS</span>
+            <span class="post-date" title="2020-05-06 16:41:48">2020/05/06</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/05/09/%E7%BD%91%E7%BB%9C%E6%8E%92%E6%9F%A5%E5%B7%A5%E5%85%B7/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="网络排查工具">网络排查工具</span>
+            <span class="post-date" title="2020-05-09 08:49:49">2020/05/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/05/13/Ubuntu%E5%BC%80%E5%90%AFbbr/"
+           data-tag="os"
+           data-author="" >
+            <span class="post-title" title="Ubuntu开启bbr">Ubuntu开启bbr</span>
+            <span class="post-date" title="2020-05-13 08:21:42">2020/05/13</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/05/22/archlinux-NVIDIA-Bumblebee-CUDA-cudnn/"
+           data-tag="software"
+           data-author="" >
+            <span class="post-title" title="archlinux+NVIDIA+Bumblebee+CUDA+cudnn">archlinux+NVIDIA+Bumblebee+CUDA+cudnn</span>
+            <span class="post-date" title="2020-05-22 22:04:13">2020/05/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/05/26/MPITutorials/"
+           data-tag="HPC"
+           data-author="" >
+            <span class="post-title" title="MPITutorials">MPITutorials</span>
+            <span class="post-date" title="2020-05-26 17:42:38">2020/05/26</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/05/28/SparkOverview/"
+           data-tag="software,distribute system"
+           data-author="" >
+            <span class="post-title" title="SparkOverview">SparkOverview</span>
+            <span class="post-date" title="2020-05-28 10:12:42">2020/05/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/05/28/RDD%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/"
+           data-tag="distribute system,programming"
+           data-author="" >
+            <span class="post-title" title="RDD编程指南">RDD编程指南</span>
+            <span class="post-date" title="2020-05-28 11:15:51">2020/05/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2020/06/13/meshCNN/"
+           data-tag="Deep Learning,Computer Graphics"
+           data-author="" >
+            <span class="post-title" title="meshCNN">meshCNN</span>
+            <span class="post-date" title="2020-06-13 21:06:46">2020/06/13</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-meshCNN" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">meshCNN</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+        <span class="tag">
+            
+            <a class="color4">Deep Learning</a>
+            
+            <a class="color3">Computer Graphics</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2020-06-13 21:08:57'>2020-06-13 21:06</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MeshCNN-A-Network-with-an-Edge-基于边的卷积网络"><span class="toc-text">MeshCNN: A Network with an Edge 基于边的卷积网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#摘要"><span class="toc-text">摘要</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-简介"><span class="toc-text">1 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-相关工作"><span class="toc-text">2 相关工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-概述：在网格上应用CNN"><span class="toc-text">3 概述：在网格上应用CNN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-方法"><span class="toc-text">4 方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-网格卷积"><span class="toc-text">4.1 网格卷积</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-网格池化"><span class="toc-text">4.2 网格池化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Mesh-Unpooling"><span class="toc-text">4.3 Mesh Unpooling</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-实验"><span class="toc-text">5 实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-数据处理"><span class="toc-text">5.1 数据处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-网格分类"><span class="toc-text">5.2 网格分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-网格分割"><span class="toc-text">5.3 网格分割</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-额外的评估"><span class="toc-text">5.4 额外的评估</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-DISCUSSION-AND-FUTURE-WORK"><span class="toc-text">6 DISCUSSION AND FUTURE WORK</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MeshCNN-A-Network-with-an-Edge-基于边的卷积网络"><a href="#MeshCNN-A-Network-with-an-Edge-基于边的卷积网络" class="headerlink" title="MeshCNN: A Network with an Edge 基于边的卷积网络"></a>MeshCNN: A Network with an Edge 基于边的卷积网络</h1><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>多边形网格可有效表示3D形状。它们可以精确捕获形状表面和拓扑，并利用不均匀性来表示较大的平坦区域以及尖锐，复杂的特征。但是，这种不均匀性和不规则性限制了使用结合了卷积和合并操作的神经网络进行网格分析的努力。在本文中，我们利用MeshCNN（专门为三角网格设计的卷积神经网络）直接利用网格的独特属性来分析3D形状。与经典的CNN相似，MeshCNN通过利用其固有的测地线连接，将在网格边缘上运行的特殊卷积和池化层相结合。在边缘及其入射三角形的四个边缘上应用卷积，并通过保留表面拓扑的边缘折叠操作应用合并，从而为后续的卷积生成新的网格连接。 MeshCNN了解哪些边会塌陷，从而形成任务驱动的过程，网络将在其中暴露和扩展重要功能，同时丢弃冗余功能。我们展示了任务驱动型池在应用于3D网格的各种学习任务上的有效性</p>
+<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h1><p>三维形状是计算机图形学领域的前沿和中心，也是相关领域（如计算机视觉和计算几何学）的主要商品。 我们周围的形状，尤其是描述自然实体的形状，通常由连续的表面组成。</p>
+<p>由于计算的原因，并且为了促进数据处理，已经提出了3D形状的各种离散近似，并被用来表示一系列应用中的形状。 最喜欢的一种是多边形网格表示（或简称为网格），它通过3D空间中的一组2D多边形来近似曲面[Botsch等。 2010]。 网格提供了有效，不均匀的形状表示。 一方面，只需要少量的多边形即可捕获大而简单的表面。 另一方面，表示灵活性可在需要时支持更高的分辨率，从而可以忠实地重建或描绘通常在几何上复杂的显着形状特征。 网格的另一个有利可图的特性是其固有的连通性信息。 这形成了底层表面的全面表示。</p>
+<p>与另一个流行的选择：点云表示相比，这些优势显而易见。 尽管它简单易行，并且与常见的数据采集技术（扫描）直接相关，但是当需要更高的质量和尖锐形状特征的保留时，点云表示就不够用了</p>
+<p>近年来，在图像上使用卷积神经网络（CNN）已显示出在各种任务（例如分类和语义分割）上的出色表现[2013; 2014; 2018]。 他们成功的秘诀在于卷积，非线性和池化层的组合，从而形成了一个框架，该框架对于输入的无关变化是不变的（或稳健的）[LeCun 2012; 克里热夫斯基等。 2012]。 但是，由于图像是在离散值的规则网格上表示的，因此扩展CNN以在不规则结构上工作并不容易。</p>
+<p>最初的方法通过使用常规表示来绕开CNN适应不规则数据的方法：将3D形状映射到多个2D投影[Su等。 2015]或3D体素网格[Wu等。 2015]。 虽然这些方法得益于直接使用众所周知的图像CNN运算符，但它们的间接表示需要具有浪费或冗余的CNN计算（例如，在未占用的体素上的卷积）的大量内存。</p>
+<p>更有效的方法将CNN直接应用于无规则和稀疏点云表示[Qi等。 2017a]。 尽管这些方法得益于紧凑的输入表示形式，但它们本质上是不考虑局部表面的。 此外，邻居和连通性的概念定义不清，使得卷积和池化操作的应用变得不那么重要。 这种模棱两可的结果导致了一系列针对克服这一挑战的工作[Monti等。 2017; Wang等。 2018a; Li等。 2018; Yi等。 2017]</p>
+<p>为了挖掘本地网格表示的自然潜力，我们提出了MeshCNN：类似于众所周知的CNN的神经网络，但专门为网格设计。 MeshCNN直接在不规则的三角形网格上运行，执行与独特的网格属性协调设计的卷积和合并操作。 在MeshCNN中，网格的边缘类似于图像中的像素，因为它们是应用所有操作的基本构件。 我们选择使用边，因为每个边都恰好入射到两个面（三角形）上，这定义了四个边的自然固定大小的卷积邻域（请参见图2）。 我们利用一致的人脸法线顺序应用对称卷积运算，该运算可了解旋转，缩放和平移变换不变的边缘特征。</p>
+<p>MeshCNN的关键功能是独特的池化操作，即网格池，它在不规则结构上运行并在空间上适应任务。 在CNN中，对网络中的要素数量进行下采样合并，从而学习消除信息量较少的特征。由于特征在边缘，因此下采样的直观方法是使用众所周知的网格简化技术边缘折叠[Hoppe 1997 ]。 但是，与传统的边折叠不同，后者消除了引入最小几何失真的边，网格合并将选择要折叠的边以特定于任务的方式委托给网络。 清除的边缘是其特征对使用的物镜贡献最小的边缘（请参见图1和8中的示例）</p>
+<p>为了增加灵活性并支持各种可用数据，每个池化层将网格简化为预定的恒定边数。 而且，尽管它产生任何规定的输出边沿计数，但MeshCNN并不知道输入网格的大小，并且能够处理不同的三角剖分。 如图1所示，我们表明中间计算池化步骤以及最终输出在语义上是可以解释的。 为了说明我们方法的适用性，我们在形状分类和分割任务上进行了各种实验，并在通用数据集和高度非均匀网格上向最新方法展示了更好的结果。</p>
+<p>为了增加灵活性并支持各种可用数据，每个池化层将网格简化为预定的恒定边数。 而且，尽管它产生任何规定的输出边沿计数，但MeshCNN并不知道输入网格的大小，并且能够处理不同的三角剖分。 如图1所示，我们表明中间计算池化步骤以及最终输出在语义上是可以解释的。 为了说明我们方法的适用性，我们在形状分类和分割任务上进行了各种实验，并在通用数据集和高度非均匀网格上向最新方法展示了更好的结果。</p>
+<h2 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2 相关工作"></a>2 相关工作</h2><p>我们介绍或在工作中使用的许多运算符都是基于经典的网格处理技术[Hoppe 1999; Rusinkiewicz和Levoy 2000； Botsch等。 2010; Kalogerakis等。 2010]，或更具体地说，是网格简化技术[Hoppe等。 1993年； Gar Land和Heckbert 1997； Hoppe 1997]。 特别是，我们将边缘折叠技术[Hoppe 1997]用于我们的任务驱动的合并运算符。 传统的网格简化技术旨在以最小的几何变形减少网格元素的数量[Tarini等。 2010; 高等。 2017]，在这项工作中，我们使用网格简化技术来降低神经网络环境下特征图的分辨率。 接下来，我们将根据输入表示类型重新组织有关使用神经网络进行3D数据分析的相关工作。</p>
+<p><strong>多视图2D投影</strong> 通过从各种角度通过3D形状的2D投影表示3D形状，可以充分利用2D域中的现有技术和体系结构。 这些渲染图像集用作标准CNN模型的后续处理的输入。 Su等。 [2015]是第一个将多视图CNN应用于形状分类的任务，但是这种方法（按原样）无法执行语义分割。 后来，[Kalogerakis等。 [2017]提出了一个更全面的多视图形状分割框架：为每个视图生成图像级分割图，然后使用CRF（端到端训练）解决标签一致性。 Qi等。 [2016]探索了基于视图的方法和基于体积的方法，并观察了第一种方法与当时可用方法的优越性。</p>
+<p><strong>体积</strong> 将3D形状转换为二进制体素形式可以提供类似于图像的2D网格的基于网格的表示。 这样，可以以简单的方式将应用于2D网格的操作扩展到3D网格，从而降低了基于常见图像的方法向形状域的自然转移。 Wu等。 [2015]率先提出了这一概念，并提出了一种处理体素化形状以进行分类和完成的CNN。 随后，布洛克等。 [2016]使用基于体素的变分自动编码器解决了形状重构问题，[Tchapmi等人。 [2017年]将三线性插值和条件随机场（CRF）与体积网络相结合，以促进语义形状分割。 Hanocka等。 [2018]使用体积形状表示来训练网络以回归基于网格的扭曲字段以进行形状对齐，并将估计的变形应用于原始网格。</p>
+<p>尽管它们具有诱人的简单性，但其体积表示仍需要大量计算，这需要占用大量内存。 为了缓解这种情况，已经提出了几种加速策略，其中利用空间中形状占用的稀疏性来减少表示[Li等。 2016; Riegler等。 2017; Wang等。 2017; Graham等。 2017]</p>
+<p><strong>图</strong>。图结构是允许不规则性的基于网格的表示形式的常见概括。为了支持基于图的数据分析，相当大的注意力已集中到将神经网络应用到涉及以图形式表示的数据的流行任务上，这些数据主要是社交网络，通信中的传感器网络或遗传数据。一种方法主张处理图形表示的拉普拉斯算子[Bruna等。 2014; Henaff等。 2015; Defferrard等。 2016; Kostrikov等。 2018]，因此在频谱领域内运作。另一种方法是通过提取局部连接的区域并将其转换为要由神经网络处理的规范形式来直接处理图形[Niepert等。 2016]。 Atwood等。 [2016]提出了扩散卷积，其中在每个节点上应用扩散来确定其局部邻域。 Monti等。 [2017]使用图空间域将表面参数化为局部斑块。徐等。 [2017]使用表面补丁上的定向卷积来完成语义分割任务。 Yi等。 [2017]在3D分割任务中在频谱域中使用图卷积。 Kostrikov等。 [2018]使用拉普拉斯曲面网络开发了3D形状的生成模型。这样的等。 [2017]引入了图上顶点过滤的概念，但没有合并用于特征聚合的池化操作。这些方法通常在图形的顶点上运行。</p>
+<p><strong>Manifold</strong>。 Masci等人的开拓性工作。 [2015]引入了对网格局部特征的深度学习（内部网格描述符类似于[Kokkinos et al。2012]中的描述），并展示了如何使用这些学习的特征进行对应和检索。 具体来说，他们演示了如何使卷积运算成为网格固有的。</p>
+<p>通常，流形上的局部斑块近似于欧几里得。 通过将3D歧管参数化为2D，可以使用标准CNN将此特征用于歧管形状分析[Henaff等。 2015; Boscaini等。 2016; Sinha等。 2016; Maron等。 2017; Ezuz等。 2017]。 Boscaini等。 [2015]使用顶点频率分析来学习局部固有3D形状描述符。 另一种方法是使用复曲面拓扑在形状图上定义卷积[Haim等。 2018; Maron等。 2017]。 Poulenard等。 [2018]定义了一个新的卷积层，允许在整个网络层中传播测地信息。</p>
+<p>Verma等。 [2018]提出了一种图神经网络，其中卷积运算的每个顶点的邻域不是预先定义的，而是根据其特征动态计算的。 Tatarchenko等。 [2018]引入了切线卷积，其中每个点周围的一个小邻域用于重构应用卷积的局部函数。 与以前的作品不同，他们通过在常规3D网格上进行二次采样来合并池化操作。 还提出了一些生成模型。 Litany等 等 [2018]引入了执行形状完成的自动编码器。 Ranjan等 等 [2018]演示了网格自动编码器如何生成3D面</p>
+<p>参见[Bronstein等。 [2017年]，以全面了解地理深度学习。 与以前的方法相比，我们的方法的独特之处在于我们的网络操作是专门为适应网状结构而设计的。 特别是，我们学习了一个独特的池化运算符，它可以根据目标任务选择要简化的区域。</p>
+<p>据我们所知，这是第一个提出（i）在网格边缘上进行卷积和（ii）适应于当前任务的学习型网格池化操作的第一项工作。 在[Ranjan et al。 [2018年]，已经提出了针对网格自动编码器的固定合并操作。 在图神经网络的背景下，已经提出了学习的池化操作[Ying等。 2018; Cangea等。 2018]。 但是，这些操作没有考虑到独特的三角形网格属性。</p>
+<p>利用双图卷积模型提出了一种提取边缘特征的卷积[Monti et al。 2018]扩展了图关注网络[Velickovic等。 2018]。 但是，他们工作中使用的注意力和优化机制与我们的机制大不相同。 在这项工作中，我们定义了网格的运算符，它们利用了它们的独特结构和属性。 这使我们能够定义导致不可变网络特征的对称卷积。</p>
+<p>点云。点云表示形式可以说是所有表示形式中最简单的，它为底层3D形状提供了简洁的近似。与数据采集的紧密关系以及从其他表示形式转换的便捷性，使点云成为数据分析的经典候选者。因此，最近的努力集中在开发使用神经网络进行点云形状分析的技术。 PointNet [Qi等。 [2017a]建议使用1x1卷积，然后使用全局最大池进行阶数不变性。在其后续工作中，PointNet ++ [Qi等。 2017b]，对点进行分区以更好地捕获局部结构。 Wang等。 [2018b]考虑到局部点邻域信息，并根据特征空间中的距离，通过点之间的相似度计算来驱动动态更新。尽管大多数基于点的方法都侧重于全局或中级属性，[Guerrero等。 [2018年]提出了一个网络来估计局部形状属性，例如，根据原始点云来估计法线和曲率，而[Williams等人。 [2018]从点云中学习曲面重建的几何先验。 Atzmon等人[2018]通过将点云函数映射到体积函数中，在点云上定义了一种高效的卷积算子。这使得该方法对于点的顺序不变，并且对数据中的某些变形具有鲁棒性。最近，李等人。 [2018]提出了PointCNN，它将卷积的概念从局部网格扩展到了位于其欧几里得邻域上的点的χ卷积。</p>
+<p>在这项工作中，与以前的工作不同，我们依靠网格边缘来提供非均匀的测地邻域信息，并具有一致数量的conv-neighbor。 在边缘上执行不变特征计算，同时利用网格抽取技术（例如边缘塌陷）以符合形状几何和拓扑的方式进行</p>
+<h2 id="3-概述：在网格上应用CNN"><a href="#3-概述：在网格上应用CNN" class="headerlink" title="3 概述：在网格上应用CNN"></a>3 概述：在网格上应用CNN</h2><p>计算机图形学中最基本，最常用的3D数据表示法是非均匀多边形网格；即，多边形网格。 大的平坦区域使用少量的大多边形，而详细区域使用大量的多边形。 网格明确表示表面的拓扑：忠实地描述复杂的结构，同时消除与附近表面的接近度（见图3）。</p>
+<p>实现我们的目标是将CNN范式直接应用到三角网状网格上，需要对CNN的标准构建块（卷积层和池化层）进行类似的定义和实现。 与以离散值的规则网格表示的图像相反，网格分析的主要挑战是其固有的不规则性和不均匀性。 在这项工作中，我们旨在利用这些具有挑战性的独特属性，而不是绕开它们。 因此，我们将网络设计为有意将卷积和池化操作直接应用于网格的构造，并避免转换为规则且统一的表示形式。</p>
+<p><strong>不变卷积</strong>。 在我们的设置中，假定所有形状都表示为流形网格，可能带有边界边缘。 这样的假设保证了每个边缘最多与两个面（三角形）相关，因此与两个或四个其他边缘相邻。 面的顶点按逆时针方向排序，从而为每个边的四个相邻点定义了两种可能的排序。 例如，请参见图4，其中e的1环邻居可以按（a，b，c，d）或（c，d，a，b）排序，具体取决于哪个面定义了第一个邻居。 这使卷积接受场模棱两可，阻碍了不变特征的形成</p>
+<p>我们采取了两项行动来解决这个问题，并保证我们网络中的相似性转换（旋转，平移和缩放）不变。 首先，我们精心设计一条边的输入描述符，使其仅包含相对于固有的相似变换固有的几何特征。 其次，我们将四个1环边缘聚合为两对具有很大含义的边缘（例如a和c，以及b和d），并通过在每对上应用简单的对称函数（例如，求和来生成新特征） （a，c））。 将卷积应用于新的对称特征，从而消除了任何阶歧义。</p>
+<p><strong>输入功能</strong>。 输入边缘特征是每个边缘的5维向量：每个面的二面角，两个内角和两个边缘长度比。 边缘比率在边缘的长度和每个相邻面的垂直（虚线）之间。 我们对两个基于面部的特征（内角和边长比）中的每一个进行排序，从而解决了排序的歧义并保证了不变性。 观察这些特征都是相对的，使它们不变于平移，旋转和均匀缩放</p>
+<p><strong>全局排序</strong>。 边缘的全局排序是特定形状的边缘数据（输入要素）进入网络的顺序。 由于在本地邻域内执行卷积，因此该顺序在卷积阶段没有影响。 通过扩展，完全卷积的任务（例如分段）不受其影响。 对于需要全局特征聚合的任务，例如分类，我们遵循Qi等人的建议。 [2017a]在PointNet中，并放置一个连接网络卷积部分和完全连接部分之间的全局平均池化层。 该层使初始排序变得不太频繁，从而保证了变换的不变性。</p>
+<p><strong>池化</strong>。 如图2（b）和（c）所示，网格合并是通过边缘折叠过程完成的。 在（b）中，虚线边缘折叠到一个点，然后，四个入射边缘（蓝色）合并为（c）中的两个（蓝色）边缘。 请注意，在此边折叠操作中，五个边被转换为两个边。 运算符由（最小范数）边缘特征确定优先级，从而允许网络选择要简化的网格部分以及保持完整的网格部分。 这将创建一个任务感知过程，网络将学会根据任务确定对象部件的重要性（见图1）。</p>
+<p>我们简化性质的一个显着优势是，就池化层的输出尺寸而言，它在到达最终的完全连接层之前就提供了灵活性。 合并还有助于增强初始网格三角剖分的鲁棒性。 尽管它不能为三角剖分提供等方差，但实际上，通过连续折叠边并简化网格，尽管初始镶嵌效果有所不同，但我们仍观察到了相似表示的收敛性</p>
+<h2 id="4-方法"><a href="#4-方法" class="headerlink" title="4 方法"></a>4 方法</h2><p>基于网格的（例如，图像）表示方便地在单个矩阵中提供了空间邻居（连通性）和特征。 但是，由于不规则网格不符合此格式，因此我们必须与连接分开定义要素。 我们通过在网格的标准构造中进行工作来完成此任务</p>
+<p>网格由对（V，F）定义，其中V = {v1，v2···}是$R^3$中顶点位置的集合，而F定义连通性（三角形网格的顶点三元组）。 给定（V，F），还使用边E（一组顶点对）定义网格连接。</p>
+<p>所有网格元素V，F和E都可以与各种特征（例如法线或颜色）关联。 在这项工作中，E还具有一组功能。 边缘特征从一组相似的不变几何特征开始（在图像的情况下相当于RGB值），并且随着它们在网络层中的前进而发展出更高的抽象度。</p>
+<p>在我们的设置中，网格为网络提供了两个属性：卷积邻居的连接性和初始几何输入要素。 一旦提取了输入要素，网格顶点就没有任何意义。 边缘折叠操作之后的新顶点位置对分类和分段任务没有影响，并且仅出于可视化目的对其进行计算。</p>
+<p>接下来，我们扩展并提供有关网格卷积，网格池化和网格解池操作的详细信息。</p>
+<h3 id="4-1-网格卷积"><a href="#4-1-网格卷积" class="headerlink" title="4.1 网格卷积"></a>4.1 网格卷积</h3><p>我们为边缘定义卷积算子，其中使用四个入射邻居定义空间支持（图3）。 回想卷积是核k与邻域之间的点积，因此边缘特征e及其四个相邻边的卷积为：</p>
+<p>$$e\cdot k_0 + \sum_{j=1}^{4} k_j \cdot e^j$$</p>
+<p>其中e j是e的第j个卷积邻居的特征。 请注意，如图4所示，e的四个邻居，即（e 1，e 2，e 3，e 4）是（a，b，c，d）或（c，d，a，b ），这样每个滤波器值最多可在两个可能的边上进行操作（例如，a或c上的k1）。 为了保证卷积不变性到输入数据的顺序，我们将一组简单的对称函数应用于不明确的对。 这产生了保证是不变的新的卷积邻居集。 在我们的设置中，边e的接受场为</p>
+<p>$$(e^1,e^2,e^3,e^4) = (|a-c|, a+c, |b-d|, b+d)$$</p>
+<p>这将导致卷积操作，而该操作会忽略网格元素的初始顺序，因此无论如何都会产生相同的输出。 回想一下，可以使用通用矩阵乘法（GEMM）来实现多通道张量与内核的卷积：通过将图像扩展（或展开）为列矩阵（即im2col [Jia 2014]）。 等效地，我们构建一个未包装的矩阵以有效地执行卷积运算。</p>
+<p>在实践中，我们可以通过将所有边缘特征聚合到$n_c \times n_e \times 5$个特征张量中来使用高度优化的批处理算子（例如conv2D），其中ne是边缘数，nc是特征通道数，5是 对于边缘和卷积邻居（等式2）。 使用标准GEMM将这个矩阵乘以卷积权重的矩阵。</p>
+<p>卷积操作之后，将生成一个新的批量特征张量，其中新的特征数量等于卷积内核的数量（就像在图像中一样）。 请注意，在每个合并阶段之后，新的连通性将为下一个卷积定义新的卷积邻居</p>
+<h2 id="4-2-网格池化"><a href="#4-2-网格池化" class="headerlink" title="4.2 网格池化"></a>4.2 网格池化</h2><p>通过确定三个概括了池化概念的核心操作，我们将常规池化扩展到不规则数据：</p>
+<ol>
+<li><p>定义给定邻接的池化区域</p>
+</li>
+<li><p>在每个池化区域中合并要素</p>
+</li>
+<li><p>重新定义合并功能的邻接关系</p>
+</li>
+</ol>
+<p>为了在常规数据（例如图像）上进行合并，固有地隐含了邻接关系，因此，合并区域直接由所选内核大小确定。 由于每个区域中的要素以产生另一个均匀间隔的网格的方式合并（例如，通过avg或max），因此将再次固有地定义新的邻接关系。 解决了上面定义的三个常规池化操作后，很明显，常规池化是广义过程的特殊情况。</p>
+<p>网格池化是通用池化的另一种特殊情况，其邻接关系由拓扑决定。 与图像的自然缩小因子不同，例如2×2池化的自然减少因子为4，我们将网格池定义为一系列边缘收缩操作，其中每个这样的边缘收缩将五个边缘转换为两个边缘。 因此，我们可以通过添加一个超参数来控制每个合并运算符之后所需的网格分辨率，该超参数定义了合并网格中目标边的数量。 在运行期间，提取网格邻接信息需要查询不断更新的特殊数据结构（有关详细信息，请参见[Berg et al。2008]）。</p>
+<p>我们通过边缘特征的大小对边缘折叠顺序（使用优先级队列）进行优先排序，从而允许网络选择网格的哪些部分与解决任务有关。 这使网络能够非均匀地折叠某些对丢失最不重要的区域。 回想一下，使两个面相邻的边折叠会导致三个边的删除（如图2所示），因为两个面都变成一个边。 每个面包含三个边：最小边和最小边的两个相邻邻居（请参见图2中红色的最小边和蓝色的相邻边）。 通过获取每个特征通道的平均值，可以将每个面中三个边缘的每个特征合并为一个新的边缘特征。</p>
+<p>根据边缘特征的强度优先考虑边缘折叠，将其视为L2范数。 如图5所示，这些特征被聚合，其中有两个合并操作，一个用于最小边缘特征e的每个入射三角形，一个合并，从而产生两个新的特征向量（表示为p和q）。 两个三角形的通道索引i中的边缘特征由下式给出</p>
+<p>$$p_i = avg(a_i, b_i, e_i), and, q_i=(c_i, d_i, e_i)$$</p>
+<p>边缘折叠后，将更新半边缘数据结构以用于后续的边缘折叠。</p>
+<p>最后，请注意，并非每个边缘都可以折叠。 在我们的设置中，不允许产生产生非流形面的边缘折叠，因为它违反了四个卷积邻居的假设。 因此，如果一条边在其1环的交点上具有三个顶点，或者如果具有两个边界顶点，则认为该边无效折叠。</p>
+<h3 id="4-3-Mesh-Unpooling"><a href="#4-3-Mesh-Unpooling" class="headerlink" title="4.3 Mesh Unpooling"></a>4.3 Mesh Unpooling</h3><p>解池化是池化操作的（部分）逆过程。 池化层降低特征激活的分辨率（编码或压缩信息）的同时，解池层提高特征激活的分辨率（解码或解压缩信息）。 池化操作记录合并操作的历史记录（例如，最大位置），并使用它们来扩展功能激活。 因此，解池化没有可学习的参数，通常将其与卷积结合以恢复池化操作中丢失的原始分辨率。 与卷积相结合有效地使分拆成为可学习的操作。</p>
+<p>每个网格解池层都与网格池化层配对，以对网格拓扑和边缘特征进行上采样。 解池层通过在池化之前存储连接性来恢复上采样的拓扑（在网格池化之前）。 请注意，对连接进行上采样是可逆的操作（就像在图像中一样）。 对于非合并边缘特征计算，我们保留一个图，该图存储从原始边缘（合并之前）到新边缘（合并之后）的邻接关系。 每个未合并的边要素然后是合并的边要素的加权组合。 图5展示了平均池化的情况</p>
+<h2 id="5-实验"><a href="#5-实验" class="headerlink" title="5 实验"></a>5 实验</h2><p>MeshCNN是将CNN直接应用于三角形网格的一种通用方法，具有许多应用。 使用第4节中描述的MeshCNN的构建块，我们可以构建不同的网络配置来解决不同的任务。 像常规的CNN一样，这些构件提供了即插即用的框架。 为了提高计算效率，在合并操作中，每个合并操作仅汇总一次要素。 在顺序执行边缘排序和折叠的同时，这种放宽允许在GPU上执行特征聚合操作，从而提高了计算效率</p>
+<p>在下面的内容中，我们演示了MeshCNN在分类和分割任务上的性能。 附录A中提供了有关所用网络体系结构的详细信息。</p>
+<h3 id="5-1-数据处理"><a href="#5-1-数据处理" class="headerlink" title="5.1 数据处理"></a>5.1 数据处理</h3><p>在所有集合中，我们将每个网格简化为大致相同数量的边。 请注意，如前所述，MeshCNN在所有样本中不需要相同数量的边。 但是，类似于CNN中图像的初始大小调整，几何网格抽取有助于降低输入分辨率，并因此降低训练所需的网络容量。 由于分类任务学习的是全局形状描述，因此与分割任务（2250条边缘）相比，我们通常使用较低的分辨率（750条边缘）。</p>
+<p><strong>Augmentation</strong>。 存在几种形式的数据扩充，用于为网络生成更多数据样本。 请注意，由于我们的输入要素是相似不变的，因此应用旋转，平移和各向同性缩放（x，y和z相同）不会生成新的输入要素。 但是，我们可以通过在x，y和z的顶点位置应用各向异性缩放来生成新特征，$&lt;S_x，S_y，S_z&gt;$（每个都从正态分布µ = 1和σ= 0.1中随机采样），这将改变 向网络输入特征。 我们还将顶点移动到网格表面上的不同位置。 此外，我们通过执行随机边缘翻转来增强每个对象的细分。 由于灵活的输入分辨率，我们还可以在训练之前折叠少量的随机边缘。</p>
+<h3 id="5-2-网格分类"><a href="#5-2-网格分类" class="headerlink" title="5.2 网格分类"></a>5.2 网格分类</h3><p>SHREC。 我们从SHREC数据集中对30个类别进行了分类[Lian等。 2011]，每类有20个范例。 我们遵循[Ezuz et al。 2017]，其中16和10分别是每类的训练样本数，我们在200个时期后停止训练。 由于我们没有[2017]中使用的精确分割，因此我们对3个随机生成的分割16和10组的结果进行了平均。 表1报告了结果。 为了进行比较，我们直接取自[2017]的评估结果，这些评估结果与SG [Bronstein等。 2011]（功能代表袋），SN [Wu等。 2015]（CNN体积），GI [Sinha等。 2016]（固定几何图像上的CNN），最后是GWCNN [2017]（学习过的几何图像）。 我们方法的优势显而易见。 我们在图6中可视化了此数据集的网格池简化的一些示例。我们观察到网格池以一致的语义方式运行（请参见图11）。</p>
+<p><strong>Cube engraving</strong>。 为了说明MeshCNN的独特功能，我们对一组带有浅色图标雕刻的立方体进行了建模（请参见图7）。 我们使用MPEG-7二进制形状[Latecki and Lakamper 2000]数据集中的23个类，每个类大约有20个图标。 我们在每个类为测试集预留了三个图标，其余的用于训练。 对于每个图标，我们随机采样10个不同的位置（位置，旋转和立方体面）以插入图标。 每个立方体大约有500个面，这意味着细节丰富的形状在平坦区域中具有较少的三角形，而细部不丰富的形状在平坦区域中具有更多的三角形。 这组包含总共4600个形状，其中训练/测试拆分为3910/690。 我们计划在发布后发布此数据集以及数据综合代码。</p>
+<p>我们训练MeshCNN对立方体进行分类。 我们在表2中显示了定量结果。为了可视化网格合并对分类任务的影响，我们在每次网格合并操作之后提取了中间结果（如图8所示）。 观察MeshCNN如何学会减少与分类任务无关的边缘（平坦的立方体表面），同时保留图标雕刻内和周围的边缘。</p>
+<p>我们还在此集合上训练了基于点的方法，并在表2中显示了结果。虽然可以认为该示例是人为设计的，但它的目的是要强调MeshCNN在包含较大几何分辨率差异的3D形状上表现出色。</p>
+<h3 id="5-3-网格分割"><a href="#5-3-网格分割" class="headerlink" title="5.3 网格分割"></a>5.3 网格分割</h3><p>MeshCNN的另一个应用是一致的形状分割，这是形状分析和合成中许多应用的重要组成部分。 我们使用监督学习来训练MeshCNN，以预测每个边缘在COSEG上属于特定段的概率[Wang等。 2012]和《人体分割》 [Maron等。 2017]数据集。 由于两个数据集都提供了每张脸的地面真相分割，因此我们根据原始分辨率中的标签在简化网格上生成了边缘级语义标签</p>
+<p>最直接的MeshCNN语义分段配置是使用一系列网格卷积层（以及归一化和非线性激活单元）。 然而，合并网格池使MeshCNN能够学习由分段驱动的边缘折叠。 回想一下，网格合并降低了输入网格分辨率，该分辨率不再与地面真实边缘级别标签一致。 为此，我们使用网格分解层将分辨率升采样回原始输入大小</p>
+<p><strong>COSEG</strong>。 我们在COSEG数据集上的分割任务上评估了MeshCNN的性能，该数据集包含三个大集合：外星人，花瓶和椅子，每个分别包含200、300和400个模型。 我们将每个形状类别划分为85％/ 15％训练/测试划分。 我们将PointNet，PointNet ++和PointCNN进行了比较，并在表3中报告了所有方法的最佳准确性。与该数据集上的所有其他方法相比，我们的技术可获得更好的结果。</p>
+<p>我们认为这是由于我们的网络是针对网格结构量身定制的，这使它比其他策略更具优势。 为了进一步证明这一点，我们还报告了随机池化（随机选择折叠的边缘）情况下的结果，并表明这种变化会降低网络的性能。</p>
+<p>此外，图9显示了来自MeshCNN语义分段网络的最终分段预测，其中保留了测试集上具有池化层和解池化层。这也表明了执行的池化如何适应目标问题。</p>
+<p>人体分割。我们在[Maron et al。提出的人体分割数据集上评估了我们的方法。 2017]。该数据集包含SCAPE的370个训练模型[Anguelov等。 2005]，FAUST [Bogo等。麻省理工学院[2014]。 2008]和Adobe Fuse [Adobe 2016]，测试集是SHREC07的18种模型[Giorgi等。 2007]（人类）数据集。根据[Kaloger akis等人，2000年， 2010]。最近，[Poulenard和Ovsjanikov 2018]在该数据集上报告了其方法的结果，并与GCNN进行了比较[Masci等。 2015]，PointNet ++ [Qi等。 2017b]，动态图CNN [Wang等。 2018b]和Toric Cover [Maron et al。 2017]。我们直接从[Poulenard和Ovsjanikov 2018]中获取报告的结果，并将它们列出在表4中。我们在表中添加了Haim等人的最新结果。 [2018]，报告有关这组电影的最新结果。同样在这种情况下，MeshCNN相对于其他方法（部分基于图形/流形，有些基于点）具有优势，我们认为这是由于MeshCNN对网格结构和手头任务的适应性所致。图10给出了MeshCNN的一些定性结果。</p>
+<h3 id="5-4-额外的评估"><a href="#5-4-额外的评估" class="headerlink" title="5.4 额外的评估"></a>5.4 额外的评估</h3><p><strong>计算时间</strong>。 我们未经优化的PyTorch [Paszke等。 [2017年]使用GTX 1080 TI显卡进行2250/750边缘的细分/分类训练时，每个示例平均需要平均0.21 / 0.13秒</p>
+<p>镶嵌鲁棒性。 我们通过使用COSEG分割数据集的几个定性和定量实验，检验了我们的方法对三角剖分差异的鲁棒性。 为此，我们生成了数据集的两个修改版本。 第一个是通过应用重新网格化程序（使用Blender和MeshLab）获得的，第二个是通过随机地每折磨30％的顶点位置来实现的，实现为朝其1环中的随机顶点移动。 性能上的细微差异（请参见表5）暗示了对镶嵌细分变化的适应力。 定性结果见图12。</p>
+<p>不变特征。 使用相关特征的一个显着优势是，MeshCNN可以保证旋转，平移和统一缩放不变。 本质上，常用的笛卡尔坐标对刚性变换敏感。 为了说明这一点，我们在语义分割任务上训练了MeshCNN：（i）使用不变的几何特征，（ii）使用边缘中点（x，y，z）作为输入特征。 为了评估学习的概括性，我们沿垂直轴应用了非均匀缩放（无需对这些类型的增强进行训练）。 我们的相对几何特征达到98.44％，而标准测试集为99.63％，而绝对坐标恶化为78.27％，而标准测试集为99.11％。 请注意，虽然我们的几何特征对于非均匀缩放不是不变的，但由于它们对定位不敏感，因此它们的泛化效果更好。</p>
+<h2 id="6-DISCUSSION-AND-FUTURE-WORK"><a href="#6-DISCUSSION-AND-FUTURE-WORK" class="headerlink" title="6 DISCUSSION AND FUTURE WORK"></a>6 DISCUSSION AND FUTURE WORK</h2><p>我们介绍了MeshCNN，这是一种直接在不规则三角形网格上直接使用神经网络的通用方法。 我们工作的主要贡献是针对不规则和不均匀结构量身定制的卷积和合并操作的定义和应用。 这些操作有助于直接分析以其原始形式表示为网格的形状，并因此受益于与具有不均匀结构的表面歧管的表示相关的独特属性。</p>
+<p>不变卷积。 我们选择网格边缘作为网络运行的基本构建块具有重要意义，因为边缘集要求一种简单的方法来定义局部的，固定大小的邻域，用于在不规则结构上进行卷积。 通过利用特定于三角形网格的独特对称性，我们消除了邻居有序对偶性的歧义，以使变换具有不变性。 我们通过选择输入边缘特征来补充这项工作，这些输入边缘特征经过精心策划以仅包含相对几何属性，而不包含绝对位置。 因此，与常见表示形式（例如基于点的表示形式）不同，顶点的笛卡尔坐标被忽略，局部和非局部特征均不受位置影响，从而可以更好地概括形状特征，并有助于不变地进行相似性变换。 我们强调，我们仅将顶点位置用于显示正在演化的网格，但它们的位置对任务没有影响。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>meshCNN</p>
+    
+    <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
+    <p><span class="copy-title">发布时间:</span>2020-06-13, 21:06:46</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-13, 21:08:57</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/06/13/meshCNN/" title="meshCNN">https://levizebulon.github.io/2020/06/13/meshCNN/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2020 Linuzb</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': ['#Machine Learning','#工具','#阅读','#Linux','#paper','#Distribute System','#Web','#software','#Others','#Algarithm','#问题','#论文','#杂项','#course','#tools','#distribute system','#os','#HPC','#programming','#Deep Learning','#Computer Graphics',],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().trim().split('\n').length, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
