@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>virtualenv | Linuzb&#39;s blog</title>
+  <title>Guide | Linuzb&#39;s blog</title>
   <meta name="keywords" content=" software ">
-  <meta name="description" content="virtualenv | Linuzb&#39;s blog">
+  <meta name="description" content="Guide | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="MeshCNN: A Network with an Edge 基于边的卷积网络摘要多边形网格可有效表示3D形状。它们可以精确捕获形状表面和拓扑，并利用不均匀性来表示较大的平坦区域以及尖锐，复杂的特征。但是，这种不均匀性和不规则性限制了使用结合了卷积和合并操作的神经网络进行网格分析的努力。在本文中，我们利用MeshCNN（专门为三角网格设计的卷积神经网络）直接利用网格的独特属性来分析3D形状。与经">
 <meta property="og:type" content="article">
@@ -519,9 +519,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-virtulenv" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="i3 User’s Guide-i3Guide" class="article article-type-i3 User’s Guide" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">virtualenv</h1>
+        <h1 class="article-title">Guide</h1>
     
     <div class="article-meta">
         
@@ -537,7 +537,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-03-28 19:09:28'>2019-01-04 13:21</time>
+        创建时间:<time class="date" title='更新时间: 2020-06-22 22:50:30'>2020-06-22 18:34</time>
         
     </div>
     <div class="article-meta">
@@ -559,7 +559,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建目录"><span class="toc-text">1. 创建目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建一个独立的Python运行环境，命名为env"><span class="toc-text">2. 创建一个独立的Python运行环境，命名为env:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除环境"><span class="toc-text">删除环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#i3-User’s-Guide"><span class="toc-text">i3 User’s Guide</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Default-keybindings"><span class="toc-text">1. Default keybindings</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Using-i3"><span class="toc-text">2. Using i3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Opening-terminals-and-moving-around"><span class="toc-text">2.1. Opening terminals and moving around</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-更改容器布局"><span class="toc-text">2.2 更改容器布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-为一个窗口切换全屏模式"><span class="toc-text">2.3 为一个窗口切换全屏模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-打开其他应用程序"><span class="toc-text">2.4 打开其他应用程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-关闭窗口"><span class="toc-text">2.5 关闭窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-Using-workspaces"><span class="toc-text">2.6. Using workspaces</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-将窗口移动到工作区"><span class="toc-text">2.7 将窗口移动到工作区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-Resizing"><span class="toc-text">2.8 Resizing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-9-原地重启i3"><span class="toc-text">2.9 原地重启i3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-退出i3"><span class="toc-text">2.10  退出i3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-11-浮动"><span class="toc-text">2.11 浮动</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -575,31 +575,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://virtualenv.pypa.io/en/latest/" target="_blank" rel="noopener">Virtualenv</a>是一个独立的python环境的工具。<br>如果我们在开发中需要用到不同版本的Python，那么就可以使用它来创建不同的python虚拟环境</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先，我们通过pip安装virtualenv</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv	<span class="comment"># 针对pip</span></span><br><span class="line">pip3 install virtualenv	<span class="comment"># 针对pip3</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-创建目录"><a href="#1-创建目录" class="headerlink" title="1. 创建目录"></a>1. 创建目录</h3><p>例如，我想重新装一个python2.7的环境</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir myproject</span><br><span class="line"><span class="built_in">cd</span> myproject</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-创建一个独立的Python运行环境，命名为env"><a href="#2-创建一个独立的Python运行环境，命名为env" class="headerlink" title="2. 创建一个独立的Python运行环境，命名为env:"></a>2. 创建一个独立的Python运行环境，命名为env:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">virtualenv --no-site-packages venv	<span class="comment"># 不带任何第三方包</span></span><br><span class="line">virtualenv venv --python=python2.7	<span class="comment"># 使用python 2.7 创建env环境</span></span><br><span class="line">virtualenv venv --python=python3.6	<span class="comment"># 使用python 3.6 创建环境</span></span><br></pre></td></tr></table></figure>
-
-<p>新建的Python环境被放到当前目录下的venv目录。有了venv这个Python环境，可以用source进入该环境：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
-<p>这时候命令提示符会变化，有个(venv)前缀，表示当前环境是一个名为venv的Python环境。</p>
-<p>下面正常安装各种第三方包，并运行python命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install package_name</span><br></pre></td></tr></table></figure>
-<p>在venv环境下，用pip安装的包都被安装到venv这个环境下，系统Python环境不受任何影响。也就是说，venv环境是专门针对myproject这个应用创建的。</p>
-<p>退出当前的venv环境，使用deactivate命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-<p>此时就回到了正常的环境，现在pip或python均是在系统Python环境下执行。</p>
-<p>完全可以针对每个应用创建独立的Python运行环境，这样就可以对每个应用的Python环境进行隔离。</p>
-<p>virtualenv是如何创建“独立”的Python运行环境的呢？原理很简单，就是把系统Python复制一份到virtualenv的环境，用命令source venv/bin/activate进入一个virtualenv环境时，virtualenv会修改相关环境变量，让命令python和pip均指向当前的virtualenv环境。</p>
-<h2 id="删除环境"><a href="#删除环境" class="headerlink" title="删除环境"></a>删除环境</h2><p>删除虚拟环境只需通过停用虚拟环境并删除环境文件夹及其所有内容即可完成：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(ENV)$ deactivate</span><br><span class="line">$ rm -r /path/to/ENV</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>廖雪峰的官方网站.<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000" target="_blank" rel="noopener">廖雪峰的官方网站</a></p>
-<p>virtualenv<a href="https://virtualenv.pypa.io/en/latest/" target="_blank" rel="noopener">virtualenv</a></p>
+        <h1 id="i3-User’s-Guide"><a href="#i3-User’s-Guide" class="headerlink" title="i3 User’s Guide"></a>i3 User’s Guide</h1><p><a href="https://i3wm.org/docs/userguide.html" target="_blank" rel="noopener">https://i3wm.org/docs/userguide.html</a></p>
+<h2 id="1-Default-keybindings"><a href="#1-Default-keybindings" class="headerlink" title="1. Default keybindings"></a>1. Default keybindings</h2><p>请注意，在没有配置文件的情况下启动i3时，无论您使用的键盘布局如何，<code>i3-config-wizard</code>都会为您提供一个配置文件，<br>该文件中的键位置与您在上图中看到的相匹配。 如果您更喜欢配置文件，并将配置基于<code>/etc/i3/config</code>。</p>
+<h2 id="2-Using-i3"><a href="#2-Using-i3" class="headerlink" title="2. Using i3"></a>2. Using i3</h2><p>在整个指南中，关键字<code>$mod</code>将用于指配置的修饰符。默认情况下，这是Alt键(<code>Mod1</code>)，而Windows键(<code>Mod4</code>)是一个流行的替代方法，它很大程度上防止了与应用程序定义的快捷方式冲突。</p>
+<h3 id="2-1-Opening-terminals-and-moving-around"><a href="#2-1-Opening-terminals-and-moving-around" class="headerlink" title="2.1. Opening terminals and moving around"></a>2.1. Opening terminals and moving around</h3><p>一个非常基本的操作是开设一个新的终端。默认情况下，这个键绑定是<code>$mod+Enter</code>，也就是默认配置中的Alt+Enter (<code>Mod1+Enter</code>)。按<code>$mod+Enter</code>键，将打开一个新的终端。它会填满你屏幕上的所有可用空间。</p>
+<p>如果您现在打开另一个终端，i3将把它放在当前终端的旁边，将屏幕大小分成两半。根据您的显示器，i3将把创建的窗口放在现有窗口的旁边(宽显示)或下面的现有窗口(旋转显示)。</p>
+<p>要在两个终端之间移动，可以使用你在编辑器<code>vi</code>中知道的方向键。但是，在i3中，homerow用于这些键(在<code>vi</code>中，为了与大多数键盘布局兼容，这些键要向左移动一个)。因此，<code>$mod+j</code>是向左，<code>$mod+k</code>是向下，<code>$mod+l</code>是向上，<code>$mod+;</code>是向右。因此，要在终端之间切换，使用<code>$mod+k</code>或<code>$mod+l</code>。当然，也可以使用方向键。</p>
+<p>目前，您的工作区按照特定的方向(默认为水平)分割(它包含两个终端)。每个窗口都可以被水平分割或垂直分割，就像工作空间一样。术语是“window”，指实际包含X11窗口(如终端或浏览器)的容器，而“split container”指包含一个或多个窗口的容器。</p>
+<p>要垂直分割一个窗口，在创建新窗口之前按<code>$mod+v</code>。水平分割，按<code>$mod+h</code>。</p>
+<h3 id="2-2-更改容器布局"><a href="#2-2-更改容器布局" class="headerlink" title="2.2 更改容器布局"></a>2.2 更改容器布局</h3><p>分割容器可以具有以下布局之一</p>
+<p>splith/splitv : 窗口的大小是为了使每个窗口在容器中获得相等的空间。splith水平分布窗口(窗口相邻)，splitv垂直分布窗口(窗口重叠)。</p>
+<p>stacking : 只显示容器中聚焦的窗口。您将在容器的顶部获得一个窗口列表。</p>
+<p>tabbed : 和堆叠的原理是一样的，但是顶部的窗口列表只有一条线，是垂直分开的。</p>
+<p>To switch modes, press ``$mod+e<code>for splith/splitv (it toggles),</code>$mod+s<code>for stacking and</code>$mod+w` for tabbed.</p>
+<h3 id="2-3-为一个窗口切换全屏模式"><a href="#2-3-为一个窗口切换全屏模式" class="headerlink" title="2.3 为一个窗口切换全屏模式"></a>2.3 为一个窗口切换全屏模式</h3><p>要在全屏模式下显示一个窗口或再次退出全屏模式，按<code>$mod+f</code>。</p>
+<p>在i3中还有一个全局全屏模式，在该模式中，客户端将跨越所有可用输出(命令为全屏切换全局)。</p>
+<h3 id="2-4-打开其他应用程序"><a href="#2-4-打开其他应用程序" class="headerlink" title="2.4 打开其他应用程序"></a>2.4 打开其他应用程序</h3><p>除了从终端打开应用程序，你还可以使用方便的<code>dmenu</code>，默认按<code>$mod+d</code>打开。只需键入您想要打开的应用程序的名称(或它的一部分)。要使其工作，相应的应用程序必须位于<code>$PATH</code>中。</p>
+<p>另外，如果您有经常打开的应用程序，您可以创建一个键绑定来直接启动应用程序。有关详细信息，请参阅[配置]一节。</p>
+<h3 id="2-5-关闭窗口"><a href="#2-5-关闭窗口" class="headerlink" title="2.5 关闭窗口"></a>2.5 关闭窗口</h3><p>如果一个应用程序没有提供关闭机制(大多数应用程序提供一个菜单，escape键或快捷键如<code>Control+w</code>来关闭)，你可以按<code>$mod+Shift+q</code>来杀死一个窗口。对于支持WM_DELETE协议的应用程序，这将正确地关闭应用程序(保存任何修改或进行其他清理)。如果应用程序不支持WM_DELETE协议，你的X server将杀死窗口的行为取决于应用程序。</p>
+<h3 id="2-6-Using-workspaces"><a href="#2-6-Using-workspaces" class="headerlink" title="2.6. Using workspaces"></a>2.6. Using workspaces</h3><p>工作区是对一组窗口进行分组的一种简单方法。默认情况下，您处于第一个工作区中，正如左下角的工具栏所示。要切换到另一个工作空间，请按<code>$mod+num</code>，其中<code>num</code>是您要使用的工作空间的编号。如果工作空间还不存在，它将被创建。</p>
+<p>一种常见的范例是将web浏览器放在一个工作空间中，将通信应用程序(<code>mutt</code>、<code>irssi</code>…)放在另一个工作空间中，将您使用的应用程序放在第三个工作空间中。当然，没有必要遵循这种方法。</p>
+<p>如果您有多个屏幕，那么在启动时将在每个屏幕上创建一个工作区。如果您打开一个新的工作区，它将被绑定到您创建它的屏幕上。当您切换到另一个屏幕上的工作区时，i3将把焦点设置到该屏幕上。</p>
+<h3 id="2-7-将窗口移动到工作区"><a href="#2-7-将窗口移动到工作区" class="headerlink" title="2.7 将窗口移动到工作区"></a>2.7 将窗口移动到工作区</h3><p>要将一个窗口移动到另一个工作空间，只需按<code>$mod+Shift+num</code>，其中<code>num</code>是目标工作空间的数量(如切换工作空间时)。与切换工作区类似，如果目标工作区还不存在，则将创建它。</p>
+<h3 id="2-8-Resizing"><a href="#2-8-Resizing" class="headerlink" title="2.8 Resizing"></a>2.8 Resizing</h3><p>调整容器大小最简单的方法是使用鼠标:抓取边框并将其移动到所需的大小。</p>
+<p>你也可以使用[绑定模式]来定义通过键盘调整大小的模式。要查看相关示例，请查看i3提供的<a href="https://github.com/i3/i3/blob/next/etc/config.keycodes" target="_blank" rel="noopener">默认配置</a>。</p>
+<h3 id="2-9-原地重启i3"><a href="#2-9-原地重启i3" class="headerlink" title="2.9 原地重启i3"></a>2.9 原地重启i3</h3><p>要在原地重新启动i3(从而在出现bug时进入干净状态，或者升级到新的i3版本)，可以使用<code>$mod+Shift+r</code>。</p>
+<h3 id="2-10-退出i3"><a href="#2-10-退出i3" class="headerlink" title="2.10  退出i3"></a>2.10  退出i3</h3><p>要干净地退出i3而不杀死X server，你可以使用<code>$mod+Shift+e</code>。默认情况下，会有一个对话框要求您确认是否真的要退出。</p>
+<h3 id="2-11-浮动"><a href="#2-11-浮动" class="headerlink" title="2.11 浮动"></a>2.11 浮动</h3><p>浮动模式与平铺模式相反。窗口的位置和大小不是由i3自动管理的，而是由您手动管理的。使用这种模式违背了平铺模式，但对于一些特殊情况很有用，比如“另存为”对话框窗口或工具栏窗口(GIMP或类似的)。这些窗口通常设置适当的提示，并在默认情况下以浮动模式打开。</p>
+<p>你可以通过按<code>$mod+Shift+Space</code>来切换浮动模式。通过拖动窗口的标题栏与您的鼠标，您可以移动窗口周围。通过抓取边框并移动它们，可以调整窗口的大小。你也可以使用[floating_modifier]来做到这一点。另一种使用鼠标调整浮动窗口大小的方法是右键单击标题栏并拖动。</p>
+<p>要使用键盘调整浮动窗口的大小，请参阅i3<a href="https://github.com/i3/i3/blob/next/etc/config.keycodes" target="_blank" rel="noopener">默认配置</a>提供的调整绑定模式。</p>
+<p>浮动窗口总是在平铺窗口的顶部。</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
@@ -613,12 +618,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>virtualenv</p>
+    <p><span class="copy-title">文章标题:</span>Guide</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-01-04, 13:21:39</p>
-    <p><span class="copy-title">最后更新:</span>2020-03-28, 19:09:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/01/04/virtulenv/" title="virtualenv">https://levizebulon.github.io/2019/01/04/virtulenv/</a>
+    <p><span class="copy-title">发布时间:</span>2020-06-22, 18:34:46</p>
+    <p><span class="copy-title">最后更新:</span>2020-06-22, 22:50:30</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2020/06/22/i3Guide/" title="Guide">https://levizebulon.github.io/2020/06/22/i3Guide/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
