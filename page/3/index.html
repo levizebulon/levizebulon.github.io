@@ -1,822 +1,1803 @@
 <!DOCTYPE html>
-<html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Linuzb&#39;s blog</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Linuzb&#39;s blog">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MPITutorials">
-<meta property="og:url" content="https://levizebulon.github.io/2020/05/26/MPITutorials/index.html">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="记录学习过程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Linuzb&#39;s blog">
+<meta property="og:url" content="https://levizebulon.github.io/page/3/index.html">
 <meta property="og:site_name" content="Linuzb&#39;s blog">
-<meta property="og:description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
+<meta property="og:description" content="记录学习过程">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/comm_world.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="article:published_time" content="2020-05-26T09:42:38.000Z">
-<meta property="article:modified_time" content="2020-06-08T07:45:33.637Z">
 <meta property="article:author" content="Linuzb">
-<meta property="article:tag" content="HPC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
 
 
-<link rel="icon" href="/img/avatar.jpg">
 
-<link href="/css/style.css?v=1.0.1" rel="stylesheet">
-
-<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
-
-<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
-<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
-
-<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script>
-    hljs.initHighlightingOnLoad();
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
 </script>
 
-<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+  <link rel="canonical" href="https://levizebulon.github.io/page/3/"/>
 
 
 
-<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
 
-<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+  <title>Linuzb's blog</title>
+  
+
+
+
+
+
+
+
 
 <meta name="generator" content="Hexo 4.2.0"></head>
-<div style="display: none">
-  <input class="theme_disqus_on" value="false">
-  <input class="theme_preload_comment" value="false">
-  <input class="theme_blog_path" value="">
-</div>
 
-<body>
-<aside class="nav mobile">
-    <div class="nav-left">
-        <a href="/" class="avatar_target">
-    <img class="avatar" src="/img/avatar.jpg" />
-</a>
-<div class="author">
-    <span>Linuzb</span>
-</div>
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
-<div class="icon">
+  
+  
     
-        
-        <a title="rss" href="/atom.xml" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-rss"></use>
-                </svg>
-            
-        </a>
-        
-    
-        
-        <a title="github" href="https://github.com/yelog" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-github"></use>
-                </svg>
-            
-        </a>
-        
-    
-</div>
+  
 
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-
-<ul>
-    <li><div class="all active">全部文章<small>(34)</small></div></li>
-    
-</ul>
-<div class="left-bottom">
-    <div class="menus">
-    
-    
-    
-    
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Linuzb's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
-</div>
-<input type="hidden" id="yelog_site_posts_number" value="34">
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
 
-<div style="display: none">
-    <span id="busuanzi_value_site_uv"></span>
-    <span id="busuanzi_value_site_pv"></span>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-    </div>
-    <div class="nav-right">
-        <div class="friends-area">
-    <div class="friends-title">
-        友情链接
-        <i class="back-title-list"></i>
-    </div>
-    <div class="friends-content">
-        <ul>
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
             
-            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-        </ul>
-    </div>
-</div>
-        <div class="title-list">
-    <form onkeydown="if(event.keyCode === 13){return false;}">
-        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
-        <i class="cross"></i>
-        <span>
-            <label for="tagswitch">Tags:</label>
-            <input id="tagswitch" type="checkbox" style="display: none" />
-            <i id="tagsWitchIcon"></i>
-        </span>
-    </form>
-    <div class="tags-list">
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
     
-    <li class="article-tag-list-item">
-        <a class="color2">Machine Learning</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">工具</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">阅读</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">Linux</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">paper</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">Distribute System</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">Web</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">software</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">Others</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color5">Algarithm</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">问题</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">论文</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">杂项</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">course</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">tools</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">distribute system</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">os</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">HPC</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">programming</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">Deep Learning</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">Computer Graphics</a>
-    </li>
-    
-    <div class="clearfix"></div>
-</div>
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
 
     
-    <nav id="title-list-nav">
+      <header class="post-header">
+
         
-        <a  class=""
-           href="/2020/03/28/hello-world/"
-           data-tag="杂项"
-           data-author="" >
-            <span class="post-title" title="纪念失去的博客">纪念失去的博客</span>
-            <span class="post-date" title="2020-03-28 19:08:07">2020/03/28</span>
-        </a>
         
-        <a  class=""
-           href="/2019/01/09/Anaconda/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Anaconda">Anaconda</span>
-            <span class="post-date" title="2019-01-09 09:55:46">2019/01/09</span>
-        </a>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/" itemprop="url">使用HAProxy加速Shadowsocks</a></h1>
         
-        <a  class=""
-           href="/2019/03/20/Docker%E5%AE%89%E8%A3%85tensorflow-gpu/"
-           data-tag="Machine Learning"
-           data-author="" >
-            <span class="post-title" title="Docker安装tensorflow-gpu">Docker安装tensorflow-gpu</span>
-            <span class="post-date" title="2019-03-20 16:36:12">2019/03/20</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/29/K2pdfopt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"
-           data-tag="工具,阅读"
-           data-author="" >
-            <span class="post-title" title="K2pdfopt简明教程">K2pdfopt简明教程</span>
-            <span class="post-date" title="2018-12-29 20:20:14">2018/12/29</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/03/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%A8%E6%8B%BC/"
-           data-tag="Linux"
-           data-author="" >
-            <span class="post-title" title="Linux常用命令全拼">Linux常用命令全拼</span>
-            <span class="post-date" title="2020-03-28 17:33:07">2020/03/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/03/28/MapReduce/"
-           data-tag="paper,Distribute System"
-           data-author="" >
-            <span class="post-title" title="MapReduce">MapReduce</span>
-            <span class="post-date" title="2020-03-28 17:37:00">2020/03/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/02/Ubuntu%E7%BE%8E%E5%8C%96/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Ubuntu美化">Ubuntu美化</span>
-            <span class="post-date" title="2019-01-02 07:32:54">2019/01/02</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/03/28/VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2/"
-           data-tag="Web"
-           data-author="" >
-            <span class="post-title" title="VPS搭建个人Hexo博客">VPS搭建个人Hexo博客</span>
-            <span class="post-date" title="2020-03-28 17:25:22">2020/03/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/30/aria2%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"
-           data-tag="工具"
-           data-author="" >
-            <span class="post-title" title="aria2简明教程">aria2简明教程</span>
-            <span class="post-date" title="2018-12-30 10:44:49">2018/12/30</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/30/autosub%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E5%AD%97%E5%B9%95%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/"
-           data-tag="工具"
-           data-author="" >
-            <span class="post-title" title="autosub语音识别字幕生成工具">autosub语音识别字幕生成工具</span>
-            <span class="post-date" title="2018-12-30 20:41:40">2018/12/30</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/11/download-coursera-and-youtube/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="download_coursera_and_youtube">download_coursera_and_youtube</span>
-            <span class="post-date" title="2019-01-11 13:30:38">2019/01/11</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/03/01/shadowsocks%E2%80%93libev%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E9%83%A8%E7%BD%B2/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="Ubuntu shadowsocks–libev服务端的部署">Ubuntu shadowsocks–libev服务端的部署</span>
-            <span class="post-date" title="2019-03-01 09:23:47">2019/03/01</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/03/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85TexLive/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ubuntu下安装TexLive">ubuntu下安装TexLive</span>
-            <span class="post-date" title="2019-01-03 16:56:38">2019/01/03</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/04/21/ubuntu%E5%AE%89%E8%A3%85windows%E5%AD%97%E4%BD%93/"
-           data-tag="Others"
-           data-author="" >
-            <span class="post-title" title="ubuntu安装windows字体">ubuntu安装windows字体</span>
-            <span class="post-date" title="2019-04-21 23:16:24">2019/04/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/04/virtulenv/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="virtualenv">virtualenv</span>
-            <span class="post-date" title="2019-01-04 13:21:39">2019/01/04</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="使用HAProxy加速Shadowsocks">使用HAProxy加速Shadowsocks</span>
-            <span class="post-date" title="2019-03-01 09:52:51">2019/03/01</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/08/%E6%9F%A5%E7%9C%8BCUDA%E5%92%8Ccudnn%E7%89%88%E6%9C%AC/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="查看CUDA和cudnn版本">查看CUDA和cudnn版本</span>
-            <span class="post-date" title="2019-01-08 14:01:17">2019/01/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/"
-           data-tag="Algarithm"
-           data-author="" >
-            <span class="post-title" title="考研数据结构算法题">考研数据结构算法题</span>
-            <span class="post-date" title="2018-12-25 16:30:19">2018/12/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/01/%E8%A7%A3%E5%86%B3ubuntu1604%E4%B8%8Bwps%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E9%97%AE%E9%A2%98/"
-           data-tag="问题"
-           data-author="" >
-            <span class="post-title" title="解决ubuntu1604下wps不能使用搜狗输入法问题">解决ubuntu1604下wps不能使用搜狗输入法问题</span>
-            <span class="post-date" title="2019-01-01 16:42:28">2019/01/01</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/30/%E8%AE%BA%E6%96%87%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Zotero/"
-           data-tag="论文"
-           data-author="" >
-            <span class="post-title" title="论文管理工具Zotero">论文管理工具Zotero</span>
-            <span class="post-date" title="2018-12-30 11:49:36">2018/12/30</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/03/29/Linux%E5%9B%BE%E5%83%8F%E8%A7%86%E9%A2%91%E7%BC%96%E8%BE%91/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="Linux图像视频编辑">Linux图像视频编辑</span>
-            <span class="post-date" title="2020-03-29 11:21:37">2020/03/29</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/03/shell/"
-           data-tag="course,tools"
-           data-author="" >
-            <span class="post-title" title="Course overview + the shell">Course overview + the shell</span>
-            <span class="post-date" title="2020-04-03 17:05:16">2020/04/03</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"
-           data-tag="paper,distribute system"
-           data-author="" >
-            <span class="post-title" title="分布式系统6.824论文阅读">分布式系统6.824论文阅读</span>
-            <span class="post-date" title="2020-04-07 21:03:52">2020/04/07</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/17/%E8%A7%A3%E5%86%B3archlinux%E4%B8%8Bgnome-terminal%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="解决archlinux下gnome-terminal透明问题">解决archlinux下gnome-terminal透明问题</span>
-            <span class="post-date" title="2020-04-17 09:34:37">2020/04/17</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/18/docker-spark-jupyternotebook/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="docker+spark+jupyternotebook">docker+spark+jupyternotebook</span>
-            <span class="post-date" title="2020-04-18 10:30:55">2020/04/18</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/18/Tmux%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="Tmux使用教程">Tmux使用教程</span>
-            <span class="post-date" title="2020-04-18 11:19:44">2020/04/18</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/06/v2ray-WS-TLS/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="v2ray+WS+TLS">v2ray+WS+TLS</span>
-            <span class="post-date" title="2020-05-06 16:41:48">2020/05/06</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/09/%E7%BD%91%E7%BB%9C%E6%8E%92%E6%9F%A5%E5%B7%A5%E5%85%B7/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="网络排查工具">网络排查工具</span>
-            <span class="post-date" title="2020-05-09 08:49:49">2020/05/09</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/13/Ubuntu%E5%BC%80%E5%90%AFbbr/"
-           data-tag="os"
-           data-author="" >
-            <span class="post-title" title="Ubuntu开启bbr">Ubuntu开启bbr</span>
-            <span class="post-date" title="2020-05-13 08:21:42">2020/05/13</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/22/archlinux-NVIDIA-Bumblebee-CUDA-cudnn/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="archlinux+NVIDIA+Bumblebee+CUDA+cudnn">archlinux+NVIDIA+Bumblebee+CUDA+cudnn</span>
-            <span class="post-date" title="2020-05-22 22:04:13">2020/05/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/26/MPITutorials/"
-           data-tag="HPC"
-           data-author="" >
-            <span class="post-title" title="MPITutorials">MPITutorials</span>
-            <span class="post-date" title="2020-05-26 17:42:38">2020/05/26</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/28/SparkOverview/"
-           data-tag="software,distribute system"
-           data-author="" >
-            <span class="post-title" title="SparkOverview">SparkOverview</span>
-            <span class="post-date" title="2020-05-28 10:12:42">2020/05/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/28/RDD%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/"
-           data-tag="distribute system,programming"
-           data-author="" >
-            <span class="post-title" title="RDD编程指南">RDD编程指南</span>
-            <span class="post-date" title="2020-05-28 11:15:51">2020/05/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/06/13/meshCNN/"
-           data-tag="Deep Learning,Computer Graphics"
-           data-author="" >
-            <span class="post-title" title="meshCNN">meshCNN</span>
-            <span class="post-date" title="2020-06-13 21:06:46">2020/06/13</span>
-        </a>
-        
-    </nav>
-</div>
-    </div>
-    <div class="hide-list">
-        <div class="semicircle">
-            <div class="brackets first"><</div>
-            <div class="brackets">&gt;</div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-01T09:52:51+08:00">
+                2019-03-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-    </div>
-</aside>
-<div class="post index">
-    <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+      </header>
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对博客的理解"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于Linuzb的博客"><span class="toc-text">关于Linuzb的博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#博客平台"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
+
     
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-    .toc-level-3 i,
-    .toc-level-3 ol {
-        display: none !important;
-    }
-</style>
-</div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-</blockquote>
-<blockquote>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-</blockquote>
-<blockquote>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于Linuzb的博客"><a href="#关于Linuzb的博客" class="headerlink" title="关于Linuzb的博客"></a>关于Linuzb的博客</h2><p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 生成，部署在 <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>，主题 <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank" rel="noopener">3-hexo</a> 已经在github上开源</p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a href='http://yelog.org/2017/03/24/3-hexo-shortcuts/' target="_blank" rel="noopener">3-hexo快捷键说明</a></li>
-</ul>
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-        </article>
+      
+      
+
+      
         
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
+          
+            <h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>HAProxy<br>The Reliable, High Performance TCP/HTTP Load Balancer<br>HAProxy 是一个高效的负载均衡软件，可以实现 TCP/HTTP 的代理。这里使用它将我们发给它的请求转发给 ss 服务器。</p>
+<p>ss 支持中继，那么只要有一个服务器，连接自己电脑和 ss 服务器都很快的话就能实现加速</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">客户端 &lt; - &gt; 中继服务器 &lt; - &gt; Shadowsocks 服务器</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、-安装"><a href="#二、-安装" class="headerlink" title="二、 安装"></a>二、 安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 以 CentOS 7 为例</span><br><span class="line">yum install haproxy</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、配置"><a href="#三、配置" class="headerlink" title="三、配置"></a>三、配置</h2><p>编辑 /etc/haproxy/haproxy.cfg，保存以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">global</span><br><span class="line">        <span class="built_in">ulimit</span>-n  51200</span><br><span class="line"></span><br><span class="line">defaults</span><br><span class="line">        <span class="built_in">log</span> global</span><br><span class="line">        mode    tcp</span><br><span class="line">        option  dontlognull</span><br><span class="line">        contimeout 1000</span><br><span class="line">        clitimeout 150000</span><br><span class="line">        srvtimeout 150000</span><br><span class="line"></span><br><span class="line">frontend ss-in</span><br><span class="line">        <span class="built_in">bind</span> *:8388</span><br><span class="line">        default_backend ss-out</span><br><span class="line"></span><br><span class="line">backend ss-out</span><br><span class="line">        server server1 222.222.222.222:2222 maxconn 20480</span><br></pre></td></tr></table></figure>
+<p>其中，*:8388 中的 8388 是中继服务器接受请求的端口，222.222.222.222:2222 是 ss 服务器的 IP 地址加端口号。<br>然后执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service haproxy restart</span><br></pre></td></tr></table></figure>
+<p>HAProxy 就会在后台进行启动。可以使用 ps -ef 查看进程，lsof -i 查看端口占用情况来验证 HAProxy 是否已经运行。若无法连接中继服务器，使用 iptables -L 查看防火墙规则是否有问题。</p>
+<p>客户端的配置，只要将原来配置的 ip 地址和端口更换成中继服务器的 ip 地址和端口号就可以了。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://github.com/shadowsocks/shadowsocks/wiki/Setup-a-Shadowsocks-relay" target="_blank" rel="noopener">Setup a Shadowsocks relay</a></p>
+<p><a href="https://kaywu.xyz/2016/06/19/Shadowsocks-HAProxy/" target="_blank" rel="noopener">使用 HAProxy 加速 Shadowsocks</a></p>
+<p><a href="http://www.haproxy.org/" target="_blank" rel="noopener">HAProxy</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/03/01/shadowsocks%E2%80%93libev%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E9%83%A8%E7%BD%B2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-    </div>
-    <div class="copyright">
-        <p class="footer-entry">©2016-2020 Linuzb</p>
-<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/01/shadowsocks%E2%80%93libev%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E9%83%A8%E7%BD%B2/" itemprop="url">Ubuntu shadowsocks–libev服务端的部署</a></h1>
+        
 
-    </div>
-    <div class="full-toc">
-        <button class="full"><span class="min "></span></button>
-<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
-<div class="post-toc"><span class="post-toc-title">目录</span>
-    <div class="post-toc-content">
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-01T09:23:47+08:00">
+                2019-03-01
+              </time>
+            
 
-    </div>
-</div>
-<a class="" id="rocket" ></a>
+            
 
-    </div>
-</div>
-<div class="acParent"></div>
+            
+          </span>
 
-<div class="hide_box" onclick="dashangToggle()"></div>
-<div class="shang_box">
-    <a class="shang_close"  onclick="dashangToggle()">×</a>
-    <div class="shang_tit">
-        <p>喜欢就点赞,疼爱就打赏</p>
-    </div>
-    <div class="shang_payimg">
-        <div class="pay_img">
-            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
-            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>Shadowsocks-libev是一款轻量级安全SOCKS5代理，适用于嵌入式设备和低端机箱。<br><a href="https://github.com/shadowsocks/shadowsocks-libev/blob/master/README.md" target="_blank" rel="noopener">shadowsocks-libev README.md</a></p>
+<h2 id="二、特征"><a href="#二、特征" class="headerlink" title="二、特征"></a>二、特征</h2><p>Shadowsocks-libev是用纯C编写的，取决于libev。它旨在成为shadowsocks协议的轻量级实现，以便尽可能降低资源使用率。</p>
+<h2 id="三、安装"><a href="#三、安装" class="headerlink" title="三、安装"></a>三、安装</h2><p>For Ubuntu 14.04 and 16.04 users, please install from PPA:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common -y</span><br><span class="line">sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev -y</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt install shadowsocks-libev</span><br></pre></td></tr></table></figure>
+
+<p>Configure and start the service</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Edit the configuration file</span></span><br><span class="line">sudo vim /etc/shadowsocks-libev/config.json</span><br><span class="line"></span><br><span class="line"><span class="comment"># Edit the default configuration for debian</span></span><br><span class="line">sudo vim /etc/default/shadowsocks-libev</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start the service</span></span><br><span class="line">sudo /etc/init.d/shadowsocks-libev start    <span class="comment"># for sysvinit, or</span></span><br><span class="line">sudo systemctl start shadowsocks-libev      <span class="comment"># for systemd</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="四、配置与启动"><a href="#四、配置与启动" class="headerlink" title="四、配置与启动"></a>四、配置与启动</h2><p>1、配置文件为：/etc/shadowsocks-libev/config.json，格式说明：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"server"</span>:<span class="string">"example.com or X.X.X.X"</span>,</span><br><span class="line">	<span class="string">"mode"</span>:<span class="string">"tcp_and_udp"</span>,</span><br><span class="line">	<span class="string">"server_port"</span>:443,</span><br><span class="line">	<span class="string">"password"</span>:<span class="string">"password"</span>,</span><br><span class="line">	<span class="string">"method"</span>:<span class="string">"aes-128-gcm"</span>,</span><br><span class="line">	<span class="string">"fast_open"</span>:<span class="literal">true</span>,</span><br><span class="line">	<span class="string">"timeout"</span>:60</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server：主机域名或者IP地址，尽量填IP</span><br><span class="line"></span><br><span class="line">server_port：服务器监听端口</span><br><span class="line"></span><br><span class="line">password：密码</span><br><span class="line"></span><br><span class="line">method：加密方式 所有支持的加密方式请参照官方文档。这里本人推荐只使用支持AEAD的加密方式，包括以下五种： aes-128-gcm/aes-192-gcm/aes-256-gcm/chacha20-ietf-poly1305/xchacha20-ietf-poly1305</span><br><span class="line"></span><br><span class="line">timeout：连接超时时间，单位秒。要适中。</span><br></pre></td></tr></table></figure>
+<p>注意引号。</p>
+<h2 id="五、服务器优化"><a href="#五、服务器优化" class="headerlink" title="五、服务器优化"></a>五、服务器优化</h2><ol>
+<li>开启TCP Fast Open：<br>需求： 系统内核版本≥3.7，shadowsocks-libev≥3.0.4。<br>修改 /etc/sysctl.conf ，加入如下一行：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_fastopen = 3</span><br></pre></td></tr></table></figure>
+执行如下命令使之生效：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+配置文件 /etc/shadowsocks.json 增加一行：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      <span class="string">"server"</span>: <span class="string">"X.X.X.X"</span>,</span><br><span class="line">      <span class="string">"server_port"</span>: <span class="string">"443"</span>,</span><br><span class="line">      <span class="string">"password"</span>: <span class="string">"password"</span>,</span><br><span class="line">      <span class="string">"method"</span>: <span class="string">"aes-128-gcm"</span>,</span><br><span class="line">      <span class="string">"fast_open"</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>其他优化<br><a href="https://github.com/FunctionClub/YankeeBBR" target="_blank" rel="noopener">魔改BBR</a></li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>shadowsocks-libev <a href="https://github.com/shadowsocks/shadowsocks-libev/blob/master/README.md" target="_blank" rel="noopener">shadowsocks-libev</a><br>shadowsocks – libev 服务端的部署 <a href="https://cokebar.info/archives/767" target="_blank" rel="noopener">shadowsocks – libev 服务端的部署
+</a><br>YankeeBBR <a href="https://github.com/FunctionClub/YankeeBBR" target="_blank" rel="noopener">YankeeBBR</a></p>
+
+          
+        
+      
     </div>
-    <div class="shang_payselect">
-        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/01/11/download-coursera-and-youtube/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/11/download-coursera-and-youtube/" itemprop="url">download_coursera_and_youtube</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-11T13:30:38+08:00">
+                2019-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Coursera-dl"><a href="#Coursera-dl" class="headerlink" title="Coursera-dl"></a><a href="https://github.com/coursera-dl/coursera-dl" target="_blank" rel="noopener">Coursera-dl</a></h1><h1 id="Youtube-dl"><a href="#Youtube-dl" class="headerlink" title="Youtube-dl"></a><a href="https://github.com/rg3/youtube-dl" target="_blank" rel="noopener">Youtube-dl</a></h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="1-在linux系统下使用curl"><a href="#1-在linux系统下使用curl" class="headerlink" title="1. 在linux系统下使用curl"></a>1. 在linux系统下使用curl</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br></pre></td></tr></table></figure>
+<h3 id="或者使用wget"><a href="#或者使用wget" class="headerlink" title="或者使用wget"></a>或者使用wget</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/01/09/Anaconda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/09/Anaconda/" itemprop="url">Anaconda</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-09T09:55:46+08:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h1><p><a href="https://www.anaconda.com/download/#linux" target="_blank" rel="noopener">Anaconda下载</a></p>
+<h3 id="conda-安装"><a href="#conda-安装" class="headerlink" title="conda 安装"></a>conda 安装</h3><h3 id="conda源"><a href="#conda源" class="headerlink" title="conda源"></a>conda源</h3><p><a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">清华源</a></p>
+<h3 id="如果conda安装错误"><a href="#如果conda安装错误" class="headerlink" title="如果conda安装错误"></a>如果conda安装错误</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install /path/package_name.tar.bz2</span><br></pre></td></tr></table></figure>
+<p>例如安装pytorch时出现错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Downloading and Extracting Packages</span><br><span class="line">pytorch-1.0.0        | 437.5 MB  | <span class="comment">###################1                  |  52% </span></span><br><span class="line"></span><br><span class="line">CondaHTTPError: HTTP 000 CONNECTION FAILED <span class="keyword">for</span> url &lt;https://conda.anaconda.org/pytorch/linux-64/pytorch-1.0.0-py3.6_cuda8.0.61_cudnn7.1.2_1.tar.bz2&gt;</span><br><span class="line">Elapsed: -</span><br><span class="line"></span><br><span class="line">An HTTP error occurred when trying to retrieve this URL.</span><br><span class="line">HTTP errors are often intermittent, and a simple retry will get you on your way.</span><br></pre></td></tr></table></figure>
+<p>可以尝试用ariac2下载安装,下载地址已经在错误信息中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c -c -x 16 -d ~/Downloads https://conda.anaconda.org/pytorch/linux-64/pytorch-1.0.0-py3.6_cuda8.0.61_cudnn7.1.2_1.tar.bz2</span><br></pre></td></tr></table></figure>
+<p>下载完成后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install ~/anaconda3/pkgs/pytorch-1.0.0-py3.6_cuda8.0.61_cudnn7.1.2_1.tar.bz2</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/01/08/%E6%9F%A5%E7%9C%8BCUDA%E5%92%8Ccudnn%E7%89%88%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/08/%E6%9F%A5%E7%9C%8BCUDA%E5%92%8Ccudnn%E7%89%88%E6%9C%AC/" itemprop="url">查看CUDA和cudnn版本</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-08T14:01:17+08:00">
+                2019-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-查看CUDA版本"><a href="#1-查看CUDA版本" class="headerlink" title="1. 查看CUDA版本"></a>1. 查看CUDA版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/<span class="built_in">local</span>/cuda/version.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-查看cudnn版本"><a href="#2-查看cudnn版本" class="headerlink" title="2. 查看cudnn版本"></a>2. 查看cudnn版本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/<span class="built_in">local</span>/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>
+<p>根据输出判断：eg：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#define CUDNN_MAJOR      5</span></span><br><span class="line"><span class="comment">#define CUDNN_MINOR      1</span></span><br><span class="line"><span class="comment">#define CUDNN_PATCHLEVEL 10</span></span><br><span class="line">--</span><br><span class="line"><span class="comment">#define CUDNN_VERSION    (CUDNN_MAJOR * 1000 + CUDNN_MINOR * 100 + CUDNN_PATCHLEVEL)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#include "driver_types.h"</span></span><br></pre></td></tr></table></figure>
+<p>CuDNN版本为 5.1.10</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/01/04/virtulenv/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/04/virtulenv/" itemprop="url">virtualenv</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-04T13:21:39+08:00">
+                2019-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><a href="https://virtualenv.pypa.io/en/latest/" target="_blank" rel="noopener">Virtualenv</a>是一个独立的python环境的工具。<br>如果我们在开发中需要用到不同版本的Python，那么就可以使用它来创建不同的python虚拟环境</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>首先，我们通过pip安装virtualenv</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv	<span class="comment"># 针对pip</span></span><br><span class="line">pip3 install virtualenv	<span class="comment"># 针对pip3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-创建目录"><a href="#1-创建目录" class="headerlink" title="1. 创建目录"></a>1. 创建目录</h3><p>例如，我想重新装一个python2.7的环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir myproject</span><br><span class="line"><span class="built_in">cd</span> myproject</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-创建一个独立的Python运行环境，命名为env"><a href="#2-创建一个独立的Python运行环境，命名为env" class="headerlink" title="2. 创建一个独立的Python运行环境，命名为env:"></a>2. 创建一个独立的Python运行环境，命名为env:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">virtualenv --no-site-packages venv	<span class="comment"># 不带任何第三方包</span></span><br><span class="line">virtualenv venv --python=python2.7	<span class="comment"># 使用python 2.7 创建env环境</span></span><br><span class="line">virtualenv venv --python=python3.6	<span class="comment"># 使用python 3.6 创建环境</span></span><br></pre></td></tr></table></figure>
+
+<p>新建的Python环境被放到当前目录下的venv目录。有了venv这个Python环境，可以用source进入该环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
+<p>这时候命令提示符会变化，有个(venv)前缀，表示当前环境是一个名为venv的Python环境。</p>
+<p>下面正常安装各种第三方包，并运行python命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install package_name</span><br></pre></td></tr></table></figure>
+<p>在venv环境下，用pip安装的包都被安装到venv这个环境下，系统Python环境不受任何影响。也就是说，venv环境是专门针对myproject这个应用创建的。</p>
+<p>退出当前的venv环境，使用deactivate命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+<p>此时就回到了正常的环境，现在pip或python均是在系统Python环境下执行。</p>
+<p>完全可以针对每个应用创建独立的Python运行环境，这样就可以对每个应用的Python环境进行隔离。</p>
+<p>virtualenv是如何创建“独立”的Python运行环境的呢？原理很简单，就是把系统Python复制一份到virtualenv的环境，用命令source venv/bin/activate进入一个virtualenv环境时，virtualenv会修改相关环境变量，让命令python和pip均指向当前的virtualenv环境。</p>
+<h2 id="删除环境"><a href="#删除环境" class="headerlink" title="删除环境"></a>删除环境</h2><p>删除虚拟环境只需通过停用虚拟环境并删除环境文件夹及其所有内容即可完成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(ENV)$ deactivate</span><br><span class="line">$ rm -r /path/to/ENV</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>廖雪峰的官方网站.<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000" target="_blank" rel="noopener">廖雪峰的官方网站</a></p>
+<p>virtualenv<a href="https://virtualenv.pypa.io/en/latest/" target="_blank" rel="noopener">virtualenv</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/01/03/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85TexLive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/03/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85TexLive/" itemprop="url">ubuntu下安装TexLive</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-03T16:56:38+08:00">
+                2019-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h4><p>如果身在国内，推荐改用国内的镜像，比如清华大学的<a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener">tuna</a>。以下都以这个镜像为例</p>
+<p>在 <a href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/</a> 下载 install-tl-unx.tar.gz，解压并进入文件夹 install-tl-2018*。这里的 * 是一个日期。</p>
+<p>首先安装 perl-tl 和 perl-doc</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install perl-tk perl-doc</span><br></pre></td></tr></table></figure>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h5 id="通过下载安装包安装"><a href="#通过下载安装包安装" class="headerlink" title="通过下载安装包安装"></a>通过下载安装包安装</h5><p>终端中的操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz</span><br><span class="line">tar -xzf install-tl-unx.tar.gz</span><br><span class="line"><span class="built_in">cd</span> install-tl-2018*</span><br><span class="line">sudo ./install-tl 	<span class="comment"># 终端安装</span></span><br><span class="line">sudo ./install-tl -gui <span class="comment"># 通过图形界面安装</span></span><br></pre></td></tr></table></figure>
+
+<p>如果安装过程中发生错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./install-tl --profile installation.profile</span><br></pre></td></tr></table></figure>
+<p>可以按照之前的配置重装</p>
+<h5 id="通过镜像按装"><a href="#通过镜像按装" class="headerlink" title="通过镜像按装"></a>通过镜像按装</h5><p>这样可以得到较新的发行版版本，同时有丰富的包支持及更新。<br>ISO安装文件可以从下面几个开源镜像站点的CTAN同步镜像下载：</p>
+<ul>
+<li>中科大开源镜像站 <a href="http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/" target="_blank" rel="noopener">(http://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/)</a></li>
+<li>清华大学开源镜像站 <a href="http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/" target="_blank" rel="noopener">(http://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/)</a></li>
+<li>厦门大学开源镜像站 <a href="http://mirrors.xmu.edu.cn/CTAN/systems/texlive/Images/" target="_blank" rel="noopener">(http://mirrors.xmu.edu.cn/CTAN/systems/texlive/Images/)</a><h6 id="挂载镜像并安装"><a href="#挂载镜像并安装" class="headerlink" title="挂载镜像并安装"></a>挂载镜像并安装</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /path_to_iso/texlive20*.iso /mnt</span><br><span class="line"><span class="built_in">cd</span> /mnt</span><br><span class="line">sudo ./install-tl</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="环境变量设置"><a href="#环境变量设置" class="headerlink" title="环境变量设置"></a>环境变量设置</h4><p>此时 TeX Live 虽已安装，但其路径对于 Linux 来说仍是不可识别的。所以需要更改环境变量。<br>打开 ~/.bashrc，在最后添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=/usr/<span class="built_in">local</span>/texlive/2018/bin/x86_64-linux:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> MANPATH=/usr/<span class="built_in">local</span>/texlive/2018/texmf-dist/doc/man:<span class="variable">$MANPATH</span></span><br><span class="line"><span class="built_in">export</span> INFOPATH=/usr/<span class="built_in">local</span>/texlive/2018/texmf-dist/doc/info:<span class="variable">$INFOPATH</span></span><br></pre></td></tr></table></figure>
+<p>还需保证开启 sudo 模式后路径仍然可用。命令行中执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo visudo</span><br></pre></td></tr></table></figure>
+<p>找到如下一段代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Defaults        env_reset</span><br><span class="line">Defaults        mail_badpass</span><br><span class="line">Defaults        secure_path=<span class="string">"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"</span></span><br></pre></td></tr></table></figure>
+<p>将第三行改为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Defaults        secure_path=<span class="string">"/usr/local/texlive/2018/bin/x86_64-linux:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"</span></span><br></pre></td></tr></table></figure>
+<p>也就是加入 TeX Live 的执行路径。如果在安装时作了修改，这里的路径也都要与安装时的保持一致。</p>
+<h4 id="字体设置"><a href="#字体设置" class="headerlink" title="字体设置"></a>字体设置</h4><p>要在整个系统中使用 TeX 字体，还需要将 TeX 自带的配置文件复制到系统目录下。命令行中执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /usr/<span class="built_in">local</span>/texlive/2018/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf</span><br></pre></td></tr></table></figure>
+<p>之后再执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">fc</span>-cache -fv</span><br></pre></td></tr></table></figure>
+<p>刷新字体数据库。</p>
+<h4 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h4><p>到此整个 TeX Live 2018 就已经安装完毕。可以做下面的一些检查：</p>
+<h5 id="基本命令："><a href="#基本命令：" class="headerlink" title="基本命令："></a>基本命令：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tlmgr --version</span><br><span class="line">pdftex --version</span><br><span class="line">xetex --version</span><br><span class="line">luatex --version</span><br></pre></td></tr></table></figure>
+
+<h4 id="包管理器"><a href="#包管理器" class="headerlink" title="包管理器"></a>包管理器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tlmgr update --list</span><br></pre></td></tr></table></figure>
+<p>这一步是检查更新，如果有就顺手更了吧：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tlmgr update --self --all</span><br></pre></td></tr></table></figure>
+<p>–self 用来更新 tlmgr 自身，如果上一步没有提示可以不加这个选项。</p>
+<h5 id="Hello-world"><a href="#Hello-world" class="headerlink" title="Hello world"></a>Hello world</h5><p>可以编译一个简短的测试文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">% hello.tex</span><br><span class="line">\documentclass[UTF8]&#123;ctexart&#125;</span><br><span class="line">\begin&#123;document&#125;</span><br><span class="line">欢迎来到 \TeX&#123;&#125; 世界！</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p>用 xelatex 或 lualatex 编译：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xelatex hello</span><br><span class="line">lualatex hello</span><br></pre></td></tr></table></figure>
+<p>编译得到的 PDF 文件如果显示正常，则说明 TeX Live 基本工作正常。</p>
+<h4 id="使用Sublime-Text-3编写LaTeX"><a href="#使用Sublime-Text-3编写LaTeX" class="headerlink" title="使用Sublime Text 3编写LaTeX"></a>使用Sublime Text 3编写LaTeX</h4><p><a href="https://latextools.readthedocs.io/en/latest/" target="_blank" rel="noopener">LaTeXTools: A LaTeX Plugin for Sublime Text 2 and 3</a></p>
+<p><a href="https://blog.csdn.net/qazxswed807/article/details/51234834" target="_blank" rel="noopener">基于TeXlive,使用Sublime Text 3编写LaTeX</a></p>
+<h5 id="打开Perference-gt-Package-Settings-gt-LaTexTools-gt-Settings-User"><a href="#打开Perference-gt-Package-Settings-gt-LaTexTools-gt-Settings-User" class="headerlink" title="打开Perference-&gt;Package Settings-&gt;LaTexTools-&gt;Settings-User"></a>打开Perference-&gt;Package Settings-&gt;LaTexTools-&gt;Settings-User</h5><p>在打开文件的227行”linux”中配置你的TexLive路径</p>
+<ul>
+<li><p>“texpath” : “$PATH:/usr/local/texlive/2018/bin/x86_64-linux”</p>
+</li>
+<li><p>“python”: “/home/youname/anaconda3/bin”（Python的安装路径，如果你没有安装anaconda或者设置路径过你的路径可能不是这个你需要sudo find / -name python*）找到你的Python路径，设置487中 “viewer”: “evince”（不设置空着应该也可以，系统默认用自己的evince）。</p>
+</li>
+</ul>
+<h5 id="安装dbus（为了编译后自动打开pdf）"><a href="#安装dbus（为了编译后自动打开pdf）" class="headerlink" title="安装dbus（为了编译后自动打开pdf）"></a>安装dbus（为了编译后自动打开pdf）</h5><p>用conda<a href="https://anaconda.org/scottwales/dbus-python" target="_blank" rel="noopener">下载</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install -c scottwales dbus-python</span><br></pre></td></tr></table></figure>
+
+<h4 id="Latex文档"><a href="#Latex文档" class="headerlink" title="Latex文档"></a>Latex文档</h4><p><a href="http://mirrors.ustc.edu.cn/CTAN/info/lshort/chinese/" target="_blank" rel="noopener">一份(不太)简短的LATEX 2介绍</a></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>stone-zeng.<a href="https://stone-zeng.github.io/fduthesis/2018-05-13-install-texlive-ubuntu/#1" target="_blank" rel="noopener">在 Ubuntu 中安装 TeX Live 2018</a></p>
+<p>瞑夜-q.<a href="https://blog.csdn.net/qazxswed807/article/details/51234834" target="_blank" rel="noopener">基于TeXlive,使用Sublime Text 3编写LaTeX</a></p>
+<p>bleedingfight.<a href="https://blog.csdn.net/bleedingfight/article/details/72810606" target="_blank" rel="noopener">Ubuntu下用sublime text3和latextool插件写latex文档</a></p>
+<p>ptbsare.<a href="http://ptbsare.org/2014/05/12/ubuntu%E4%B8%8B%E9%83%A8%E7%BD%B2latex%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83/" target="_blank" rel="noopener">Ubuntu下部署Latex编译环境</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/01/02/Ubuntu%E7%BE%8E%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/02/Ubuntu%E7%BE%8E%E5%8C%96/" itemprop="url">Ubuntu美化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-02T07:32:54+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="GNOME主题"><a href="#GNOME主题" class="headerlink" title="GNOME主题"></a>GNOME主题</h1><h2 id="1-首先安装tweak-tool"><a href="#1-首先安装tweak-tool" class="headerlink" title="1. 首先安装tweak tool"></a>1. 首先安装tweak tool</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gnome-tweak-tool</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-然后安装user-themes插件"><a href="#2-然后安装user-themes插件" class="headerlink" title="2. 然后安装user themes插件"></a>2. 然后安装user themes插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gnome-shell-extensions</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-下载主题"><a href="#3-下载主题" class="headerlink" title="3. 下载主题"></a>3. 下载主题</h2><h4 id="安装Arc主题-horst3180-arc-theme"><a href="#安装Arc主题-horst3180-arc-theme" class="headerlink" title="- 安装Arc主题 horst3180/arc-theme"></a>- 安装Arc主题 <a href="https://github.com/horst3180/arc-theme" target="_blank" rel="noopener">horst3180/arc-theme</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo sh -c <span class="string">"echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' &gt; /etc/apt/sources.list.d/home:Horst3180.list"</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install arc-theme</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装Flatabulous主题-anmoljagetia-Flatabulous"><a href="#安装Flatabulous主题-anmoljagetia-Flatabulous" class="headerlink" title="- 安装Flatabulous主题 anmoljagetia/Flatabulous"></a>- 安装Flatabulous主题 <a href="https://github.com/anmoljagetia/Flatabulous" target="_blank" rel="noopener">anmoljagetia/Flatabulous</a></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:noobslab/themes</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install flatabulous-theme</span><br></pre></td></tr></table></figure>
+
+<p>然后在Tweak Tool–&gt;Apprarance–&gt;Theme中选择修改</p>
+<p>点击下载主题:<a href="https://www.gnome-look.org/" target="_blank" rel="noopener">https://www.gnome-look.org/</a></p>
+<h2 id="4-解压"><a href="#4-解压" class="headerlink" title="4. 解压"></a>4. 解压</h2><p>将下载好的文件夹解压后移动到~/.themes文件夹下面，如果没有就创建一个</p>
+<p>重新启动tweak tool，在Appearance选项卡的shell theme中选择你想要的shell theme即可</p>
+<p>按”Alt+F2”组合键，弹出命令窗口，输入”r”，重启桌面环境，然户就可以看到成功更换主题了</p>
+<h1 id="图标和指针主题"><a href="#图标和指针主题" class="headerlink" title="图标和指针主题"></a>图标和指针主题</h1><p>图标和指针的主题更换方式和上面一样，只不过下载并解压后的文件夹放置位置不同。</p>
+<ul>
+<li>图标: 放置到/usr/share/icons/中</li>
+<li>指针: 放置到~/.icons目录中</li>
+</ul>
+<h1 id="vim插件"><a href="#vim插件" class="headerlink" title="vim插件"></a>vim插件</h1><h3 id="1-首先我们先安装一个插件管理器"><a href="#1-首先我们先安装一个插件管理器" class="headerlink" title="1. 首先我们先安装一个插件管理器"></a>1. 首先我们先安装一个插件管理器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</span><br></pre></td></tr></table></figure>
+<h3 id="2-然后配置插件"><a href="#2-然后配置插件" class="headerlink" title="2. 然后配置插件"></a>2. 然后配置插件</h3><p>打开~/.vimrc,在call vundle#begin()和call vundle#end()之间添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">" let Vundle manage Vundle, required</span></span><br><span class="line"><span class="string">Plugin 'VundleVim/Vundle.vim'</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-安装插件"><a href="#3-安装插件" class="headerlink" title="3. 安装插件"></a>3. 安装插件</h3><p>在vim下运行:PluginInstall</p>
+<p>以后所有插件都可以用这种方法安装<br>这里贴一下我的vimrc配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> nocompatible              <span class="string">" 去除VI一致性,必须</span></span><br><span class="line"><span class="string">filetype off                  "</span> 必须</span><br><span class="line"></span><br><span class="line"><span class="string">" 设置包括vundle和初始化相关的runtime path</span></span><br><span class="line"><span class="string">set rtp+=~/.vim/bundle/Vundle.vim</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">call vundle#begin()</span></span><br><span class="line"><span class="string">"</span> 另一种选择, 指定一个vundle安装插件的路径</span><br><span class="line"><span class="string">"call vundle#begin('~/some/path/here')</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span> 让vundle管理插件版本,必须</span><br><span class="line">Plugin <span class="string">'VundleVim/Vundle.vim'</span></span><br><span class="line"></span><br><span class="line"><span class="string">" The NERDTree is a file system explorer for the Vim editor</span></span><br><span class="line"><span class="string">"</span> https://github.com/scrooloose/nerdtree</span><br><span class="line">Plugin <span class="string">'scrooloose/nerdtree'</span></span><br><span class="line"></span><br><span class="line"><span class="string">" Tagbar: a class outline viewer for Vim</span></span><br><span class="line"><span class="string">"</span> https://github.com/majutsushi/tagbar</span><br><span class="line">Plugin <span class="string">'majutsushi/tagbar'</span></span><br><span class="line"></span><br><span class="line"><span class="string">" altercation/vim-colors-solarized</span></span><br><span class="line"><span class="string">"</span> https://github.com/altercation/vim-colors-solarized</span><br><span class="line">Plugin <span class="string">'altercation/vim-colors-solarized'</span></span><br><span class="line"></span><br><span class="line"><span class="string">" 以下范例用来支持不同格式的插件安装.</span></span><br><span class="line"><span class="string">"</span> 请将安装插件的命令放在vundle<span class="comment">#begin和vundle#end之间.</span></span><br><span class="line"><span class="string">" Github上的插件</span></span><br><span class="line"><span class="string">"</span> 格式为 Plugin <span class="string">'用户名/插件仓库名'</span></span><br><span class="line">Plugin <span class="string">'tpope/vim-fugitive'</span></span><br><span class="line"><span class="string">" 来自 http://vim-scripts.org/vim/scripts.html 的插件</span></span><br><span class="line"><span class="string">"</span> Plugin <span class="string">'插件名称'</span> 实际上是 Plugin <span class="string">'vim-scripts/插件仓库名'</span> 只是此处的用户名可以省略</span><br><span class="line"><span class="string">"Plugin 'L9'</span></span><br><span class="line"><span class="string">"</span> 由Git支持但不再github上的插件仓库 Plugin <span class="string">'git clone 后面的地址'</span></span><br><span class="line"><span class="string">"Plugin 'git://git.wincent.com/command-t.git'</span></span><br><span class="line"><span class="string">"</span> 本地的Git仓库(例如自己的插件) Plugin <span class="string">'file:///+本地插件仓库绝对路径'</span></span><br><span class="line"><span class="string">"Plugin 'file:///home/gmarik/path/to/plugin'</span></span><br><span class="line"><span class="string">"</span> 插件在仓库的子目录中.</span><br><span class="line"><span class="string">" 正确指定路径用以设置runtimepath. 以下范例插件在sparkup/vim目录下</span></span><br><span class="line"><span class="string">"</span>Plugin <span class="string">'rstacruz/sparkup'</span>, &#123;<span class="string">'rtp'</span>: <span class="string">'vim/'</span>&#125;</span><br><span class="line"><span class="string">" 安装L9，如果已经安装过这个插件，可利用以下格式避免命名冲突</span></span><br><span class="line"><span class="string">"</span>Plugin <span class="string">'ascenator/L9'</span>, &#123;<span class="string">'name'</span>: <span class="string">'newL9'</span>&#125;</span><br><span class="line"></span><br><span class="line">Plugin <span class="string">'suan/vim-instant-markdown'</span></span><br><span class="line"></span><br><span class="line"><span class="string">" 你的所有插件需要在下面这行之前</span></span><br><span class="line"><span class="string">call vundle#end()            "</span> 必须</span><br><span class="line">filetype plugin indent on    <span class="string">" 必须 加载vim自带和插件相应的语法和文件类型相关脚本</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span> 忽视插件改变缩进,可以使用以下替代:</span><br><span class="line"><span class="string">"filetype plugin on</span></span><br><span class="line"><span class="string">"</span></span><br><span class="line"><span class="string">" 简要帮助文档</span></span><br><span class="line"><span class="string">"</span> :PluginList       - 列出所有已配置的插件</span><br><span class="line"><span class="string">" :PluginList       - 列出所有已配置的插件</span></span><br><span class="line"><span class="string">"</span> :PluginInstall    - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate</span><br><span class="line"><span class="string">" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存</span></span><br><span class="line"><span class="string">"</span> :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插&gt;件</span><br><span class="line"><span class="string">"</span></span><br><span class="line"><span class="string">"</span> 查阅 :h vundle 获取更多细节和wiki以及FAQ</span><br><span class="line"><span class="string">" 将你自己对非插件片段放在这行之后</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set nu          "</span>在每一行最前面显示行号</span><br><span class="line"><span class="string">" set autoindent        "</span>自动缩排</span><br><span class="line"><span class="string">" set cindent   "</span>按照 C 语言的语法,自动地调整缩进的长度</span><br><span class="line"></span><br><span class="line">syntax on       <span class="string">"可以进行语法检验,颜色显示</span></span><br><span class="line"><span class="string">set background=dark</span></span><br><span class="line"><span class="string">colorscheme solarized</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set fileencoding=utf-8</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span> 贴时保持格式  </span><br><span class="line"><span class="built_in">set</span> paste</span><br><span class="line"><span class="string">"为方便复制，用&lt;F6&gt;开启/关闭行号显示:  </span></span><br><span class="line"><span class="string">nnoremap &lt;F6&gt; :set nonumber!&lt;CR&gt;:set foldcolumn=0&lt;CR&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"</span> Tagbar</span><br><span class="line"><span class="built_in">let</span> g:tagbar_width=15</span><br><span class="line"><span class="built_in">let</span> g:tagbar_autofocus=1</span><br><span class="line"><span class="built_in">let</span> g:tagbar_right = 1</span><br><span class="line">nmap &lt;F3&gt; :TagbarToggle&lt;CR&gt;</span><br><span class="line"></span><br><span class="line"><span class="string">" NERDTree config</span></span><br><span class="line"><span class="string">"</span> <span class="string">" open a NERDTree automatically when vim starts up</span></span><br><span class="line"><span class="string">autocmd vimenter * NERDTree</span></span><br><span class="line"><span class="string">"</span> <span class="string">"open a NERDTree automatically when vim starts up if no files were specified</span></span><br><span class="line"><span class="string">autocmd StdinReadPre * let s:std_in=1</span></span><br><span class="line"><span class="string">autocmd VimEnter * if argc() == 0 &amp;&amp; !exists("</span>s:std_in<span class="string">") | NERDTree | endif</span></span><br><span class="line"><span class="string">"</span> <span class="string">"open NERDTree automatically when vim starts up on opening a directory</span></span><br><span class="line"><span class="string">autocmd StdinReadPre * let s:std_in=1</span></span><br><span class="line"><span class="string">autocmd VimEnter * if argc() == 0 &amp;&amp; !exists("</span>s:std_in<span class="string">") | NERDTree | endif</span></span><br><span class="line"><span class="string">"</span> <span class="string">"open NERDTree automatically when vim starts up on opening a directory</span></span><br><span class="line"><span class="string">autocmd StdinReadPre * let s:std_in=1</span></span><br><span class="line"><span class="string">autocmd VimEnter * if argc() == 1 &amp;&amp; isdirectory(argv()[0]) &amp;&amp; !exists("</span>s:std_in<span class="string">") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif</span></span><br><span class="line"><span class="string">"</span> <span class="string">"map F2 to open NERDTree</span></span><br><span class="line"><span class="string">map &lt;F2&gt; :NERDTreeToggle&lt;CR&gt;</span></span><br><span class="line"><span class="string">"</span> <span class="string">"close vim if the only window left open is a NERDTree</span></span><br><span class="line"><span class="string">autocmd bufenter * if (winnr("</span>$<span class="string">") == 1 &amp;&amp; exists("</span>b:NERDTree<span class="string">") &amp;&amp; b:NERDTree.isTabTree()) | q | endif</span></span><br><span class="line"><span class="string">let g:NERDTreeWinSize=20</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="介绍一下据说是最难装的vim插件YouCompleteMe"><a href="#介绍一下据说是最难装的vim插件YouCompleteMe" class="headerlink" title="介绍一下据说是最难装的vim插件YouCompleteMe"></a>介绍一下据说是最难装的vim插件<a href="https://github.com/Valloric/YouCompleteMe" target="_blank" rel="noopener">YouCompleteMe</a></h3><h4 id="1-首先clone到-vim-bundle"><a href="#1-首先clone到-vim-bundle" class="headerlink" title="1. 首先clone到~/.vim/bundle/"></a>1. 首先clone到~/.vim/bundle/</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.vim/bundle/</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/Valloric/YouCompleteMe.git</span><br><span class="line">git submodule update --init --recursive		<span class="comment"># 下载子模块</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;install.py --clang-completer		# 支持C家族语言</span><br></pre></td></tr></table></figure>
+<ul>
+<li>C# support: install Mono with Homebrew or by downloading the Mono Mac package and add –cs-completer when calling install.py.</li>
+<li>Go support: install Go and add –go-completer when calling install.py.</li>
+<li>JavaScript and TypeScript support: install Node.js and npm and add –ts-completer when calling install.py.</li>
+<li>Rust support: install Rust and add –rust-completer when calling install.py.</li>
+<li>Java support: install JDK8 (version 8 required) and add –java-completer when calling install.py.<h4 id="3-在-vimrc中添加"><a href="#3-在-vimrc中添加" class="headerlink" title="3. 在~/.vimrc中添加"></a>3. 在~/.vimrc中添加</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin Valloric/YouCompleteMe)</span><br></pre></td></tr></table></figure>
+<h4 id="4-保存生效"><a href="#4-保存生效" class="headerlink" title="4. 保存生效"></a>4. 保存生效</h4></li>
+</ul>
+<p><a href="https://juejin.im/post/5a38c37f6fb9a0450909a151" target="_blank" rel="noopener">vim进阶 | 使用插件打造实用vim工作环境</a></p>
+<p><a href="https://github.com/altercation/vim-colors-solarized" target="_blank" rel="noopener">altercation/vim-colors-solarized</a></p>
+<p><a href="https://github.com/Valloric/YouCompleteMe#full-installation-guide" target="_blank" rel="noopener">Valloric/YouCompleteMe</a></p>
+<p><a href="https://github.com/SpaceVim/SpaceVim" target="_blank" rel="noopener">SpaceVim/SpaceVim</a></p>
+<p><a href="https://github.com/VundleVim/Vundle.vim" target="_blank" rel="noopener">VundleVim/Vundle.vim</a></p>
+<p><a href="https://github.com/scrooloose/nerdtree" target="_blank" rel="noopener">scrooloose/nerdtree</a></p>
+<p><a href="https://github.com/majutsushi/tagbar" target="_blank" rel="noopener">majutsushi/tagbar</a></p>
+<h1 id="主题配色"><a href="#主题配色" class="headerlink" title="主题配色"></a>主题配色</h1><p>在~/.vimrc中添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin <span class="string">'altercation/vim-colors-solarized'</span></span><br></pre></td></tr></table></figure>
+<p>在vim中执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:PluginInstall</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://github.com/altercation/vim-colors-solarized" target="_blank" rel="noopener">altercation/vim-colors-solarized</a></p>
+<h1 id="终端美化Oh-my-zsh"><a href="#终端美化Oh-my-zsh" class="headerlink" title="终端美化Oh my zsh"></a>终端美化Oh my zsh</h1><h3 id="1-安装zsh"><a href="#1-安装zsh" class="headerlink" title="1. 安装zsh"></a>1. 安装zsh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install zsh</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装Oh-my-zsh"><a href="#2-安装Oh-my-zsh" class="headerlink" title="2. 安装Oh-my-zsh"></a>2. 安装Oh-my-zsh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>"</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-修改Shell"><a href="#3-修改Shell" class="headerlink" title="3. 修改Shell"></a>3. 修改Shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s $(<span class="built_in">which</span> zsh)</span><br></pre></td></tr></table></figure>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><blockquote>
+<p>如果之前用的是bash，现在改成zsh之后，可能会导致之前的环境变量不可用，可以尝试在~/.zshrc中添加source ~/.bashrc,这样每当zsh启动时就会加载原来bash中的环境变量，然后执行source ~/.zshrc.如果执行source ~/.zshrc之后出现错误，说明zsh不能运行bash中的命令，只能手动将bashrc中的命令替换成同等功能的zshrc中的命令。</p>
+</blockquote>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="noopener">robbyrussell/oh-my-zsh</a></p>
+<p><a href="https://medium.com/wearetheledger/oh-my-zsh-made-for-cli-lovers-installation-guide-3131ca5491fb" target="_blank" rel="noopener">Oh-My-Zsh! A Work of CLI Magic — Tutorial for Ubuntu</a></p>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins" target="_blank" rel="noopener">oh-my-zsh/plugins/</a></p>
+<p><a href="https://juejin.im/entry/5ae00e54f265da0b8635ea5c" target="_blank" rel="noopener">zsh oh-my-zsh 插件推荐</a></p>
+<h2 id="更换Oh-my-zsh主题"><a href="#更换Oh-my-zsh主题" class="headerlink" title="更换Oh-my-zsh主题"></a>更换Oh-my-zsh主题</h2><p>在这里我使用的是ys主题<br>在～/.zshrc里面配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ZSH_THEME=<span class="string">"ys"</span></span><br></pre></td></tr></table></figure>
+<p>但是由于ys主题主机名太长，所以这里在~/.oh-my-zsh/themes/ys.zsh-theme</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">PROMPT=<span class="string">"</span></span><br><span class="line"><span class="string">%&#123;<span class="variable">$terminfo</span>[bold]<span class="variable">$fg</span>[blue]%&#125;#%&#123;<span class="variable">$reset_color</span>%&#125; \</span></span><br><span class="line"><span class="string">%(#,%&#123;<span class="variable">$bg</span>[yellow]%&#125;%&#123;<span class="variable">$fg</span>[black]%&#125;%n%&#123;<span class="variable">$reset_color</span>%&#125;,%&#123;<span class="variable">$fg</span>[cyan]%&#125;%n) \</span></span><br><span class="line"><span class="string">%&#123;<span class="variable">$fg</span>[white]%&#125;@ \</span></span><br><span class="line"><span class="string">%&#123;<span class="variable">$fg</span>[green]%&#125;%m \  </span></span><br><span class="line"><span class="string">%&#123;<span class="variable">$fg</span>[white]%&#125;in \</span></span><br><span class="line"><span class="string">%&#123;<span class="variable">$terminfo</span>[bold]<span class="variable">$fg</span>[yellow]%&#125;%~%&#123;<span class="variable">$reset_color</span>%&#125;\</span></span><br><span class="line"><span class="string"><span class="variable">$&#123;hg_info&#125;</span>\</span></span><br><span class="line"><span class="string"><span class="variable">$&#123;git_info&#125;</span>\</span></span><br><span class="line"><span class="string"> \</span></span><br><span class="line"><span class="string">%&#123;<span class="variable">$fg</span>[white]%&#125;[%*] <span class="variable">$exit_code</span></span></span><br><span class="line"><span class="string">%&#123;<span class="variable">$terminfo</span>[bold]<span class="variable">$fg</span>[red]%&#125;$ %&#123;<span class="variable">$reset_color</span>%&#125;"</span></span><br><span class="line">:NERDTreeToggle</span><br></pre></td></tr></table></figure>
+<p>将第1，3,4行删除<br>保存并退出<br>执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/01/01/%E8%A7%A3%E5%86%B3ubuntu1604%E4%B8%8Bwps%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/01/%E8%A7%A3%E5%86%B3ubuntu1604%E4%B8%8Bwps%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E9%97%AE%E9%A2%98/" itemprop="url">解决ubuntu1604下wps不能使用搜狗输入法问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-01T16:42:28+08:00">
+                2019-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置-虽然之前一直正常使用-不过亲测以后再遇到这种问题按照如下方法修改即可"><a href="#有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置-虽然之前一直正常使用-不过亲测以后再遇到这种问题按照如下方法修改即可" class="headerlink" title="有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置(虽然之前一直正常使用),不过亲测以后再遇到这种问题按照如下方法修改即可"></a>有时候会遇到Ubuntu下WPS无法使用搜狗输入法的问题，经过在网上搜索尝试，发现是环境变量没有正确配置(虽然之前一直正常使用),不过亲测以后再遇到这种问题按照如下方法修改即可</h2><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="Word部分"><a href="#Word部分" class="headerlink" title="Word部分"></a>Word部分</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/bin/wps</span><br></pre></td></tr></table></figure>
+<p>在第一行 #!/bin/bash 下添加:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#wps word environment</span></span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=<span class="string">"fcitx"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ppt部分"><a href="#ppt部分" class="headerlink" title="ppt部分"></a>ppt部分</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/bin/wpp</span><br></pre></td></tr></table></figure>
+<p>在第一行 #!/bin/bash 下添加:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#wps ppt environment</span></span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=<span class="string">"fcitx"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Excel部分"><a href="#Excel部分" class="headerlink" title="Excel部分"></a>Excel部分</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/bin/et</span><br></pre></td></tr></table></figure>
+<p>在第一行 #!/bin/bash 下添加:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#excel word environment</span></span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">"@im=fcitx"</span></span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=<span class="string">"fcitx"</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2018/12/30/autosub%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E5%AD%97%E5%B9%95%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/30/autosub%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E5%AD%97%E5%B9%95%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/" itemprop="url">autosub语音识别字幕生成工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-30T20:41:40+08:00">
+                2018-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="autosub"><a href="#autosub" class="headerlink" title="autosub"></a><a href="https://github.com/agermanidis/autosub" target="_blank" rel="noopener">autosub</a></h3><blockquote>
+<p>Autosub是一种用于自动语音识别和字幕生成的实用程序。它将视频或音频文件作为输入，执行语音活动检测以查找语音区域，向Google Web Speech API发出并行请求以生成这些区域的转录，将它们翻译为不同的语言，最后保存结果字幕到磁盘。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="首先安装FFmpeg"><a href="#首先安装FFmpeg" class="headerlink" title="首先安装FFmpeg"></a>首先安装FFmpeg</h4><p><a href="https://www.ffmpeg.org/download.html" target="_blank" rel="noopener">download</a></p>
+<h4 id="pip-安装autosub"><a href="#pip-安装autosub" class="headerlink" title="pip 安装autosub"></a>pip 安装autosub</h4><p><a href="https://pypi.org/project/autosub/" target="_blank" rel="noopener">autosub</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install autosub</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意：该程序只能在python2-7环境下使用，python3使用会报错"><a href="#注意：该程序只能在python2-7环境下使用，python3使用会报错" class="headerlink" title="注意：该程序只能在python2.7环境下使用，python3使用会报错"></a>注意：该程序只能在python2.7环境下使用，python3使用会报错</h3><p>可以在virtualenv环境下配置python2.7<br>参考<a href="http://linuzb.cn/2019/01/04/virtulenv/" target="_blank" rel="noopener">virtualenv</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir autosub_env</span><br><span class="line"><span class="built_in">cd</span> autosub_env/</span><br><span class="line">virtualenv venv --python=python2.7</span><br><span class="line"><span class="built_in">source</span> venv/bin/activate</span><br><span class="line">pip install autosub</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">autosub -h</span><br><span class="line">autosub --list-languages	# 所有可用的源&#x2F;目标语言</span><br></pre></td></tr></table></figure>
+
+<h3 id="srt-translator"><a href="#srt-translator" class="headerlink" title="srt-translator"></a>srt-translator</h3><blockquote>
+<p>字幕翻译软件</p>
+</blockquote>
+<blockquote>
+<p>Translating subtitles in format SubRip from one natural language to other. It is based on Google Translate without API and therefore without payment. Translator have automatic and manual spell checkers.</p>
+</blockquote>
+<p><a href="https://sourceforge.net/projects/srt-tran/" target="_blank" rel="noopener">下载</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Linuzb</p>
+              <p class="site-description motion-element" itemprop="description">记录学习过程</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linuzb</span>
+
+  
 </div>
 
 
-</body>
-<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<script src="/js/script.js?v=1.0.1" ></script>
-<script>
-    var img_resize = 'default';
-    /*作者、标签的自动补全*/
-    $(function () {
-        $('.search').AutoComplete({
-            'data': ['#Machine Learning','#工具','#阅读','#Linux','#paper','#Distribute System','#Web','#software','#Others','#Algarithm','#问题','#论文','#杂项','#course','#tools','#distribute system','#os','#HPC','#programming','#Deep Learning','#Computer Graphics',],
-            'itemHeight': 20,
-            'width': 418
-        }).AutoComplete('show');
-    })
-    function initArticle() {
-        /*渲染对应的表格样式*/
-        
-            $(".post .pjax table").addClass("green_title");
-        
 
-        /*渲染打赏样式*/
-        
-        $("input[name=pay]").on("click", function () {
-            if($("input[name=pay]:checked").val()=="weixin"){
-                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
-            } else {
-                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
-            }
-        })
-        
 
-        /*高亮代码块行号*/
-        
-        $('pre code').each(function(){
-            var lines = $(this).text().trim().split('\n').length, widther='';
-            if (lines>99) {
-                widther = 'widther'
-            }
-            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
-            $(this).addClass('has-numbering ' + widther)
-                    .parent()
-                    .append($numbering);
-            for(var i=1;i<=lines;i++){
-                $numbering.append($('<li/>').text(i));
-            }
-        });
-        
+  <span class="post-meta-divider">|</span>
 
-        /*访问数量*/
-        
-        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
-        
 
-        /*代码高亮，行号对齐*/
-        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
 
         
-        
-    }
 
-    /*打赏页面隐藏与展示*/
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
     
-    function dashangToggle() {
-        $(".shang_box").fadeToggle();
-        $(".hide_box").fadeToggle();
-    }
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
     
 
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
-<!--加入行号的高亮代码块样式-->
-
-<style>
-    pre{
-        position: relative;
-        margin-bottom: 24px;
-        border-radius: 10px;
-        border: 1px solid #e2dede;
-        background: #FFF;
-        overflow: hidden;
-    }
-    code.has-numbering{
-        margin-left: 30px;
-    }
-    code.has-numbering.widther{
-        margin-left: 35px;
-    }
-    .pre-numbering{
-        margin: 0px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        padding: 0.5em 3px 0.7em 5px;
-        border-right: 1px solid #C3CCD0;
-        text-align: right;
-        color: #AAA;
-        background-color: #fafafa;
-    }
-    .pre-numbering.widther {
-        width: 35px;
-    }
-</style>
-
-<!--自定义样式设置-->
-<style>
-    
-    
-    .nav {
-        width: 542px;
-    }
-    .nav.fullscreen {
-        margin-left: -542px;
-    }
-    .nav-left {
-        width: 120px;
-    }
-    
-    
-    @media screen and (max-width: 1468px) {
-        .nav {
-            width: 492px;
-        }
-        .nav.fullscreen {
-            margin-left: -492px;
-        }
-        .nav-left {
-            width: 100px;
-        }
-    }
-    
-    
-    @media screen and (max-width: 1024px) {
-        .nav {
-            width: 492px;
-            margin-left: -492px
-        }
-        .nav.fullscreen {
-            margin-left: 0;
-        }
-        .nav .hide-list.fullscreen {
-            left: 492px
-        }
-    }
-    
-    @media screen and (max-width: 426px) {
-        .nav {
-            width: 100%;
-        }
-        .nav-left {
-            width: 100%;
-        }
-    }
-    
-    
-    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
-        color: #383636;
-    }
-    
-    
-    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
-        color: #5e5e5f;
-    }
-    
-    
-    .nav-right nav a.hover, #local-search-result a.hover{
-        background-color: #e2e0e0;
-    }
-    
-    
-
-    /*列表样式*/
-    
-    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
-        border: #e2dede solid 1px;
-        border-radius: 10px;
-        padding: 10px 32px 10px 56px;
-    }
-    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    
-
-    /* 背景图样式 */
-    
-    
-
-
-    /*引用块样式*/
-    
-
-    /*文章列表背景图*/
-    
-
-    
-</style>
 
 
 
@@ -824,4 +1805,125 @@
 
 
 
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>

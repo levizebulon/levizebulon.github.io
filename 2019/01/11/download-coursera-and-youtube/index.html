@@ -1,862 +1,539 @@
 <!DOCTYPE html>
-<html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>download_coursera_and_youtube | Linuzb&#39;s blog</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="download_coursera_and_youtube | Linuzb&#39;s blog">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Coursera-dlYoutube-dl安装1. 在linux系统下使用curl12sudo curl -L https:&#x2F;&#x2F;yt-dl.org&#x2F;downloads&#x2F;latest&#x2F;youtube-dl -o &#x2F;usr&#x2F;local&#x2F;bin&#x2F;youtube-dlsudo chmod a+rx &#x2F;usr&#x2F;local&#x2F;bin&#x2F;youtube-dl 或者使用wget12sudo wget https:&#x2F;&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MPITutorials">
-<meta property="og:url" content="https://levizebulon.github.io/2020/05/26/MPITutorials/index.html">
+<meta property="og:title" content="download_coursera_and_youtube">
+<meta property="og:url" content="https://levizebulon.github.io/2019/01/11/download-coursera-and-youtube/index.html">
 <meta property="og:site_name" content="Linuzb&#39;s blog">
-<meta property="og:description" content="ref:Message Passing Interface (MPI) 摘要消息传递接口标准（MPI）是基于MPI论坛共识的消息传递库标准，MPI论坛有40多个参与组织，其中包括供应商，研究人员，软件库开发人员和用户。消息传递接口的目标是为消息传递建立一种可移植，高效且灵活的标准，该标准将广泛用于编写消息传递程序。因此，MPI是第一个标准化的，独立于供应商的消息传递库。使用MPI开发消息传递软件的">
+<meta property="og:description" content="Coursera-dlYoutube-dl安装1. 在linux系统下使用curl12sudo curl -L https:&#x2F;&#x2F;yt-dl.org&#x2F;downloads&#x2F;latest&#x2F;youtube-dl -o &#x2F;usr&#x2F;local&#x2F;bin&#x2F;youtube-dlsudo chmod a+rx &#x2F;usr&#x2F;local&#x2F;bin&#x2F;youtube-dl 或者使用wget12sudo wget https:&#x2F;&#x2F;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/comm_world.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="og:image" content="https://levizebulon.github.io/2020/05/26/images/page01.gif">
-<meta property="article:published_time" content="2020-05-26T09:42:38.000Z">
-<meta property="article:modified_time" content="2020-06-08T07:45:33.637Z">
+<meta property="article:published_time" content="2019-01-11T05:30:38.000Z">
+<meta property="article:modified_time" content="2020-03-28T11:09:28.441Z">
 <meta property="article:author" content="Linuzb">
-<meta property="article:tag" content="HPC">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://levizebulon.github.io/2020/05/26/MPITutorials/MPITutorials/prog_structure.gif">
 
 
-<link rel="icon" href="/img/avatar.jpg">
 
-<link href="/css/style.css?v=1.0.1" rel="stylesheet">
-
-<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
-
-<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
-<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
-
-<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script>
-    hljs.initHighlightingOnLoad();
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
 </script>
 
-<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+  <link rel="canonical" href="https://levizebulon.github.io/2019/01/11/download-coursera-and-youtube/"/>
 
 
 
-<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
 
-<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+  <title>download_coursera_and_youtube | Linuzb's blog</title>
+  
+
+
+
+
+
+
+
 
 <meta name="generator" content="Hexo 4.2.0"></head>
-<div style="display: none">
-  <input class="theme_disqus_on" value="false">
-  <input class="theme_preload_comment" value="false">
-  <input class="theme_blog_path" value="">
-</div>
 
-<body>
-<aside class="nav">
-    <div class="nav-left">
-        <a href="/" class="avatar_target">
-    <img class="avatar" src="/img/avatar.jpg" />
-</a>
-<div class="author">
-    <span>Linuzb</span>
-</div>
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
-<div class="icon">
+  
+  
     
-        
-        <a title="rss" href="/atom.xml" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-rss"></use>
-                </svg>
-            
-        </a>
-        
-    
-        
-        <a title="github" href="https://github.com/yelog" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-github"></use>
-                </svg>
-            
-        </a>
-        
-    
-</div>
+  
 
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-
-<ul>
-    <li><div class="all active">全部文章<small>(34)</small></div></li>
-    
-</ul>
-<div class="left-bottom">
-    <div class="menus">
-    
-    
-    
-    
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Linuzb's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
-</div>
-<input type="hidden" id="yelog_site_posts_number" value="34">
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
 
-<div style="display: none">
-    <span id="busuanzi_value_site_uv"></span>
-    <span id="busuanzi_value_site_pv"></span>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-    </div>
-    <div class="nav-right">
-        <div class="friends-area">
-    <div class="friends-title">
-        友情链接
-        <i class="back-title-list"></i>
-    </div>
-    <div class="friends-content">
-        <ul>
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
             
-            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-        </ul>
-    </div>
-</div>
-        <div class="title-list">
-    <form onkeydown="if(event.keyCode === 13){return false;}">
-        <input id="local-search-input" class="search" type="text" placeholder="Search..." />
-        <i class="cross"></i>
-        <span>
-            <label for="tagswitch">Tags:</label>
-            <input id="tagswitch" type="checkbox" style="display: none" />
-            <i id="tagsWitchIcon"></i>
-        </span>
-    </form>
-    <div class="tags-list">
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-    <li class="article-tag-list-item">
-        <a class="color2">Machine Learning</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">工具</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">阅读</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">Linux</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">paper</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">Distribute System</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">Web</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">software</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">Others</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color5">Algarithm</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">问题</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">论文</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">杂项</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">course</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color1">tools</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">distribute system</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">os</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">HPC</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color2">programming</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color4">Deep Learning</a>
-    </li>
-    
-    <li class="article-tag-list-item">
-        <a class="color3">Computer Graphics</a>
-    </li>
-    
-    <div class="clearfix"></div>
-</div>
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://levizebulon.github.io/2019/01/11/download-coursera-and-youtube/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Linuzb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Linuzb's blog">
+    </span>
 
     
-    <nav id="title-list-nav">
+      <header class="post-header">
+
         
-        <a  class=""
-           href="/2020/03/28/hello-world/"
-           data-tag="杂项"
-           data-author="" >
-            <span class="post-title" title="纪念失去的博客">纪念失去的博客</span>
-            <span class="post-date" title="2020-03-28 19:08:07">2020/03/28</span>
-        </a>
         
-        <a  class=""
-           href="/2019/01/09/Anaconda/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Anaconda">Anaconda</span>
-            <span class="post-date" title="2019-01-09 09:55:46">2019/01/09</span>
-        </a>
+          <h1 class="post-title" itemprop="name headline">download_coursera_and_youtube</h1>
         
-        <a  class=""
-           href="/2019/03/20/Docker%E5%AE%89%E8%A3%85tensorflow-gpu/"
-           data-tag="Machine Learning"
-           data-author="" >
-            <span class="post-title" title="Docker安装tensorflow-gpu">Docker安装tensorflow-gpu</span>
-            <span class="post-date" title="2019-03-20 16:36:12">2019/03/20</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/29/K2pdfopt%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"
-           data-tag="工具,阅读"
-           data-author="" >
-            <span class="post-title" title="K2pdfopt简明教程">K2pdfopt简明教程</span>
-            <span class="post-date" title="2018-12-29 20:20:14">2018/12/29</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/03/28/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%85%A8%E6%8B%BC/"
-           data-tag="Linux"
-           data-author="" >
-            <span class="post-title" title="Linux常用命令全拼">Linux常用命令全拼</span>
-            <span class="post-date" title="2020-03-28 17:33:07">2020/03/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/03/28/MapReduce/"
-           data-tag="paper,Distribute System"
-           data-author="" >
-            <span class="post-title" title="MapReduce">MapReduce</span>
-            <span class="post-date" title="2020-03-28 17:37:00">2020/03/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/02/Ubuntu%E7%BE%8E%E5%8C%96/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Ubuntu美化">Ubuntu美化</span>
-            <span class="post-date" title="2019-01-02 07:32:54">2019/01/02</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/03/28/VPS%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BAHexo%E5%8D%9A%E5%AE%A2/"
-           data-tag="Web"
-           data-author="" >
-            <span class="post-title" title="VPS搭建个人Hexo博客">VPS搭建个人Hexo博客</span>
-            <span class="post-date" title="2020-03-28 17:25:22">2020/03/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/30/aria2%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"
-           data-tag="工具"
-           data-author="" >
-            <span class="post-title" title="aria2简明教程">aria2简明教程</span>
-            <span class="post-date" title="2018-12-30 10:44:49">2018/12/30</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/30/autosub%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB%E5%AD%97%E5%B9%95%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7/"
-           data-tag="工具"
-           data-author="" >
-            <span class="post-title" title="autosub语音识别字幕生成工具">autosub语音识别字幕生成工具</span>
-            <span class="post-date" title="2018-12-30 20:41:40">2018/12/30</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/11/download-coursera-and-youtube/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="download_coursera_and_youtube">download_coursera_and_youtube</span>
-            <span class="post-date" title="2019-01-11 13:30:38">2019/01/11</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/03/01/shadowsocks%E2%80%93libev%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E9%83%A8%E7%BD%B2/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="Ubuntu shadowsocks–libev服务端的部署">Ubuntu shadowsocks–libev服务端的部署</span>
-            <span class="post-date" title="2019-03-01 09:23:47">2019/03/01</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/03/ubuntu%E4%B8%8B%E5%AE%89%E8%A3%85TexLive/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ubuntu下安装TexLive">ubuntu下安装TexLive</span>
-            <span class="post-date" title="2019-01-03 16:56:38">2019/01/03</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/04/21/ubuntu%E5%AE%89%E8%A3%85windows%E5%AD%97%E4%BD%93/"
-           data-tag="Others"
-           data-author="" >
-            <span class="post-title" title="ubuntu安装windows字体">ubuntu安装windows字体</span>
-            <span class="post-date" title="2019-04-21 23:16:24">2019/04/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/04/virtulenv/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="virtualenv">virtualenv</span>
-            <span class="post-date" title="2019-01-04 13:21:39">2019/01/04</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/03/01/%E4%BD%BF%E7%94%A8HAProxy%E5%8A%A0%E9%80%9FShadowsocks/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="使用HAProxy加速Shadowsocks">使用HAProxy加速Shadowsocks</span>
-            <span class="post-date" title="2019-03-01 09:52:51">2019/03/01</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/08/%E6%9F%A5%E7%9C%8BCUDA%E5%92%8Ccudnn%E7%89%88%E6%9C%AC/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="查看CUDA和cudnn版本">查看CUDA和cudnn版本</span>
-            <span class="post-date" title="2019-01-08 14:01:17">2019/01/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/"
-           data-tag="Algarithm"
-           data-author="" >
-            <span class="post-title" title="考研数据结构算法题">考研数据结构算法题</span>
-            <span class="post-date" title="2018-12-25 16:30:19">2018/12/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/01/01/%E8%A7%A3%E5%86%B3ubuntu1604%E4%B8%8Bwps%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E6%90%9C%E7%8B%97%E8%BE%93%E5%85%A5%E6%B3%95%E9%97%AE%E9%A2%98/"
-           data-tag="问题"
-           data-author="" >
-            <span class="post-title" title="解决ubuntu1604下wps不能使用搜狗输入法问题">解决ubuntu1604下wps不能使用搜狗输入法问题</span>
-            <span class="post-date" title="2019-01-01 16:42:28">2019/01/01</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/12/30/%E8%AE%BA%E6%96%87%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7Zotero/"
-           data-tag="论文"
-           data-author="" >
-            <span class="post-title" title="论文管理工具Zotero">论文管理工具Zotero</span>
-            <span class="post-date" title="2018-12-30 11:49:36">2018/12/30</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/03/29/Linux%E5%9B%BE%E5%83%8F%E8%A7%86%E9%A2%91%E7%BC%96%E8%BE%91/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="Linux图像视频编辑">Linux图像视频编辑</span>
-            <span class="post-date" title="2020-03-29 11:21:37">2020/03/29</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/03/shell/"
-           data-tag="course,tools"
-           data-author="" >
-            <span class="post-title" title="Course overview + the shell">Course overview + the shell</span>
-            <span class="post-date" title="2020-04-03 17:05:16">2020/04/03</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/07/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F6-824%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"
-           data-tag="paper,distribute system"
-           data-author="" >
-            <span class="post-title" title="分布式系统6.824论文阅读">分布式系统6.824论文阅读</span>
-            <span class="post-date" title="2020-04-07 21:03:52">2020/04/07</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/17/%E8%A7%A3%E5%86%B3archlinux%E4%B8%8Bgnome-terminal%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="解决archlinux下gnome-terminal透明问题">解决archlinux下gnome-terminal透明问题</span>
-            <span class="post-date" title="2020-04-17 09:34:37">2020/04/17</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/18/docker-spark-jupyternotebook/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="docker+spark+jupyternotebook">docker+spark+jupyternotebook</span>
-            <span class="post-date" title="2020-04-18 10:30:55">2020/04/18</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/04/18/Tmux%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="Tmux使用教程">Tmux使用教程</span>
-            <span class="post-date" title="2020-04-18 11:19:44">2020/04/18</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/06/v2ray-WS-TLS/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="v2ray+WS+TLS">v2ray+WS+TLS</span>
-            <span class="post-date" title="2020-05-06 16:41:48">2020/05/06</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/09/%E7%BD%91%E7%BB%9C%E6%8E%92%E6%9F%A5%E5%B7%A5%E5%85%B7/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="网络排查工具">网络排查工具</span>
-            <span class="post-date" title="2020-05-09 08:49:49">2020/05/09</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/13/Ubuntu%E5%BC%80%E5%90%AFbbr/"
-           data-tag="os"
-           data-author="" >
-            <span class="post-title" title="Ubuntu开启bbr">Ubuntu开启bbr</span>
-            <span class="post-date" title="2020-05-13 08:21:42">2020/05/13</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/22/archlinux-NVIDIA-Bumblebee-CUDA-cudnn/"
-           data-tag="software"
-           data-author="" >
-            <span class="post-title" title="archlinux+NVIDIA+Bumblebee+CUDA+cudnn">archlinux+NVIDIA+Bumblebee+CUDA+cudnn</span>
-            <span class="post-date" title="2020-05-22 22:04:13">2020/05/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/26/MPITutorials/"
-           data-tag="HPC"
-           data-author="" >
-            <span class="post-title" title="MPITutorials">MPITutorials</span>
-            <span class="post-date" title="2020-05-26 17:42:38">2020/05/26</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/28/SparkOverview/"
-           data-tag="software,distribute system"
-           data-author="" >
-            <span class="post-title" title="SparkOverview">SparkOverview</span>
-            <span class="post-date" title="2020-05-28 10:12:42">2020/05/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/05/28/RDD%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8D%97/"
-           data-tag="distribute system,programming"
-           data-author="" >
-            <span class="post-title" title="RDD编程指南">RDD编程指南</span>
-            <span class="post-date" title="2020-05-28 11:15:51">2020/05/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2020/06/13/meshCNN/"
-           data-tag="Deep Learning,Computer Graphics"
-           data-author="" >
-            <span class="post-title" title="meshCNN">meshCNN</span>
-            <span class="post-date" title="2020-06-13 21:06:46">2020/06/13</span>
-        </a>
-        
-    </nav>
-</div>
-    </div>
-    <div class="hide-list">
-        <div class="semicircle">
-            <div class="brackets first"><</div>
-            <div class="brackets">&gt;</div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-11T13:30:38+08:00">
+                2019-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-    </div>
-</aside>
-<div class="post">
-    <div class="pjax">
-        <article id="post-download-coursera-and-youtube" class="article article-type-post" itemscope itemprop="blogPost">
+      </header>
     
-        <h1 class="article-title">download_coursera_and_youtube</h1>
+
     
-    <div class="article-meta">
-        
-        
-        
-        
-    </div>
-    <div class="article-meta">
-        
-        创建时间:<time class="date" title='更新时间: 2020-03-28 19:09:28'>2019-01-11 13:30</time>
-        
-    </div>
-    <div class="article-meta">
-        
-        
-        <span id="busuanzi_container_page_pv">
-            阅读:<span id="busuanzi_value_page_pv">
-                <span class="count-comment">
-                    <span class="spinner">
-                      <div class="cube1"></div>
-                      <div class="cube2"></div>
-                    </span>
-                </span>
-            </span>
-        </span>
-        
-        
-    </div>
     
-    <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Coursera-dl"><span class="toc-text">Coursera-dl</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Youtube-dl"><span class="toc-text">Youtube-dl</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在linux系统下使用curl"><span class="toc-text">1. 在linux系统下使用curl</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#或者使用wget"><span class="toc-text">或者使用wget</span></a></li></ol></li></ol></li></ol>
-    
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-    .toc-level-3 i,
-    .toc-level-3 ol {
-        display: none !important;
-    }
-</style>
-</div>
-    
-    <div class="article-entry" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
       
         <h1 id="Coursera-dl"><a href="#Coursera-dl" class="headerlink" title="Coursera-dl"></a><a href="https://github.com/coursera-dl/coursera-dl" target="_blank" rel="noopener">Coursera-dl</a></h1><h1 id="Youtube-dl"><a href="#Youtube-dl" class="headerlink" title="Youtube-dl"></a><a href="https://github.com/rg3/youtube-dl" target="_blank" rel="noopener">Youtube-dl</a></h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="1-在linux系统下使用curl"><a href="#1-在linux系统下使用curl" class="headerlink" title="1. 在linux系统下使用curl"></a>1. 在linux系统下使用curl</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br></pre></td></tr></table></figure>
 <h3 id="或者使用wget"><a href="#或者使用wget" class="headerlink" title="或者使用wget"></a>或者使用wget</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo wget https://yt-dl.org/downloads/latest/youtube-dl -O /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br><span class="line">sudo chmod a+rx /usr/<span class="built_in">local</span>/bin/youtube-dl</span><br></pre></td></tr></table></figure>
 
       
-       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
     </div>
-</article>
-
-
-<p>
-    <a  class="dashang" onclick="dashangToggle()">赏</a>
-</p>
-
-
-<div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>download_coursera_and_youtube</p>
     
-    <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
-    <p><span class="copy-title">发布时间:</span>2019-01-11, 13:30:38</p>
-    <p><span class="copy-title">最后更新:</span>2020-03-28, 19:09:28</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2019/01/11/download-coursera-and-youtube/" title="download_coursera_and_youtube">https://levizebulon.github.io/2019/01/11/download-coursera-and-youtube/</a>
-    <p>
-        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-    </p>
-</div>
-
-
-
-
+    
+    
 
     
 
+    
 
+    
 
+    <footer class="post-footer">
+      
 
-    </div>
-    <div class="copyright">
-        <p class="footer-entry">©2016-2020 Linuzb</p>
-<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+      
+      
+      
 
-    </div>
-    <div class="full-toc">
-        <button class="full"><span class="min "></span></button>
-<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
-<div class="post-toc"><span class="post-toc-title">目录</span>
-    <div class="post-toc-content">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/09/Anaconda/" rel="next" title="Anaconda">
+                <i class="fa fa-chevron-left"></i> Anaconda
+              </a>
+            
+          </div>
 
-    </div>
-</div>
-<a class="" id="rocket" ></a>
+          <span class="post-nav-divider"></span>
 
-    </div>
-</div>
-<div class="acParent"></div>
-
-<div class="hide_box" onclick="dashangToggle()"></div>
-<div class="shang_box">
-    <a class="shang_close"  onclick="dashangToggle()">×</a>
-    <div class="shang_tit">
-        <p>喜欢就点赞,疼爱就打赏</p>
-    </div>
-    <div class="shang_payimg">
-        <div class="pay_img">
-            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
-            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/01/shadowsocks%E2%80%93libev%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E9%83%A8%E7%BD%B2/" rel="prev" title="Ubuntu shadowsocks–libev服务端的部署">
+                Ubuntu shadowsocks–libev服务端的部署 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
         </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
     </div>
-    <div class="shang_payselect">
-        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Linuzb</p>
+              <p class="site-description motion-element" itemprop="description">记录学习过程</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Coursera-dl"><span class="nav-number">1.</span> <span class="nav-text">Coursera-dl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Youtube-dl"><span class="nav-number">2.</span> <span class="nav-text">Youtube-dl</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-在linux系统下使用curl"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. 在linux系统下使用curl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#或者使用wget"><span class="nav-number">2.1.2.</span> <span class="nav-text">或者使用wget</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Linuzb</span>
+
+  
 </div>
 
 
-</body>
-<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-<script src="/js/script.js?v=1.0.1" ></script>
-<script>
-    var img_resize = 'default';
-    /*作者、标签的自动补全*/
-    $(function () {
-        $('.search').AutoComplete({
-            'data': ['#Machine Learning','#工具','#阅读','#Linux','#paper','#Distribute System','#Web','#software','#Others','#Algarithm','#问题','#论文','#杂项','#course','#tools','#distribute system','#os','#HPC','#programming','#Deep Learning','#Computer Graphics',],
-            'itemHeight': 20,
-            'width': 418
-        }).AutoComplete('show');
-    })
-    function initArticle() {
-        /*渲染对应的表格样式*/
-        
-            $(".post .pjax table").addClass("green_title");
-        
 
-        /*渲染打赏样式*/
-        
-        $("input[name=pay]").on("click", function () {
-            if($("input[name=pay]:checked").val()=="weixin"){
-                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
-            } else {
-                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
-            }
-        })
-        
 
-        /*高亮代码块行号*/
-        
-        $('pre code').each(function(){
-            var lines = $(this).text().trim().split('\n').length, widther='';
-            if (lines>99) {
-                widther = 'widther'
-            }
-            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
-            $(this).addClass('has-numbering ' + widther)
-                    .parent()
-                    .append($numbering);
-            for(var i=1;i<=lines;i++){
-                $numbering.append($('<li/>').text(i));
-            }
-        });
-        
+  <span class="post-meta-divider">|</span>
 
-        /*访问数量*/
-        
-        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
-        
 
-        /*代码高亮，行号对齐*/
-        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
 
         
-        
-    }
 
-    /*打赏页面隐藏与展示*/
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
     
-    function dashangToggle() {
-        $(".shang_box").fadeToggle();
-        $(".hide_box").fadeToggle();
-    }
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
     
 
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
-<!--加入行号的高亮代码块样式-->
-
-<style>
-    pre{
-        position: relative;
-        margin-bottom: 24px;
-        border-radius: 10px;
-        border: 1px solid #e2dede;
-        background: #FFF;
-        overflow: hidden;
-    }
-    code.has-numbering{
-        margin-left: 30px;
-    }
-    code.has-numbering.widther{
-        margin-left: 35px;
-    }
-    .pre-numbering{
-        margin: 0px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        padding: 0.5em 3px 0.7em 5px;
-        border-right: 1px solid #C3CCD0;
-        text-align: right;
-        color: #AAA;
-        background-color: #fafafa;
-    }
-    .pre-numbering.widther {
-        width: 35px;
-    }
-</style>
-
-<!--自定义样式设置-->
-<style>
-    
-    
-    .nav {
-        width: 542px;
-    }
-    .nav.fullscreen {
-        margin-left: -542px;
-    }
-    .nav-left {
-        width: 120px;
-    }
-    
-    
-    @media screen and (max-width: 1468px) {
-        .nav {
-            width: 492px;
-        }
-        .nav.fullscreen {
-            margin-left: -492px;
-        }
-        .nav-left {
-            width: 100px;
-        }
-    }
-    
-    
-    @media screen and (max-width: 1024px) {
-        .nav {
-            width: 492px;
-            margin-left: -492px
-        }
-        .nav.fullscreen {
-            margin-left: 0;
-        }
-        .nav .hide-list.fullscreen {
-            left: 492px
-        }
-    }
-    
-    @media screen and (max-width: 426px) {
-        .nav {
-            width: 100%;
-        }
-        .nav-left {
-            width: 100%;
-        }
-    }
-    
-    
-    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
-        color: #383636;
-    }
-    
-    
-    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
-        color: #5e5e5f;
-    }
-    
-    
-    .nav-right nav a.hover, #local-search-result a.hover{
-        background-color: #e2e0e0;
-    }
-    
-    
-
-    /*列表样式*/
-    
-    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
-        border: #e2dede solid 1px;
-        border-radius: 10px;
-        padding: 10px 32px 10px 56px;
-    }
-    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    
-
-    /* 背景图样式 */
-    
-    
-
-
-    /*引用块样式*/
-    
-
-    /*文章列表背景图*/
-    
-
-    
-</style>
 
 
 
@@ -864,4 +541,129 @@
 
 
 
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
