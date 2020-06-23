@@ -162,15 +162,13 @@ FreeType字体描述由字体族、样式、重量、变体、扩展和大小组
 
 如果i3无法打开配置的字体，它将在日志文件中输出一个错误并返回到工作字体。
 
-***********Syntax:**
+Syntax:
+<div class="content">
+<pre><tt>font &lt;X core font description&gt;
+font pango:&lt;family list&gt; [&lt;style options&gt;] &lt;size&gt;</tt></pre>
+</div>
 
-~~~bash
-font <X core font description>
-font pango:<family list> [<style options>] <size>
-~~~
-
-********************Examples:**
-
+Examples:
 ~~~bash
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 font pango:DejaVu Sans Mono 10
@@ -182,7 +180,7 @@ font pango:Terminus 11px
 
 键盘绑定使i3在按下特定键后执行命令(见下面)。i3允许您绑定按键代码或按键符号(您也可以混合绑定，尽管i3不能防止重叠的绑定)。
 
-- 按键符号是对特定符号的描述，如“a”或“b”，但也包括一些更奇怪的符号，如“下划线”而不是“_”。这些是您在Xmodmap中用于重新映射密钥的键。要获得键盘的当前映射，请使用`xmodmap -pke`。要交互式地输入一个键并查看它被配置为什么keysym，请使用`xev`。
+- 按键符号是对特定符号的描述,如a或b,但也包括一些更奇怪的符号，如下划线而不是。这些是您在Xmodmap中用于重新映射密钥的键。要获得键盘的当前映射，请使用`xmodmap -pke`。要交互式地输入一个键并查看它被配置为什么keysym，请使用`xev`。
 
 - 键码不需要指定符号(对于某些笔记本上的自定义供应商热键很方便)，而且当切换到不同的键盘布局时(使用xmodmap时)，它们的含义不会改变。
 
@@ -190,7 +188,7 @@ font pango:Terminus 11px
 
 某些工具（例如import或xdotool）可能无法在KeyPress事件上运行，因为仍然抓住了键盘/指针。 在这些情况下，可以使用--release标志，它将在释放键后执行命令。
 
-**Syntax:**
+Syntax:
 
 ~~~bash
 bindsym [--release] [<Group>+][<Modifiers>+]<keysym> command
@@ -216,11 +214,86 @@ bindsym --release $mod+x exec --no-startup-id import /tmp/latest-screenshot.png
 
 可用的修饰符
 
-` Mod1-Mod5, Shift, Control `
+`Mod1-Mod5, Shift, Control`
 - Standard modifiers, see xmodmap(1)
 
 ` Group1, Group2, Group3, Group4 `
 
+- 当使用多个键盘布局(例如`setxkbmap -layout us`,ru)时，您可以指定在哪个XKB组(也称为布局)中激活键绑定。默认情况下，键绑定在Group1中进行翻译，并且在所有组中都是活动的。如果想要覆盖某个布局中的键绑定，请指定相应的组。为了向后兼容，组模式开关是Group2的别名。
 
+### 4.4 鼠标绑定
+
+鼠标绑定使i3在单击容器范围内的特定鼠标按钮时执行命令(参见[命令标准])。您可以以与键绑定类似的方式配置鼠标绑定。
+
+Syntax:
+
+<div class="content">
+<pre><tt>bindsym [--release] [--border] [--whole-window] [--exclude-titlebar] [&lt;Modifiers&gt;+]button&lt;n&gt; command</tt></pre>
+</div>
+
+默认情况下，只有在单击窗口的标题栏时，绑定才会运行。如果给定了`--release`标志，它将在释放鼠标按钮时运行。
+
+如果指定了`--whole-window`标志，那么当单击窗口的任何部分时，绑定也将运行，除了边框之外。若要在单击边框时运行绑定，请指定`--border`标志。
+
+如果给定了`--exclude-titlebar`标志，则将不会考虑将titlebar用于键绑定。
+
+Examples:
+
+<div class="content">
+<pre><tt># The middle button over a titlebar kills the window
+bindsym --release button2 kill
+
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
+
+# The right button toggles floating
+bindsym button3 floating toggle
+bindsym $mod+button3 floating toggle
+
+# The side buttons move the window around
+bindsym button9 move left
+bindsym button8 move right</tt></pre>
+</div>
+
+### 4.5 绑定模式
+
+通过使用不同的绑定模式，您可以拥有多组绑定。当切换到另一种绑定模式时，当前模式下的所有绑定都将被释放，只要您保持该绑定模式，就只有在新模式下定义的绑定有效。唯一预定义的绑定模式是`default`，即i3开始时的模式，所有未在特定绑定模式中定义的绑定都属于该模式。
+
+使用绑定模式包括两个部分:定义绑定模式和切换到它。为了达到这些目的，有一个配置指令和一个命令，它们都被称为模式。指令用于定义属于特定绑定模式的绑定，而命令将切换到指定模式。
+
+为了更容易维护，建议结合使用绑定模式和[变量]。下面是如何使用绑定模式的示例。
+
+注意，为切换回默认模式，最好定义绑定。
+
+注意，可以对绑定模式使用[pango_markup](https://i3wm.org/docs/userguide.html#pango_markup)，但是需要通过将`--pango_markup`标志传递给模式定义来显式地启用它。
+
+<strong>Syntax:<\strong>
+
+<div class="listingblock">
+<div class="content">
+<pre><tt># config directive
+mode [--pango_markup] &lt;name&gt;
+
+# command
+mode &lt;name&gt;</tt></pre>
+</div></div>
+
+<strong>Examples:<\strong>
+
+<div class="listingblock">
+<div class="content">
+<pre><tt># Press $mod+o followed by either f, t, Escape or Return to launch firefox,
+# thunderbird or return to the default mode, respectively.
+set $mode_launcher Launch: [f]irefox [t]hunderbird
+bindsym $mod+o mode "$mode_launcher"
+
+mode "$mode_launcher" {
+    bindsym f exec firefox
+    bindsym t exec thunderbird
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}</tt></pre>
+</div></div>
 
 
