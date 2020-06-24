@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>考研数据结构算法题 | Linuzb&#39;s blog</title>
+  <title>leetcode刷题 | Linuzb&#39;s blog</title>
   <meta name="keywords" content=" Algarithm ">
-  <meta name="description" content="考研数据结构算法题 | Linuzb&#39;s blog">
+  <meta name="description" content="leetcode刷题 | Linuzb&#39;s blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="i3 User’s Guidehttps:&#x2F;&#x2F;i3wm.org&#x2F;docs&#x2F;userguide.html 1. Default keybindings请注意，在没有配置文件的情况下启动i3时，无论您使用的键盘布局如何，i3-config-wizard都会为您提供一个配置文件，该文件中的键位置与您在上图中看到的相匹配。 如果您更喜欢配置文件，并将配置基于&#x2F;etc&#x2F;i3&#x2F;config。 2. Using">
 <meta property="og:type" content="article">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="i3 User’s Guidehttps:&#x2F;&#x2F;i3wm.org&#x2F;docs&#x2F;userguide.html 1. Default keybindings请注意，在没有配置文件的情况下启动i3时，无论您使用的键盘布局如何，i3-config-wizard都会为您提供一个配置文件，该文件中的键位置与您在上图中看到的相匹配。 如果您更喜欢配置文件，并将配置基于&#x2F;etc&#x2F;i3&#x2F;config。 2. Using">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-22T10:34:46.000Z">
-<meta property="article:modified_time" content="2020-06-23T14:19:19.703Z">
+<meta property="article:modified_time" content="2020-06-24T07:00:06.745Z">
 <meta property="article:author" content="Linuzb">
 <meta property="article:tag" content="software">
 <meta name="twitter:card" content="summary">
@@ -499,10 +499,10 @@
         </a>
         
         <a  class=""
-           href="/2018/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/"
+           href="/2018/12/25/leetcode%E5%88%B7%E9%A2%98/"
            data-tag="Algarithm"
            data-author="" >
-            <span class="post-title" title="考研数据结构算法题">考研数据结构算法题</span>
+            <span class="post-title" title="leetcode刷题">leetcode刷题</span>
             <span class="post-date" title="2018-12-25 16:30:19">2018/12/25</span>
         </a>
         
@@ -518,9 +518,9 @@
 </aside>
 <div class="post">
     <div class="pjax">
-        <article id="post-考研数据结构算法题" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-leetcode刷题" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">考研数据结构算法题</h1>
+        <h1 class="article-title">leetcode刷题</h1>
     
     <div class="article-meta">
         
@@ -536,7 +536,7 @@
     </div>
     <div class="article-meta">
         
-        创建时间:<time class="date" title='更新时间: 2020-06-23 11:16:44'>2018-12-25 16:30</time>
+        创建时间:<time class="date" title='更新时间: 2020-06-24 15:03:18'>2018-12-25 16:30</time>
         
     </div>
     <div class="article-meta">
@@ -558,7 +558,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#树与二叉树"><span class="toc-text">树与二叉树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二叉树的遍历和线索二叉树"><span class="toc-text">二叉树的遍历和线索二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-二叉树的遍历"><span class="toc-text">1. 二叉树的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-先序遍历"><span class="toc-text">(1 先序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-中序遍历"><span class="toc-text">(2 中序遍历</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#（3-后续遍历"><span class="toc-text">（3 后续遍历</span></a></li></ol></li></ol></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -574,33 +574,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>计算机考研中可能遇到的算法题，本文章整理自王道考研系列《2019年数据结构考研复习指导》，为了方便考研的学弟学妹们在闲余时间随时随地方便复习算法题，本文章目前持续更新中。。。</p>
-<h2 id="树与二叉树"><a href="#树与二叉树" class="headerlink" title="树与二叉树"></a>树与二叉树</h2><ul>
-<li>二叉树的链式存储结构如下<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">	ElemType data;		<span class="comment">//数据域</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span>	<span class="comment">//左右孩子指针</span></span><br><span class="line">&#125;BiTNode, *BiTree;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h2 id="二叉树的遍历和线索二叉树"><a href="#二叉树的遍历和线索二叉树" class="headerlink" title="二叉树的遍历和线索二叉树"></a>二叉树的遍历和线索二叉树</h2><h3 id="1-二叉树的遍历"><a href="#1-二叉树的遍历" class="headerlink" title="1. 二叉树的遍历"></a>1. 二叉树的遍历</h3><h4 id="1-先序遍历"><a href="#1-先序遍历" class="headerlink" title="(1 先序遍历"></a>(1 先序遍历</h4><ul>
-<li>先序遍历的递归算法如下:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(T != <span class="literal">NULL</span>)&#123;</span><br><span class="line">		visit(T);	<span class="comment">//访问根节点</span></span><br><span class="line">		PreOrder(T-&gt;lchild);	<span class="comment">//递归遍历左子树</span></span><br><span class="line">		PreOrder(T-&gt;rchild);	<span class="comment">//递归遍历右子树</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="2-中序遍历"><a href="#2-中序遍历" class="headerlink" title="(2 中序遍历"></a>(2 中序遍历</h4><ul>
-<li>中序遍历的递归算法如下<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(T != <span class="literal">NULL</span>)&#123;</span><br><span class="line">		PreOrder(T-&gt;lchild);	<span class="comment">//递归遍历左子树</span></span><br><span class="line">		visit(T);	<span class="comment">//访问根节点</span></span><br><span class="line">		PreOrder(T-&gt;rchild);	<span class="comment">//递归遍历右子树</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">~~~ </span><br><span class="line"></span><br><span class="line">- 中序遍历的非递归算法</span><br><span class="line">~~~cpp</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrder2</span><span class="params">(BiTree T)</span></span>&#123;</span><br><span class="line"><span class="comment">// 二叉树中序遍历的非递归算法，算法需要借助一个栈</span></span><br><span class="line">	InitStack(S);	<span class="comment">// 初始化栈</span></span><br><span class="line">	BiTree p = T;	<span class="comment">// p是遍历指针</span></span><br><span class="line">	<span class="keyword">while</span>(p || !IsEmpty(S))&#123;	<span class="comment">// 栈不为空或者p不空时循环</span></span><br><span class="line">		<span class="keyword">if</span>(p)&#123;</span><br><span class="line">			Push(S, p);	<span class="comment">// 根指针进栈，遍历左子树</span></span><br><span class="line">			p = p-&gt;lchild;	<span class="comment">// 每遇到非空二叉树先向左走</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			Pop(S, p);	<span class="comment">// 根指针退栈，访问根节点，遍历右子树</span></span><br><span class="line">			visit(p);	<span class="comment">// 退栈，访问根节点</span></span><br><span class="line">			p = =-&gt;rchild;	<span class="comment">// 再向右子树走</span></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="（3-后续遍历"><a href="#（3-后续遍历" class="headerlink" title="（3 后续遍历"></a>（3 后续遍历</h4><ul>
-<li>后续遍历的递归操作</li>
-</ul>
-<pre><code class="cpp"><span class="function"><span class="keyword">void</span> <span class="title">PostOrder</span><span class="params">(BiTree T)</span></span>{
-    <span class="keyword">if</span>(T != <span class="literal">NULL</span>){
-        PostOrder(T-&gt;lchild);    <span class="comment">//递归遍历左子树</span>
-        visit(T);    <span class="comment">//访问根节点</span>
-        PostOrder(T-&gt;rchild);    <span class="comment">//递归遍历右子树</span>
-    }
-}</code></pre>
+        <p>我的leetcode<a href="https://leetcode-cn.com/u/linuzb/" target="_blank" rel="noopener">主页</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
@@ -614,12 +588,12 @@
 
 
 <div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>考研数据结构算法题</p>
+    <p><span class="copy-title">文章标题:</span>leetcode刷题</p>
     
     <p><span class="copy-title">本文作者:</span><a  title="Linuzb">Linuzb</a></p>
     <p><span class="copy-title">发布时间:</span>2018-12-25, 16:30:19</p>
-    <p><span class="copy-title">最后更新:</span>2020-06-23, 11:16:44</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2018/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/" title="考研数据结构算法题">https://levizebulon.github.io/2018/12/25/%E8%80%83%E7%A0%94%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95%E9%A2%98/</a>
+    <p><span class="copy-title">最后更新:</span>2020-06-24, 15:03:18</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2018/12/25/leetcode%E5%88%B7%E9%A2%98/" title="leetcode刷题">https://levizebulon.github.io/2018/12/25/leetcode%E5%88%B7%E9%A2%98/</a>
     <p>
         <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
     </p>
